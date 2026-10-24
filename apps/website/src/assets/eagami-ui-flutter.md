@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.72.1
-source: '@eagami/ui@5.72.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-10-17
+version: 5.73.0
+source: '@eagami/ui@5.73.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-10-24
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -541,7 +541,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.72.1 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.73.0 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -1504,7 +1504,7 @@ class EagamiTextarea extends StatefulWidget {
     this.resize = TextareaResize.vertical,
     this.minHeight,
     this.maxHeight,
-    this.maxlength,
+    this.maxLength,
     this.value,
     this.onChanged,
     this.onFocused,
@@ -1522,7 +1522,7 @@ class EagamiTextarea extends StatefulWidget {
   final TextareaResize resize;
   final double? minHeight; // minimum height in logical pixels (auto-grow floor)
   final double? maxHeight; // maximum height in logical pixels (auto-grow ceiling)
-  final int? maxlength;
+  final int? maxLength;
   final String? value;
   final ValueChanged<String>? onChanged;
   final ValueChanged<FocusEvent>? onFocused;
@@ -2645,17 +2645,17 @@ class EagamiToastOutlet extends StatelessWidget {
   const EagamiToastOutlet({
     super.key,
     this.position = ToastPosition.bottomRight,
-    this.clearable = true,
+    this.dismissible = true,
   });
 
   final ToastPosition position; // viewport corner/edge the stack pins to
-  final bool clearable;         // show a dismiss button on each toast
+  final bool dismissible;       // show a dismiss button on each toast
 }
 ```
 
 **Behaviour:**
 - Place a single `EagamiToastOutlet` once near the root of the app so toasts created from anywhere are surfaced.
-- `position` pins the toast stack to a viewport corner or edge; `clearable` toggles the per-toast dismiss button.
+- `position` pins the toast stack to a viewport corner or edge; `dismissible` toggles the per-toast dismiss button.
 - `error` and `warning` variants render with `role: alert`; other variants use `role: status`.
 - Honour reduced motion by degrading the slide-in to an opacity-only fade (the horizontal translate can trip vestibular sensitivity).
 - Dismiss button accessible name comes from the locale's `toast.dismiss`.

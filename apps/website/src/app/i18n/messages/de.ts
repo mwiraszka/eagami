@@ -1328,7 +1328,7 @@ export const de: WebMessages = {
             icon: 'Symbol (Überschreibung)',
             title: 'Titel',
             size: 'Größe',
-            clearable: 'Löschbar',
+            dismissible: 'Schließbar',
           },
           avatar: {
             size: 'Größe',
@@ -1468,7 +1468,7 @@ export const de: WebMessages = {
             required: 'Erforderlich',
             optional: 'Optional',
             clearable: 'Löschbar',
-            iconClass: 'Symbol',
+            icon: 'Symbol',
           },
           skeleton: {
             variant: 'Variante',
@@ -1518,7 +1518,7 @@ export const de: WebMessages = {
             placeholder: 'Platzhalter',
             size: 'Größe',
             resize: 'Größenänderung',
-            maxlength: 'Maximallänge (Zeichen)',
+            maxLength: 'Maximallänge (Zeichen)',
             minHeight: 'Mindesthöhe',
             maxHeight: 'Maximalhöhe',
             disabled: 'Deaktiviert',
@@ -1667,7 +1667,7 @@ export const de: WebMessages = {
             size: 'Visuelle Größe, die auf jeden Toast im Stapel angewendet wird.',
             position:
               'Ecke oder Rand des Viewports, an dem der Toast-Stapel verankert ist.',
-            clearable: 'Zeigt auf jedem Toast einen Schließen-Button.',
+            dismissible: 'Zeigt auf jedem Toast einen Schließen-Button.',
             'ToastService.show':
               'Zeigt einen Toast und gibt seine ID zurück. Nachricht und Titel akzeptieren jeweils einen einfachen String oder Hervorhebungssegmente.',
             'ToastService.success': 'Zeigt einen Erfolgs-Toast und gibt seine ID zurück.',
@@ -2049,11 +2049,10 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert die Bewertung.',
             errorMsg:
               'Fehlermeldung unter der Bewertung, die den Hinweis ersetzt und sie als ungültig kennzeichnet.',
-            halfIconClass:
+            halfIcon:
               'Eigenständige Komponentenklasse, die bei aktiviertem allowHalf für halbe Positionen gerendert wird.',
             hint: 'Hilfetext unter der Bewertung, ausgeblendet, solange ein Fehler angezeigt wird.',
-            iconClass:
-              'Eigenständige Komponentenklasse, die für leere und volle Positionen gerendert wird.',
+            icon: 'Eigenständige Komponentenklasse, die für leere und volle Positionen gerendert wird.',
             id: 'id, die auf die Bewertung und ihr Label angewendet wird, automatisch generiert, wenn weggelassen.',
             labelIcon:
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
@@ -2182,9 +2181,9 @@ export const de: WebMessages = {
             maxHeight:
               'Pixelobergrenze für die Höhe des Feldes; darüber hinaus scrollt das Textarea vertikal, statt zu wachsen.',
             minHeight: 'Mindesthöhe in px; nie weniger als die Standardhöhe.',
-            maxlength: 'Maximale Zeichenanzahl, die das Feld akzeptiert.',
+            maxLength: 'Maximale Zeichenanzahl, die das Feld akzeptiert.',
             showCount:
-              'Zeigt unter dem Feld die Anzahl der eingegebenen Zeichen an, im Verhältnis zu maxlength, wenn gesetzt.',
+              'Zeigt unter dem Feld die Anzahl der eingegebenen Zeichen an, im Verhältnis zu maxLength, wenn gesetzt.',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
             typedPlaceholder:
               'Hinweise, die Zeichen für Zeichen mit blinkendem Cursor in das leere Feld getippt und in einer Schleife vom nächsten abgelöst werden; bei reduzierter Bewegung wechseln sie als Ganzes. Ersetzt placeholder, solange gesetzt.',

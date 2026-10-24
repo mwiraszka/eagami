@@ -203,6 +203,6 @@ export class ToastDemoPageComponent implements OnDestroy {
     const current = this.state();
     this.toastOutlet.position.set(current['position'] as ToastPosition);
     this.toastOutlet.size.set(current['size'] as ToastSize);
-    this.toastOutlet.clearable.set(current['clearable'] as boolean);
+    this.toastOutlet.dismissible.set(current['dismissible'] as boolean);
   }
 }

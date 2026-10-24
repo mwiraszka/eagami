@@ -1327,7 +1327,7 @@ export const is: WebMessages = {
             icon: 'Táknmynd (yfirskrift)',
             title: 'Titill',
             size: 'Stærð',
-            clearable: 'Hreinsanlegt',
+            dismissible: 'Lokanlegt',
           },
           avatar: {
             size: 'Stærð',
@@ -1467,7 +1467,7 @@ export const is: WebMessages = {
             required: 'Krafist',
             optional: 'Valfrjálst',
             clearable: 'Hreinsanlegt',
-            iconClass: 'Táknmynd',
+            icon: 'Táknmynd',
           },
           skeleton: {
             variant: 'Afbrigði',
@@ -1517,7 +1517,7 @@ export const is: WebMessages = {
             placeholder: 'Staðgengill',
             size: 'Stærð',
             resize: 'Stærðarbreyting',
-            maxlength: 'Hámarkslengd (stafir)',
+            maxLength: 'Hámarkslengd (stafir)',
             minHeight: 'Lágmarkshæð',
             maxHeight: 'Hámarkshæð',
             disabled: 'Óvirkt',
@@ -1655,7 +1655,7 @@ export const is: WebMessages = {
           toast: {
             size: 'Sjónræn stærð sem gildir um hverja tilkynningu í staflanum.',
             position: 'Horn eða brún sýnisvæðis sem tilkynningastaflinn er festur við.',
-            clearable: 'Sýna lokunarhnapp á hverri tilkynningu.',
+            dismissible: 'Sýna lokunarhnapp á hverri tilkynningu.',
             'ToastService.show':
               'Sýnir tilkynningu og skilar auðkenni hennar. Skilaboð hennar og titill taka venjulegan streng eða áherslubúta.',
             'ToastService.success':
@@ -2015,10 +2015,10 @@ export const is: WebMessages = {
             disabled: 'Gerir einkunnina óvirka.',
             errorMsg:
               'Villuboð sýnd fyrir neðan einkunnina, koma í stað vísbendingar og merkja hana ógilda.',
-            halfIconClass:
+            halfIcon:
               'Sjálfstæður einingaklasi birtur fyrir hálfar stöður þegar allowHalf er satt.',
             hint: 'Hjálpartexti sýndur fyrir neðan einkunnina, falinn á meðan villa er sýnd.',
-            iconClass: 'Sjálfstæður einingaklasi birtur fyrir tómar og fullar stöður.',
+            icon: 'Sjálfstæður einingaklasi birtur fyrir tómar og fullar stöður.',
             id: 'id sett á einkunnina og merkimiða hennar, sjálfvirkt búið til þegar því er sleppt.',
             labelIcon:
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
@@ -2143,9 +2143,9 @@ export const is: WebMessages = {
             maxHeight:
               'Pixlaþak fyrir hæð reitsins; umfram það skrunast textasvæðið lóðrétt í stað þess að stækka.',
             minHeight: 'Lágmarkshæð í px; aldrei minni en sjálfgefin hæð.',
-            maxlength: 'Hámarksfjöldi stafa sem reiturinn tekur við.',
+            maxLength: 'Hámarksfjöldi stafa sem reiturinn tekur við.',
             showCount:
-              'Sýnir fjölda innsleginna stafa fyrir neðan reitinn, á móti maxlength þegar það er stillt.',
+              'Sýnir fjölda innsleginna stafa fyrir neðan reitinn, á móti maxLength þegar það er stillt.',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
             typedPlaceholder:
               'Vísbendingar sem eru vélritaðar í tóma reitinn staf fyrir staf með blikkandi bendli og leysa hver aðra af í lykkju; með minnkaðri hreyfingu skiptast þær heilar. Kemur í stað placeholder meðan stillt.',

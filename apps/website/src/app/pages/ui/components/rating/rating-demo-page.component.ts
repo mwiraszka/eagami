@@ -53,7 +53,7 @@ interface RatingKnobState {
   required: boolean;
   optional: boolean;
   clearable: boolean;
-  iconClass: string;
+  icon: string;
   triggerError: boolean;
 }
 
@@ -76,7 +76,6 @@ export class RatingDemoPageComponent {
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.rating, UI_API[SLUG]),
     iconKnob(['star', 'heart', 'circle'], {
-      name: 'iconClass',
       default: 'star',
       includeNone: false,
     }),
@@ -90,12 +89,12 @@ export class RatingDemoPageComponent {
     ) as RatingKnobState,
   );
   protected readonly iconComponent = computed(
-    () => iconComponentForSlug(this.state().iconClass) ?? StarIconComponent,
+    () => iconComponentForSlug(this.state().icon) ?? StarIconComponent,
   );
   // The default half-icon is a half-star, so pair heart and circle with their own
   // half shapes; otherwise a half rating would show a stray half-star beside them.
   protected readonly halfIconComponent = computed<Type<unknown>>(() => {
-    switch (this.state().iconClass) {
+    switch (this.state().icon) {
       case 'heart':
         return HalfHeartIconComponent;
       case 'circle':

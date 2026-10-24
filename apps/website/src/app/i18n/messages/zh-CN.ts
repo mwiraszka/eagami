@@ -1251,7 +1251,7 @@ export const zhCN: WebMessages = {
             icon: '图标（覆盖）',
             title: '标题',
             size: '尺寸',
-            clearable: '可清除',
+            dismissible: '可关闭',
           },
           avatar: {
             size: '尺寸',
@@ -1391,7 +1391,7 @@ export const zhCN: WebMessages = {
             required: '必填',
             optional: '可选',
             clearable: '可清除',
-            iconClass: '图标',
+            icon: '图标',
           },
           skeleton: {
             variant: '变体',
@@ -1441,7 +1441,7 @@ export const zhCN: WebMessages = {
             placeholder: '占位符',
             size: '尺寸',
             resize: '调整大小',
-            maxlength: '最大长度（字符）',
+            maxLength: '最大长度（字符）',
             minHeight: '最小高度',
             maxHeight: '最大高度',
             disabled: '禁用',
@@ -1563,7 +1563,7 @@ export const zhCN: WebMessages = {
           toast: {
             size: '应用于堆栈中每个提示的视觉尺寸。',
             position: '提示堆栈固定到的视口角落或边缘。',
-            clearable: '在每条提示上显示关闭按钮。',
+            dismissible: '在每条提示上显示关闭按钮。',
             'ToastService.show':
               '显示一条提示并返回其 id。其消息和标题均可接受纯字符串或强调分段。',
             'ToastService.success': '显示一条成功提示并返回其 id。',
@@ -1863,9 +1863,9 @@ export const zhCN: WebMessages = {
             clearable: '点击当前值会将评分清除回 0。',
             disabled: '禁用该评分。',
             errorMsg: '显示在评分下方的错误消息，替换提示并将其标记为无效。',
-            halfIconClass: '当 allowHalf 为 true 时为半星位置渲染的独立组件类。',
+            halfIcon: '当 allowHalf 为 true 时为半星位置渲染的独立组件类。',
             hint: '显示在评分下方的辅助文本，在显示错误时隐藏。',
-            iconClass: '为空和满位置渲染的独立组件类。',
+            icon: '为空和满位置渲染的独立组件类。',
             id: '应用于评分及其标签的 id，省略时自动生成。',
             labelIcon: '可选的图标组件，显示在标签文本之前。',
             label: '渲染在评分上方的文本标签。',
@@ -1963,9 +1963,9 @@ export const zhCN: WebMessages = {
             label: '渲染在字段上方的文本标签。',
             maxHeight: '字段高度的像素上限；超过后 textarea 会垂直滚动而非继续增长。',
             minHeight: '以 px 为单位的最小高度；绝不小于默认高度。',
-            maxlength: '字段接受的最大字符数。',
+            maxLength: '字段接受的最大字符数。',
             showCount:
-              '在字段下方显示已输入的字符数，设置了 maxlength 时显示为相对于它的计数。',
+              '在字段下方显示已输入的字符数，设置了 maxLength 时显示为相对于它的计数。',
             placeholder: '字段为空时显示的占位符。',
             typedPlaceholder:
               '在空字段中伴随闪烁光标逐字输入的提示，依次循环替换；减少动态效果时整条切换。设置后取代 placeholder。',

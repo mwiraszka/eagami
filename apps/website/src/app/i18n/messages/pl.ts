@@ -1323,7 +1323,7 @@ export const pl: WebMessages = {
             icon: 'Ikona (zastąp)',
             title: 'Tytuł',
             size: 'Rozmiar',
-            clearable: 'Z czyszczeniem',
+            dismissible: 'Z możliwością zamknięcia',
           },
           avatar: {
             size: 'Rozmiar',
@@ -1463,7 +1463,7 @@ export const pl: WebMessages = {
             required: 'Wymagane',
             optional: 'Opcjonalne',
             clearable: 'Z czyszczeniem',
-            iconClass: 'Ikona',
+            icon: 'Ikona',
           },
           skeleton: {
             variant: 'Wariant',
@@ -1513,7 +1513,7 @@ export const pl: WebMessages = {
             placeholder: 'Tekst zastępczy',
             size: 'Rozmiar',
             resize: 'Zmiana rozmiaru',
-            maxlength: 'Maksymalna długość (znaków)',
+            maxLength: 'Maksymalna długość (znaków)',
             minHeight: 'Minimalna wysokość',
             maxHeight: 'Maksymalna wysokość',
             disabled: 'Wyłączone',
@@ -1652,7 +1652,7 @@ export const pl: WebMessages = {
           toast: {
             size: 'Wizualny rozmiar stosowany do każdego powiadomienia w stosie.',
             position: 'Róg lub krawędź okna, do której przypięty jest stos powiadomień.',
-            clearable: 'Pokazuje przycisk zamknięcia na każdym powiadomieniu.',
+            dismissible: 'Pokazuje przycisk zamknięcia na każdym powiadomieniu.',
             'ToastService.show':
               'Pokazuje powiadomienie i zwraca jego id. Jego treść i tytuł przyjmują zwykły tekst albo segmenty z wyróżnieniem.',
             'ToastService.success':
@@ -2014,11 +2014,10 @@ export const pl: WebMessages = {
             disabled: 'Wyłącza ocenę.',
             errorMsg:
               'Komunikat o błędzie pod oceną, zastępujący podpowiedź i oznaczający ją jako nieprawidłową.',
-            halfIconClass:
+            halfIcon:
               'Klasa komponentu standalone renderowana dla pozycji połówkowych, gdy allowHalf jest włączone.',
             hint: 'Tekst pomocniczy pod oceną, ukryty gdy występuje błąd.',
-            iconClass:
-              'Klasa komponentu standalone renderowana dla pozycji pustych i pełnych.',
+            icon: 'Klasa komponentu standalone renderowana dla pozycji pustych i pełnych.',
             id: 'id stosowane do oceny i jej etykiety, generowane automatycznie gdy pominięte.',
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad oceną.',
@@ -2141,9 +2140,9 @@ export const pl: WebMessages = {
             maxHeight:
               'Górny limit wysokości pola w pikselach; powyżej niego textarea przewija się pionowo zamiast rosnąć.',
             minHeight: 'Minimalna wysokość w px; nigdy mniejsza niż wysokość domyślna.',
-            maxlength: 'Maksymalna liczba znaków akceptowana przez pole.',
+            maxLength: 'Maksymalna liczba znaków akceptowana przez pole.',
             showCount:
-              'Wyświetla pod polem liczbę wpisanych znaków, w odniesieniu do maxlength, gdy jest ustawione.',
+              'Wyświetla pod polem liczbę wpisanych znaków, w odniesieniu do maxLength, gdy jest ustawione.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
             typedPlaceholder:
               'Podpowiedzi wpisywane do pustego pola znak po znaku z migającym kursorem, zastępowane kolejno w pętli; przy ograniczonym ruchu zmieniają się w całości. Zastępuje placeholder, gdy jest ustawiony.',

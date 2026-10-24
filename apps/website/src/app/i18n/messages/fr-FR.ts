@@ -1352,7 +1352,7 @@ export const frFR: WebMessages = {
             icon: 'Icône (remplacer)',
             title: 'Titre',
             size: 'Taille',
-            clearable: 'Effaçable',
+            dismissible: 'Fermable',
           },
           avatar: {
             size: 'Taille',
@@ -1492,7 +1492,7 @@ export const frFR: WebMessages = {
             required: 'Requis',
             optional: 'Facultatif',
             clearable: 'Effaçable',
-            iconClass: 'Icône',
+            icon: 'Icône',
           },
           skeleton: {
             variant: 'Variante',
@@ -1542,7 +1542,7 @@ export const frFR: WebMessages = {
             placeholder: 'Texte indicatif',
             size: 'Taille',
             resize: 'Redimensionnement',
-            maxlength: 'Longueur maximale (caractères)',
+            maxLength: 'Longueur maximale (caractères)',
             minHeight: 'Hauteur minimale',
             maxHeight: 'Hauteur maximale',
             disabled: 'Désactivé',
@@ -1689,7 +1689,7 @@ export const frFR: WebMessages = {
           toast: {
             size: 'Taille visuelle appliquée à chaque toast de la pile.',
             position: 'Coin ou bord de la fenêtre où la pile de toasts est ancrée.',
-            clearable: 'Affiche un bouton de fermeture sur chaque toast.',
+            dismissible: 'Affiche un bouton de fermeture sur chaque toast.',
             'ToastService.show':
               'Affiche un toast et renvoie son id. Son message et son titre acceptent une chaîne simple ou des segments mis en avant.',
             'ToastService.success': 'Affiche un toast de succès et renvoie son id.',
@@ -2059,11 +2059,10 @@ export const frFR: WebMessages = {
             disabled: 'Désactive la note.',
             errorMsg:
               'Message d’erreur affiché sous la note, remplaçant l’indication et la marquant comme invalide.',
-            halfIconClass:
+            halfIcon:
               'Classe de composant autonome rendue pour les positions de demi-étoile lorsque allowHalf est true.',
             hint: 'Texte d’aide affiché sous la note, masqué en cas d’erreur.',
-            iconClass:
-              'Classe de composant autonome rendue pour les positions vides et pleines.',
+            icon: 'Classe de composant autonome rendue pour les positions vides et pleines.',
             id: 'id appliqué à la note et à son libellé, généré automatiquement si omis.',
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus de la note.',
@@ -2188,9 +2187,9 @@ export const frFR: WebMessages = {
               'Plafond en pixels pour la hauteur du champ ; au-delà, le textarea défile verticalement au lieu de grandir.',
             minHeight:
               'Hauteur minimale en px ; jamais inférieure à la hauteur par défaut.',
-            maxlength: 'Nombre maximal de caractères que le champ accepte.',
+            maxLength: 'Nombre maximal de caractères que le champ accepte.',
             showCount:
-              'Affiche sous le champ le nombre de caractères saisis, rapporté à maxlength lorsqu’il est défini.',
+              'Affiche sous le champ le nombre de caractères saisis, rapporté à maxLength lorsqu’il est défini.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             typedPlaceholder:
               'Indications tapées caractère par caractère dans le champ vide avec un curseur clignotant, chacune remplacée par la suivante en boucle ; avec le mouvement réduit, elles changent d’un bloc. Remplace placeholder lorsqu’il est défini.',

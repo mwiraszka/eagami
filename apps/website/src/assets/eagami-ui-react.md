@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.72.1
-source: '@eagami/ui@5.72.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-10-17
+version: 5.73.0
+source: '@eagami/ui@5.73.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-10-24
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -531,7 +531,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.72.1 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.73.0 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -1112,7 +1112,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.72.1 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.73.0 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 
@@ -1487,7 +1487,7 @@ interface TextareaExtraProps {
   resize?: TextareaResize;        // default 'vertical'
   minHeight?: number;             // px; lower bound for auto-grow
   maxHeight?: number;             // px; upper bound for auto-grow (scrolls past it)
-  maxLength?: number;             // 'maxlength' upstream
+  maxLength?: number;
 }
 ```
 
@@ -1995,7 +1995,7 @@ interface ToastOptions {
 // One <ToastOutlet /> must be mounted somewhere in the tree.
 interface ToastOutletProps {
   position?: ToastPosition;       // default 'bottom-right'; corner or edge the stack is pinned to
-  clearable?: boolean;            // default true; shows a dismiss button on each toast
+  dismissible?: boolean;          // default true; shows a dismiss button on each toast
 }
 
 interface ToastApi {
@@ -2354,8 +2354,8 @@ interface RatingProps {
   max?: number;                     // default 5; highest value and the number of icons rendered
   allowHalf?: boolean;              // default false; enables 0.5 increments
   clearable?: boolean;              // default true; clicking the current value clears back to 0
-  icon?: React.ComponentType;       // 'iconClass' upstream; icon for empty and full positions (default Star)
-  halfIcon?: React.ComponentType;   // 'halfIconClass' upstream; icon for half positions when allowHalf
+  icon?: React.ComponentType;       // icon for empty and full positions (default Star)
+  halfIcon?: React.ComponentType;   // icon for half positions when allowHalf
   label?: string;
   hint?: string;
   errorMsg?: string;

@@ -7,7 +7,7 @@ import { WebI18nService } from '../i18n/web-i18n.service';
 
 /**
  * Holds the live config for the single app-level `<ea-toast>` outlet so the
- * Toast playground can drive its `position`, `clearable`, and reading direction
+ * Toast playground can drive its `position`, `dismissible`, and reading direction
  * without a second outlet (which would render every toast twice). Pages that
  * only trigger toasts leave these at their defaults.
  */
@@ -17,7 +17,7 @@ export class ToastOutletService {
 
   readonly position = signal<ToastPosition>('bottom-right');
   readonly size = signal<ToastSize>('sm');
-  readonly clearable = signal<boolean>(true);
+  readonly dismissible = signal<boolean>(true);
 
   // Inline style the UI playground applies (font-family custom properties) so
   // toasts fired from its showcase adopt the chosen font. Empty on other pages.
@@ -42,7 +42,7 @@ export class ToastOutletService {
   reset(): void {
     this.position.set('bottom-right');
     this.size.set('sm');
-    this.clearable.set(true);
+    this.dismissible.set(true);
     this.directionOverride.set(null);
     this.style.set({});
   }
