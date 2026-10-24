@@ -59,7 +59,7 @@ export class ToastComponent {
   /** Visual size applied to every toast in the stack. */
   readonly size = input<ToastSize>('sm');
   /** Show a dismiss button on each toast. */
-  readonly clearable = input<boolean>(true);
+  readonly dismissible = input<boolean>(true);
 
   protected readonly containerClass = computed(
     () => `ea-toast-container ea-toast-container--${this.position()}`,

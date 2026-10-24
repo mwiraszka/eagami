@@ -32,7 +32,7 @@ export const Playground: Story = {
       <ea-toast
         [position]="position"
         [size]="size"
-        [clearable]="clearable" />
+        [dismissible]="dismissible" />
       <div class="story-row">
         <ea-button variant="secondary" (clicked)="showDefault()">Default</ea-button>
         <ea-button variant="secondary" (clicked)="showSuccess()">Success</ea-button>
@@ -62,7 +62,7 @@ export const WithTitle: Story = {
       <ea-toast
         [position]="position"
         [size]="size"
-        [clearable]="clearable" />
+        [dismissible]="dismissible" />
       <div class="story-row">
         <ea-button variant="secondary" (clicked)="showTitled()">Titled</ea-button>
         <ea-button variant="secondary" (clicked)="showUntitled()">Untitled</ea-button>
@@ -91,7 +91,7 @@ export const SegmentedText: Story = {
       <ea-toast
         [position]="position"
         [size]="size"
-        [clearable]="clearable" />
+        [dismissible]="dismissible" />
       <div class="story-row">
         <ea-button variant="secondary" (clicked)="showSegmented()">Segmented</ea-button>
         <ea-button variant="secondary" (clicked)="showPlain()">Plain</ea-button>
@@ -131,7 +131,7 @@ export const IconOverride: Story = {
       <ea-toast
         [position]="position"
         [size]="size"
-        [clearable]="clearable" />
+        [dismissible]="dismissible" />
       <div class="story-row">
         <ea-button variant="secondary" (clicked)="showCustom()">Custom icon</ea-button>
         <ea-button variant="secondary" (clicked)="showNone()">No icon</ea-button>

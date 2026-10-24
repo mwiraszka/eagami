@@ -42,7 +42,7 @@ export interface TextareaSelection {
 
 /**
  * Multiline text field that mirrors the `ea-input` API. Supports configurable
- * `resize` direction, `maxlength` and a character count, exposes the caret
+ * `resize` direction, `maxLength` and a character count, exposes the caret
  * through `getSelection()` and `insertText()`, and integrates with Angular
  * forms via `ControlValueAccessor`.
  */
@@ -98,8 +98,8 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly resize = input<TextareaResize>('vertical');
-  readonly maxlength = input<number | undefined>(undefined);
-  /** Shows the number of characters typed below the field, against `maxlength` when one is set. */
+  readonly maxLength = input<number | undefined>(undefined);
+  /** Shows the number of characters typed below the field, against `maxLength` when one is set. */
   readonly showCount = input<boolean>(false);
   /** Optional pixel ceiling for the textarea's height. Beyond it, the inner
    * field scrolls vertically instead of growing. */
@@ -144,7 +144,7 @@ export class TextareaComponent implements ControlValueAccessor {
 
   protected readonly countText = computed(() => {
     const length = this.value().length;
-    const max = this.maxlength();
+    const max = this.maxLength();
     return max ? `${length} / ${max}` : `${length}`;
   });
 

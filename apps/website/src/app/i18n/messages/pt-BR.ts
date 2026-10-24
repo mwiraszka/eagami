@@ -1314,7 +1314,7 @@ export const ptBR: WebMessages = {
             icon: 'Ícone (sobrescrita)',
             title: 'Título',
             size: 'Tamanho',
-            clearable: 'Limpável',
+            dismissible: 'Dispensável',
           },
           avatar: {
             size: 'Tamanho',
@@ -1454,7 +1454,7 @@ export const ptBR: WebMessages = {
             required: 'Obrigatório',
             optional: 'Opcional',
             clearable: 'Limpável',
-            iconClass: 'Ícone',
+            icon: 'Ícone',
           },
           skeleton: {
             variant: 'Variante',
@@ -1504,7 +1504,7 @@ export const ptBR: WebMessages = {
             placeholder: 'Espaço reservado',
             size: 'Tamanho',
             resize: 'Redimensionar',
-            maxlength: 'Comprimento máximo (caracteres)',
+            maxLength: 'Comprimento máximo (caracteres)',
             minHeight: 'Altura mínima',
             maxHeight: 'Altura máxima',
             disabled: 'Desativado',
@@ -1648,7 +1648,7 @@ export const ptBR: WebMessages = {
             size: 'Tamanho visual aplicado a cada toast da pilha.',
             position:
               'Canto ou borda da janela de visualização onde a pilha de toasts é fixada.',
-            clearable: 'Mostra um botão de dispensar em cada toast.',
+            dismissible: 'Mostra um botão de dispensar em cada toast.',
             'ToastService.show':
               'Exibe um toast e retorna seu id. Sua mensagem e seu título aceitam uma string simples ou segmentos com ênfase.',
             'ToastService.success': 'Exibe um toast de sucesso e retorna seu id.',
@@ -2017,11 +2017,10 @@ export const ptBR: WebMessages = {
             disabled: 'Desativa a avaliação.',
             errorMsg:
               'Mensagem de erro exibida abaixo da avaliação, substituindo a dica e marcando-a como inválida.',
-            halfIconClass:
+            halfIcon:
               'Classe de componente independente renderizada para posições intermediárias quando allowHalf é verdadeiro.',
             hint: 'Texto auxiliar exibido abaixo da avaliação, oculto enquanto um erro é exibido.',
-            iconClass:
-              'Classe de componente independente renderizada para posições vazias e cheias.',
+            icon: 'Classe de componente independente renderizada para posições vazias e cheias.',
             id: 'id aplicado à avaliação e seu rótulo, gerado automaticamente quando omitido.',
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima da avaliação.',
@@ -2147,9 +2146,9 @@ export const ptBR: WebMessages = {
             maxHeight:
               'Limite em pixels para a altura do campo; além dele o textarea rola verticalmente em vez de crescer.',
             minHeight: 'Altura mínima em px; nunca menor que a altura padrão.',
-            maxlength: 'Número máximo de caracteres que o campo aceita.',
+            maxLength: 'Número máximo de caracteres que o campo aceita.',
             showCount:
-              'Mostra abaixo do campo o número de caracteres digitados, em relação a maxlength quando definido.',
+              'Mostra abaixo do campo o número de caracteres digitados, em relação a maxLength quando definido.',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
             typedPlaceholder:
               'Dicas digitadas no campo vazio um caractere por vez com um cursor piscando, cada uma substituída pela próxima em loop; com movimento reduzido, elas trocam inteiras. Substitui placeholder enquanto definido.',

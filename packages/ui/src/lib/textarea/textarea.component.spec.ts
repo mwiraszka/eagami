@@ -101,7 +101,7 @@ describe('TextareaComponent', () => {
     });
 
     it('forwards maxlength to the textarea', () => {
-      fixture.componentRef.setInput('maxlength', 200);
+      fixture.componentRef.setInput('maxLength', 200);
       fixture.detectChanges();
 
       expect(getTextarea().getAttribute('maxlength')).toBe('200');
@@ -250,9 +250,9 @@ describe('TextareaComponent', () => {
       expect(getCount()?.textContent?.trim()).toBe('5');
     });
 
-    it('sets the count against maxlength when one is given', () => {
+    it('sets the count against maxLength when one is given', () => {
       fixture.componentRef.setInput('showCount', true);
-      fixture.componentRef.setInput('maxlength', 200);
+      fixture.componentRef.setInput('maxLength', 200);
       component.value.set('Hello');
       fixture.detectChanges();
 

@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.73.0',
+    date: '2026-10-24',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          "**Breaking:** Rename inputs to match the rest of the library: the textarea's `maxlength` becomes `maxLength`, the toast's `clearable` becomes `dismissible`, the rating's `iconClass` and `halfIconClass` become `icon` and `halfIcon`, and the tag's `tooltip` takes `top` and `bottom` in place of `above` and `below`.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.72.1',
     date: '2026-10-17',
     sections: [

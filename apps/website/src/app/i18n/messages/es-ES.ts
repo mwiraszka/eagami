@@ -1331,7 +1331,7 @@ export const esES: WebMessages = {
             icon: 'Icono (sustituir)',
             title: 'Título',
             size: 'Tamaño',
-            clearable: 'Con botón de borrado',
+            dismissible: 'Descartable',
           },
           avatar: {
             size: 'Tamaño',
@@ -1471,7 +1471,7 @@ export const esES: WebMessages = {
             required: 'Obligatorio',
             optional: 'Opcional',
             clearable: 'Con botón de borrado',
-            iconClass: 'Icono',
+            icon: 'Icono',
           },
           skeleton: {
             variant: 'Variante',
@@ -1521,7 +1521,7 @@ export const esES: WebMessages = {
             placeholder: 'Marcador de posición',
             size: 'Tamaño',
             resize: 'Redimensionar',
-            maxlength: 'Longitud máxima (caracteres)',
+            maxLength: 'Longitud máxima (caracteres)',
             minHeight: 'Altura mínima',
             maxHeight: 'Altura máxima',
             disabled: 'Deshabilitado',
@@ -1667,7 +1667,7 @@ export const esES: WebMessages = {
           toast: {
             size: 'Tamaño visual aplicado a cada toast de la pila.',
             position: 'Esquina o borde de la ventana donde se ancla la pila de toasts.',
-            clearable: 'Muestra un botón de cierre en cada toast.',
+            dismissible: 'Muestra un botón de cierre en cada toast.',
             'ToastService.show':
               'Muestra un toast y devuelve su id. Su mensaje y su título aceptan una cadena simple o segmentos con énfasis.',
             'ToastService.success': 'Muestra un toast de éxito y devuelve su id.',
@@ -2050,11 +2050,10 @@ export const esES: WebMessages = {
             disabled: 'Deshabilita la valoración.',
             errorMsg:
               'Mensaje de error mostrado bajo la valoración, que sustituye la ayuda y la marca como no válida.',
-            halfIconClass:
+            halfIcon:
               'Clase de componente independiente renderizada para las posiciones de media estrella cuando allowHalf es true.',
             hint: 'Texto de ayuda mostrado bajo la valoración, oculto cuando hay un error.',
-            iconClass:
-              'Clase de componente independiente renderizada para las posiciones vacías y llenas.',
+            icon: 'Clase de componente independiente renderizada para las posiciones vacías y llenas.',
             id: 'id aplicado a la valoración y a su etiqueta, generado automáticamente si se omite.',
             labelIcon:
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
@@ -2186,9 +2185,9 @@ export const esES: WebMessages = {
             maxHeight:
               'Límite en píxeles para la altura del campo; al superarlo, el textarea se desplaza verticalmente en lugar de crecer.',
             minHeight: 'Altura mínima en px; nunca inferior a la altura predeterminada.',
-            maxlength: 'Número máximo de caracteres que acepta el campo.',
+            maxLength: 'Número máximo de caracteres que acepta el campo.',
             showCount:
-              'Muestra bajo el campo el número de caracteres escritos, frente a maxlength cuando está definido.',
+              'Muestra bajo el campo el número de caracteres escritos, frente a maxLength cuando está definido.',
             placeholder: 'Marcador de posición mostrado mientras el campo está vacío.',
             typedPlaceholder:
               'Sugerencias que se escriben carácter a carácter en el campo vacío con un cursor parpadeante, cada una sustituida por la siguiente en bucle; con movimiento reducido cambian completas. Sustituye a placeholder mientras está definido.',

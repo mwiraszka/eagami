@@ -1315,7 +1315,7 @@ export const nl: WebMessages = {
             icon: 'Icoon (overschrijven)',
             title: 'Titel',
             size: 'Grootte',
-            clearable: 'Wisbaar',
+            dismissible: 'Sluitbaar',
           },
           avatar: {
             size: 'Grootte',
@@ -1455,7 +1455,7 @@ export const nl: WebMessages = {
             required: 'Verplicht',
             optional: 'Optioneel',
             clearable: 'Wisbaar',
-            iconClass: 'Icoon',
+            icon: 'Icoon',
           },
           skeleton: {
             variant: 'Variant',
@@ -1505,7 +1505,7 @@ export const nl: WebMessages = {
             placeholder: 'Plaatsaanduiding',
             size: 'Grootte',
             resize: 'Vergroten/verkleinen',
-            maxlength: 'Max. lengte (tekens)',
+            maxLength: 'Max. lengte (tekens)',
             minHeight: 'Min. hoogte',
             maxHeight: 'Max. hoogte',
             disabled: 'Uitgeschakeld',
@@ -1646,7 +1646,7 @@ export const nl: WebMessages = {
           toast: {
             size: 'Visuele grootte toegepast op elke toast in de stapel.',
             position: 'Hoek of rand van de viewport waaraan de toaststapel is vastgezet.',
-            clearable: 'Toon een sluitknop op elke toast.',
+            dismissible: 'Toon een sluitknop op elke toast.',
             'ToastService.show':
               'Toont een toast en geeft het id ervan terug. Het bericht en de titel accepteren een gewone tekenreeks of nadruksegmenten.',
             'ToastService.success': 'Toont een succes-toast en geeft het id ervan terug.',
@@ -2025,11 +2025,10 @@ export const nl: WebMessages = {
             disabled: 'Schakelt de beoordeling uit.',
             errorMsg:
               'Foutmelding onder de beoordeling, die de hint vervangt en deze als ongeldig markeert.',
-            halfIconClass:
+            halfIcon:
               'Standalone componentklasse weergegeven voor halve posities wanneer allowHalf waar is.',
             hint: 'Hulptekst onder de beoordeling, verborgen terwijl een fout wordt getoond.',
-            iconClass:
-              'Standalone componentklasse weergegeven voor lege en volle posities.',
+            icon: 'Standalone componentklasse weergegeven voor lege en volle posities.',
             id: 'id toegepast op de beoordeling en het label ervan, automatisch gegenereerd indien weggelaten.',
             labelIcon:
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
@@ -2158,9 +2157,9 @@ export const nl: WebMessages = {
             maxHeight:
               'Pixelplafond voor de hoogte van het veld; daarboven scrollt de textarea verticaal in plaats van te groeien.',
             minHeight: 'Minimumhoogte in px; nooit minder dan de standaardhoogte.',
-            maxlength: 'Maximaal aantal tekens dat het veld accepteert.',
+            maxLength: 'Maximaal aantal tekens dat het veld accepteert.',
             showCount:
-              'Toont onder het veld het aantal getypte tekens, afgezet tegen maxlength wanneer die is ingesteld.',
+              'Toont onder het veld het aantal getypte tekens, afgezet tegen maxLength wanneer die is ingesteld.',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
             typedPlaceholder:
               'Hints die teken voor teken met een knipperende cursor in het lege veld worden getypt, elk in een lus vervangen door de volgende; bij beperkte beweging wisselen ze in hun geheel. Vervangt placeholder zolang ingesteld.',

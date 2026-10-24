@@ -27,7 +27,7 @@ export type TagVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 /** Visual size of a tag. */
 export type TagSize = EaSize;
 /** Where a clipped label reveals its full text, or `none` to suppress it. */
-export type TagTooltip = 'above' | 'below' | 'none';
+export type TagTooltip = 'top' | 'bottom' | 'none';
 
 /**
  * Inline label commonly used to represent filters, categories, or selected
@@ -84,7 +84,7 @@ export class TagComponent {
    * a tag rendered inside a tooltip, which would otherwise stack a second
    * bubble over the first.
    */
-  readonly tooltip = input<TagTooltip>('above');
+  readonly tooltip = input<TagTooltip>('top');
   /**
    * Whether the remove button is a tab stop. Set `false` inside a composite
    * widget (a combobox trigger, a grid cell) whose own keyboard model owns
@@ -110,7 +110,7 @@ export class TagComponent {
   );
 
   protected readonly tooltipPosition = computed<TooltipPosition>(() =>
-    this.tooltip() === 'below' ? 'bottom' : 'top',
+    this.tooltip() === 'bottom' ? 'bottom' : 'top',
   );
 
   readonly hostClasses = computed(() => ({

@@ -17,7 +17,7 @@ import { TextareaComponent } from './textarea.component';
       [disabled]="disabled"
       [readonly]="readonly"
       [showCount]="showCount"
-      [maxlength]="maxlength" />
+      [maxLength]="maxLength" />
   `,
 })
 class HostComponent {
@@ -29,7 +29,7 @@ class HostComponent {
   disabled = false;
   readonly = false;
   showCount = false;
-  maxlength: number | undefined = undefined;
+  maxLength: number | undefined = undefined;
 }
 
 describe('TextareaComponent a11y', () => {
@@ -54,7 +54,7 @@ describe('TextareaComponent a11y', () => {
   it('has no detectable violations with a character count', async () => {
     const el = await render(host => {
       host.showCount = true;
-      host.maxlength = 200;
+      host.maxLength = 200;
       host.hint = 'Up to 200 characters';
     });
 

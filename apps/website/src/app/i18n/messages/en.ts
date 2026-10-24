@@ -1286,7 +1286,7 @@ export const en: WebMessages = {
             icon: 'Icon (override)',
             title: 'Title',
             size: 'Size',
-            clearable: 'Clearable',
+            dismissible: 'Dismissible',
           },
           avatar: {
             size: 'Size',
@@ -1426,7 +1426,7 @@ export const en: WebMessages = {
             required: 'Required',
             optional: 'Optional',
             clearable: 'Clearable',
-            iconClass: 'Icon',
+            icon: 'Icon',
           },
           skeleton: {
             variant: 'Variant',
@@ -1476,7 +1476,7 @@ export const en: WebMessages = {
             placeholder: 'Placeholder',
             size: 'Size',
             resize: 'Resize',
-            maxlength: 'Max length (chars)',
+            maxLength: 'Max length (chars)',
             minHeight: 'Min height',
             maxHeight: 'Max height',
             disabled: 'Disabled',
@@ -1610,7 +1610,7 @@ export const en: WebMessages = {
           toast: {
             size: 'Visual size applied to every toast in the stack.',
             position: 'Viewport corner or edge the toast stack is pinned to.',
-            clearable: 'Show a dismiss button on each toast.',
+            dismissible: 'Show a dismiss button on each toast.',
             'ToastService.show':
               'Shows a toast and returns its id. Its message and title each take a plain string or emphasis segments.',
             'ToastService.success': 'Shows a success toast and returns its id.',
@@ -1961,11 +1961,10 @@ export const en: WebMessages = {
             disabled: 'Disables the rating.',
             errorMsg:
               'Error message shown below the rating, replacing the hint and flagging it invalid.',
-            halfIconClass:
+            halfIcon:
               'Standalone component class rendered for half positions when allowHalf is true.',
             hint: 'Helper text shown below the rating, hidden while an error is showing.',
-            iconClass:
-              'Standalone component class rendered for empty and full positions.',
+            icon: 'Standalone component class rendered for empty and full positions.',
             id: 'id applied to the rating and its label, auto-generated when omitted.',
             labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the rating.',
@@ -2062,7 +2061,7 @@ export const en: WebMessages = {
             maxWidth:
               'Widest the tag may grow in px; a longer label ellipsizes instead. Also settable as --ea-tag-max-width.',
             tooltip:
-              'Where a label clipped by maxWidth reveals its full text: above or below the tag, or none to suppress it.',
+              'Where a label clipped by maxWidth reveals its full text: top or bottom of the tag, or none to suppress it.',
             removable: 'Renders a remove button that emits removed when activated.',
             disabled: 'Disables the tag and its remove button.',
             uppercase: 'Renders the label in all capitals.',
@@ -2084,9 +2083,9 @@ export const en: WebMessages = {
             maxHeight:
               "Pixel ceiling for the field's height; beyond it the textarea scrolls vertically instead of growing.",
             minHeight: 'Minimum height in px; never less than the default height.',
-            maxlength: 'Maximum number of characters the field accepts.',
+            maxLength: 'Maximum number of characters the field accepts.',
             showCount:
-              'Shows the number of characters typed below the field, against maxlength when one is set.',
+              'Shows the number of characters typed below the field, against maxLength when one is set.',
             placeholder: 'Placeholder shown while the field is empty.',
             typedPlaceholder:
               'Hints typed into the empty field one character at a time with a blinking cursor, each replaced by the next in a loop; under reduced motion they swap whole instead. Takes the place of placeholder while set.',
