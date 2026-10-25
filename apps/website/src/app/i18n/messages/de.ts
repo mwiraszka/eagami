@@ -1486,7 +1486,6 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert',
             required: 'Erforderlich',
             optional: 'Optional',
-            hasError: 'Fehlerzustand',
             label: 'Beschriftung',
             labelIcon: 'Beschriftungssymbol',
           },
@@ -1683,6 +1682,9 @@ export const de: WebMessages = {
             'ToastService.resume': 'Setzt die von pause angehaltenen Countdowns fort.',
           },
           input: {
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
+            changed: 'Wird mit dem neuen Wert ausgelöst, wann immer er sich ändert.',
             spellcheck:
               'Wert für das native spellcheck-Attribut, ohne Angabe bleibt die Browservorgabe bestehen.',
             keepIcon:
@@ -1727,18 +1729,14 @@ export const de: WebMessages = {
             togglePasswordVisibility:
               'Schaltet den Passwort-Anzeigezustand für type="password"-Eingaben um.',
             icon: 'Vorangestellte Symbolkomponente, die vor dem Text gerendert wird.',
-            max: 'Maximalwert für type="number"; der Wert wird beim Verlassen darauf begrenzt.',
-            maxLength:
-              'Maximale Zeichenanzahl; erzwungen für type="number", bei dem das native maxlength ignoriert wird.',
-            min: 'Mindestwert für type="number"; der Wert wird beim Verlassen darauf begrenzt.',
+            maxLength: 'Maximale Zeichenanzahl, die das Eingabefeld akzeptiert.',
             minLength: 'Mindestzeichenanzahl, übergeben als natives minlength-Attribut.',
-            step: 'Schrittweite für type="number"-Eingaben.',
-            clampToBounds:
-              'Begrenzt einen Zahlenwert in den konfigurierten Min/Max-Bereich, sobald die Bearbeitung abgeschlossen ist.',
           },
           'number-input': {
             allowNegative:
               'Ob negative Werte erlaubt sind; bei false wird der Wert auf 0 begrenzt.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             labelIcon:
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
@@ -1852,6 +1850,8 @@ export const de: WebMessages = {
             headerDivider: 'Zeigt eine Trennlinie zwischen Kopfzeile und Hauptteil.',
           },
           checkbox: {
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             truncate:
               'Kürzt ein zu langes Label mit Auslassungspunkten und zeigt den vollen Text im Tooltip.',
             ariaLabel:
@@ -1871,6 +1871,7 @@ export const de: WebMessages = {
               'Wird mit dem neuen Ankreuzzustand ausgelöst, wann immer der Nutzer die Checkbox umschaltet.',
           },
           'code-input': {
+            changed: 'Wird mit dem neuen Wert ausgelöst, wann immer er sich ändert.',
             disabled: 'Deaktiviert jede Ziffernzelle.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
@@ -2044,6 +2045,7 @@ export const de: WebMessages = {
           rating: {
             allowHalf:
               'Erlaubt Halbstern-Granularität, sodass sich der Wert in 0,5-Schritten bewegt.',
+            changed: 'Wird mit dem neuen Wert ausgelöst, wann immer er sich ändert.',
             clearable:
               'Ein Klick auf den aktuellen Wert setzt die Bewertung auf 0 zurück.',
             disabled: 'Deaktiviert die Bewertung.',
@@ -2095,8 +2097,6 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Schieberegler, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             formatValue:
               'Formatierer, der den numerischen Wert in den angezeigten Text umwandelt.',
-            hasError:
-              'Erzwingt die Fehlerzustand-Stilisierung, ohne eine Fehlermeldung zu binden.',
             hint: 'Hilfetext unter dem Schieberegler, ausgeblendet, solange ein Fehler angezeigt wird.',
             labelIcon:
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
@@ -2129,6 +2129,8 @@ export const de: WebMessages = {
           switch: {
             ariaLabel:
               'Barrierefreies Label für den Schalter, wenn kein sichtbares Label gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             checked: 'Aktueller An/Aus-Zustand, bidirektional bindbar über [(checked)].',
             disabled: 'Deaktiviert den Schalter und blockiert das Umschalten.',
             errorMsg:
@@ -2155,7 +2157,7 @@ export const de: WebMessages = {
             size: 'Visuelle Größe des Tags.',
             icon: 'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             maxWidth:
-              'Maximale Breite des Tags in px; ein längeres Label wird gekürzt. Auch als --ea-tag-max-width setzbar.',
+              'Maximale Breite des Tags als CSS-Länge; ein längeres Label wird gekürzt. Auch als --ea-tag-max-width setzbar.',
             tooltip:
               'Wo ein durch maxWidth gekürztes Label seinen vollständigen Text zeigt: über oder unter dem Tag, oder none zum Unterdrücken.',
             removable:
@@ -2170,6 +2172,9 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn der Nutzer den Entfernen-Button eines entfernbaren Tags aktiviert.',
           },
           textarea: {
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
+            changed: 'Wird mit dem neuen Wert ausgelöst, wann immer er sich ändert.',
             disabled: 'Deaktiviert das Feld.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
@@ -2179,8 +2184,8 @@ export const de: WebMessages = {
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             maxHeight:
-              'Pixelobergrenze für die Höhe des Feldes; darüber hinaus scrollt das Textarea vertikal, statt zu wachsen.',
-            minHeight: 'Mindesthöhe in px; nie weniger als die Standardhöhe.',
+              'Obergrenze für die Höhe des Feldes als CSS-Länge; darüber hinaus scrollt das Textarea vertikal, statt zu wachsen.',
+            minHeight: 'Mindesthöhe als CSS-Länge; nie weniger als die Standardhöhe.',
             maxLength: 'Maximale Zeichenanzahl, die das Feld akzeptiert.',
             showCount:
               'Zeigt unter dem Feld die Anzahl der eingegebenen Zeichen an, im Verhältnis zu maxLength, wenn gesetzt.',
@@ -2265,7 +2270,7 @@ export const de: WebMessages = {
               'Zeigt die Sprechblase nur, solange der Auslöser seinen Inhalt abschneidet.',
             flip: 'Verschiebt eine Sprechblase ohne Platz auf der gewünschten Seite auf die gegenüberliegende.',
             maxWidth:
-              'Maximalbreite in Pixeln; der Text bricht bei dieser Breite um (Untergrenze 50px). Die Sprechblase wächst nie über den Viewport hinaus.',
+              'Maximalbreite als CSS-Länge; der Text bricht bei dieser Breite um (Untergrenze 50px). Die Sprechblase wächst nie über den Viewport hinaus.',
             showDelay:
               'Verzögerung in Millisekunden, bevor die Sprechblase bei Hover oder Tastaturfokus erscheint. Wird der Auslöser vorher verlassen, erscheint sie nicht.',
             dismissDelay:
@@ -2496,11 +2501,11 @@ export const de: WebMessages = {
             maxVisibleChips:
               'Maximale Anzahl der Chips, die im Auslöser angezeigt werden, bevor der Rest in eine Zähl-Pille zusammenklappt.',
             maxChipWidth:
-              'Maximale Breite eines Auswahl-Chips in px; ein längeres Label wird gekürzt und zeigt seinen vollständigen Text in einem Tooltip.',
+              'Maximale Breite eines Auswahl-Chips als CSS-Länge; ein längeres Label wird gekürzt und zeigt seinen vollständigen Text in einem Tooltip.',
             popoverMaxHeight:
-              'Maximale Höhe des Options-Popovers in px, bevor die Liste scrollt.',
+              'Maximale Höhe des Options-Popovers als CSS-Länge, bevor die Liste scrollt.',
             popoverMaxWidth:
-              'Maximale Breite des Options-Popovers in px, oder anchor, um es auf die Feldbreite zu begrenzen.',
+              'Maximale Breite des Options-Popovers als CSS-Länge, oder anchor, um es auf die Feldbreite zu begrenzen.',
             options:
               'Liste der auswählbaren Optionen, die in der Dropdown-Liste gerendert werden, flach oder in Gruppen unterteilt.',
             placeholder:
@@ -2635,7 +2640,7 @@ export const de: WebMessages = {
             matchAnchorWidth:
               'Setzt die min-width des Popovers, sodass sie der Breite des Ankers entspricht.',
             maxWidth:
-              'Maximale Breite der Oberfläche in px, oder anchor, um sie auf die Breite des Ankerelements zu begrenzen.',
+              'Maximale Breite der Oberfläche als CSS-Länge, oder anchor, um sie auf die Breite des Ankerelements zu begrenzen.',
             offset: 'Abstand in px zwischen dem Anker und der Popover-Oberfläche.',
             open: 'Ob das Popover derzeit geöffnet ist.',
             placement: 'Bevorzugte Position des Popovers relativ zu seinem Anker.',

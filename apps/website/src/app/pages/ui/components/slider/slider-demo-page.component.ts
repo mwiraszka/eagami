@@ -35,7 +35,6 @@ interface SliderKnobState {
   disabled: boolean;
   required: boolean;
   optional: boolean;
-  hasError: boolean;
   triggerError: boolean;
 }
 

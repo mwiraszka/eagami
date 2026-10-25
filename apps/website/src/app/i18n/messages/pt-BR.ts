@@ -1472,7 +1472,6 @@ export const ptBR: WebMessages = {
             disabled: 'Desativado',
             required: 'Obrigatório',
             optional: 'Opcional',
-            hasError: 'Estado de erro',
             label: 'Rótulo',
             labelIcon: 'Ícone do rótulo',
           },
@@ -1663,6 +1662,9 @@ export const ptBR: WebMessages = {
             'ToastService.resume': 'Retoma as contagens regressivas suspensas por pause.',
           },
           input: {
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
+            changed: 'Dispara com o novo valor sempre que ele muda.',
             spellcheck:
               'Valor do atributo nativo spellcheck, mantendo o padrão do navegador quando não definido.',
             keepIcon:
@@ -1706,19 +1708,15 @@ export const ptBR: WebMessages = {
             togglePasswordVisibility:
               'Alterna o estado de revelação da senha para inputs type="password".',
             icon: 'Componente de ícone inicial renderizado antes do texto.',
-            max: 'Valor máximo para type="number"; o valor é limitado a ele ao perder o foco.',
-            maxLength:
-              'Número máximo de caracteres; aplicado a type="number", onde o maxlength nativo é ignorado.',
-            min: 'Valor mínimo para type="number"; o valor é limitado a ele ao perder o foco.',
+            maxLength: 'Número máximo de caracteres que o campo aceita.',
             minLength:
               'Número mínimo de caracteres, passado como o atributo minlength nativo.',
-            step: 'Incremento de passo para inputs type="number".',
-            clampToBounds:
-              'Limita um valor numérico ao intervalo mín/máx configurado quando a edição termina.',
           },
           'number-input': {
             allowNegative:
               'Se valores negativos são permitidos; quando false, o valor tem piso 0.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
@@ -1830,6 +1828,8 @@ export const ptBR: WebMessages = {
             headerDivider: 'Mostra um divisor entre o cabeçalho e o corpo.',
           },
           checkbox: {
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             truncate:
               'Corta com reticências um rótulo longo demais e mostra o texto completo em um tooltip.',
             ariaLabel:
@@ -1851,6 +1851,7 @@ export const ptBR: WebMessages = {
               'Dispara com o novo estado marcado sempre que o usuário alterna a caixa de seleção.',
           },
           'code-input': {
+            changed: 'Dispara com o novo valor sempre que ele muda.',
             disabled: 'Desativa todas as células de dígito.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
@@ -2013,6 +2014,7 @@ export const ptBR: WebMessages = {
           rating: {
             allowHalf:
               'Permite granularidade de meia estrela, deixando o valor variar em incrementos de 0,5.',
+            changed: 'Dispara com o novo valor sempre que ele muda.',
             clearable: 'Clicar no valor atual limpa a avaliação de volta para 0.',
             disabled: 'Desativa a avaliação.',
             errorMsg:
@@ -2062,8 +2064,6 @@ export const ptBR: WebMessages = {
             errorMsg:
               'Mensagem de erro exibida abaixo do controle, substituindo a dica e marcando o campo como inválido.',
             formatValue: 'Formatador que transforma o valor numérico no texto exibido.',
-            hasError:
-              'Força o estilo de estado de erro sem vincular uma mensagem de erro.',
             hint: 'Texto auxiliar exibido abaixo do controle, oculto enquanto um erro é exibido.',
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             id: 'id aplicado ao controle deslizante e seu rótulo, gerado automaticamente quando omitido.',
@@ -2095,6 +2095,8 @@ export const ptBR: WebMessages = {
           switch: {
             ariaLabel:
               'Rótulo acessível para o interruptor quando nenhum rótulo visível é renderizado.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             checked:
               'Estado ligado/desligado atual, vinculável de forma bidirecional via [(checked)].',
             disabled: 'Desativa o interruptor e bloqueia a alternância.',
@@ -2122,7 +2124,7 @@ export const ptBR: WebMessages = {
             size: 'Tamanho visual da tag.',
             icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             maxWidth:
-              'Largura máxima da tag em px; um rótulo maior é truncado. Também configurável como --ea-tag-max-width.',
+              'Largura máxima da tag como comprimento CSS; um rótulo maior é truncado. Também configurável como --ea-tag-max-width.',
             tooltip:
               'Onde um rótulo truncado por maxWidth revela seu texto completo: acima ou abaixo da tag, ou none para ocultá-lo.',
             removable: 'Renderiza um botão de remover que emite removed quando ativado.',
@@ -2136,6 +2138,9 @@ export const ptBR: WebMessages = {
               'Dispara quando o usuário ativa o botão de remover em uma tag removível.',
           },
           textarea: {
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
+            changed: 'Dispara com o novo valor sempre que ele muda.',
             disabled: 'Desativa o campo.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
@@ -2144,8 +2149,9 @@ export const ptBR: WebMessages = {
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             maxHeight:
-              'Limite em pixels para a altura do campo; além dele o textarea rola verticalmente em vez de crescer.',
-            minHeight: 'Altura mínima em px; nunca menor que a altura padrão.',
+              'Limite para a altura do campo como comprimento CSS; além dele o textarea rola verticalmente em vez de crescer.',
+            minHeight:
+              'Altura mínima como comprimento CSS; nunca menor que a altura padrão.',
             maxLength: 'Número máximo de caracteres que o campo aceita.',
             showCount:
               'Mostra abaixo do campo o número de caracteres digitados, em relação a maxLength quando definido.',
@@ -2227,7 +2233,7 @@ export const ptBR: WebMessages = {
               'Mostra o balão apenas enquanto o gatilho corta o próprio conteúdo.',
             flip: 'Move o balão para o lado oposto quando não há espaço no lado pedido.',
             maxWidth:
-              'Largura máxima em pixels; o texto quebra nesta largura (piso de 50px). A dica nunca ultrapassa a viewport.',
+              'Largura máxima como comprimento CSS; o texto quebra nesta largura (piso de 50px). A dica nunca ultrapassa a viewport.',
             showDelay:
               'Atraso em milissegundos antes de a dica aparecer ao passar o cursor ou ao receber foco pelo teclado. Sair do gatilho antes disso cancela a exibição.',
             dismissDelay:
@@ -2453,11 +2459,11 @@ export const ptBR: WebMessages = {
             maxVisibleChips:
               'Número máximo de chips exibidos no gatilho antes que os demais colapsem em uma pill de contagem.',
             maxChipWidth:
-              'Largura máxima de um chip de valor selecionado em px; um rótulo maior é truncado e revela seu texto completo em um tooltip.',
+              'Largura máxima de um chip de valor selecionado como comprimento CSS; um rótulo maior é truncado e revela seu texto completo em um tooltip.',
             popoverMaxHeight:
-              'Altura máxima do popover de opções em px antes de a lista rolar.',
+              'Altura máxima do popover de opções como comprimento CSS antes de a lista rolar.',
             popoverMaxWidth:
-              'Largura máxima do popover de opções em px, ou anchor para mantê-lo na largura do campo.',
+              'Largura máxima do popover de opções como comprimento CSS, ou anchor para mantê-lo na largura do campo.',
             options:
               'Lista de opções selecionáveis renderizadas na lista suspensa, plana ou dividida em grupos.',
             placeholder:
@@ -2591,7 +2597,7 @@ export const ptBR: WebMessages = {
             matchAnchorWidth:
               'Define o min-width do popover para corresponder à largura da âncora.',
             maxWidth:
-              'Largura máxima da superfície em px, ou anchor para limitá-la à largura do elemento âncora.',
+              'Largura máxima da superfície como comprimento CSS, ou anchor para limitá-la à largura do elemento âncora.',
             offset: 'Espaço em px entre a âncora e a superfície do popover.',
             open: 'Se o popover está atualmente aberto.',
             placement: 'Posição preferida do popover em relação à sua âncora.',

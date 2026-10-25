@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.73.0
-source: '@eagami/ui@5.73.0 (https://github.com/mwiraszka/eagami)'
+version: 5.74.0
+source: '@eagami/ui@5.74.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-10-24
 audience: human developers and AI coding agents
 purpose: >
@@ -531,7 +531,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.73.0 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.74.0 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -1112,7 +1112,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.73.0 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.74.0 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 
@@ -1443,7 +1443,7 @@ interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>
 ### 5.2 Input
 
 ```ts
-type InputType = 'text' | 'email' | 'password' | 'number' | 'search' | 'tel' | 'url';
+type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
 
 interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type' | 'prefix'> {
@@ -1461,9 +1461,6 @@ interface InputProps
   autofocus?: boolean;            // default false
   autocomplete?: string;          // native autocomplete attribute
   list?: string;                  // native <datalist> id
-  min?: number;                   // for type 'number'
-  max?: number;                   // for type 'number'
-  step?: number;                  // for type 'number'
   minLength?: number;
   maxLength?: number;
   icon?: React.ComponentType;     // leading icon rendered inside the input
@@ -1485,8 +1482,8 @@ type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
 
 interface TextareaExtraProps {
   resize?: TextareaResize;        // default 'vertical'
-  minHeight?: number;             // px; lower bound for auto-grow
-  maxHeight?: number;             // px; upper bound for auto-grow (scrolls past it)
+  minHeight?: string;             // CSS length; lower bound for auto-grow
+  maxHeight?: string;             // CSS length; upper bound for auto-grow (scrolls past it)
   maxLength?: number;
 }
 ```
@@ -2023,7 +2020,7 @@ type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 interface TooltipProps {
   content: React.ReactNode;       // required; 'eaTooltip' upstream
   position?: TooltipPosition;     // default 'top'; 'tooltipPosition' upstream
-  maxWidth?: number;              // px; default 200
+  maxWidth?: string;              // CSS length; default '200px'
   children: React.ReactElement;   // the trigger element
 }
 ```

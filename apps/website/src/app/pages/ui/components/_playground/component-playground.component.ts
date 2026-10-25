@@ -4,6 +4,7 @@ import {
   ColorPickerComponent,
   DropdownComponent,
   InputComponent,
+  NumberInputComponent,
   SegmentedComponent,
   type SelectOption,
   SwitchComponent,
@@ -57,6 +58,7 @@ export interface KnobChange {
     ColorPickerComponent,
     DropdownComponent,
     InputComponent,
+    NumberInputComponent,
     SegmentedComponent,
     SwitchComponent,
   ],
@@ -164,18 +166,9 @@ export class ComponentPlaygroundComponent {
     this.directionChange.emit(dir);
   }
 
-  // The number input emits raw strings; bindings to numeric component inputs
-  // would otherwise concatenate instead of add. An empty field stays "unset".
-  protected emitNumber(name: string, value: string): void {
-    const trimmed = value.trim();
-    const parsed = Number(trimmed);
-    this.emit(name, trimmed === '' || Number.isNaN(parsed) ? '' : parsed);
-  }
-
-  // Number knobs commit on blur, not per keystroke, so the preview never renders
-  // an out-of-bounds intermediate value; the field clamps to min/max on blur.
-  protected commitNumber(name: string, event: FocusEvent): void {
-    this.emitNumber(name, (event.target as HTMLInputElement).value);
+  protected numberValue(name: string): number | null {
+    const value = this.state()[name];
+    return typeof value === 'number' ? value : null;
   }
 
   // Enter blurs the field, routing through the same clamp-then-commit path

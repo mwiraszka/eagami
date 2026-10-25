@@ -1444,7 +1444,6 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             required: 'Required',
             optional: 'Optional',
-            hasError: 'Error state',
             label: 'Label',
             labelIcon: 'Label icon',
           },
@@ -1625,6 +1624,9 @@ export const en: WebMessages = {
             'ToastService.resume': 'Resumes the countdowns suspended by pause.',
           },
           input: {
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
+            changed: 'Fires with the new value whenever it changes.',
             spellcheck:
               'Value for the native spellcheck attribute, left to the browser default when unset.',
             keepIcon:
@@ -1667,19 +1669,15 @@ export const en: WebMessages = {
             togglePasswordVisibility:
               'Toggles the password reveal state for type="password" inputs.',
             icon: 'Leading icon component rendered before the text.',
-            max: 'Maximum value for type="number"; the value is clamped to it on blur.',
-            maxLength:
-              'Maximum number of characters; enforced for type="number" where native maxlength is ignored.',
-            min: 'Minimum value for type="number"; the value is clamped to it on blur.',
+            maxLength: 'Maximum number of characters the input accepts.',
             minLength:
               'Minimum number of characters, passed as the native minlength attribute.',
-            step: 'Step increment for type="number" inputs.',
-            clampToBounds:
-              'Clamps a number value into the configured min/max range once editing finishes.',
           },
           'number-input': {
             allowNegative:
               'Whether negative values are allowed; when false the value floors at 0.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             placeholder: 'Placeholder shown while the field is empty.',
@@ -1785,6 +1783,8 @@ export const en: WebMessages = {
             headerDivider: 'Shows a divider between the header and the body.',
           },
           checkbox: {
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             truncate:
               'Ellipsizes a label too long for its column and reveals the full text in a tooltip.',
             ariaLabel:
@@ -1804,6 +1804,7 @@ export const en: WebMessages = {
               'Fires with the new checked state whenever the user toggles the checkbox.',
           },
           'code-input': {
+            changed: 'Fires with the new value whenever it changes.',
             disabled: 'Disables every digit cell.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
@@ -1957,6 +1958,7 @@ export const en: WebMessages = {
           rating: {
             allowHalf:
               'Allows half-star granularity, letting the value move in 0.5 increments.',
+            changed: 'Fires with the new value whenever it changes.',
             clearable: 'Clicking the current value clears the rating back to 0.',
             disabled: 'Disables the rating.',
             errorMsg:
@@ -2004,7 +2006,6 @@ export const en: WebMessages = {
               'Error message shown below the slider, replacing the hint and flagging the field invalid.',
             formatValue:
               'Formatter that turns the numeric value into the displayed text.',
-            hasError: 'Forces the error-state styling without binding an error message.',
             hint: 'Helper text shown below the slider, hidden while an error is showing.',
             labelIcon: 'Optional icon component rendered before the label text.',
             id: 'id applied to the slider and its label, auto-generated when omitted.',
@@ -2035,6 +2036,8 @@ export const en: WebMessages = {
           switch: {
             ariaLabel:
               'Accessible label for the switch when no visible label is rendered.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             checked: 'Current on/off state, two-way bindable via [(checked)].',
             disabled: 'Disables the switch and blocks toggling.',
             errorMsg:
@@ -2059,7 +2062,7 @@ export const en: WebMessages = {
             size: 'Visual size of the tag.',
             icon: 'Optional icon component rendered before the label.',
             maxWidth:
-              'Widest the tag may grow in px; a longer label ellipsizes instead. Also settable as --ea-tag-max-width.',
+              'Widest the tag may grow, as a CSS length; a longer label ellipsizes instead. Also settable as --ea-tag-max-width.',
             tooltip:
               'Where a label clipped by maxWidth reveals its full text: top or bottom of the tag, or none to suppress it.',
             removable: 'Renders a remove button that emits removed when activated.',
@@ -2073,6 +2076,9 @@ export const en: WebMessages = {
               'Fires when the user activates the remove button on a removable tag.',
           },
           textarea: {
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
+            changed: 'Fires with the new value whenever it changes.',
             disabled: 'Disables the field.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
@@ -2081,8 +2087,9 @@ export const en: WebMessages = {
             labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             maxHeight:
-              "Pixel ceiling for the field's height; beyond it the textarea scrolls vertically instead of growing.",
-            minHeight: 'Minimum height in px; never less than the default height.',
+              "Ceiling for the field's height, as a CSS length; beyond it the textarea scrolls vertically instead of growing.",
+            minHeight:
+              'Minimum height as a CSS length; never less than the default height.',
             maxLength: 'Maximum number of characters the field accepts.',
             showCount:
               'Shows the number of characters typed below the field, against maxLength when one is set.',
@@ -2159,7 +2166,7 @@ export const en: WebMessages = {
               'Shows the bubble only while the trigger is cutting its own content off.',
             flip: 'Moves a bubble with no room on the requested side to the opposite one.',
             maxWidth:
-              'Maximum width in pixels; the text wraps at this width (50px floor). The bubble never grows past the viewport.',
+              'Maximum width as a CSS length; the text wraps at this width (50px floor). The bubble never grows past the viewport.',
             showDelay:
               'Delay in milliseconds before the bubble appears on hover or keyboard focus. Leaving the trigger within it cancels the bubble.',
             dismissDelay:
@@ -2367,11 +2374,11 @@ export const en: WebMessages = {
             maxVisibleChips:
               'Maximum number of chips shown in the trigger before the rest collapse into a count pill.',
             maxChipWidth:
-              'Widest a selected-value chip may grow in px; a longer label ellipsizes and reveals its full text in a tooltip.',
+              'Widest a selected-value chip may grow, as a CSS length; a longer label ellipsizes and reveals its full text in a tooltip.',
             popoverMaxHeight:
-              'Tallest the option popover may grow in px before the option list scrolls.',
+              'Tallest the option popover may grow, as a CSS length, before the option list scrolls.',
             popoverMaxWidth:
-              'Widest the option popover may grow in px, or anchor to hold it to the field width.',
+              'Widest the option popover may grow, as a CSS length, or anchor to hold it to the field width.',
             options:
               'List of selectable options rendered in the dropdown list, flat or split into groups.',
             placeholder: 'Placeholder shown on the trigger while no option is selected.',
@@ -2495,7 +2502,7 @@ export const en: WebMessages = {
             flip: 'Flips to the opposite side when the requested placement overflows the viewport.',
             matchAnchorWidth: "Sets the popover's min-width to match the anchor's width.",
             maxWidth:
-              'Widest the surface may grow in px, or anchor to cap it at the anchor element width.',
+              'Widest the surface may grow, as a CSS length, or anchor to cap it at the anchor element width.',
             offset: 'Gap in px between the anchor and the popover surface.',
             open: 'Whether the popover is currently open.',
             placement: 'Preferred position of the popover relative to its anchor.',

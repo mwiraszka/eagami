@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.73.0
-source: '@eagami/ui@5.73.0 (https://github.com/mwiraszka/eagami)'
+version: 5.74.0
+source: '@eagami/ui@5.74.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-10-24
 audience: human developers and AI coding agents
 purpose: >
@@ -541,7 +541,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.73.0 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.74.0 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -1421,7 +1421,7 @@ class EagamiButton extends StatelessWidget {
 ### 5.2 Input (TextField)
 
 ```dart
-enum InputType { text, email, password, number, search, tel, url }
+enum InputType { text, email, password, search, tel, url }
 
 class EagamiInput extends StatefulWidget {
   const EagamiInput({
@@ -1441,9 +1441,6 @@ class EagamiInput extends StatefulWidget {
     this.showPasswordToggle = true,
     this.icon,
     this.list,
-    this.min,
-    this.max,
-    this.step,
     this.minLength,
     this.maxLength,
     this.value,
@@ -1467,9 +1464,6 @@ class EagamiInput extends StatefulWidget {
   final bool showPasswordToggle;
   final Widget? icon; // optional leading icon widget
   final String? list; // id of a native datalist for suggestions
-  final num? min; // number-type bound
-  final num? max; // number-type bound
-  final num? step; // number-type increment
   final int? minLength;
   final int? maxLength;
   final String? value;
@@ -1483,7 +1477,7 @@ class EagamiInput extends StatefulWidget {
 - A non-null/non-empty `errorMsg` forces the field into the error state. There is no `status` enum; `errorMsg` alone drives the visual.
 - `hint` displays below the input; replaced by `errorMsg` when the latter is present.
 - For `type: InputType.password`, the field renders a built-in show/hide toggle when `showPasswordToggle: true` (the default). The toggle is keyboard-reachable.
-- `clearable: true` renders a clear button while the field holds a value; `min`/`max`/`step` apply to `InputType.number`.
+- `clearable: true` renders a clear button while the field holds a value.
 
 ### 5.3 Textarea
 
@@ -1970,7 +1964,6 @@ class EagamiSlider extends StatefulWidget {
     this.size = EagamiSize.md,
     this.disabled = false,
     this.required = false,
-    this.hasError = false,
     this.showValue = false,
     this.showMinMaxLabels = false,
     this.groupThousands = true,
@@ -1989,7 +1982,6 @@ class EagamiSlider extends StatefulWidget {
   final EagamiSize size;
   final bool disabled;
   final bool required;
-  final bool hasError; // forces the error visual without an errorMsg string
   final bool showValue;
   final bool showMinMaxLabels;
   final bool groupThousands; // thousands separators in the displayed value
@@ -1998,7 +1990,7 @@ class EagamiSlider extends StatefulWidget {
 }
 ```
 
-**Keyboard:** arrows step by `step`, PageUp/PageDown by `max(step * 10, range / 10)`, Home/End jump to bounds. Snap-clamp emitted values to the configured `min`/`max`/`step`. Either a non-empty `errorMsg` or `hasError: true` flips the slider into the error state.
+**Keyboard:** arrows step by `step`, PageUp/PageDown by `max(step * 10, range / 10)`, Home/End jump to bounds. Snap-clamp emitted values to the configured `min`/`max`/`step`. A non-empty `errorMsg` flips the slider into the error state.
 
 ### 5.14 Tabs
 

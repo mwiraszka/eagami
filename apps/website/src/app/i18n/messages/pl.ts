@@ -1481,7 +1481,6 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             required: 'Wymagane',
             optional: 'Opcjonalne',
-            hasError: 'Stan błędu',
             label: 'Etykieta',
             labelIcon: 'Ikona etykiety',
           },
@@ -1669,6 +1668,9 @@ export const pl: WebMessages = {
             'ToastService.resume': 'Wznawia odliczania wstrzymane przez pause.',
           },
           input: {
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
+            changed: 'Emitowane z nową wartością przy każdej jej zmianie.',
             spellcheck:
               'Wartość natywnego atrybutu spellcheck, a przy braku ustawienia obowiązuje domyślne zachowanie przeglądarki.',
             keepIcon:
@@ -1711,19 +1713,15 @@ export const pl: WebMessages = {
             togglePasswordVisibility:
               'Przełącza widoczność hasła dla pól type="password".',
             icon: 'Komponent ikony wiodącej renderowany przed tekstem.',
-            max: 'Maksymalna wartość dla type="number"; wartość jest do niej ograniczana przy utracie fokusu.',
-            maxLength:
-              'Maksymalna liczba znaków; wymuszana dla type="number", gdzie natywny maxlength jest ignorowany.',
-            min: 'Minimalna wartość dla type="number"; wartość jest do niej ograniczana przy utracie fokusu.',
+            maxLength: 'Maksymalna liczba znaków akceptowana przez pole.',
             minLength:
               'Minimalna liczba znaków, przekazywana jako natywny atrybut minlength.',
-            step: 'Przyrost kroku dla pól type="number".',
-            clampToBounds:
-              'Ogranicza wartość liczbową do skonfigurowanego zakresu min/max po zakończeniu edycji.',
           },
           'number-input': {
             allowNegative:
               'Czy dozwolone są wartości ujemne; gdy false, wartość ma dolną granicę 0.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad polem.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
@@ -1831,6 +1829,8 @@ export const pl: WebMessages = {
             headerDivider: 'Wyświetla linię oddzielającą nagłówek od treści.',
           },
           checkbox: {
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             truncate: 'Skraca zbyt długą etykietę i pokazuje pełny tekst w dymku.',
             ariaLabel:
               'Dostępna nazwa pola wyboru, gdy nie jest renderowana widoczna etykieta.',
@@ -1850,6 +1850,7 @@ export const pl: WebMessages = {
               'Emitowane z nowym stanem zaznaczenia, gdy użytkownik przełączy pole wyboru.',
           },
           'code-input': {
+            changed: 'Emitowane z nową wartością przy każdej jej zmianie.',
             disabled: 'Wyłącza wszystkie komórki cyfr.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
@@ -2010,6 +2011,7 @@ export const pl: WebMessages = {
           rating: {
             allowHalf:
               'Zezwala na dokładność do połowy gwiazdki, umożliwiając zmianę wartości o 0,5.',
+            changed: 'Emitowane z nową wartością przy każdej jej zmianie.',
             clearable: 'Kliknięcie bieżącej wartości czyści ocenę z powrotem do 0.',
             disabled: 'Wyłącza ocenę.',
             errorMsg:
@@ -2058,7 +2060,6 @@ export const pl: WebMessages = {
             errorMsg:
               'Komunikat o błędzie pod suwakiem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             formatValue: 'Formater zamieniający wartość liczbową na wyświetlany tekst.',
-            hasError: 'Wymusza stylizację stanu błędu bez wiązania komunikatu o błędzie.',
             hint: 'Tekst pomocniczy pod suwakiem, ukryty gdy występuje błąd.',
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             id: 'id stosowane do suwaka i jego etykiety, generowane automatycznie gdy pominięte.',
@@ -2089,6 +2090,8 @@ export const pl: WebMessages = {
           switch: {
             ariaLabel:
               'Dostępna etykieta przełącznika, gdy nie jest renderowana widoczna etykieta.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             checked:
               'Bieżący stan włączony/wyłączony, dwukierunkowo wiązalny przez [(checked)].',
             disabled: 'Wyłącza przełącznik i blokuje przełączanie.',
@@ -2116,7 +2119,7 @@ export const pl: WebMessages = {
             size: 'Wizualny rozmiar tagu.',
             icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             maxWidth:
-              'Maksymalna szerokość tagu w px; dłuższa etykieta jest skracana. Można też ustawić jako --ea-tag-max-width.',
+              'Maksymalna szerokość tagu jako długość CSS; dłuższa etykieta jest skracana. Można też ustawić jako --ea-tag-max-width.',
             tooltip:
               'Gdzie etykieta skrócona przez maxWidth pokazuje pełny tekst: nad tagiem lub pod nim, albo none, aby go ukryć.',
             removable: 'Renderuje przycisk usuwania emitujący removed po aktywacji.',
@@ -2130,6 +2133,9 @@ export const pl: WebMessages = {
               'Emitowane, gdy użytkownik aktywuje przycisk usuwania na tagu z możliwością usunięcia.',
           },
           textarea: {
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
+            changed: 'Emitowane z nową wartością przy każdej jej zmianie.',
             disabled: 'Wyłącza pole.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
@@ -2138,8 +2144,9 @@ export const pl: WebMessages = {
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
             maxHeight:
-              'Górny limit wysokości pola w pikselach; powyżej niego textarea przewija się pionowo zamiast rosnąć.',
-            minHeight: 'Minimalna wysokość w px; nigdy mniejsza niż wysokość domyślna.',
+              'Górny limit wysokości pola jako długość CSS; powyżej niego textarea przewija się pionowo zamiast rosnąć.',
+            minHeight:
+              'Minimalna wysokość jako długość CSS; nigdy mniejsza niż wysokość domyślna.',
             maxLength: 'Maksymalna liczba znaków akceptowana przez pole.',
             showCount:
               'Wyświetla pod polem liczbę wpisanych znaków, w odniesieniu do maxLength, gdy jest ustawione.',
@@ -2222,7 +2229,7 @@ export const pl: WebMessages = {
             whenClipped: 'Pokazuje dymek tylko wtedy, gdy element przycina własną treść.',
             flip: 'Przenosi dymek na przeciwną stronę, gdy po wskazanej stronie brakuje miejsca.',
             maxWidth:
-              'Maksymalna szerokość w pikselach; tekst zawija się przy tej szerokości (minimum 50px). Podpowiedź nigdy nie wykracza poza widoczny obszar.',
+              'Maksymalna szerokość jako długość CSS; tekst zawija się przy tej szerokości (minimum 50px). Podpowiedź nigdy nie wykracza poza widoczny obszar.',
             showDelay:
               'Opóźnienie w milisekundach, zanim podpowiedź pojawi się po najechaniu kursorem lub ustawieniu fokusu klawiaturą. Opuszczenie elementu wyzwalającego w tym czasie anuluje jej wyświetlenie.',
             dismissDelay:
@@ -2443,11 +2450,11 @@ export const pl: WebMessages = {
             maxVisibleChips:
               'Maksymalna liczba chipów widocznych w elemencie wyzwalającym, zanim pozostałe zostaną zwinięte do pastylki z licznikiem.',
             maxChipWidth:
-              'Maksymalna szerokość chipu wybranej wartości w px; dłuższa etykieta jest skracana i pokazuje pełny tekst w podpowiedzi.',
+              'Maksymalna szerokość chipu wybranej wartości jako długość CSS; dłuższa etykieta jest skracana i pokazuje pełny tekst w podpowiedzi.',
             popoverMaxHeight:
-              'Maksymalna wysokość listy opcji w px, po przekroczeniu której lista się przewija.',
+              'Maksymalna wysokość listy opcji jako długość CSS, po przekroczeniu której lista się przewija.',
             popoverMaxWidth:
-              'Maksymalna szerokość listy opcji w px albo anchor, aby ograniczyć ją do szerokości pola.',
+              'Maksymalna szerokość listy opcji jako długość CSS albo anchor, aby ograniczyć ją do szerokości pola.',
             options:
               'Lista opcji do wyboru renderowanych na liście rozwijanej, płaska lub podzielona na grupy.',
             placeholder:
@@ -2575,7 +2582,7 @@ export const pl: WebMessages = {
             matchAnchorWidth:
               'Ustawia min-width popovera tak, aby odpowiadało szerokości kotwicy.',
             maxWidth:
-              'Maksymalna szerokość powierzchni w px albo anchor, aby ograniczyć ją do szerokości elementu kotwiczącego.',
+              'Maksymalna szerokość powierzchni jako długość CSS albo anchor, aby ograniczyć ją do szerokości elementu kotwiczącego.',
             offset: 'Odstęp w px między kotwicą a powierzchnią popovera.',
             open: 'Określa, czy popover jest aktualnie otwarty.',
             placement: 'Preferowana pozycja popovera względem jego kotwicy.',

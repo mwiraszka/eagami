@@ -48,7 +48,7 @@ interface MultiSelectKnobState {
   required: boolean;
   optional: boolean;
   maxVisibleChips: number;
-  maxChipWidth: number;
+  maxChipWidth: string;
   groupedOptions: boolean;
   firstGroup: string;
   firstGroupLabel: string;

@@ -39,8 +39,8 @@ interface TextareaKnobState {
   resize: TextareaResize;
   maxLength: number;
   showCount: boolean;
-  minHeight: number;
-  maxHeight: number;
+  minHeight: string;
+  maxHeight: string;
   disabled: boolean;
   readonly: boolean;
   required: boolean;

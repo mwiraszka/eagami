@@ -78,7 +78,7 @@
               [attr.aria-label]="'ea-icon-' + icon.slug"
               [eaTooltip]="tip"
               tooltipPosition="bottom"
-              [maxWidth]="300"
+              maxWidth="300px"
               (click)="copySelector(icon.slug)">
               <span class="icons-grid__glyph">
                 <ng-container *ngComponentOutlet="icon" />
