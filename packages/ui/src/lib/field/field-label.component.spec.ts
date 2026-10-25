@@ -369,54 +369,20 @@ describe('FieldLabelComponent', () => {
       return readFileSync(join(LIB, path), 'utf8');
     }
 
-    it('hands every declared labelIcon input to the shared label', () => {
+    it.each([
+      ['labelIcon', '[icon]="labelIcon()"'],
+      ['labelHelp', '[help]="labelHelp()"'],
+      ['optional', '[optional]="optional()"'],
+    ])('hands %s to the shared label in every labelled field', (_input, binding) => {
       const owners = readdirSync(LIB, { recursive: true, encoding: 'utf8' })
         .filter(file => file.endsWith('.component.ts'))
-        .filter(file => read(file).includes('readonly labelIcon = input'));
+        .filter(file => read(file).includes('extends LabelledFieldControlBase'));
 
       const unbound = owners.filter(
-        file => !read(file.replace(/\.ts$/, '.html')).includes('[icon]="labelIcon()"'),
+        file => !read(file.replace(/\.ts$/, '.html')).includes(binding),
       );
 
       expect(owners.length).toBeGreaterThan(15);
-      expect(unbound).toEqual([]);
-    });
-
-    it('offers labelHelp wherever it offers labelIcon, and hands it over', () => {
-      const components = readdirSync(LIB, { recursive: true, encoding: 'utf8' }).filter(
-        file => file.endsWith('.component.ts'),
-      );
-      const iconOwners = components.filter(file =>
-        read(file).includes('readonly labelIcon = input'),
-      );
-
-      const missing = iconOwners.filter(
-        file => !read(file).includes('readonly labelHelp = input'),
-      );
-      const unbound = iconOwners.filter(
-        file => !read(file.replace(/\.ts$/, '.html')).includes('[help]="labelHelp()"'),
-      );
-
-      expect(missing).toEqual([]);
-      expect(unbound).toEqual([]);
-    });
-
-    it('offers optional wherever it offers labelIcon, and hands it over', () => {
-      const components = readdirSync(LIB, { recursive: true, encoding: 'utf8' }).filter(
-        file => file.endsWith('.component.ts'),
-      );
-      const iconOwners = components.filter(file =>
-        read(file).includes('readonly labelIcon = input'),
-      );
-
-      const missing = iconOwners.filter(
-        file => !read(file).includes('readonly optional = input'),
-      );
-      const unbound = iconOwners.filter(
-        file => !read(file.replace(/\.ts$/, '.html')).includes('[optional]="optional()"'),
-      );
-
-      expect(missing).toEqual([]);
       expect(unbound).toEqual([]);
     });
   });
