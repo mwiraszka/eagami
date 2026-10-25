@@ -35,6 +35,7 @@ import { AtSignIconComponent } from './at-sign.component';
 import { AwardIconComponent } from './award.component';
 import { BadgeCheckIconComponent } from './badge-check.component';
 import { BanIconComponent } from './ban.component';
+import { BanknoteIconComponent } from './banknote.component';
 import { BarChart2IconComponent } from './bar-chart-2.component';
 import { BarChartIconComponent } from './bar-chart.component';
 import { BasketIconComponent } from './basket.component';
@@ -63,6 +64,7 @@ import { BrainIconComponent } from './brain.component';
 import { BriefcaseIconComponent } from './briefcase.component';
 import { BugIconComponent } from './bug.component';
 import { BuildingIconComponent } from './building.component';
+import { BusIconComponent } from './bus.component';
 import { CakeIconComponent } from './cake.component';
 import { CalculatorIconComponent } from './calculator.component';
 import { CalendarCheckIconComponent } from './calendar-check.component';
@@ -171,6 +173,7 @@ import { FastForwardIconComponent } from './fast-forward.component';
 import { FeatherIconComponent } from './feather.component';
 import { Figma2IconComponent } from './figma-2.component';
 import { FigmaIconComponent } from './figma.component';
+import { FileArchiveIconComponent } from './file-archive.component';
 import { FileAudioIconComponent } from './file-audio.component';
 import { FileCheckIconComponent } from './file-check.component';
 import { FileCodeIconComponent } from './file-code.component';
@@ -240,6 +243,7 @@ import { ImageSearchIconComponent } from './image-search.component';
 import { ImageIconComponent } from './image.component';
 import { ImagesIconComponent } from './images.component';
 import { InboxIconComponent } from './inbox.component';
+import { IndentIconComponent } from './indent.component';
 import { InfoIconComponent } from './info.component';
 import { InstagramIconComponent } from './instagram.component';
 import { ItalicIconComponent } from './italic.component';
@@ -317,6 +321,7 @@ import { NodejsIconComponent } from './nodejs.component';
 import { NotionIconComponent } from './notion.component';
 import { NpmIconComponent } from './npm.component';
 import { OctagonIconComponent } from './octagon.component';
+import { OutdentIconComponent } from './outdent.component';
 import { PackageIconComponent } from './package.component';
 import { PaintbrushIconComponent } from './paintbrush.component';
 import { PaletteIconComponent } from './palette.component';
@@ -339,6 +344,7 @@ import { PhoneIconComponent } from './phone.component';
 import { PictureInPictureIconComponent } from './picture-in-picture.component';
 import { PieChartIconComponent } from './pie-chart.component';
 import { PiggyBankIconComponent } from './piggy-bank.component';
+import { PillIconComponent } from './pill.component';
 import { PinOffIconComponent } from './pin-off.component';
 import { PinIconComponent } from './pin.component';
 import { PinterestIconComponent } from './pinterest.component';
@@ -389,6 +395,7 @@ import { RowsIconComponent } from './rows.component';
 import { RssIconComponent } from './rss.component';
 import { RulerIconComponent } from './ruler.component';
 import { SaveIconComponent } from './save.component';
+import { ScaleIconComponent } from './scale.component';
 import { ScanIconComponent } from './scan.component';
 import { SchoolIconComponent } from './school.component';
 import { ScissorsIconComponent } from './scissors.component';
@@ -411,6 +418,11 @@ import { ShoppingBagIconComponent } from './shopping-bag.component';
 import { ShoppingCartIconComponent } from './shopping-cart.component';
 import { ShuffleIconComponent } from './shuffle.component';
 import { SidebarIconComponent } from './sidebar.component';
+import { SignalFullIconComponent } from './signal-full.component';
+import { SignalHighIconComponent } from './signal-high.component';
+import { SignalLowIconComponent } from './signal-low.component';
+import { SignalMediumIconComponent } from './signal-medium.component';
+import { SignalNoneIconComponent } from './signal-none.component';
 import { SineWaveIconComponent } from './sine-wave.component';
 import { SkipBackIconComponent } from './skip-back.component';
 import { SkipForwardIconComponent } from './skip-forward.component';
@@ -422,6 +434,8 @@ import { SmartphoneIconComponent } from './smartphone.component';
 import { SmileIconComponent } from './smile.component';
 import { SnowflakeIconComponent } from './snowflake.component';
 import { SoccerBallIconComponent } from './soccer-ball.component';
+import { SortAscendingIconComponent } from './sort-ascending.component';
+import { SortDescendingIconComponent } from './sort-descending.component';
 import { SparklesIconComponent } from './sparkles.component';
 import { SpeakerIconComponent } from './speaker.component';
 import { SpotifyIconComponent } from './spotify.component';
@@ -529,8 +543,8 @@ import { ZoomOutIconComponent } from './zoom-out.component';
  * sorted by `slug` so that consumers iterating it (the `/ui/icons` reference
  * page, the sandbox gallery, downstream pickers) get a stable alphabetical
  * order where a base icon always precedes its `-2` variant (e.g. `facebook`
- * before `facebook-2`). The literal below is kept in class-name order so a new
- * icon has one obvious insertion point; the `.sort()` at the bottom is the
+ * before `facebook-2`). The imports and the class-name-ordered literal below
+ * are generated by `pnpm regen-docs`; the `.sort()` at the bottom is the
  * source of truth for consumers.
  *
  * Bundle-size note: importing this constant brings every icon component into
@@ -580,6 +594,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     AwardIconComponent,
     BadgeCheckIconComponent,
     BanIconComponent,
+    BanknoteIconComponent,
     BarChart2IconComponent,
     BarChartIconComponent,
     BasketIconComponent,
@@ -608,6 +623,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     BriefcaseIconComponent,
     BugIconComponent,
     BuildingIconComponent,
+    BusIconComponent,
     CakeIconComponent,
     CalculatorIconComponent,
     CalendarCheckIconComponent,
@@ -716,6 +732,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     FeatherIconComponent,
     Figma2IconComponent,
     FigmaIconComponent,
+    FileArchiveIconComponent,
     FileAudioIconComponent,
     FileCheckIconComponent,
     FileCodeIconComponent,
@@ -784,6 +801,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     ImageSearchIconComponent,
     ImagesIconComponent,
     InboxIconComponent,
+    IndentIconComponent,
     InfoIconComponent,
     InstagramIconComponent,
     ItalicIconComponent,
@@ -861,6 +879,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     NotionIconComponent,
     NpmIconComponent,
     OctagonIconComponent,
+    OutdentIconComponent,
     PackageIconComponent,
     PaintbrushIconComponent,
     PaletteIconComponent,
@@ -883,6 +902,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     PictureInPictureIconComponent,
     PieChartIconComponent,
     PiggyBankIconComponent,
+    PillIconComponent,
     PinIconComponent,
     PinOffIconComponent,
     PinterestIconComponent,
@@ -933,6 +953,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     RssIconComponent,
     RulerIconComponent,
     SaveIconComponent,
+    ScaleIconComponent,
     ScanIconComponent,
     SchoolIconComponent,
     ScissorsIconComponent,
@@ -955,6 +976,11 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     ShoppingCartIconComponent,
     ShuffleIconComponent,
     SidebarIconComponent,
+    SignalFullIconComponent,
+    SignalHighIconComponent,
+    SignalLowIconComponent,
+    SignalMediumIconComponent,
+    SignalNoneIconComponent,
     SineWaveIconComponent,
     SkipBackIconComponent,
     SkipForwardIconComponent,
@@ -966,6 +992,8 @@ export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
     SmileIconComponent,
     SnowflakeIconComponent,
     SoccerBallIconComponent,
+    SortAscendingIconComponent,
+    SortDescendingIconComponent,
     SparklesIconComponent,
     SpeakerIconComponent,
     SpotifyIconComponent,

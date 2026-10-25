@@ -1,6 +1,6 @@
 {
   "name": "@eagami/ui",
-  "version": "5.74.0",
+  "version": "5.75.0",
   "description": "Lightweight, accessible, themeable Angular UI component library and icon set built on CSS custom properties",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "MIT",
@@ -45,6 +45,7 @@
     "check-css-order": "node scripts/check-css-property-order.mjs --since=origin/main",
     "check-tokens": "node scripts/sync-integration-guides.mjs --check",
     "sync-guides": "node scripts/sync-integration-guides.mjs",
+    "sync-icons": "node scripts/sync-icon-exports.mjs && prettier --write src/public-api.ts src/lib/icons/icons-catalogue.ts",
     "storybook": "ng run eagami-ui:storybook",
     "build-storybook": "ng run eagami-ui:build-storybook",
     "docs:api": "compodoc -p tsconfig.doc.json -e json -d dist/compodoc --silent && node scripts/extract-api.mjs",
