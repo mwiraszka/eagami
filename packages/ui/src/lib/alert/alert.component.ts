@@ -16,9 +16,10 @@ import { CheckIconComponent } from '../icons/check.component';
 import { InfoIconComponent } from '../icons/info.component';
 import { XIconComponent } from '../icons/x.component';
 import { type EaSize } from '../sizes';
+import { type EaStatusVariant } from '../variants';
 
 /** Semantic colour scheme of an alert. Drives icon and palette. */
-export type AlertVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+export type AlertVariant = EaStatusVariant;
 
 /** Scales the alert's text, icon, and gap together. */
 export type AlertSize = EaSize;

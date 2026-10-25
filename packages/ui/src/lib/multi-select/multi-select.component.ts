@@ -5,8 +5,6 @@ import {
   DestroyRef,
   type ElementRef,
   Injector,
-  type TemplateRef,
-  type Type,
   afterNextRender,
   afterRenderEffect,
   computed,
@@ -23,13 +21,10 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { PlusIconComponent } from '../icons/plus.component';
@@ -92,7 +87,10 @@ export type MultiSelectSize = EaSize;
     },
   ],
 })
-export class MultiSelectComponent implements ControlValueAccessor {
+export class MultiSelectComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   protected readonly wrapperEl = viewChild<ElementRef<HTMLElement>>('wrapperEl');
   private readonly popover = viewChild(PopoverComponent);
   protected readonly triggerEl = viewChild<ElementRef<HTMLElement>>('triggerEl');
@@ -104,13 +102,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private readonly injector = inject(Injector);
   private readonly destroyRef = inject(DestroyRef);
 
-  readonly label = input<string | undefined>(undefined);
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
   /** Accessible name for the combobox when no visible `label` is set. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the combobox, such as a label outside the component. */
@@ -124,13 +115,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly size = input<MultiSelectSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
-  readonly required = input<boolean>(false);
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   /** Toggle the search input at the top of the popover. */
   readonly searchable = input<boolean>(true);
   /** Toggle the "Select all" row at the top of the option list. */
@@ -145,17 +129,17 @@ export class MultiSelectComponent implements ControlValueAccessor {
   /** Max number of chips shown inside the trigger; the rest collapse into a "+N more" pill. `0` removes the cap so every chip shows and the row scrolls horizontally. */
   readonly maxVisibleChips = input<number>(0);
   /**
-   * Widest a selected-value chip may grow, in px; a longer label ellipsizes
-   * and reveals its full text in a tooltip.
+   * Widest a selected-value chip may grow, as a CSS length; a longer label
+   * ellipsizes and reveals its full text in a tooltip.
    */
-  readonly maxChipWidth = input<number | undefined>(200);
+  readonly maxChipWidth = input<string | undefined>('200px');
   /**
-   * Tallest the option popover may grow, in px, before the option list
-   * scrolls; left unset, the popover keeps its built-in 20rem cap.
+   * Tallest the option popover may grow, as a CSS length, before the option
+   * list scrolls; left unset, the popover keeps its built-in 20rem cap.
    */
-  readonly popoverMaxHeight = input<number | undefined>(undefined);
+  readonly popoverMaxHeight = input<string | undefined>(undefined);
   /**
-   * Widest the option popover may grow: a px value, or `anchor` to hold it to
+   * Widest the option popover may grow: a CSS length, or `anchor` to hold it to
    * the field's own width so a long option truncates instead of widening it.
    */
   readonly popoverMaxWidth = input<PopoverMaxWidth>('anchor');
@@ -336,6 +320,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   protected readonly clippedOptions = signal<ReadonlySet<string>>(new Set());
 
   constructor() {
+    super();
     // The panel is portaled, so a consumer has no element to hang a tooltip on
     // and no event path back here; the component resolves its own truncation.
     afterRenderEffect(() => {

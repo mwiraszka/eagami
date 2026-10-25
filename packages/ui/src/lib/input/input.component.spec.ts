@@ -1,4 +1,4 @@
-import { PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -290,104 +290,6 @@ describe('InputComponent', () => {
       component.registerOnTouched(onTouched);
       getNativeInput().dispatchEvent(new FocusEvent('blur'));
       expect(onTouched).toHaveBeenCalled();
-    });
-  });
-
-  describe('Number type', () => {
-    function configureNumber(bounds: {
-      min?: number;
-      max?: number;
-      maxLength?: number;
-    }): void {
-      fixture.componentRef.setInput('type', 'number');
-      for (const [key, value] of Object.entries(bounds)) {
-        fixture.componentRef.setInput(key, value);
-      }
-      fixture.detectChanges();
-    }
-
-    it('sets min, max, and step attributes for number inputs', () => {
-      configureNumber({ min: 1, max: 3 });
-      fixture.componentRef.setInput('step', 1);
-      fixture.detectChanges();
-
-      const input = getNativeInput();
-
-      expect(input.getAttribute('min')).toBe('1');
-      expect(input.getAttribute('max')).toBe('3');
-      expect(input.getAttribute('step')).toBe('1');
-    });
-
-    it('does not set min/max for non-number inputs', () => {
-      fixture.componentRef.setInput('min', 1);
-      fixture.detectChanges();
-
-      expect(getNativeInput().getAttribute('min')).toBeNull();
-    });
-
-    it('blocks the exponent key', () => {
-      configureNumber({});
-      const event = new KeyboardEvent('keydown', { key: 'e', cancelable: true });
-
-      getNativeInput().dispatchEvent(event);
-
-      expect(event.defaultPrevented).toBe(true);
-    });
-
-    it('prevents the scroll-wheel from changing a focused number input', () => {
-      configureNumber({});
-      getNativeInput().dispatchEvent(new FocusEvent('focus'));
-      fixture.detectChanges();
-      const event = new WheelEvent('wheel', { cancelable: true });
-
-      getNativeInput().dispatchEvent(event);
-
-      expect(event.defaultPrevented).toBe(true);
-    });
-
-    it('clamps the value to max on blur', () => {
-      configureNumber({ min: 1, max: 3 });
-      const input = getNativeInput();
-      input.value = '9';
-      input.dispatchEvent(new Event('input'));
-
-      input.dispatchEvent(new FocusEvent('blur'));
-
-      expect(component.value()).toBe('3');
-    });
-
-    it('clamps the value to min on blur', () => {
-      configureNumber({ min: 2, max: 8 });
-      const input = getNativeInput();
-      input.value = '0';
-      input.dispatchEvent(new Event('input'));
-
-      input.dispatchEvent(new FocusEvent('blur'));
-
-      expect(component.value()).toBe('2');
-    });
-
-    it('enforces maxLength while typing on number inputs', () => {
-      configureNumber({ maxLength: 1 });
-      const input = getNativeInput();
-      input.value = '12';
-
-      input.dispatchEvent(new Event('input'));
-
-      expect(component.value()).toBe('1');
-    });
-
-    it('derives a capped width from its bounds', () => {
-      configureNumber({ min: -1000000, max: 1000000 });
-
-      expect(component.numberWidth()).toBe('calc(8ch + 2em)');
-    });
-
-    it('does not cap width for non-number inputs', () => {
-      fixture.componentRef.setInput('maxLength', 5);
-      fixture.detectChanges();
-
-      expect(component.numberWidth()).toBeNull();
     });
   });
 
@@ -776,6 +678,52 @@ describe('InputComponent', () => {
       fixture.destroy();
 
       expect(vi.getTimerCount()).toBe(0);
+    });
+  });
+
+  describe('Changed output', () => {
+    it('emits the new value when the user changes it', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      const input = getNativeInput();
+      input.value = 'abc';
+      input.dispatchEvent(new Event('input'));
+
+      expect(spy).toHaveBeenCalledWith('abc');
+    });
+
+    it('stays quiet when the form writes a value', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      component.writeValue('abc');
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [InputComponent],
+      template: `
+        <span id="email-label">Email</span>
+        <ea-input aria-labelledby="email-label" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-input');
+      const named = component.querySelector('input')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('email-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 

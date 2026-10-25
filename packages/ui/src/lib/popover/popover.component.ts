@@ -50,8 +50,8 @@ export type PopoverRole = 'menu' | 'listbox' | 'dialog' | 'tooltip' | 'grid';
  */
 export type PopoverScrollBehavior = 'reposition' | 'close' | 'ignore';
 
-/** Width cap for a popover surface: px, or the anchor's own width. */
-export type PopoverMaxWidth = number | 'anchor';
+/** Width cap for a popover surface: a CSS length, or `'anchor'` for the anchor's own width. */
+export type PopoverMaxWidth = string;
 
 /**
  * Floating-element primitive. Renders projected content as `position: fixed`
@@ -146,7 +146,7 @@ export class PopoverComponent {
   readonly matchAnchorWidth = input<boolean>(false);
 
   /**
-   * Widest the surface may grow: a px value, or `anchor` to cap it at the
+   * Widest the surface may grow: a CSS length, or `anchor` to cap it at the
    * anchor's own width so long content truncates instead of widening the panel.
    */
   readonly maxWidth = input<PopoverMaxWidth | undefined>(undefined);
@@ -238,7 +238,7 @@ export class PopoverComponent {
     }
     const cap = this.maxWidth();
     if (cap !== undefined) {
-      style['max-width'] = `${cap === 'anchor' ? p.anchorWidth : cap}px`;
+      style['max-width'] = cap === 'anchor' ? `${p.anchorWidth}px` : cap;
     }
     return style;
   });

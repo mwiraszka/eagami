@@ -148,7 +148,7 @@ describe('MultiSelectComponent', () => {
     });
 
     it('caps the panel at popoverMaxHeight', () => {
-      fixture.componentRef.setInput('popoverMaxHeight', 160);
+      fixture.componentRef.setInput('popoverMaxHeight', '160px');
       getTrigger().click();
       fixture.detectChanges();
 

@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CheckIconComponent } from '../icons/check.component';
@@ -311,6 +312,30 @@ describe('SwitchComponent', () => {
       fixture.detectChanges();
 
       expect(getInput().disabled).toBe(true);
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [SwitchComponent],
+      template: `
+        <span id="alerts-label">Email alerts</span>
+        <ea-switch aria-labelledby="alerts-label" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-switch');
+      const named = component.querySelector('input')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('alerts-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

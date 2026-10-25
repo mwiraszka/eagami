@@ -82,10 +82,10 @@ export class TooltipDirective implements OnDestroy {
    */
   readonly whenClipped = input<boolean>(false);
   /**
-   * Max width in px; the text wraps at this width. Clamped to a 50px floor, and
-   * to the viewport, which no value can push the bubble past.
+   * Max width, as a CSS length; the text wraps at this width. Clamped to a 50px
+   * floor, and to the viewport, which no value can push the bubble past.
    */
-  readonly maxWidth = input<number | undefined>(200);
+  readonly maxWidth = input<string | undefined>('200px');
   /**
    * Wait in ms before the bubble appears on hover or keyboard focus, so a
    * pointer passing over the trigger does not flash it. Leaving the trigger
@@ -338,7 +338,7 @@ export class TooltipDirective implements OnDestroy {
       this.renderer.setStyle(
         this.tooltipEl,
         '--ea-tooltip-max-width',
-        `${Math.max(50, maxWidth)}px`,
+        `max(50px, ${maxWidth})`,
         RendererStyleFlags2.DashCase,
       );
       this.renderer.addClass(this.tooltipEl, 'ea-tooltip--wrapping');

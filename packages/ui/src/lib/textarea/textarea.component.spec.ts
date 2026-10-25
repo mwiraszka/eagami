@@ -678,6 +678,52 @@ describe('TextareaComponent', () => {
     });
   });
 
+  describe('Changed output', () => {
+    it('emits the new value when the user changes it', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      const textarea = getTextarea();
+      textarea.value = 'abc';
+      textarea.dispatchEvent(new Event('input'));
+
+      expect(spy).toHaveBeenCalledWith('abc');
+    });
+
+    it('stays quiet when the form writes a value', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      component.writeValue('abc');
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [TextareaComponent],
+      template: `
+        <span id="notes-label">Notes</span>
+        <ea-textarea aria-labelledby="notes-label" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-textarea');
+      const named = component.querySelector('textarea')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('notes-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
+    });
+  });
+
   describe('Accessible name', () => {
     it('names the control via aria-label when no visible label is set', () => {
       fixture.componentRef.setInput('aria-label', 'Notes');

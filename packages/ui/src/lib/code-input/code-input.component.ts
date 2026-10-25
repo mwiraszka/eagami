@@ -2,8 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  type TemplateRef,
-  type Type,
   computed,
   forwardRef,
   inject,
@@ -15,13 +13,10 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
@@ -52,39 +47,30 @@ export type CodeInputSize = EaSize;
     },
   ],
 })
-export class CodeInputComponent implements ControlValueAccessor {
+export class CodeInputComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   readonly digitEls = viewChildren<ElementRef<HTMLInputElement>>('digitEl');
   protected readonly i18n = inject(EagamiI18nService);
 
-  readonly label = input<string | undefined>(undefined);
   /** Space-separated ids of the elements whose text names the group of digit fields, such as a label outside the component. */
   readonly ariaLabelledby = input<string | undefined>(undefined, {
     alias: 'aria-labelledby',
   });
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
   /** Placeholder text spread one character per cell (cell i shows character i). */
   readonly placeholder = input<string>('');
   readonly length = input<number>(6);
   readonly size = input<CodeInputSize>('md');
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
-  readonly required = input<boolean>(false);
   /** Allow any non-whitespace character; when false (default) only digits are accepted. */
   readonly allowAllChars = input<boolean>(false);
   readonly id = input<string>(uniqueId('ea-code-input'));
 
   readonly value = model<string>('');
+  /** Fires with the new value whenever the user edits the code. */
+  readonly changed = output<string>();
 
   readonly focusedIndex = signal<number>(-1);
   private readonly _formDisabled = signal(false);
@@ -151,6 +137,7 @@ export class CodeInputComponent implements ControlValueAccessor {
 
     this.value.set(newValue);
     this.onChange(newValue);
+    this.changed.emit(newValue);
 
     if (char && index < this.length() - 1) {
       this.focusDigit(index + 1);
@@ -182,6 +169,7 @@ export class CodeInputComponent implements ControlValueAccessor {
       const newValue = chars.join('').replace(/ +$/, '');
       this.value.set(newValue);
       this.onChange(newValue);
+      this.changed.emit(newValue);
     } else if (event.key === 'ArrowLeft' && index > 0) {
       event.preventDefault();
       this.focusDigit(index - 1);
@@ -204,6 +192,7 @@ export class CodeInputComponent implements ControlValueAccessor {
     const clipped = pasted.slice(0, this.length());
     this.value.set(clipped);
     this.onChange(clipped);
+    this.changed.emit(clipped);
 
     const nextIndex = Math.min(clipped.length, this.length() - 1);
     this.focusDigit(nextIndex);

@@ -29,7 +29,7 @@ import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
 class TestHostComponent {
   text = signal('Save your changes');
   pos = signal<TooltipPosition>('top');
-  maxWidth = signal<number | undefined>(200);
+  maxWidth = signal<string | undefined>('200px');
   showDelay = signal(0);
   dismissDelay = signal(150);
   flip = signal(true);
@@ -419,18 +419,22 @@ describe('TooltipDirective', () => {
 
       const tip = getTooltip()!;
 
-      expect(tip.style.getPropertyValue('--ea-tooltip-max-width')).toBe('200px');
+      expect(tip.style.getPropertyValue('--ea-tooltip-max-width')).toBe(
+        'max(50px, 200px)',
+      );
       expect(tip.style.maxWidth).toBe('');
       expect(tip.classList).toContain('ea-tooltip--wrapping');
     });
 
     it('floors the max width at 50px', () => {
-      host.maxWidth.set(10);
+      host.maxWidth.set('10px');
       fixture.detectChanges();
 
       show();
 
-      expect(getTooltip()!.style.getPropertyValue('--ea-tooltip-max-width')).toBe('50px');
+      expect(getTooltip()!.style.getPropertyValue('--ea-tooltip-max-width')).toBe(
+        'max(50px, 10px)',
+      );
     });
 
     it('leaves the bubble on one line when no max width is set', () => {

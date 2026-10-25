@@ -20,7 +20,6 @@ export const SLIDER_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     optional: { control: 'boolean' },
-    hasError: { control: 'boolean' },
     changed: { action: 'changed' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
@@ -36,7 +35,6 @@ export const SLIDER_KNOBS: ComponentKnobs = {
     disabled: false,
     required: false,
     optional: false,
-    hasError: false,
     triggerError: false,
   },
 };

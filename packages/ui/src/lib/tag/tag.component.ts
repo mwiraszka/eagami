@@ -21,9 +21,10 @@ import { readableInk } from '../palette/contrast';
 import { type EaSize } from '../sizes';
 import { TooltipDirective, type TooltipPosition } from '../tooltip/tooltip.directive';
 import { isTruncated } from '../truncation';
+import { type EaStatusVariant } from '../variants';
 
 /** Semantic colour scheme of a tag. */
-export type TagVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+export type TagVariant = EaStatusVariant;
 /** Visual size of a tag. */
 export type TagSize = EaSize;
 /** Where a clipped label reveals its full text, or `none` to suppress it. */
@@ -60,11 +61,11 @@ export class TagComponent {
   readonly disabled = input<boolean>(false);
   readonly removeLabel = input<string | undefined>(undefined);
   /**
-   * Widest the chip may grow: a number of px, or any CSS length for a chip that
-   * has to give way to its container (`'100%'` in a responsive grid cell).
+   * Widest the chip may grow, as a CSS length; `'100%'` lets the chip give way
+   * to its container in a responsive grid cell.
    * Also settable in CSS as `--ea-tag-max-width`, which this input overrides.
    */
-  readonly maxWidth = input<number | string | undefined>(undefined);
+  readonly maxWidth = input<string | undefined>(undefined);
   /**
    * Fill colour, for a tag carrying a colour of its own (a user-chosen label).
    * Paints the chip and its border, and takes precedence over `variant`. On
@@ -119,15 +120,6 @@ export class TagComponent {
     'ea-tag--disabled': this.disabled(),
     'ea-tag--uppercase': this.uppercase(),
   }));
-
-  /** `maxWidth` as a CSS length; a bare number is px, as the input documents. */
-  protected readonly resolvedMaxWidth = computed(() => {
-    const max = this.maxWidth();
-    if (max === undefined || max === null) {
-      return null;
-    }
-    return typeof max === 'number' ? `${max}px` : max;
-  });
 
   /** The caller's `ink`, else one that reads on a hex `color`, else `null`. */
   protected readonly resolvedInk = computed(() => {

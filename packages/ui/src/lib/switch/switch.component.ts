@@ -12,19 +12,17 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldControlBase } from '../field/field-base.directive';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
+import { type EaStatusVariant } from '../variants';
 
 /** Visual size of the switch. */
 export type SwitchSize = EaSize;
 /** Status tone applied to the switch track in both states. */
-export type SwitchVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+export type SwitchVariant = EaStatusVariant;
 
 /**
  * On/off toggle styled as a sliding switch. Backed by a visually hidden
@@ -37,6 +35,9 @@ export type SwitchVariant = 'default' | 'success' | 'warning' | 'error' | 'info'
   templateUrl: './switch.component.html',
   styleUrl: './switch.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -45,14 +46,7 @@ export type SwitchVariant = 'default' | 'success' | 'warning' | 'error' | 'info'
     },
   ],
 })
-export class SwitchComponent implements ControlValueAccessor {
-  readonly label = input<string | undefined>(undefined);
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
+export class SwitchComponent extends FieldControlBase implements ControlValueAccessor {
   readonly size = input<SwitchSize>('md');
   /**
    * Status tone for the track: a tinted wash with a toned border while off and
@@ -64,8 +58,11 @@ export class SwitchComponent implements ControlValueAccessor {
   /** Optional icon component drawn in the thumb while the switch is off. */
   readonly offIcon = input<Type<unknown> | undefined>(undefined);
   readonly disabled = input<boolean>(false);
-  readonly required = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the switch, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly id = input<string>(uniqueId('ea-switch'));
 
   readonly checked = model<boolean>(false);

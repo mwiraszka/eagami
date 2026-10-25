@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  type TemplateRef,
   type Type,
   computed,
   effect,
@@ -18,13 +17,10 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { isRtl } from '../direction';
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { LeftHalfStarIconComponent } from '../icons/left-half-star.component';
 import { StarIconComponent } from '../icons/star.component';
@@ -70,8 +66,12 @@ export type RatingSize = EaSize;
     },
   ],
 })
-export class RatingComponent implements ControlValueAccessor {
+export class RatingComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   constructor() {
+    super();
     // Keep the value signal inside the [min, max] range even when set via
     // direct template binding (`[value]="0"` would otherwise bypass
     // `writeValue`'s clamp).
@@ -87,30 +87,16 @@ export class RatingComponent implements ControlValueAccessor {
   private readonly starsEl = viewChild<ElementRef<HTMLElement>>('starsEl');
   protected readonly i18n = inject(EagamiI18nService);
 
-  readonly label = input<string | undefined>(undefined);
   /** Space-separated ids of the elements whose text names the rating, such as a label outside the component. */
   readonly ariaLabelledby = input<string | undefined>(undefined, {
     alias: 'aria-labelledby',
   });
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly size = input<RatingSize>('md');
   readonly min = input<number>(0);
   readonly max = input<number>(5);
   readonly allowHalf = input<boolean>(false);
   readonly readonly = input<boolean>(false);
   readonly disabled = input<boolean>(false);
-  readonly required = input<boolean>(false);
   /** Clicking the current value clears the rating back to 0. */
   readonly clearable = input<boolean>(true);
   /** Standalone component class rendered for empty / full positions. */
@@ -121,6 +107,8 @@ export class RatingComponent implements ControlValueAccessor {
 
   /** Current rating value, 0..max in 1 (or 0.5 when `allowHalf`) increments. */
   readonly value = model<number>(0);
+  /** Fires with the new value whenever the user picks a rating. */
+  readonly changed = output<number>();
 
   /** Fires when the user pre-selects a value via hover; `null` when the cursor leaves. */
   readonly hoverChanged = output<number | null>();
@@ -313,6 +301,7 @@ export class RatingComponent implements ControlValueAccessor {
     }
     this.value.set(clamped);
     this.onChange(clamped);
+    this.changed.emit(clamped);
   }
 
   private clamp(value: number): number {

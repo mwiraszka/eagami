@@ -104,7 +104,7 @@ export const TemplateContent: Story = {
             </div>
           </div>
         </ng-template>
-        <ea-button [eaTooltip]="tip" tooltipPosition="bottom" [maxWidth]="300" variant="secondary">Hover me</ea-button>
+        <ea-button [eaTooltip]="tip" tooltipPosition="bottom" maxWidth="300px" variant="secondary">Hover me</ea-button>
       </div>
     `,
     styles: [
@@ -228,7 +228,7 @@ export const ViewportClamped: Story = {
             </tbody>
           </table>
         </ng-template>
-        <ea-button [eaTooltip]="details" tooltipPosition="bottom" [maxWidth]="320" variant="secondary">Hover me</ea-button>
+        <ea-button [eaTooltip]="details" tooltipPosition="bottom" maxWidth="320px" variant="secondary">Hover me</ea-button>
       </div>
     `,
     styles: [

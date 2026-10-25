@@ -1,7 +1,9 @@
 import { Injectable, type Type, signal } from '@angular/core';
 
+import { type EaStatusVariant } from '../variants';
+
 /** Semantic colour scheme of a toast. */
-export type ToastVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+export type ToastVariant = EaStatusVariant;
 
 /** One run of a toast's title or message. */
 export interface ToastSegment {

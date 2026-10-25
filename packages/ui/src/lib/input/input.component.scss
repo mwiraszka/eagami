@@ -183,17 +183,6 @@
     height: 0;
   }
 
-  &[type='number']::-webkit-inner-spin-button,
-  &[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  &[type='number'] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-  }
-
   &[type='search']::-webkit-search-decoration,
   &[type='search']::-webkit-search-cancel-button {
     -webkit-appearance: none;

@@ -15,7 +15,7 @@ export const INPUT_KNOBS: ComponentKnobs = {
     },
     type: {
       control: 'select',
-      options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'],
+      options: ['text', 'email', 'password', 'search', 'tel', 'url'],
     },
     autocomplete: {
       control: 'select',
@@ -37,6 +37,7 @@ export const INPUT_KNOBS: ComponentKnobs = {
     keepIcon: { control: 'boolean' },
     typedHints: { control: 'boolean', demoOnly: true },
     triggerError: { control: 'boolean', demoOnly: true },
+    changed: { action: 'changed' },
     focused: { action: 'focused' },
     blurred: { action: 'blurred' },
   },

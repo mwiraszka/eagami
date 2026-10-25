@@ -3,8 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  type TemplateRef,
-  type Type,
   computed,
   forwardRef,
   input,
@@ -15,15 +13,12 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import { injectTypedPlaceholder } from '../field/typed-placeholder';
 import { TypedPlaceholderComponent } from '../field/typed-placeholder.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -58,6 +53,9 @@ export interface TextareaSelection {
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -66,18 +64,18 @@ export interface TextareaSelection {
     },
   ],
 })
-export class TextareaComponent implements ControlValueAccessor {
+export class TextareaComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   readonly textareaEl = viewChild<ElementRef<HTMLTextAreaElement>>('textareaEl');
 
-  readonly label = input<string | undefined>(undefined);
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
   /** Accessible name for the control when no visible `label` is set. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the field, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly placeholder = input<string>('');
   /**
    * Hints typed into the empty field one character at a time, trailed by a
@@ -88,28 +86,23 @@ export class TextareaComponent implements ControlValueAccessor {
    */
   readonly typedPlaceholder = input<readonly string[]>([]);
   readonly size = input<TextareaSize>('md');
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
-  readonly required = input<boolean>(false);
   readonly resize = input<TextareaResize>('vertical');
   readonly maxLength = input<number | undefined>(undefined);
   /** Shows the number of characters typed below the field, against `maxLength` when one is set. */
   readonly showCount = input<boolean>(false);
-  /** Optional pixel ceiling for the textarea's height. Beyond it, the inner
-   * field scrolls vertically instead of growing. */
-  readonly maxHeight = input<number | undefined>(undefined);
-  /** Optional pixel floor for the textarea's height. Clamped so it never drops
-   * below the default height. */
-  readonly minHeight = input<number | undefined>(undefined);
+  /** Optional ceiling for the textarea's height, as a CSS length. Beyond it,
+   * the inner field scrolls vertically instead of growing. */
+  readonly maxHeight = input<string | undefined>(undefined);
+  /** Optional floor for the textarea's height, as a CSS length. Clamped so it
+   * never drops below the default height. */
+  readonly minHeight = input<string | undefined>(undefined);
   readonly id = input<string>(uniqueId('ea-textarea'));
 
   readonly value = model<string>('');
+  /** Fires with the new value whenever the user edits the textarea. */
+  readonly changed = output<string>();
 
   readonly isFocused = signal(false);
   private readonly _formDisabled = signal(false);
@@ -170,12 +163,12 @@ export class TextareaComponent implements ControlValueAccessor {
   }));
 
   // Default em-based min-height of 3 lines plus padding keeps it proportional to
-  // the size; a consumer `minHeight` (px) raises the floor but can never shrink it
+  // the size; a consumer `minHeight` raises the floor but can never shrink it
   // below that calculated value.
   readonly minHeightStyle = computed(() => {
     const rowsHeight = `calc(${DEFAULT_ROWS} * var(--line-height-normal) * 1em + 0.75em * 2)`;
-    const px = this.minHeight();
-    return px && px > 0 ? `max(${rowsHeight}, ${px}px)` : rowsHeight;
+    const floor = this.minHeight();
+    return floor ? `max(${rowsHeight}, ${floor})` : rowsHeight;
   });
 
   writeValue(val: string): void {
@@ -198,6 +191,7 @@ export class TextareaComponent implements ControlValueAccessor {
     const value = (event.target as HTMLTextAreaElement).value;
     this.value.set(value);
     this.onChange(value);
+    this.changed.emit(value);
   }
 
   handleFocus(event: FocusEvent): void {

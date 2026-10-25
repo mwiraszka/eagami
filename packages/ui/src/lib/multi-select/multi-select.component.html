@@ -89,7 +89,7 @@
       <div
         class="ea-multi-select__popover"
         [ngClass]="menuClasses()"
-        [style.max-height.px]="popoverMaxHeight()">
+        [style.max-height]="popoverMaxHeight() ?? null">
         @if (searchable()) {
           <div class="ea-multi-select__search">
             <ea-icon-search

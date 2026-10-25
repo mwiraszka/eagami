@@ -17,6 +17,7 @@ export const CODE_INPUT_KNOBS: ComponentKnobs = {
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
     optional: { control: 'boolean' },
+    changed: { action: 'changed' },
     completed: { action: 'completed' },
     triggerError: { control: 'boolean', demoOnly: true },
   },

@@ -385,6 +385,26 @@ describe('CodeInputComponent', () => {
     });
   });
 
+  describe('Changed output', () => {
+    it('emits the new value when the user changes it', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      typeDigit(getDigitInputs()[0], '7');
+
+      expect(spy).toHaveBeenCalledWith('7');
+    });
+
+    it('stays quiet when the form writes a value', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      component.writeValue('123');
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
   describe('aria-labelledby', () => {
     @Component({
       imports: [CodeInputComponent],
