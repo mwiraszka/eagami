@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.75.0',
+    date: '2026-10-25',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Draw 14 new icons for sorting, text indentation, banknotes, buses, five signal strength levels, archive files, medication and the scales of justice.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.74.0',
     date: '2026-10-24',
     sections: [
