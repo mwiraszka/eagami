@@ -1030,6 +1030,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'checked',
         type: 'boolean',
         default: 'false',
@@ -1263,6 +1270,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     outputs: [
+      {
+        name: 'changed',
+        type: 'string',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'completed',
         type: 'string',
@@ -2836,6 +2850,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'autocomplete',
         type: 'string | undefined',
         default: 'undefined',
@@ -2934,21 +2955,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'max',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
-      },
-      {
         name: 'maxLength',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
-      },
-      {
-        name: 'min',
         type: 'number | undefined',
         default: 'undefined',
         required: false,
@@ -3025,13 +3032,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'step',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
-      },
-      {
         name: 'type',
         type: 'InputType',
         default: "'text'",
@@ -3062,6 +3062,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'changed',
+        type: 'string',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'focused',
         type: 'FocusEvent',
         default: '',
@@ -3070,10 +3077,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     methods: [
-      {
-        name: 'clampToBounds',
-        signature: 'clampToBounds(): void',
-      },
       {
         name: 'clear',
         signature: 'clear(): void',
@@ -3493,8 +3496,8 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'maxChipWidth',
-        type: 'number | undefined',
-        default: '200',
+        type: 'string | undefined',
+        default: "'200px'",
         required: false,
         twoWay: false,
       },
@@ -3528,7 +3531,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'popoverMaxHeight',
-        type: 'number | undefined',
+        type: 'string | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -3672,6 +3675,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabelledby',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -4786,6 +4796,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     ],
     outputs: [
       {
+        name: 'changed',
+        type: 'number',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'hoverChanged',
         type: 'number | null',
         default: '',
@@ -5027,13 +5044,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'groupThousands',
         type: 'boolean',
         default: 'true',
-        required: false,
-        twoWay: false,
-      },
-      {
-        name: 'hasError',
-        type: 'boolean',
-        default: 'false',
         required: false,
         twoWay: false,
       },
@@ -5406,6 +5416,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'checked',
         type: 'boolean',
         default: 'false',
@@ -5639,7 +5656,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'maxWidth',
-        type: 'number | string | undefined',
+        type: 'string | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -5721,6 +5738,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
@@ -5778,7 +5802,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'maxHeight',
-        type: 'number | undefined',
+        type: 'string | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -5792,7 +5816,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'minHeight',
-        type: 'number | undefined',
+        type: 'string | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -5872,6 +5896,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'blurred',
         type: 'FocusEvent',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'changed',
+        type: 'string',
         default: '',
         required: false,
         twoWay: false,
@@ -6308,8 +6339,8 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'maxWidth',
-        type: 'number | undefined',
-        default: '200',
+        type: 'string | undefined',
+        default: "'200px'",
         required: false,
         twoWay: false,
       },

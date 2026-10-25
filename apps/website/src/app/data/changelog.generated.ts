@@ -14,6 +14,27 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.74.0',
+    date: '2026-10-24',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `changed` output to the input, textarea, code input, and rating, and an `aria-labelledby` input to the input, textarea, number input, checkbox, and switch.',
+          'Export an `EaStatusVariant` type that the badge, tag, alert, progress bar, switch, and toast variant types now share.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** Take every length input as a CSS length string instead of a px number: the tag, tooltip, and popover `maxWidth`, the textarea `minHeight` and `maxHeight`, and the multi-select `maxChipWidth`, `popoverMaxHeight`, and `popoverMaxWidth`.',
+          '**Breaking:** Remove `type="number"` and its `min`, `max`, and `step` inputs from the input; use the number input for numeric values.',
+          "**Breaking:** Drop the slider's `hasError` input; set `errorMsg` to show the error state.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.73.0',
     date: '2026-10-24',
     sections: [

@@ -1510,7 +1510,6 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             required: 'Requis',
             optional: 'Facultatif',
-            hasError: 'État d’erreur',
             label: 'Libellé',
             labelIcon: 'Icône du libellé',
           },
@@ -1704,6 +1703,9 @@ export const frFR: WebMessages = {
             'ToastService.resume': 'Reprend les comptes à rebours suspendus par pause.',
           },
           input: {
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
+            changed: 'Émis avec la nouvelle valeur à chaque changement.',
             spellcheck:
               'Valeur de l’attribut natif spellcheck, laissée au réglage par défaut du navigateur si elle n’est pas définie.',
             keepIcon:
@@ -1748,19 +1750,15 @@ export const frFR: WebMessages = {
             togglePasswordVisibility:
               'Bascule l’affichage du mot de passe pour les champs type="password".',
             icon: 'Composant d’icône de tête affiché avant le texte.',
-            max: 'Valeur maximale pour type="number" ; la valeur y est bornée à la perte de focus.',
-            maxLength:
-              'Nombre maximal de caractères ; appliqué pour type="number" où le maxlength natif est ignoré.',
-            min: 'Valeur minimale pour type="number" ; la valeur y est bornée à la perte de focus.',
+            maxLength: 'Nombre maximal de caractères acceptés par le champ.',
             minLength:
               'Nombre minimal de caractères, transmis en tant qu’attribut natif minlength.',
-            step: 'Incrément de pas pour les champs type="number".',
-            clampToBounds:
-              'Borne une valeur numérique dans la plage min/max configurée une fois l’édition terminée.',
           },
           'number-input': {
             allowNegative:
               'Si les valeurs négatives sont autorisées ; avec false, la valeur ne descend pas sous 0.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
@@ -1871,6 +1869,8 @@ export const frFR: WebMessages = {
             headerDivider: 'Affiche un séparateur entre l’en-tête et le corps.',
           },
           checkbox: {
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             truncate:
               'Tronque un libellé trop long pour sa colonne et révèle le texte complet dans une infobulle.',
             ariaLabel:
@@ -1891,6 +1891,7 @@ export const frFR: WebMessages = {
               'Émis avec le nouvel état coché chaque fois que l’utilisateur bascule la case à cocher.',
           },
           'code-input': {
+            changed: 'Émis avec la nouvelle valeur à chaque changement.',
             disabled: 'Désactive toutes les cases de chiffres.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
@@ -2055,6 +2056,7 @@ export const frFR: WebMessages = {
           rating: {
             allowHalf:
               'Autorise une granularité d’une demi-étoile, permettant à la valeur d’évoluer par pas de 0,5.',
+            changed: 'Émis avec la nouvelle valeur à chaque changement.',
             clearable: 'Cliquer sur la valeur actuelle réinitialise la note à 0.',
             disabled: 'Désactive la note.',
             errorMsg:
@@ -2103,7 +2105,6 @@ export const frFR: WebMessages = {
             errorMsg:
               'Message d’erreur affiché sous le curseur, remplaçant l’indication et marquant le champ comme invalide.',
             formatValue: 'Formateur qui transforme la valeur numérique en texte affiché.',
-            hasError: 'Force le style d’état d’erreur sans associer de message d’erreur.',
             hint: 'Texte d’aide affiché sous le curseur, masqué en cas d’erreur.',
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             id: 'id appliqué au curseur et à son libellé, généré automatiquement si omis.',
@@ -2135,6 +2136,8 @@ export const frFR: WebMessages = {
           switch: {
             ariaLabel:
               'Libellé accessible de l’interrupteur lorsqu’aucun libellé visible n’est rendu.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             checked: 'État actuel marche/arrêt, liable en deux sens via [(checked)].',
             disabled: 'Désactive l’interrupteur et bloque la bascule.',
             errorMsg:
@@ -2161,7 +2164,7 @@ export const frFR: WebMessages = {
             size: 'Taille visuelle de l’étiquette.',
             icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             maxWidth:
-              'Largeur maximale du tag en px ; un libellé plus long est tronqué. Définissable aussi via --ea-tag-max-width.',
+              'Largeur maximale du tag en longueur CSS ; un libellé plus long est tronqué. Définissable aussi via --ea-tag-max-width.',
             tooltip:
               'Où un libellé tronqué par maxWidth révèle son texte complet : au-dessus ou en dessous du tag, ou none pour le masquer.',
             removable:
@@ -2176,6 +2179,9 @@ export const frFR: WebMessages = {
               'Émis lorsque l’utilisateur active le bouton de suppression d’une étiquette supprimable.',
           },
           textarea: {
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
+            changed: 'Émis avec la nouvelle valeur à chaque changement.',
             disabled: 'Désactive le champ.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
@@ -2184,9 +2190,9 @@ export const frFR: WebMessages = {
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus du champ.',
             maxHeight:
-              'Plafond en pixels pour la hauteur du champ ; au-delà, le textarea défile verticalement au lieu de grandir.',
+              'Plafond de hauteur du champ en longueur CSS ; au-delà, le textarea défile verticalement au lieu de grandir.',
             minHeight:
-              'Hauteur minimale en px ; jamais inférieure à la hauteur par défaut.',
+              'Hauteur minimale en longueur CSS ; jamais inférieure à la hauteur par défaut.',
             maxLength: 'Nombre maximal de caractères que le champ accepte.',
             showCount:
               'Affiche sous le champ le nombre de caractères saisis, rapporté à maxLength lorsqu’il est défini.',
@@ -2269,7 +2275,7 @@ export const frFR: WebMessages = {
               'N’affiche la bulle que lorsque le déclencheur tronque son contenu.',
             flip: 'Déplace une bulle sans place du côté demandé vers le côté opposé.',
             maxWidth:
-              'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px). L’infobulle ne dépasse jamais la zone d’affichage.',
+              'Largeur maximale en longueur CSS ; le texte passe à la ligne à cette largeur (minimum 50px). L’infobulle ne dépasse jamais la zone d’affichage.',
             showDelay:
               'Délai en millisecondes avant que l’infobulle n’apparaisse au survol ou au focus clavier. Quitter le déclencheur avant la fin du délai annule son affichage.',
             dismissDelay:
@@ -2495,11 +2501,11 @@ export const frFR: WebMessages = {
             maxVisibleChips:
               'Nombre maximum de chips affichées dans le déclencheur avant que le reste soit regroupé en une pastille de décompte.',
             maxChipWidth:
-              'Largeur maximale d’une puce de valeur sélectionnée en px ; un libellé plus long est tronqué et révèle son texte complet dans une infobulle.',
+              'Largeur maximale d’une puce de valeur sélectionnée en longueur CSS ; un libellé plus long est tronqué et révèle son texte complet dans une infobulle.',
             popoverMaxHeight:
-              'Hauteur maximale du popover d’options en px avant que la liste ne défile.',
+              'Hauteur maximale du popover d’options en longueur CSS avant que la liste ne défile.',
             popoverMaxWidth:
-              'Largeur maximale du popover d’options en px, ou anchor pour la limiter à celle du champ.',
+              'Largeur maximale du popover d’options en longueur CSS, ou anchor pour la limiter à celle du champ.',
             options:
               'Liste des options sélectionnables affichées dans la liste déroulante, plate ou répartie en groupes.',
             placeholder:
@@ -2633,7 +2639,7 @@ export const frFR: WebMessages = {
             matchAnchorWidth:
               'Définit la largeur minimale du popover pour correspondre à celle de l’ancre.',
             maxWidth:
-              'Largeur maximale de la surface en px, ou anchor pour la limiter à celle de l’élément d’ancrage.',
+              'Largeur maximale de la surface en longueur CSS, ou anchor pour la limiter à celle de l’élément d’ancrage.',
             offset: 'Écart en px entre l’ancre et la surface du popover.',
             open: 'Indique si le popover est actuellement ouvert.',
             placement: 'Position préférée du popover par rapport à son ancre.',

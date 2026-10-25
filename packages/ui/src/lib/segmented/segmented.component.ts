@@ -3,8 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  type TemplateRef,
-  type Type,
   computed,
   forwardRef,
   input,
@@ -16,13 +14,10 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { isRtl } from '../direction';
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import type { SelectOption } from '../select-option';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
@@ -55,26 +50,15 @@ export type SegmentedSize = EaSize;
     },
   ],
 })
-export class SegmentedComponent implements ControlValueAccessor {
+export class SegmentedComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   readonly buttonEls = viewChildren<ElementRef<HTMLButtonElement>>('optionEl');
 
   readonly options = input.required<SelectOption[]>();
-  readonly label = input<string | undefined>(undefined);
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly size = input<SegmentedSize>('md');
   readonly disabled = input<boolean>(false);
-  readonly required = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the group, such as a label outside the component. */

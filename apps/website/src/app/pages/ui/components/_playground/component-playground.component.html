@@ -69,18 +69,16 @@
                   (changed)="emit(knob.name, $event ?? '')" />
               }
               @case ('number') {
-                <ea-input
-                  type="number"
-                  autocomplete="off"
+                <ea-number-input
                   [label]="knobLabel(knob)"
-                  [value]="stringValue(knob.name)"
+                  [value]="numberValue(knob.name)"
                   [hint]="rangeHint(knob)"
                   [min]="knob.min"
                   [max]="knob.max"
-                  [step]="knob.step"
-                  [maxLength]="knob.maxLength"
+                  [step]="knob.step ?? 1"
+                  [maxDigits]="knob.maxLength"
                   [disabled]="!isEnabled(knob)"
-                  (blurred)="commitNumber(knob.name, $event)"
+                  (changed)="emit(knob.name, $event ?? '')"
                   (keydown.enter)="commitOnEnter($event)" />
               }
               @case ('content') {

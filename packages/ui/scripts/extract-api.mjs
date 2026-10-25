@@ -105,11 +105,14 @@ function toMethod(method) {
   };
 }
 
+// Compodoc sorts a class's own members but appends inherited ones after them
+const byName = (a, b) => a.name.localeCompare(b.name);
+
 function buildEntry(entity) {
   const aliasMap = aliasMapFor(entity);
   const unalias = prop => ({ ...prop, name: aliasMap[prop.name] ?? prop.name });
-  const inputs = (entity.inputsClass ?? []).map(unalias);
-  const outputs = (entity.outputsClass ?? []).map(unalias);
+  const inputs = (entity.inputsClass ?? []).map(unalias).sort(byName);
+  const outputs = (entity.outputsClass ?? []).map(unalias).sort(byName);
   const inputNames = new Set(inputs.map(i => i.name));
 
   return {

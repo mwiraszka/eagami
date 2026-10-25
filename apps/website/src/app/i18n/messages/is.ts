@@ -1485,7 +1485,6 @@ export const is: WebMessages = {
             disabled: 'Óvirkt',
             required: 'Krafist',
             optional: 'Valfrjálst',
-            hasError: 'Villuástand',
             label: 'Merkimiði',
             labelIcon: 'Táknmynd merkimiða',
           },
@@ -1672,6 +1671,9 @@ export const is: WebMessages = {
             'ToastService.resume': 'Heldur áfram niðurtalningum sem pause frestaði.',
           },
           input: {
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
+            changed: 'Kviknar með nýja gildinu í hvert sinn sem það breytist.',
             spellcheck:
               'Gildi fyrir innbyggða spellcheck-eigindið, en sjálfgildi vafrans gildir sé það ekki sett.',
             keepIcon:
@@ -1715,17 +1717,13 @@ export const is: WebMessages = {
             togglePasswordVisibility:
               'Víxlar afhjúpunarástandi lykilorðs fyrir type="password" inntök.',
             icon: 'Forsetar táknmyndaeining birt á undan textanum.',
-            max: 'Hámarksgildi fyrir type="number"; gildið er fest við það við fókusmissi.',
-            maxLength:
-              'Hámarksfjöldi stafa; framfylgt fyrir type="number" þar sem innbyggt maxlength er hunsað.',
-            min: 'Lágmarksgildi fyrir type="number"; gildið er fest við það við fókusmissi.',
+            maxLength: 'Hámarksfjöldi stafa sem innsláttarreiturinn tekur við.',
             minLength: 'Lágmarksfjöldi stafa, sendur sem innbyggða minlength eigindið.',
-            step: 'Skrefahækkun fyrir type="number" inntök.',
-            clampToBounds:
-              'Festir tölugildi inn í stillta lágm./hám. bilið þegar breytingu lýkur.',
           },
           'number-input': {
             allowNegative: 'Hvort neikvæð gildi eru leyfð; þegar false er lágmarkið 0.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             labelIcon:
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
@@ -1835,6 +1833,8 @@ export const is: WebMessages = {
             headerDivider: 'Sýnir skilrúm milli hauss og meginmáls.',
           },
           checkbox: {
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             truncate: 'Styttir of langan merkimiða og sýnir allan textann í ábendingu.',
             ariaLabel:
               'Aðgengilegt nafn fyrir gátreitinn þegar enginn sýnilegur merkimiði er birtur.',
@@ -1853,6 +1853,7 @@ export const is: WebMessages = {
               'Kviknar með nýja valda ástandinu hvenær sem notandinn víxlar gátreitnum.',
           },
           'code-input': {
+            changed: 'Kviknar með nýja gildinu í hvert sinn sem það breytist.',
             disabled: 'Gerir hvern tölustafsreit óvirkan.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
@@ -2011,6 +2012,7 @@ export const is: WebMessages = {
           rating: {
             allowHalf:
               'Leyfir hálfstjörnu nákvæmni, lætur gildið hreyfast í 0,5 skrefum.',
+            changed: 'Kviknar með nýja gildinu í hvert sinn sem það breytist.',
             clearable: 'Smellur á núverandi gildi hreinsar einkunnina aftur í 0.',
             disabled: 'Gerir einkunnina óvirka.',
             errorMsg:
@@ -2060,7 +2062,6 @@ export const is: WebMessages = {
             errorMsg:
               'Villuboð sýnd fyrir neðan sleðann, koma í stað vísbendingar og merkja reitinn ógildan.',
             formatValue: 'Sniðari sem breytir tölugildinu í birta textann.',
-            hasError: 'Þvingar villuástandsstíl án þess að binda villuboð.',
             hint: 'Hjálpartexti sýndur fyrir neðan sleðann, falinn á meðan villa er sýnd.',
             labelIcon:
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
@@ -2092,6 +2093,8 @@ export const is: WebMessages = {
           switch: {
             ariaLabel:
               'Aðgengilegur merkimiði fyrir rofann þegar enginn sýnilegur merkimiði er birtur.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             checked: 'Núverandi á/af ástand, tvíátta bindanlegt með [(checked)].',
             disabled: 'Gerir rofann óvirkan og hindrar víxlun.',
             errorMsg:
@@ -2118,7 +2121,7 @@ export const is: WebMessages = {
             size: 'Sjónræn stærð merkisins.',
             icon: 'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             maxWidth:
-              'Mesta breidd merkisins í px; lengri texti styttist. Einnig stillanlegt sem --ea-tag-max-width.',
+              'Mesta breidd merkisins sem CSS-lengd; lengri texti styttist. Einnig stillanlegt sem --ea-tag-max-width.',
             tooltip:
               'Hvar texti sem maxWidth styttir birtir fulla útgáfu sína: fyrir ofan eða neðan merkið, eða none til að fela hana.',
             removable: 'Birtir fjarlægingarhnapp sem sendir removed þegar virkjaður.',
@@ -2132,6 +2135,9 @@ export const is: WebMessages = {
               'Kviknar þegar notandinn virkjar fjarlægingarhnappinn á fjarlægjanlegu merki.',
           },
           textarea: {
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
+            changed: 'Kviknar með nýja gildinu í hvert sinn sem það breytist.',
             disabled: 'Gerir reitinn óvirkan.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
@@ -2141,8 +2147,8 @@ export const is: WebMessages = {
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             maxHeight:
-              'Pixlaþak fyrir hæð reitsins; umfram það skrunast textasvæðið lóðrétt í stað þess að stækka.',
-            minHeight: 'Lágmarkshæð í px; aldrei minni en sjálfgefin hæð.',
+              'Þak fyrir hæð reitsins sem CSS-lengd; umfram það skrunast textasvæðið lóðrétt í stað þess að stækka.',
+            minHeight: 'Lágmarkshæð sem CSS-lengd; aldrei minni en sjálfgefin hæð.',
             maxLength: 'Hámarksfjöldi stafa sem reiturinn tekur við.',
             showCount:
               'Sýnir fjölda innsleginna stafa fyrir neðan reitinn, á móti maxLength þegar það er stillt.',
@@ -2221,7 +2227,7 @@ export const is: WebMessages = {
               'Sýnir ábendinguna aðeins meðan hnappurinn klippir eigið innihald.',
             flip: 'Færir ábendinguna á gagnstæða hlið þegar ekki er pláss á umbeðinni hlið.',
             maxWidth:
-              'Hámarksbreidd í pixlum; textinn brotnar við þessa breidd (50px gólf). Ábendingin fer aldrei út fyrir sýnisgluggann.',
+              'Hámarksbreidd sem CSS-lengd; textinn brotnar við þessa breidd (50px gólf). Ábendingin fer aldrei út fyrir sýnisgluggann.',
             showDelay:
               'Töf í millisekúndum áður en ábendingin birtist við sveim eða lyklaborðsfókus. Ef farið er af kveikjunni innan hennar birtist ábendingin ekki.',
             dismissDelay:
@@ -2440,10 +2446,11 @@ export const is: WebMessages = {
             maxVisibleChips:
               'Hámarksfjöldi merkja sýndur í kveikjunni áður en restin fellur saman í talningarpillu.',
             maxChipWidth:
-              'Mesta breidd valins gildisflipa í px; lengri texti styttist og birtir fulla útgáfu sína í ábendingu.',
-            popoverMaxHeight: 'Mesta hæð valglugga í px áður en listinn skrunar.',
+              'Mesta breidd valins gildisflipa sem CSS-lengd; lengri texti styttist og birtir fulla útgáfu sína í ábendingu.',
+            popoverMaxHeight:
+              'Mesta hæð valglugga sem CSS-lengd áður en listinn skrunar.',
             popoverMaxWidth:
-              'Mesta breidd valglugga í px, eða anchor til að halda honum við breidd reitsins.',
+              'Mesta breidd valglugga sem CSS-lengd, eða anchor til að halda honum við breidd reitsins.',
             options:
               'Listi valanlegra valkosta birtur í fellilistanum, flatur eða skiptur í hópa.',
             placeholder:
@@ -2572,7 +2579,7 @@ export const is: WebMessages = {
             matchAnchorWidth:
               'Stillir lágmarksbreidd sprettigluggans til að passa við breidd festunnar.',
             maxWidth:
-              'Mesta breidd flatarins í px, eða anchor til að takmarka hana við breidd akkerisins.',
+              'Mesta breidd flatarins sem CSS-lengd, eða anchor til að takmarka hana við breidd akkerisins.',
             offset: 'Bil í px milli festunnar og yfirborðs sprettigluggans.',
             open: 'Hvort sprettiglugginn er nú opinn.',
             placement: 'Æskileg staðsetning sprettigluggans miðað við festu hans.',

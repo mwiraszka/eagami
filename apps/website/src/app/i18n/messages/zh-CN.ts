@@ -1409,7 +1409,6 @@ export const zhCN: WebMessages = {
             disabled: '禁用',
             required: '必填',
             optional: '可选',
-            hasError: '错误状态',
             label: '标签',
             labelIcon: '标签图标',
           },
@@ -1576,6 +1575,9 @@ export const zhCN: WebMessages = {
             'ToastService.resume': '恢复被 pause 暂停的倒计时。',
           },
           input: {
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
+            changed: '每当值变化时携带新值触发。',
             spellcheck: '原生 spellcheck 属性的值，未设置时沿用浏览器默认行为。',
             keepIcon:
               '在字段有值时保持前置图标可见；设为 false 时图标仅与占位符一同显示。',
@@ -1611,16 +1613,13 @@ export const zhCN: WebMessages = {
             focus: '将键盘焦点移到底层原生字段。',
             togglePasswordVisibility: '为 type="password" 输入切换密码明文状态。',
             icon: '渲染在文本之前的前置图标组件。',
-            max: 'type="number" 的最大值；失焦时会将值钳制到该值。',
-            maxLength:
-              '最大字符数；对 type="number" 强制生效，因为原生 maxlength 会被忽略。',
-            min: 'type="number" 的最小值；失焦时会将值钳制到该值。',
+            maxLength: '输入框可接受的最大字符数。',
             minLength: '最小字符数，作为原生 minlength 属性传入。',
-            step: 'type="number" 输入的步进增量。',
-            clampToBounds: '编辑完成后将数值钳制到配置的最小/最大范围内。',
           },
           'number-input': {
             allowNegative: '是否允许负值；为 false 时值的下限为 0。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             labelIcon: '可选的图标组件，显示在标签文本之前。',
             label: '渲染在字段上方的文本标签。',
             placeholder: '字段为空时显示的占位符。',
@@ -1715,6 +1714,8 @@ export const zhCN: WebMessages = {
             headerDivider: '在页眉和正文之间显示分隔线。',
           },
           checkbox: {
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             truncate: '为过长的标签添加省略号，并在提示中显示完整文本。',
             ariaLabel: '未渲染可见标签时，为复选框提供的无障碍名称。',
             checked: '当前勾选状态，可通过 [(checked)] 双向绑定。',
@@ -1730,6 +1731,7 @@ export const zhCN: WebMessages = {
             changed: '每当用户切换复选框时，随新的勾选状态一同触发。',
           },
           'code-input': {
+            changed: '每当值变化时携带新值触发。',
             disabled: '禁用每个数字单元格。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
             hint: '显示在字段下方的辅助文本，在显示错误时隐藏。',
@@ -1860,6 +1862,7 @@ export const zhCN: WebMessages = {
           },
           rating: {
             allowHalf: '允许半星粒度，使值以 0.5 的增量移动。',
+            changed: '每当值变化时携带新值触发。',
             clearable: '点击当前值会将评分清除回 0。',
             disabled: '禁用该评分。',
             errorMsg: '显示在评分下方的错误消息，替换提示并将其标记为无效。',
@@ -1895,7 +1898,6 @@ export const zhCN: WebMessages = {
             disabled: '禁用该滑块。',
             errorMsg: '显示在滑块下方的错误消息，替换提示并将字段标记为无效。',
             formatValue: '将数值转换为所显示文本的格式化器。',
-            hasError: '强制启用错误状态样式，无需绑定错误消息。',
             hint: '显示在滑块下方的辅助文本，在显示错误时隐藏。',
             labelIcon: '可选的图标组件，显示在标签文本之前。',
             id: '应用于滑块及其标签的 id，省略时自动生成。',
@@ -1922,6 +1924,8 @@ export const zhCN: WebMessages = {
           },
           switch: {
             ariaLabel: '未渲染可见标签时，为开关提供的无障碍标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             checked: '当前开/关状态，可通过 [(checked)] 双向绑定。',
             disabled: '禁用开关并阻止切换。',
             errorMsg: '显示在开关下方的错误消息，替换提示并将字段标记为无效。',
@@ -1943,7 +1947,7 @@ export const zhCN: WebMessages = {
             size: '标签的视觉尺寸。',
             icon: '可选的图标组件，显示在标签文本之前。',
             maxWidth:
-              '标签的最大宽度（px）；更长的文本会被省略。也可通过 --ea-tag-max-width 设置。',
+              '标签的最大宽度（CSS 长度）；更长的文本会被省略。也可通过 --ea-tag-max-width 设置。',
             tooltip:
               '被 maxWidth 裁剪的文本在何处显示完整内容：标签上方或下方，或用 none 隐藏。',
             removable: '渲染一个移除按钮，激活时发出 removed。',
@@ -1955,14 +1959,18 @@ export const zhCN: WebMessages = {
             removed: '当用户激活可移除标签上的移除按钮时触发。',
           },
           textarea: {
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
+            changed: '每当值变化时携带新值触发。',
             disabled: '禁用该字段。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
             hint: '显示在字段下方的辅助文本，在显示错误时隐藏。',
             id: '应用于原生 textarea 和 label for 的 id，省略时自动生成。',
             labelIcon: '可选的图标组件，显示在标签文本之前。',
             label: '渲染在字段上方的文本标签。',
-            maxHeight: '字段高度的像素上限；超过后 textarea 会垂直滚动而非继续增长。',
-            minHeight: '以 px 为单位的最小高度；绝不小于默认高度。',
+            maxHeight:
+              '字段高度的上限（CSS 长度）；超过后 textarea 会垂直滚动而非继续增长。',
+            minHeight: '最小高度（CSS 长度）；绝不小于默认高度。',
             maxLength: '字段接受的最大字符数。',
             showCount:
               '在字段下方显示已输入的字符数，设置了 maxLength 时显示为相对于它的计数。',
@@ -2023,7 +2031,7 @@ export const zhCN: WebMessages = {
             whenClipped: '仅当触发元素裁切自身内容时才显示气泡。',
             flip: '当请求的一侧没有空间时，将气泡移到相反一侧。',
             maxWidth:
-              '以像素为单位的最大宽度；文本在此宽度处换行（最小 50px）。提示气泡不会超出视口。',
+              '最大宽度（CSS 长度）；文本在此宽度处换行（最小 50px）。提示气泡不会超出视口。',
             showDelay:
               '悬停或键盘聚焦后，工具提示出现前的延迟（毫秒）。在此期间离开触发器则不会显示。',
             dismissDelay:
@@ -2190,9 +2198,10 @@ export const zhCN: WebMessages = {
               '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             maxVisibleChips: '其余项折叠为计数胶囊之前，触发器中显示的最大标签数量。',
             maxChipWidth:
-              '已选值标签的最大宽度（px）；更长的文本会被省略，并在提示中显示完整内容。',
-            popoverMaxHeight: '选项浮层的最大高度（px），超出后选项列表滚动。',
-            popoverMaxWidth: '选项浮层的最大宽度（px），或用 anchor 将其限制为字段宽度。',
+              '已选值标签的最大宽度（CSS 长度）；更长的文本会被省略，并在提示中显示完整内容。',
+            popoverMaxHeight: '选项浮层的最大高度（CSS 长度），超出后选项列表滚动。',
+            popoverMaxWidth:
+              '选项浮层的最大宽度（CSS 长度），或用 anchor 将其限制为字段宽度。',
             options: '渲染在下拉列表中的可选选项列表，可为扁平列表或按组划分。',
             placeholder: '未选择选项时显示在触发器上的占位符。',
             readonly: '将字段渲染为只读。',
@@ -2291,7 +2300,8 @@ export const zhCN: WebMessages = {
             closeOnOutsideClick: '当用户在浮层及其锚点之外点击时关闭浮层。',
             flip: '当请求的放置位置溢出视口时翻转到对侧。',
             matchAnchorWidth: '将浮层的 min-width 设置为与锚点宽度一致。',
-            maxWidth: '浮层的最大宽度（px），或用 anchor 将其限制为锚点元素的宽度。',
+            maxWidth:
+              '浮层的最大宽度（CSS 长度），或用 anchor 将其限制为锚点元素的宽度。',
             offset: '锚点与浮层表面之间的间距（px）。',
             open: '浮层当前是否打开。',
             placement: '浮层相对于其锚点的首选位置。',

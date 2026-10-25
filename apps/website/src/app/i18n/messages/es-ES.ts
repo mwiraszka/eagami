@@ -1489,7 +1489,6 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             required: 'Obligatorio',
             optional: 'Opcional',
-            hasError: 'Estado de error',
             label: 'Etiqueta',
             labelIcon: 'Icono de la etiqueta',
           },
@@ -1682,6 +1681,9 @@ export const esES: WebMessages = {
             'ToastService.resume': 'Reanuda las cuentas atrás suspendidas por pause.',
           },
           input: {
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
+            changed: 'Se emite con el nuevo valor cada vez que cambia.',
             spellcheck:
               'Valor del atributo nativo spellcheck, que sin definir mantiene el valor por defecto del navegador.',
             keepIcon:
@@ -1727,19 +1729,15 @@ export const esES: WebMessages = {
             togglePasswordVisibility:
               'Alterna la visibilidad de la contraseña para los campos type="password".',
             icon: 'Componente de icono inicial renderizado antes del texto.',
-            max: 'Valor máximo para type="number"; el valor se acota a él al perder el foco.',
-            maxLength:
-              'Número máximo de caracteres; aplicado para type="number" donde el maxlength nativo se ignora.',
-            min: 'Valor mínimo para type="number"; el valor se acota a él al perder el foco.',
+            maxLength: 'Número máximo de caracteres que acepta el campo.',
             minLength:
               'Número mínimo de caracteres, pasado como atributo nativo minlength.',
-            step: 'Incremento de paso para los campos type="number".',
-            clampToBounds:
-              'Acota un valor numérico dentro del rango mín./máx. configurado una vez que finaliza la edición.',
           },
           'number-input': {
             allowNegative:
               'Si se permiten valores negativos; con false, el valor se limita a 0.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             labelIcon:
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta mostrada encima del campo.',
@@ -1851,6 +1849,8 @@ export const esES: WebMessages = {
             headerDivider: 'Muestra un separador entre el encabezado y el cuerpo.',
           },
           checkbox: {
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             truncate:
               'Recorta con puntos suspensivos una etiqueta demasiado larga y muestra el texto completo en un tooltip.',
             ariaLabel:
@@ -1871,6 +1871,7 @@ export const esES: WebMessages = {
               'Se emite con el nuevo estado de marcado cada vez que el usuario alterna la casilla.',
           },
           'code-input': {
+            changed: 'Se emite con el nuevo valor cada vez que cambia.',
             disabled: 'Deshabilita todas las celdas de dígitos.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
@@ -2045,6 +2046,7 @@ export const esES: WebMessages = {
           rating: {
             allowHalf:
               'Permite granularidad de media estrella, dejando que el valor avance en incrementos de 0,5.',
+            changed: 'Se emite con el nuevo valor cada vez que cambia.',
             clearable:
               'Hacer clic en el valor actual borra la valoración volviéndola a 0.',
             disabled: 'Deshabilita la valoración.',
@@ -2097,8 +2099,6 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el control deslizante, que sustituye la ayuda y marca el campo como no válido.',
             formatValue:
               'Formateador que convierte el valor numérico en el texto mostrado.',
-            hasError:
-              'Fuerza el estilo de estado de error sin vincular un mensaje de error.',
             hint: 'Texto de ayuda mostrado bajo el control deslizante, oculto cuando hay un error.',
             labelIcon:
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
@@ -2132,6 +2132,8 @@ export const esES: WebMessages = {
           switch: {
             ariaLabel:
               'Etiqueta accesible para el interruptor cuando no se renderiza ninguna etiqueta visible.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             checked:
               'Estado actual de encendido/apagado, vinculable en dos sentidos mediante [(checked)].',
             disabled: 'Deshabilita el interruptor y bloquea su alternancia.',
@@ -2159,7 +2161,7 @@ export const esES: WebMessages = {
             size: 'Tamaño visual de la etiqueta.',
             icon: 'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             maxWidth:
-              'Ancho máximo de la etiqueta en px; un texto más largo se recorta con puntos suspensivos. También configurable como --ea-tag-max-width.',
+              'Ancho máximo de la etiqueta como longitud CSS; un texto más largo se recorta con puntos suspensivos. También configurable como --ea-tag-max-width.',
             tooltip:
               'Dónde muestra su texto completo una etiqueta recortada por maxWidth: encima o debajo del tag, o none para ocultarlo.',
             removable:
@@ -2174,6 +2176,9 @@ export const esES: WebMessages = {
               'Se emite cuando el usuario activa el botón de eliminación en una etiqueta eliminable.',
           },
           textarea: {
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
+            changed: 'Se emite con el nuevo valor cada vez que cambia.',
             disabled: 'Deshabilita el campo.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
@@ -2183,8 +2188,9 @@ export const esES: WebMessages = {
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             maxHeight:
-              'Límite en píxeles para la altura del campo; al superarlo, el textarea se desplaza verticalmente en lugar de crecer.',
-            minHeight: 'Altura mínima en px; nunca inferior a la altura predeterminada.',
+              'Límite para la altura del campo como longitud CSS; al superarlo, el textarea se desplaza verticalmente en lugar de crecer.',
+            minHeight:
+              'Altura mínima como longitud CSS; nunca inferior a la altura predeterminada.',
             maxLength: 'Número máximo de caracteres que acepta el campo.',
             showCount:
               'Muestra bajo el campo el número de caracteres escritos, frente a maxLength cuando está definido.',
@@ -2268,7 +2274,7 @@ export const esES: WebMessages = {
               'Muestra el globo solo mientras el activador recorta su propio contenido.',
             flip: 'Mueve el globo al lado opuesto cuando no hay espacio en el lado solicitado.',
             maxWidth:
-              'Ancho máximo en píxeles; el texto se ajusta a este ancho (mínimo 50px). El tooltip nunca supera el viewport.',
+              'Ancho máximo como longitud CSS; el texto se ajusta a este ancho (mínimo 50px). El tooltip nunca supera el viewport.',
             showDelay:
               'Retardo en milisegundos antes de que el tooltip aparezca al pasar el cursor o al recibir el foco del teclado. Si se abandona el activador antes, no llega a mostrarse.',
             dismissDelay:
@@ -2499,11 +2505,11 @@ export const esES: WebMessages = {
             maxVisibleChips:
               'Número máximo de chips mostrados en el activador antes de que el resto se contraigan en una pastilla con el recuento.',
             maxChipWidth:
-              'Ancho máximo de un chip de valor seleccionado en px; un texto más largo se recorta y muestra su contenido completo en un tooltip.',
+              'Ancho máximo de un chip de valor seleccionado como longitud CSS; un texto más largo se recorta y muestra su contenido completo en un tooltip.',
             popoverMaxHeight:
-              'Altura máxima del popover de opciones en px antes de que la lista se desplace.',
+              'Altura máxima del popover de opciones como longitud CSS antes de que la lista se desplace.',
             popoverMaxWidth:
-              'Ancho máximo del popover de opciones en px, o anchor para limitarlo al ancho del campo.',
+              'Ancho máximo del popover de opciones como longitud CSS, o anchor para limitarlo al ancho del campo.',
             options:
               'Lista de opciones seleccionables mostradas en la lista desplegable, plana o dividida en grupos.',
             placeholder:
@@ -2641,7 +2647,7 @@ export const esES: WebMessages = {
             matchAnchorWidth:
               'Establece el min-width del popover para que coincida con el ancho del ancla.',
             maxWidth:
-              'Ancho máximo de la superficie en px, o anchor para limitarla al ancho del elemento ancla.',
+              'Ancho máximo de la superficie como longitud CSS, o anchor para limitarla al ancho del elemento ancla.',
             offset: 'Espacio en px entre el ancla y la superficie del popover.',
             open: 'Indica si el popover está actualmente abierto.',
             placement: 'Posición preferida del popover respecto a su ancla.',

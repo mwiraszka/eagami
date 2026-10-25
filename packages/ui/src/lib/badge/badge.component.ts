@@ -8,9 +8,10 @@ import {
 } from '@angular/core';
 
 import { type EaSize } from '../sizes';
+import { type EaStatusVariant } from '../variants';
 
 /** Semantic colour scheme of a badge. */
-export type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+export type BadgeVariant = EaStatusVariant;
 /** Visual size of a badge. */
 /**
  * The badge ladder sits one step below the shared scale (its `xs` is already

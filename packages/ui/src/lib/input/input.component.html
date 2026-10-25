@@ -11,8 +11,7 @@
 
   <div
     class="ea-input-wrapper"
-    [ngClass]="wrapperClasses()"
-    [style.max-width]="numberWidth()">
+    [ngClass]="wrapperClasses()">
     @if ((keepIcon() || !value()) && icon(); as leadingIcon) {
       <span
         class="ea-input-wrapper__icon"
@@ -41,13 +40,11 @@
         [attr.autocomplete]="autocomplete() ?? null"
         [attr.spellcheck]="spellcheck() ?? null"
         [attr.list]="list() ?? null"
-        [attr.min]="type() === 'number' ? (min() ?? null) : null"
-        [attr.max]="type() === 'number' ? (max() ?? null) : null"
-        [attr.step]="type() === 'number' ? (step() ?? null) : null"
         [attr.maxlength]="maxLength() ?? null"
         [attr.minlength]="minLength() ?? null"
         [attr.role]="role() ?? null"
-        [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
+        [attr.aria-label]="label() || ariaLabelledby() ? null : (ariaLabel() ?? null)"
+        [attr.aria-labelledby]="ariaLabelledby() ?? null"
         [attr.aria-expanded]="ariaExpanded() ?? null"
         [attr.aria-controls]="ariaControls() ?? null"
         [attr.aria-activedescendant]="ariaActivedescendant() ?? null"
@@ -57,8 +54,6 @@
           showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
         "
         (input)="handleInput($event)"
-        (keydown)="handleKeydown($event)"
-        (wheel)="handleWheel($event)"
         (focus)="handleFocus($event)"
         (blur)="handleBlur($event)" />
 

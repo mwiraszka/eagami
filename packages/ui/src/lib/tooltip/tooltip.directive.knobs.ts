@@ -13,7 +13,7 @@ export const TOOLTIP_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['top', 'bottom', 'left', 'right'],
     },
-    maxWidth: { control: 'number', unit: 'px', min: 50, max: 400, maxLength: 3 },
+    maxWidth: { control: 'text' },
     showDelay: {
       control: 'number',
       unit: 'ms',
@@ -36,7 +36,7 @@ export const TOOLTIP_KNOBS: ComponentKnobs = {
   args: {
     eaTooltip: 'Tooltips add extra context on hover or focus',
     tooltipPosition: 'top',
-    maxWidth: 200,
+    maxWidth: '200px',
     showDelay: 0,
     dismissDelay: 150,
     flip: true,

@@ -59,7 +59,7 @@ describe('TagComponent', () => {
     });
 
     it('caps the tag at maxWidth', () => {
-      fixture.componentRef.setInput('maxWidth', 120);
+      fixture.componentRef.setInput('maxWidth', '120px');
       fixture.detectChanges();
 
       expect(getTag()!.style.getPropertyValue('--ea-tag-max-width')).toBe('120px');

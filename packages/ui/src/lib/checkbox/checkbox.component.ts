@@ -11,12 +11,9 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldControlBase } from '../field/field-base.directive';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { type EaSize } from '../sizes';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { uniqueId } from '../unique-id';
@@ -36,6 +33,7 @@ export type CheckboxSize = EaSize;
   styleUrl: './checkbox.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
+    '[attr.aria-labelledby]': 'null',
     '[class.ea-checkbox-host--truncate]': 'truncate()',
   },
   providers: [
@@ -46,8 +44,7 @@ export type CheckboxSize = EaSize;
     },
   ],
 })
-export class CheckboxComponent implements ControlValueAccessor {
-  readonly label = input<string | undefined>(undefined);
+export class CheckboxComponent extends FieldControlBase implements ControlValueAccessor {
   /**
    * Optional supplementary value shown immediately after the label, dimmed
    * to the tertiary text token. Renders inside the same `<span>` as the
@@ -56,12 +53,6 @@ export class CheckboxComponent implements ControlValueAccessor {
    * fighting flex / inline-flow centring at the consumer's call site.
    */
   readonly count = input<string | number | undefined>(undefined);
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly size = input<CheckboxSize>('md');
   /**
    * Ellipsize a label too long for the space the checkbox is given, revealing
@@ -70,9 +61,12 @@ export class CheckboxComponent implements ControlValueAccessor {
    */
   readonly truncate = input<boolean>(false);
   readonly disabled = input<boolean>(false);
-  readonly required = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the checkbox, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly id = input<string>(uniqueId('ea-checkbox'));
 
   readonly checked = model<boolean>(false);

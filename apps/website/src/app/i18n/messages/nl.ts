@@ -1473,7 +1473,6 @@ export const nl: WebMessages = {
             disabled: 'Uitgeschakeld',
             required: 'Verplicht',
             optional: 'Optioneel',
-            hasError: 'Fouttoestand',
             label: 'Label',
             labelIcon: 'Labelicoon',
           },
@@ -1663,6 +1662,10 @@ export const nl: WebMessages = {
               'Hervat de aftellingen die door pause zijn opgeschort.',
           },
           input: {
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
+            changed:
+              'Wordt geactiveerd met de nieuwe waarde telkens wanneer deze verandert.',
             spellcheck:
               'Waarde voor het native spellcheck-attribuut, zonder instelling geldt de standaard van de browser.',
             keepIcon:
@@ -1707,19 +1710,15 @@ export const nl: WebMessages = {
             togglePasswordVisibility:
               'Wisselt de wachtwoordzichtbaarheid voor type="password"-velden.',
             icon: 'Voorloopicooncomponent weergegeven vóór de tekst.',
-            max: 'Maximumwaarde voor type="number"; de waarde wordt erop afgekapt bij blur.',
-            maxLength:
-              'Maximaal aantal tekens; afgedwongen voor type="number" waar native maxlength wordt genegeerd.',
-            min: 'Minimumwaarde voor type="number"; de waarde wordt erop afgekapt bij blur.',
+            maxLength: 'Maximaal aantal tekens dat het invoerveld accepteert.',
             minLength:
               'Minimaal aantal tekens, doorgegeven als het native minlength-attribuut.',
-            step: 'Stapincrement voor type="number"-velden.',
-            clampToBounds:
-              'Kapt een numerieke waarde af binnen het ingestelde min/max-bereik zodra het bewerken klaar is.',
           },
           'number-input': {
             allowNegative:
               'Of negatieve waarden zijn toegestaan; bij false is de ondergrens 0.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             labelIcon:
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
@@ -1833,6 +1832,8 @@ export const nl: WebMessages = {
             headerDivider: 'Toont een scheiding tussen de koptekst en de body.',
           },
           checkbox: {
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             truncate:
               'Kort een te lang label af en toont de volledige tekst in een tooltip.',
             ariaLabel:
@@ -1853,6 +1854,8 @@ export const nl: WebMessages = {
               'Wordt geactiveerd met de nieuwe aangevinkte toestand telkens wanneer de gebruiker de checkbox omschakelt.',
           },
           'code-input': {
+            changed:
+              'Wordt geactiveerd met de nieuwe waarde telkens wanneer deze verandert.',
             disabled: 'Schakelt elke cijfercel uit.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
@@ -2020,6 +2023,8 @@ export const nl: WebMessages = {
           rating: {
             allowHalf:
               'Staat granulariteit van halve sterren toe, waardoor de waarde in stappen van 0,5 kan bewegen.',
+            changed:
+              'Wordt geactiveerd met de nieuwe waarde telkens wanneer deze verandert.',
             clearable:
               'Door op de huidige waarde te klikken wordt de beoordeling teruggezet naar 0.',
             disabled: 'Schakelt de beoordeling uit.',
@@ -2072,7 +2077,6 @@ export const nl: WebMessages = {
               'Foutmelding onder de slider, die de hint vervangt en het veld als ongeldig markeert.',
             formatValue:
               'Opmaakfunctie die de numerieke waarde omzet in de weergegeven tekst.',
-            hasError: 'Forceert de fouttoestandsstijl zonder een foutmelding te binden.',
             hint: 'Hulptekst onder de slider, verborgen terwijl een fout wordt getoond.',
             labelIcon:
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
@@ -2105,6 +2109,8 @@ export const nl: WebMessages = {
           switch: {
             ariaLabel:
               'Toegankelijk label voor de switch wanneer geen zichtbaar label wordt weergegeven.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             checked:
               'Huidige aan/uit-toestand, in twee richtingen te binden via [(checked)].',
             disabled: 'Schakelt de switch uit en blokkeert omschakelen.',
@@ -2131,7 +2137,7 @@ export const nl: WebMessages = {
             size: 'Visuele grootte van de tag.',
             icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             maxWidth:
-              'Maximale breedte van de tag in px; een langer label wordt afgekapt. Ook instelbaar als --ea-tag-max-width.',
+              'Maximale breedte van de tag als CSS-lengte; een langer label wordt afgekapt. Ook instelbaar als --ea-tag-max-width.',
             tooltip:
               'Waar een door maxWidth afgekapt label zijn volledige tekst toont: boven of onder de tag, of none om het te onderdrukken.',
             removable:
@@ -2146,6 +2152,10 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer de gebruiker de verwijderknop op een verwijderbare tag activeert.',
           },
           textarea: {
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
+            changed:
+              'Wordt geactiveerd met de nieuwe waarde telkens wanneer deze verandert.',
             disabled: 'Schakelt het veld uit.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
@@ -2155,8 +2165,9 @@ export const nl: WebMessages = {
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             maxHeight:
-              'Pixelplafond voor de hoogte van het veld; daarboven scrollt de textarea verticaal in plaats van te groeien.',
-            minHeight: 'Minimumhoogte in px; nooit minder dan de standaardhoogte.',
+              'Plafond voor de hoogte van het veld als CSS-lengte; daarboven scrollt de textarea verticaal in plaats van te groeien.',
+            minHeight:
+              'Minimumhoogte als CSS-lengte; nooit minder dan de standaardhoogte.',
             maxLength: 'Maximaal aantal tekens dat het veld accepteert.',
             showCount:
               'Toont onder het veld het aantal getypte tekens, afgezet tegen maxLength wanneer die is ingesteld.',
@@ -2240,7 +2251,7 @@ export const nl: WebMessages = {
               'Toont de ballon alleen zolang de trigger zijn eigen inhoud afkapt.',
             flip: 'Verplaatst een ballon naar de andere kant wanneer er aan de gevraagde kant geen ruimte is.',
             maxWidth:
-              'Maximumbreedte in pixels; de tekst breekt af bij deze breedte (ondergrens van 50px). De tooltip wordt nooit groter dan de viewport.',
+              'Maximumbreedte als CSS-lengte; de tekst breekt af bij deze breedte (ondergrens van 50px). De tooltip wordt nooit groter dan de viewport.',
             showDelay:
               'Vertraging in milliseconden voordat de tooltip verschijnt bij hover of toetsenbordfocus. Wie de trigger eerder verlaat, krijgt de tooltip niet te zien.',
             dismissDelay:
@@ -2469,11 +2480,11 @@ export const nl: WebMessages = {
             maxVisibleChips:
               'Maximaal aantal chips getoond in de trigger voordat de rest samenklapt tot een aantalpil.',
             maxChipWidth:
-              'Maximale breedte van een geselecteerde-waardechip in px; een langer label wordt afgekapt en toont zijn volledige tekst in een tooltip.',
+              'Maximale breedte van een geselecteerde-waardechip als CSS-lengte; een langer label wordt afgekapt en toont zijn volledige tekst in een tooltip.',
             popoverMaxHeight:
-              'Maximale hoogte van de optiepopover in px voordat de lijst scrolt.',
+              'Maximale hoogte van de optiepopover als CSS-lengte voordat de lijst scrolt.',
             popoverMaxWidth:
-              'Maximale breedte van de optiepopover in px, of anchor om deze op de veldbreedte te houden.',
+              'Maximale breedte van de optiepopover als CSS-lengte, of anchor om deze op de veldbreedte te houden.',
             options:
               'Lijst van selecteerbare opties weergegeven in de dropdownlijst, plat of opgesplitst in groepen.',
             placeholder:
@@ -2610,7 +2621,7 @@ export const nl: WebMessages = {
             matchAnchorWidth:
               'Stelt de min-width van de popover in om overeen te komen met de breedte van de anchor.',
             maxWidth:
-              'Maximale breedte van het oppervlak in px, of anchor om het te beperken tot de breedte van het ankerelement.',
+              'Maximale breedte van het oppervlak als CSS-lengte, of anchor om het te beperken tot de breedte van het ankerelement.',
             offset: 'Tussenruimte in px tussen de anchor en het popoveroppervlak.',
             open: 'Of de popover momenteel open is.',
             placement: 'Voorkeurspositie van de popover ten opzichte van zijn anchor.',

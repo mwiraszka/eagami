@@ -342,4 +342,24 @@ describe('RatingComponent', () => {
       host.destroy();
     });
   });
+
+  describe('Changed output', () => {
+    it('emits the new value when the user changes it', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+
+      expect(spy).toHaveBeenCalledWith(1);
+    });
+
+    it('stays quiet when the form writes a value', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      component.writeValue(3);
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
 });

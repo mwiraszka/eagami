@@ -10,9 +10,10 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { type EaSize } from '../sizes';
+import { type EaStatusVariant } from '../variants';
 
 /** Semantic colour scheme of the progress bar. */
-export type ProgressBarVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+export type ProgressBarVariant = EaStatusVariant;
 /** Visual height of the progress bar. */
 export type ProgressBarSize = EaSize;
 

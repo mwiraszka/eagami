@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -304,6 +305,30 @@ describe('CheckboxComponent', () => {
       fixture.componentRef.setInput('aria-label', 'Should not be used');
       fixture.detectChanges();
       expect(getNativeInput().getAttribute('aria-label')).toBeNull();
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [CheckboxComponent],
+      template: `
+        <span id="terms-label">Accept the terms</span>
+        <ea-checkbox aria-labelledby="terms-label" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-checkbox');
+      const named = component.querySelector('input')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('terms-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

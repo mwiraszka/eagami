@@ -3,8 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  type TemplateRef,
-  type Type,
   computed,
   forwardRef,
   inject,
@@ -16,13 +14,10 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption, SelectOptions } from '../select-option';
@@ -61,17 +56,13 @@ export type AutocompleteSize = EaSize;
     },
   ],
 })
-export class AutocompleteComponent implements ControlValueAccessor {
+export class AutocompleteComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   private readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
   private readonly i18n = inject(EagamiI18nService);
 
-  readonly label = input<string | undefined>(undefined);
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
   /** Accessible name for the input and suggestion list when no visible label is provided. */
   readonly ariaLabel = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
@@ -80,13 +71,6 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly size = input<AutocompleteSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
-  readonly required = input<boolean>(false);
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly minLength = input<number>(0);
   /** Maximum number of characters the input accepts (native `maxlength`). */
   readonly maxLength = input<number | undefined>(undefined);

@@ -19,6 +19,7 @@ export const RATING_KNOBS: ComponentKnobs = {
     required: { control: 'boolean' },
     optional: { control: 'boolean' },
     clearable: { control: 'boolean' },
+    changed: { action: 'changed' },
     hoverChanged: { action: 'hoverChanged' },
     triggerError: { control: 'boolean', demoOnly: true },
   },

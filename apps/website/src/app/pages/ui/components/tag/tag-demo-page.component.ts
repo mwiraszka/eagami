@@ -27,7 +27,7 @@ interface TagKnobState {
   variant: TagVariant;
   size: TagSize;
   icon: string;
-  maxWidth: number;
+  maxWidth: string;
   color: string;
   ink: string;
   tooltip: TagTooltip;

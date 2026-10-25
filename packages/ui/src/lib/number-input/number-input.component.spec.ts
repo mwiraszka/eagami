@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NumberInputComponent } from './number-input.component';
@@ -252,6 +253,30 @@ describe('NumberInputComponent', () => {
       component.writeValue(Number.NaN);
 
       expect(component.value()).toBeNull();
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [NumberInputComponent],
+      template: `
+        <span id="quantity-label">Quantity</span>
+        <ea-number-input aria-labelledby="quantity-label" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-number-input');
+      const named = component.querySelector('input')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('quantity-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

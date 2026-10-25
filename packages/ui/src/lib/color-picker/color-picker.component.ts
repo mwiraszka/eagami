@@ -4,8 +4,6 @@ import {
   Component,
   type ElementRef,
   Injector,
-  type TemplateRef,
-  type Type,
   afterNextRender,
   computed,
   effect,
@@ -19,13 +17,10 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { DropletIconComponent } from '../icons/droplet.component';
 import { XIconComponent } from '../icons/x.component';
@@ -113,7 +108,10 @@ const DEFAULT_PRESETS: readonly string[] = [
     },
   ],
 })
-export class ColorPickerComponent implements ControlValueAccessor {
+export class ColorPickerComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   protected readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
   private readonly svAreaEl = viewChild<ElementRef<HTMLDivElement>>('svAreaEl');
   private readonly hueTrackEl = viewChild<ElementRef<HTMLDivElement>>('hueTrackEl');
@@ -121,24 +119,10 @@ export class ColorPickerComponent implements ControlValueAccessor {
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
-  readonly label = input<string | undefined>(undefined);
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<ColorPickerSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
-  readonly required = input<boolean>(false);
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   /** Whether to show the alpha slider. When `false` the emitted value always has alpha = 1. */
   readonly showAlpha = input<boolean>(true);
   /** Whether to show the clear button when a value is set. */

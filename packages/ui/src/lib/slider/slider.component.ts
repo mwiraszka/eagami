@@ -3,8 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  type TemplateRef,
-  type Type,
   computed,
   forwardRef,
   inject,
@@ -17,13 +15,10 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { isRtl } from '../direction';
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { formatGroupedNumber } from '../i18n/format-number';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { type EaSize } from '../sizes';
@@ -63,34 +58,19 @@ const SNAP_REACH_PX = 8;
     },
   ],
 })
-export class SliderComponent implements ControlValueAccessor {
+export class SliderComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   private readonly i18n = inject(EagamiI18nService);
 
   readonly trackEl = viewChild<ElementRef<HTMLDivElement>>('trackEl');
 
-  readonly label = input<string | undefined>(undefined);
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
-  readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
-  /** Force the error-state styling without binding `errorMsg`. Lets consumers
-   *  render the error text themselves (e.g. above the slider in a form layout)
-   *  while still getting the built-in recolour of the fill and thumb. */
-  readonly hasError = input<boolean>(false);
   readonly min = input<number>(0);
   readonly max = input<number>(100);
   readonly step = input<number>(1);
   readonly size = input<SliderSize>('md');
   readonly disabled = input<boolean>(false);
-  readonly required = input<boolean>(false);
   readonly showValue = input<boolean>(false);
   readonly showMinMaxLabels = input<boolean>(false);
   readonly formatValue = input<(value: number) => string>(FORMAT_PLAIN);
@@ -169,16 +149,12 @@ export class SliderComponent implements ControlValueAccessor {
     showErrorsOn: this.showErrorsOn,
   });
   readonly errorText = this.errorState.error;
-  readonly errored = computed(() => this.hasError() || this.showError());
   readonly showError = computed(() => this.errorText() !== null);
-  /* Hint stays visible when the consumer is rendering the error elsewhere
-     (`hasError=true` without `errorMsg`); only the slider's own inline message
-     replaces it. */
   readonly showHint = computed(() => !!this.hint() && !this.showError());
 
   readonly hostClasses = computed(() => ({
     [`ea-slider--${this.size()}`]: true,
-    'ea-slider--error': this.errored(),
+    'ea-slider--error': this.showError(),
     'ea-slider--disabled': this.isDisabled(),
     'ea-slider--dragging': this.dragging(),
   }));

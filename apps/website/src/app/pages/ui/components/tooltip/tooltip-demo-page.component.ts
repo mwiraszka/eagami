@@ -30,7 +30,7 @@ interface TooltipKnobState {
   [key: string]: KnobValue;
   eaTooltip: string;
   tooltipPosition: TooltipPosition;
-  maxWidth: number;
+  maxWidth: string;
   showDelay: number;
   dismissDelay: number;
   flip: boolean;

@@ -14,7 +14,7 @@
     [ngClass]="wrapperClasses()"
     [style.resize]="resize()"
     [style.min-height]="minHeightStyle()"
-    [style.max-height.px]="maxHeight() ?? null">
+    [style.max-height]="maxHeight() ?? null">
     <textarea
       #textareaEl
       class="ea-textarea"
@@ -27,7 +27,8 @@
       [required]="required()"
       [value]="value()"
       [attr.maxlength]="maxLength() ?? null"
-      [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
+      [attr.aria-label]="label() || ariaLabelledby() ? null : (ariaLabel() ?? null)"
+      [attr.aria-labelledby]="ariaLabelledby() ?? null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="describedBy()"
       (input)="handleInput($event)"

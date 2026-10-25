@@ -2,8 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  type TemplateRef,
-  type Type,
   ViewEncapsulation,
   afterNextRender,
   computed,
@@ -15,13 +13,10 @@ import {
 } from '@angular/core';
 import { type AbstractControl, NgControl } from '@angular/forms';
 
-import {
-  type EaErrorMessages,
-  controlErrorStateFrom,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { controlErrorStateFrom } from '../forms/control-error-state';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
+import { LabelledFieldControlBase } from './field-base.directive';
 import { FieldLabelComponent } from './field-label.component';
 import { FieldMessagesComponent } from './field-messages.component';
 
@@ -51,27 +46,9 @@ export type FormFieldSize = EaSize;
   encapsulation: ViewEncapsulation.None,
   imports: [FieldLabelComponent, FieldMessagesComponent],
 })
-export class FormFieldComponent {
+export class FormFieldComponent extends LabelledFieldControlBase {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  /** Text label rendered above the control. */
-  readonly label = input<string | undefined>(undefined);
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
-  /** Helper text shown below the control; hidden while an error is showing. */
-  readonly hint = input<string | undefined>(undefined);
-  /** Error message shown below the control; replaces the hint and flags the field invalid. */
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for the projected form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
-  /** Marks the field as required. */
-  readonly required = input<boolean>(false);
   /** Visual size of the field; the label, control text, spacing, and messages scale with it. */
   readonly size = input<FormFieldSize>('md');
   /** id seed for the label and message wiring; auto-generated when omitted. */
@@ -100,6 +77,7 @@ export class FormFieldComponent {
   protected readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   constructor() {
+    super();
     // Browser-only: the server render ships the plain markup and the label and
     // aria wiring attach after hydration
     afterNextRender(() => this.rendered.set(true));

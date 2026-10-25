@@ -4,7 +4,6 @@ import {
   Component,
   type ElementRef,
   Injector,
-  type TemplateRef,
   type Type,
   afterNextRender,
   computed,
@@ -19,15 +18,12 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { LabelledFieldControlBase } from '../field/field-base.directive';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import { injectTypedPlaceholder } from '../field/typed-placeholder';
 import { TypedPlaceholderComponent } from '../field/typed-placeholder.component';
-import {
-  type EaErrorMessages,
-  injectControlErrorState,
-} from '../forms/control-error-state';
-import type { EaShowErrorsOn } from '../forms/forms-config';
+import { injectControlErrorState } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
@@ -38,8 +34,7 @@ import { uniqueId } from '../unique-id';
 /** Visual size of the input. */
 export type InputSize = EaSize;
 /** HTML `type` attribute applied to the underlying `<input>`. */
-export type InputType =
-  'text' | 'email' | 'password' | 'number' | 'search' | 'tel' | 'url';
+export type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
 
 /**
  * Single-line text field with label, hint, and error message support.
@@ -52,6 +47,9 @@ export type InputType =
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   imports: [
     EyeIconComponent,
     EyeOffIconComponent,
@@ -70,21 +68,20 @@ export type InputType =
     },
   ],
 })
-export class InputComponent implements ControlValueAccessor {
+export class InputComponent
+  extends LabelledFieldControlBase
+  implements ControlValueAccessor
+{
   readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
-  /** Text label rendered above the field. */
-  readonly label = input<string | undefined>(undefined);
-  /** Optional icon component rendered before the label text. */
-  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
-  /** Help revealed by an info button beside the label, as plain text or a template. */
-  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
-  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
-  readonly optional = input<boolean>(false);
   /** Accessible name for the control when no visible `label` is set. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the field, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   /** ARIA role applied to the native input, e.g. `combobox` for a typeahead host. */
   readonly role = input<string | undefined>(undefined);
   /** Expanded state of a controlled popup, forwarded as `aria-expanded`. */
@@ -122,33 +119,17 @@ export class InputComponent implements ControlValueAccessor {
   readonly keepIcon = input<boolean>(true);
   /** Visual size of the field. */
   readonly size = input<InputSize>('md');
-  /** Helper text shown below the field; hidden while an error is showing. */
-  readonly hint = input<string | undefined>(undefined);
-  /** Error message shown below the field; replaces the hint and flags the field invalid. */
-  readonly errorMsg = input<string | undefined>(undefined);
-  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
-  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
-  /** When the error shows: `'change'` once the user changes the field and leaves it, `'blur'` once they leave it, even unchanged, `'touch'` the same but live while they edit; unset follows the app-wide `forms` option of `provideEagamiUi`. */
-  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   /** Disables the field. */
   readonly disabled = input<boolean>(false);
   /** Renders the field read-only. */
   readonly readonly = input<boolean>(false);
-  /** Marks the field as required. */
-  readonly required = input<boolean>(false);
   /** Value for the native `autocomplete` attribute. */
   readonly autocomplete = input<string | undefined>(undefined);
   /** Value for the native `spellcheck` attribute; left to the browser default when unset. */
   readonly spellcheck = input<boolean | undefined>(undefined);
   /** `id` of a `<datalist>` to associate for native suggestions. */
   readonly list = input<string | undefined>(undefined);
-  /** Minimum value for `type="number"`; the value is clamped to it on blur. */
-  readonly min = input<number | undefined>(undefined);
-  /** Maximum value for `type="number"`; the value is clamped to it on blur. */
-  readonly max = input<number | undefined>(undefined);
-  /** Step increment for `type="number"`. */
-  readonly step = input<number | undefined>(undefined);
-  /** Maximum number of characters; enforced for `type="number"`, where native `maxlength` is ignored. */
+  /** Maximum number of characters (native `maxlength`). */
   readonly maxLength = input<number | undefined>(undefined);
   /** Minimum number of characters (native `minlength`). */
   readonly minLength = input<number | undefined>(undefined);
@@ -163,6 +144,8 @@ export class InputComponent implements ControlValueAccessor {
 
   /** Current field value; two-way bindable via `[(value)]`. */
   readonly value = model<string>('');
+  /** Fires with the new value whenever the user edits the field. */
+  readonly changed = output<string>();
 
   readonly isFocused = signal(false);
   readonly passwordVisible = signal(false);
@@ -212,26 +195,8 @@ export class InputComponent implements ControlValueAccessor {
     'ea-input-wrapper--readonly': this.readonly(),
   }));
 
-  /** Characters a bounded number field can hold, from `maxLength` or its bounds' digits. */
-  private readonly numberCharCapacity = computed<number | null>(() => {
-    if (this.type() !== 'number') {
-      return null;
-    }
-    const maxLen = this.maxLength();
-    if (maxLen != null) {
-      return maxLen;
-    }
-    const bounds = [this.min(), this.max()].filter((v): v is number => v != null);
-    return bounds.length ? Math.max(...bounds.map(v => String(v).length)) : null;
-  });
-
-  /** Caps a bounded number field to the widest value it can hold. */
-  readonly numberWidth = computed<string | null>(() => {
-    const capacity = this.numberCharCapacity();
-    return capacity == null ? null : `calc(${capacity}ch + 2em)`;
-  });
-
   constructor() {
+    super();
     // `afterNextRender` runs once the input has actually been inserted into
     // the DOM and avoids SSR, so the element is guaranteed focusable.
     afterNextRender(
@@ -273,32 +238,10 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   handleInput(event: Event): void {
-    const el = event.target as HTMLInputElement;
-    let value = el.value;
-    const maxLen = this.maxLength();
-    // Native maxlength is ignored on number inputs, so enforce it here
-    if (this.type() === 'number' && maxLen != null && value.length > maxLen) {
-      value = value.slice(0, maxLen);
-      el.value = value;
-    }
+    const value = (event.target as HTMLInputElement).value;
     this.value.set(value);
     this.onChange(value);
-  }
-
-  handleKeydown(event: KeyboardEvent): void {
-    // Scientific notation has no place in these fields and breaks the width and
-    // length bounds, so block the exponent key on number inputs.
-    if (this.type() === 'number' && (event.key === 'e' || event.key === 'E')) {
-      event.preventDefault();
-    }
-  }
-
-  handleWheel(event: WheelEvent): void {
-    // A focused number input changes value on scroll by default, easy to trigger
-    // by accident while scrolling the page.
-    if (this.type() === 'number' && this.isFocused()) {
-      event.preventDefault();
-    }
+    this.changed.emit(value);
   }
 
   handleFocus(event: FocusEvent): void {
@@ -307,39 +250,9 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   handleBlur(event: FocusEvent): void {
-    if (this.type() === 'number') {
-      this.clampToBounds();
-    }
     this.isFocused.set(false);
     this.onTouched();
     this.blurred.emit(event);
-  }
-
-  /** Clamps a number value into `[min, max]` once editing finishes. */
-  private clampToBounds(): void {
-    const el = this.inputEl()?.nativeElement;
-    if (!el || el.value === '') {
-      return;
-    }
-    const num = Number(el.value);
-    if (Number.isNaN(num)) {
-      return;
-    }
-    const min = this.min();
-    const max = this.max();
-    let clamped = num;
-    if (min != null && clamped < min) {
-      clamped = min;
-    }
-    if (max != null && clamped > max) {
-      clamped = max;
-    }
-    if (clamped !== num) {
-      const next = String(clamped);
-      el.value = next;
-      this.value.set(next);
-      this.onChange(next);
-    }
   }
 
   /** Toggles the password reveal state for `type="password"` inputs. */
@@ -356,6 +269,7 @@ export class InputComponent implements ControlValueAccessor {
   clear(): void {
     this.value.set('');
     this.onChange('');
+    this.changed.emit('');
     this.inputEl()?.nativeElement.focus();
   }
 
