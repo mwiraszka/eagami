@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.74.0] - 2026-10-24
+
+### Added
+
+- Add a `changed` output to the input, textarea, code input, and rating, and an `aria-labelledby` input to the input, textarea, number input, checkbox, and switch.
+- Export an `EaStatusVariant` type that the badge, tag, alert, progress bar, switch, and toast variant types now share.
+
+### Changed
+
+- **Breaking:** Take every length input as a CSS length string instead of a px number: the tag, tooltip, and popover `maxWidth`, the textarea `minHeight` and `maxHeight`, and the multi-select `maxChipWidth`, `popoverMaxHeight`, and `popoverMaxWidth`.
+- **Breaking:** Remove `type="number"` and its `min`, `max`, and `step` inputs from the input; use the number input for numeric values.
+- **Breaking:** Drop the slider's `hasError` input; set `errorMsg` to show the error state.
+
 ## [5.73.0] - 2026-10-24
 
 ### Changed
@@ -1992,6 +2005,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.74.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.73.0...ui-v5.74.0
 [5.73.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.72.1...ui-v5.73.0
 [5.72.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.72.0...ui-v5.72.1
 [5.72.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.71.2...ui-v5.72.0
