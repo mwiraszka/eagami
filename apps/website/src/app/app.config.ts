@@ -1,4 +1,5 @@
-import { provideEagamiUi, provideStaleBuildReload } from '@eagami/ui';
+import { provideEagamiUi } from '@eagami/ui';
+import { provideStaleBuildReload } from '@eagami/ui/router';
 
 import { ViewportScroller } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
