@@ -405,6 +405,10 @@ export const pl: WebMessages = {
         before: 'Załaduj fonty w',
         after: ':',
       },
+      reloadLabel: {
+        before: 'Zarejestruj przeładowanie kart otwartych podczas wdrożenia w',
+        after: ':',
+      },
       firstComponentHeading: 'Twój pierwszy komponent',
     },
     integrations: {

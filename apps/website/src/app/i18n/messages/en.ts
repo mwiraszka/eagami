@@ -379,6 +379,10 @@ export const en: WebMessages = {
         before: 'Load the fonts in',
         after: ':',
       },
+      reloadLabel: {
+        before: 'Register the reload for tabs left open across a deploy in',
+        after: ':',
+      },
       firstComponentHeading: 'Your first component',
     },
     integrations: {

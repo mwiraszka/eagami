@@ -378,6 +378,10 @@ export const hi: WebMessages = {
         before: 'फ़ॉन्ट लोड करें',
         after: ':',
       },
+      reloadLabel: {
+        before: 'डिप्लॉय के दौरान खुले रहे टैब के लिए रीलोड रजिस्टर करें',
+        after: ':',
+      },
       firstComponentHeading: 'आपका पहला कंपोनेंट',
     },
     integrations: {

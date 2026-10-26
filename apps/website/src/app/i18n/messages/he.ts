@@ -364,6 +364,10 @@ export const he: WebMessages = {
         before: 'טענו את הגופנים ב',
         after: ':',
       },
+      reloadLabel: {
+        before: 'רשמו את הטעינה מחדש של לשוניות שנשארו פתוחות במהלך פריסה ב',
+        after: ':',
+      },
       firstComponentHeading: 'הרכיב הראשון שלכם',
     },
     integrations: {

@@ -402,6 +402,10 @@ export const ptBR: WebMessages = {
         before: 'Carregue as fontes em',
         after: ':',
       },
+      reloadLabel: {
+        before: 'Registre o recarregamento das abas abertas durante um deploy em',
+        after: ':',
+      },
       firstComponentHeading: 'Seu primeiro componente',
     },
     integrations: {

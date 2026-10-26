@@ -403,6 +403,11 @@ export const ru: WebMessages = {
         before: 'Загрузите шрифты в',
         after: ':',
       },
+      reloadLabel: {
+        before:
+          'Зарегистрируйте перезагрузку вкладок, оставшихся открытыми во время развёртывания, в',
+        after: ':',
+      },
       firstComponentHeading: 'Ваш первый компонент',
     },
     integrations: {

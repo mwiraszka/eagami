@@ -403,6 +403,11 @@ export const nl: WebMessages = {
         before: 'Laad de lettertypen in',
         after: ':',
       },
+      reloadLabel: {
+        before:
+          'Registreer het herladen van tabbladen die tijdens een deploy open bleven in',
+        after: ':',
+      },
       firstComponentHeading: 'Je eerste component',
     },
     integrations: {

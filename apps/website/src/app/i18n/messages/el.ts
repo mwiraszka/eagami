@@ -424,6 +424,11 @@ export const el: WebMessages = {
         before: 'Φορτώστε τις γραμματοσειρές στο',
         after: ':',
       },
+      reloadLabel: {
+        before:
+          'Καταχωρίστε την επαναφόρτωση των καρτελών που έμειναν ανοιχτές κατά την ανάπτυξη στο',
+        after: ':',
+      },
       firstComponentHeading: 'Το πρώτο σας συστατικό',
     },
     integrations: {

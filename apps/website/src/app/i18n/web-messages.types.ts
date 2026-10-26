@@ -289,6 +289,10 @@ export interface WebMessages {
         before: string;
         after: string;
       };
+      reloadLabel: {
+        before: string;
+        after: string;
+      };
       firstComponentHeading: string;
     };
     integrations: {

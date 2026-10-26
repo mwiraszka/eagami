@@ -413,6 +413,10 @@ export const esES: WebMessages = {
         before: 'Carga las fuentes en',
         after: ':',
       },
+      reloadLabel: {
+        before: 'Registra la recarga de las pestañas abiertas durante un despliegue en',
+        after: ':',
+      },
       firstComponentHeading: 'Tu primer componente',
     },
     integrations: {

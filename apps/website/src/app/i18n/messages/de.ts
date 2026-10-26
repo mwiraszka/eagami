@@ -407,6 +407,11 @@ export const de: WebMessages = {
         before: 'Laden Sie die Schriften in',
         after: ':',
       },
+      reloadLabel: {
+        before:
+          'Registrieren Sie das Neuladen für Tabs, die über ein Deployment hinweg offen bleiben, in',
+        after: ':',
+      },
       firstComponentHeading: 'Ihre erste Komponente',
     },
     integrations: {

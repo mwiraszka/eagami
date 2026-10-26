@@ -355,6 +355,10 @@ export const zhCN: WebMessages = {
         before: '在以下文件中加载字体',
         after: '：',
       },
+      reloadLabel: {
+        before: '在以下文件中为部署期间保持打开的标签页注册重新加载',
+        after: '：',
+      },
       firstComponentHeading: '你的第一个组件',
     },
     integrations: {

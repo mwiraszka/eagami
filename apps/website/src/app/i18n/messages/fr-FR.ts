@@ -428,6 +428,11 @@ export const frFR: WebMessages = {
         before: 'Charger les polices dans',
         after: ' :',
       },
+      reloadLabel: {
+        before:
+          'Enregistrer le rechargement des onglets restés ouverts pendant un déploiement dans',
+        after: ' :',
+      },
       firstComponentHeading: 'Votre premier composant',
     },
     integrations: {

@@ -407,6 +407,10 @@ export const is: WebMessages = {
         before: 'Hladdu leturgerðunum í',
         after: ':',
       },
+      reloadLabel: {
+        before: 'Skráðu endurhleðslu flipa sem stóðu opnir yfir uppfærslu í',
+        after: ':',
+      },
       firstComponentHeading: 'Fyrsta einingin þín',
     },
     integrations: {

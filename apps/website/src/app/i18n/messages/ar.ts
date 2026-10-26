@@ -379,6 +379,10 @@ export const ar: WebMessages = {
         before: 'حمّل الخطوط في',
         after: ':',
       },
+      reloadLabel: {
+        before: 'سجّل إعادة تحميل علامات التبويب التي بقيت مفتوحة أثناء النشر في',
+        after: ':',
+      },
       firstComponentHeading: 'مكوّنك الأول',
     },
     integrations: {

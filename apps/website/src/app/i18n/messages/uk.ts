@@ -398,6 +398,11 @@ export const uk: WebMessages = {
         before: 'Завантажте шрифти у',
         after: ':',
       },
+      reloadLabel: {
+        before:
+          'Зареєструйте перезавантаження вкладок, що лишилися відкритими під час розгортання, у',
+        after: ':',
+      },
       firstComponentHeading: 'Ваш перший компонент',
     },
     integrations: {
