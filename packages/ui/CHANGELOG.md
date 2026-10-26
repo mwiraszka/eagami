@@ -9,11 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add `provideStaleBuildReload()`, which loads a page in full on the new build when a tab left open across a deploy can no longer open it, and register it from `ng add`.
-
-### Changed
-
-- List `@angular/router` as a peer dependency.
+- Add `provideStaleBuildReload()` in a new `@eagami/ui/router` entry point, which loads a page in full on the new build when a tab left open across a deploy can no longer open it, and register it from `ng add`.
 
 ## [5.75.0] - 2026-10-25
 

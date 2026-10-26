@@ -20,12 +20,8 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Added',
         entries: [
-          'Add `provideStaleBuildReload()`, which loads a page in full on the new build when a tab left open across a deploy can no longer open it, and register it from `ng add`.',
+          'Add `provideStaleBuildReload()` in a new `@eagami/ui/router` entry point, which loads a page in full on the new build when a tab left open across a deploy can no longer open it, and register it from `ng add`.',
         ],
-      },
-      {
-        heading: 'Changed',
-        entries: ['List `@angular/router` as a peer dependency.'],
       },
     ],
   },
