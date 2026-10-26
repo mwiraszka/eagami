@@ -364,7 +364,7 @@ export const hi: WebMessages = {
     setup: {
       metaTitle: 'सेटअप | Eagami UI',
       metaDescription:
-        '@eagami/ui इंस्टॉल करें और ग्लोबल स्टाइलशीट तथा फ़ॉन्ट को जोड़ें।',
+        '@eagami/ui इंस्टॉल करें, ग्लोबल स्टाइलशीट तथा फ़ॉन्ट को जोड़ें, और डिप्लॉय के दौरान खुले रहे टैब को रीलोड करें।',
       title: 'सेटअप',
       ngAddLabel: 'एक कमांड से सब कुछ इंस्टॉल और कॉन्फ़िगर करें:',
       manualLabel: 'या इसे मैन्युअल रूप से सेट करें:',
@@ -376,6 +376,10 @@ export const hi: WebMessages = {
       },
       fontsLabel: {
         before: 'फ़ॉन्ट लोड करें',
+        after: ':',
+      },
+      reloadLabel: {
+        before: 'डिप्लॉय के दौरान खुले रहे टैब के लिए रीलोड रजिस्टर करें',
         after: ':',
       },
       firstComponentHeading: 'आपका पहला कंपोनेंट',

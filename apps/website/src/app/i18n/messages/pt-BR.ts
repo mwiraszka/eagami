@@ -388,7 +388,7 @@ export const ptBR: WebMessages = {
     setup: {
       metaTitle: 'Configuração | Eagami UI',
       metaDescription:
-        'Instale o @eagami/ui e configure a folha de estilo global e as fontes.',
+        'Instale o @eagami/ui, configure a folha de estilo global e as fontes, e recarregue as abas abertas durante um deploy.',
       title: 'Configuração',
       ngAddLabel: 'Instale e configure tudo com um único comando:',
       manualLabel: 'Ou configure manualmente:',
@@ -400,6 +400,10 @@ export const ptBR: WebMessages = {
       },
       fontsLabel: {
         before: 'Carregue as fontes em',
+        after: ':',
+      },
+      reloadLabel: {
+        before: 'Registre o recarregamento das abas abertas durante um deploy em',
         after: ':',
       },
       firstComponentHeading: 'Seu primeiro componente',

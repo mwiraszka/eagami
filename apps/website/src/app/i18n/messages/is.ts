@@ -393,7 +393,8 @@ export const is: WebMessages = {
     },
     setup: {
       metaTitle: 'Uppsetning | Eagami UI',
-      metaDescription: 'Settu upp @eagami/ui og tengdu altæka stílblaðið og leturgerðir.',
+      metaDescription:
+        'Settu upp @eagami/ui, tengdu altæka stílblaðið og leturgerðir, og endurhladdu flipa sem stóðu opnir yfir uppfærslu.',
       title: 'Uppsetning',
       ngAddLabel: 'Settu upp og stilltu allt með einni skipun:',
       manualLabel: 'Eða settu það upp handvirkt:',
@@ -405,6 +406,10 @@ export const is: WebMessages = {
       },
       fontsLabel: {
         before: 'Hladdu leturgerðunum í',
+        after: ':',
+      },
+      reloadLabel: {
+        before: 'Skráðu endurhleðslu flipa sem stóðu opnir yfir uppfærslu í',
         after: ':',
       },
       firstComponentHeading: 'Fyrsta einingin þín',

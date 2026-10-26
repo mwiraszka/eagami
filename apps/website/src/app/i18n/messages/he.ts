@@ -350,7 +350,8 @@ export const he: WebMessages = {
     },
     setup: {
       metaTitle: 'התקנה | Eagami UI',
-      metaDescription: 'התקינו את @eagami/ui וחברו את גיליון הסגנונות הגלובלי והגופנים.',
+      metaDescription:
+        'התקינו את @eagami/ui, חברו את גיליון הסגנונות הגלובלי והגופנים, וטענו מחדש לשוניות שנשארו פתוחות במהלך פריסה.',
       title: 'התקנה',
       ngAddLabel: 'התקינו והגדירו הכול בפקודה אחת:',
       manualLabel: 'או הגדירו זאת ידנית:',
@@ -362,6 +363,10 @@ export const he: WebMessages = {
       },
       fontsLabel: {
         before: 'טענו את הגופנים ב',
+        after: ':',
+      },
+      reloadLabel: {
+        before: 'רשמו את הטעינה מחדש של לשוניות שנשארו פתוחות במהלך פריסה ב',
         after: ':',
       },
       firstComponentHeading: 'הרכיב הראשון שלכם',

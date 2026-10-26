@@ -36,7 +36,7 @@
 ng add @eagami/ui
 ```
 
-The schematic installs the package and registers the global stylesheet and fonts. To wire it up by hand, see [Setup](https://eagami.com/ui/setup).
+The schematic installs the package and registers the global stylesheet, the fonts, and `provideStaleBuildReload()`. To wire it up by hand, see [Setup](https://eagami.com/ui/setup).
 
 ## Use
 
@@ -86,6 +86,18 @@ Set it app-wide with `forms`, or on a single field with the `showErrorsOn` input
 ```ts
 provideEagamiUi({ forms: { showErrorsOn: 'touch' } });
 ```
+
+## Deploys
+
+A tab left open across a deploy still runs the old build, so the next page it lazy loads asks for a file the deploy removed. `provideStaleBuildReload()` from `@eagami/ui/router` loads that page in full on the new build instead, and tries only once:
+
+```ts
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes), provideStaleBuildReload()],
+});
+```
+
+Pass `version` and `onReport` to log how each reload turned out, and check `isStaleBuildReloadError(error)` to keep the error it answered out of your error reporting.
 
 ## Testing
 

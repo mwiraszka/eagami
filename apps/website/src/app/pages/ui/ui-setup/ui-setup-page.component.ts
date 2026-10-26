@@ -34,6 +34,12 @@ export class UiSetupPageComponent {
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n' +
     '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Syne:wght@400;500;600;700&display=swap" />';
 
+  protected readonly reloadSnippet = `import { provideStaleBuildReload } from '@eagami/ui/router';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes), provideStaleBuildReload()],
+};`;
+
   protected readonly quickStartSnippet = `import { ButtonComponent } from '@eagami/ui';
 
 @Component({

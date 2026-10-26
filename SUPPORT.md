@@ -17,7 +17,7 @@ The library follows [Semantic Versioning](https://semver.org):
 - **MINOR** (`0.X.0`): new, backward-compatible surface (a new component, input, output, token, or locale).
 - **PATCH** (`0.0.X`): backward-compatible bug fixes and internal changes.
 
-The public API is everything exported from the package entry point, the documented CSS custom properties, and each component's documented inputs, outputs, and selector. Anything not documented as public (internal classes, private fields, undocumented DOM structure) may change in any release.
+The public API is everything exported from the package's entry points (`@eagami/ui`, `@eagami/ui/router`, and `@eagami/ui/testing`), the documented CSS custom properties, and each component's documented inputs, outputs, and selector. Anything not documented as public (internal classes, private fields, undocumented DOM structure) may change in any release.
 
 ## Stability
 

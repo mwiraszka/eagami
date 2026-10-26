@@ -43,6 +43,15 @@
         </p>
         <web-code-snippet [code]="fontsSnippet" />
       </li>
+
+      <li class="ui-setup__step">
+        <p class="ui-setup__step-label">
+          <span class="ui-setup__step-num">4.</span>
+          {{ messages().ui.setup.reloadLabel.before }}
+          <code>app.config.ts</code>{{ messages().ui.setup.reloadLabel.after }}
+        </p>
+        <web-code-snippet [code]="reloadSnippet" />
+      </li>
     </ol>
   </section>
 

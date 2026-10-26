@@ -7,7 +7,7 @@ Conventions for the eagami monorepo.
 - `packages/ui/`: `@eagami/ui`, the Angular component library and Storybook
 - `apps/website/`: [eagami.com](https://eagami.com), the marketing site and live docs
 
-The website consumes the library via `"@eagami/ui": "workspace:*"`, aliased through tsconfig directly to the library's source at `packages/ui/src/public-api`. The website's build compiles the library source as part of its own bundle, with Storybook being the canonical workbench for component-in-isolation work.
+The website consumes the library via `"@eagami/ui": "workspace:*"`, aliased through tsconfig directly to the library's source at `packages/ui/src/public-api` (and `@eagami/ui/router` to `packages/ui/router/src/public-api`). The website's build compiles the library source as part of its own bundle, with Storybook being the canonical workbench for component-in-isolation work.
 
 ## Getting set up
 

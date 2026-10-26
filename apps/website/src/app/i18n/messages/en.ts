@@ -365,7 +365,8 @@ export const en: WebMessages = {
     },
     setup: {
       metaTitle: 'Setup | Eagami UI',
-      metaDescription: 'Install @eagami/ui and wire up the global stylesheet and fonts.',
+      metaDescription:
+        'Install @eagami/ui, wire up the global stylesheet and fonts, and reload tabs left open across a deploy.',
       title: 'Setup',
       ngAddLabel: 'Install and configure everything with one command:',
       manualLabel: 'Or set it up manually:',
@@ -377,6 +378,10 @@ export const en: WebMessages = {
       },
       fontsLabel: {
         before: 'Load the fonts in',
+        after: ':',
+      },
+      reloadLabel: {
+        before: 'Register the reload for tabs left open across a deploy in',
         after: ':',
       },
       firstComponentHeading: 'Your first component',

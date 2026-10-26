@@ -1,4 +1,5 @@
 import { provideEagamiUi } from '@eagami/ui';
+import { provideStaleBuildReload } from '@eagami/ui/router';
 
 import { ViewportScroller } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
       }),
       withPreloading(PreloadAllModules),
     ),
+    provideStaleBuildReload(),
     provideEnvironmentInitializer(() => {
       const scroller = inject(ViewportScroller);
       // On narrow screens the sticky Eagami UI menu trigger sits under the

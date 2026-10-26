@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.76.0',
+    date: '2026-10-26',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `provideStaleBuildReload()` in a new `@eagami/ui/router` entry point, which loads a page in full on the new build when a tab left open across a deploy can no longer open it, and register it from `ng add`.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.75.0',
     date: '2026-10-25',
     sections: [

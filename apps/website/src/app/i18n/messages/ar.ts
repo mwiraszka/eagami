@@ -365,7 +365,8 @@ export const ar: WebMessages = {
     },
     setup: {
       metaTitle: 'الإعداد | Eagami UI',
-      metaDescription: 'ثبّت @eagami/ui واربط ورقة الأنماط العامة والخطوط.',
+      metaDescription:
+        'ثبّت @eagami/ui واربط ورقة الأنماط العامة والخطوط، وأعد تحميل علامات التبويب التي بقيت مفتوحة أثناء النشر.',
       title: 'الإعداد',
       ngAddLabel: 'ثبّت وهيّئ كل شيء بأمر واحد:',
       manualLabel: 'أو أعدّه يدويًا:',
@@ -377,6 +378,10 @@ export const ar: WebMessages = {
       },
       fontsLabel: {
         before: 'حمّل الخطوط في',
+        after: ':',
+      },
+      reloadLabel: {
+        before: 'سجّل إعادة تحميل علامات التبويب التي بقيت مفتوحة أثناء النشر في',
         after: ':',
       },
       firstComponentHeading: 'مكوّنك الأول',

@@ -391,7 +391,7 @@ export const pl: WebMessages = {
     setup: {
       metaTitle: 'Instalacja | Eagami UI',
       metaDescription:
-        'Zainstaluj @eagami/ui i podłącz globalny arkusz stylów oraz fonty.',
+        'Zainstaluj @eagami/ui, podłącz globalny arkusz stylów oraz fonty i przeładuj karty otwarte podczas wdrożenia.',
       title: 'Instalacja',
       ngAddLabel: 'Zainstaluj i skonfiguruj wszystko jednym poleceniem:',
       manualLabel: 'Lub skonfiguruj ręcznie:',
@@ -403,6 +403,10 @@ export const pl: WebMessages = {
       },
       fontsLabel: {
         before: 'Załaduj fonty w',
+        after: ':',
+      },
+      reloadLabel: {
+        before: 'Zarejestruj przeładowanie kart otwartych podczas wdrożenia w',
         after: ':',
       },
       firstComponentHeading: 'Twój pierwszy komponent',
