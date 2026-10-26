@@ -6,6 +6,7 @@ import {
   type Tree,
   chain,
 } from '@angular-devkit/schematics';
+import { addRootProvider } from '@schematics/angular/utility';
 import { getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
 
 import { type Schema } from './schema';
@@ -17,7 +18,12 @@ import {
 } from './utils';
 
 export function ngAdd(options: Schema): Rule {
-  return chain([registerStylesheet(options), registerFonts(options), logNextSteps()]);
+  return chain([
+    registerStylesheet(options),
+    registerFonts(options),
+    registerStaleBuildReload(options),
+    logNextSteps(),
+  ]);
 }
 
 function registerStylesheet(options: Schema): Rule {
@@ -65,10 +71,21 @@ function registerFonts(options: Schema): Rule {
   };
 }
 
+function registerStaleBuildReload(options: Schema): Rule {
+  return async (tree: Tree) => {
+    const { name } = findProject(await getWorkspace(tree), options.project);
+    return addRootProvider(
+      name,
+      ({ code, external }) =>
+        code`${external('provideStaleBuildReload', '@eagami/ui')}()`,
+    );
+  };
+}
+
 function logNextSteps(): Rule {
   return (_tree: Tree, context: SchematicContext) => {
     context.logger.info(
-      'Eagami UI is set up: the global stylesheet and fonts are registered.',
+      'Eagami UI is set up: the global stylesheet and fonts are registered, and provideStaleBuildReload() reloads a tab left open across a deploy into the new build.',
     );
     context.logger.info(
       'Optional: call provideEagamiUi() in app.config.ts for a custom brand palette or extra locales.',
