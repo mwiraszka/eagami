@@ -1,7 +1,7 @@
 {
   "schematics": {
     "ng-add": {
-      "description": "Set up Eagami UI: register the global stylesheet and fonts in an Angular workspace.",
+      "description": "Set up Eagami UI: register the global stylesheet, the fonts, and provideStaleBuildReload() in an Angular workspace.",
       "factory": "./ng-add/index#ngAdd",
       "schema": "./ng-add/schema.json"
     }
