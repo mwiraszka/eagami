@@ -399,7 +399,7 @@ export const esES: WebMessages = {
     setup: {
       metaTitle: 'Instalación | Eagami UI',
       metaDescription:
-        'Instala @eagami/ui y conecta la hoja de estilos global y las fuentes.',
+        'Instala @eagami/ui, conecta la hoja de estilos global y las fuentes, y recarga las pestañas abiertas durante un despliegue.',
       title: 'Instalación',
       ngAddLabel: 'Instala y configura todo con un solo comando:',
       manualLabel: 'O configúralo manualmente:',

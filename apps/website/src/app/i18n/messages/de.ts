@@ -393,7 +393,7 @@ export const de: WebMessages = {
     setup: {
       metaTitle: 'Einrichtung | Eagami UI',
       metaDescription:
-        'Installieren Sie @eagami/ui und binden Sie das globale Stylesheet sowie die Schriften ein.',
+        'Installieren Sie @eagami/ui, binden Sie das globale Stylesheet sowie die Schriften ein und laden Sie Tabs neu, die über ein Deployment hinweg offen bleiben.',
       title: 'Einrichtung',
       ngAddLabel: 'Alles mit einem Befehl installieren und konfigurieren:',
       manualLabel: 'Oder manuell einrichten:',

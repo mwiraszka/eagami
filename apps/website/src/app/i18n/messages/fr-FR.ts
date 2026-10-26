@@ -414,7 +414,7 @@ export const frFR: WebMessages = {
     setup: {
       metaTitle: 'Installation | Eagami UI',
       metaDescription:
-        'Installer @eagami/ui et brancher la feuille de style globale et les polices.',
+        'Installer @eagami/ui, brancher la feuille de style globale et les polices, et recharger les onglets restés ouverts pendant un déploiement.',
       title: 'Installation',
       ngAddLabel: 'Tout installer et configurer avec une seule commande :',
       manualLabel: 'Ou configurer manuellement :',

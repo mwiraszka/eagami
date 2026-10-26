@@ -341,7 +341,8 @@ export const zhCN: WebMessages = {
     },
     setup: {
       metaTitle: '安装 | Eagami UI',
-      metaDescription: '安装 @eagami/ui 并配置全局样式表和字体。',
+      metaDescription:
+        '安装 @eagami/ui，配置全局样式表和字体，并重新加载部署期间保持打开的标签页。',
       title: '安装',
       ngAddLabel: '一条命令完成安装和配置：',
       manualLabel: '或手动配置：',
