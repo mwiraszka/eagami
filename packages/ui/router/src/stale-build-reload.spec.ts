@@ -68,8 +68,8 @@ describe('provideStaleBuildReload', () => {
   });
 
   afterEach(() => {
-    sessionStorage.clear();
     vi.restoreAllMocks();
+    sessionStorage.clear();
   });
 
   describe('when the page being opened fails to load', () => {
@@ -182,7 +182,7 @@ describe('provideStaleBuildReload', () => {
     });
 
     it('does not when session storage is unavailable', async () => {
-      vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      vi.spyOn(globalThis, 'sessionStorage', 'get').mockImplementation(() => {
         throw new DOMException('Storage is disabled', 'SecurityError');
       });
       start();

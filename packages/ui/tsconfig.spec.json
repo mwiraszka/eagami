@@ -4,13 +4,14 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist/out-tsc/spec",
-    "rootDir": "./src",
+    "rootDir": ".",
     "types": ["vitest/globals"],
     "moduleResolution": "bundler",
     "isolatedModules": true
   },
   "include": [
     "src/**/*.spec.ts",
+    "router/**/*.spec.ts",
     "src/**/*.d.ts",
     "src/test-setup.ts"
   ]

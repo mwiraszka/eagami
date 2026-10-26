@@ -89,7 +89,7 @@ provideEagamiUi({ forms: { showErrorsOn: 'touch' } });
 
 ## Deploys
 
-A tab left open across a deploy still runs the old build, so the next page it lazy loads asks for a file the deploy removed. `provideStaleBuildReload()` loads that page in full on the new build instead, and tries only once:
+A tab left open across a deploy still runs the old build, so the next page it lazy loads asks for a file the deploy removed. `provideStaleBuildReload()` from `@eagami/ui/router` loads that page in full on the new build instead, and tries only once:
 
 ```ts
 bootstrapApplication(AppComponent, {

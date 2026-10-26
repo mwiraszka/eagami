@@ -45,6 +45,7 @@
             "coverageExclude": [
               "src/lib/**/*.stories.ts",
               "src/**/*.spec.ts",
+              "router/**/*.spec.ts",
               "src/lib/icons/**"
             ],
             "coverageThresholds": {

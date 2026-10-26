@@ -72,13 +72,6 @@ export * from './lib/skeleton/skeleton.component';
 export * from './lib/slider/slider.component';
 export * from './lib/sparkline/sparkline.component';
 export * from './lib/spinner/spinner.component';
-export {
-  isStaleBuildReloadError,
-  provideStaleBuildReload,
-  type StaleBuildReloadConfig,
-  type StaleBuildReloadOutcome,
-  type StaleBuildReloadReport,
-} from './lib/stale-build-reload/stale-build-reload';
 export * from './lib/stepper/step.component';
 export * from './lib/stepper/stepper.component';
 export * from './lib/switch/switch.component';

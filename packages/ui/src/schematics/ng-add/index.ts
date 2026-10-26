@@ -77,7 +77,7 @@ function registerStaleBuildReload(options: Schema): Rule {
     return addRootProvider(
       name,
       ({ code, external }) =>
-        code`${external('provideStaleBuildReload', '@eagami/ui')}()`,
+        code`${external('provideStaleBuildReload', '@eagami/ui/router')}()`,
     );
   };
 }
