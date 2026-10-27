@@ -36,6 +36,7 @@
     "@angular/router": "22.2.3",
     "@angular/ssr": "22.2.2",
     "@eagami/ui": "workspace:*",
+    "@sentry/angular": "11.9.0",
     "express": "5.3.0",
     "nodemailer": "10.1.1",
     "rxjs": "7.8.2",
