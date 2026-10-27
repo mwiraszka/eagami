@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Send errors on the site to Sentry so they can be fixed quickly.
+- Send errors on the site to Sentry so they can be fixed quickly, and describe the reports in the privacy policy.
 
 ## [3.35.8] - 2026-10-26
 
