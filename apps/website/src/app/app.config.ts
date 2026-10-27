@@ -1,10 +1,12 @@
 import { provideEagamiUi } from '@eagami/ui';
 import { provideStaleBuildReload } from '@eagami/ui/router';
+import * as Sentry from '@sentry/angular';
 
 import { ViewportScroller } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   type ApplicationConfig,
+  ErrorHandler,
   inject,
   provideEnvironmentInitializer,
   provideZoneChangeDetection,
@@ -17,11 +19,13 @@ import {
   withPreloading,
 } from '@angular/router';
 
+import { version } from '../../package.json';
 import { routes } from './app.routes';
 import { UI_LOCALE_LOADERS } from './i18n/locale-chunks';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    { provide: ErrorHandler, useValue: Sentry.createErrorHandler() },
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(
       routes,
@@ -31,7 +35,16 @@ export const appConfig: ApplicationConfig = {
       }),
       withPreloading(PreloadAllModules),
     ),
-    provideStaleBuildReload(),
+    provideStaleBuildReload({
+      version,
+      onReport: ({ outcome, route, fromVersion, toVersion }) =>
+        Sentry.logger.info('Stale build reload', {
+          outcome,
+          route,
+          from_version: fromVersion,
+          to_version: toVersion,
+        }),
+    }),
     provideEnvironmentInitializer(() => {
       const scroller = inject(ViewportScroller);
       // On narrow screens the sticky Eagami UI menu trigger sits under the

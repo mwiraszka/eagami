@@ -4,7 +4,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 /** Bump when either page's text materially changes. */
-const LAST_UPDATED = new Date(2026, 7, 2);
+const LAST_UPDATED = new Date(2026, 9, 26);
 
 /** Shared wiring for the privacy and terms pages, which differ only in their prose. */
 @Directive()
