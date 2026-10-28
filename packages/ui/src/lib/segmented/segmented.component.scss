@@ -112,7 +112,7 @@
     }
 
     &:focus-visible {
-      @include ea.focus-ring;
+      @include ea.focus-ring-inset;
     }
 
     &--selected {

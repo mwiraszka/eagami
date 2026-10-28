@@ -37,7 +37,7 @@
 // focus ring on the row container instead, against the visible content
 .ea-tree-node:focus-visible {
   & > .ea-tree-node__row {
-    @include ea.focus-ring;
+    @include ea.focus-ring-inset;
   }
 }
 
