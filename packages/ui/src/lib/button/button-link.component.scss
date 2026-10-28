@@ -10,7 +10,9 @@
   outline: none;
 
   .ea-button {
-    @include ea.focus-ring($offset: var(--ea-button-focus-ring-offset, 2px));
+    @include ea.focus-ring-inset-banded(
+      $offset: var(--ea-button-focus-ring-offset, calc(-1 * var(--border-width-medium)))
+    );
   }
 
   .ea-button--link .ea-button__label {

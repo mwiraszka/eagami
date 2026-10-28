@@ -389,7 +389,7 @@
 
     &:focus-visible {
       outline: none;
-      @include ea.focus-ring;
+      @include ea.focus-ring-inset;
     }
   }
 
@@ -415,7 +415,7 @@
 
     &:focus-visible {
       outline: none;
-      @include ea.focus-ring;
+      @include ea.focus-ring-inset;
     }
 
     &--num {
@@ -503,11 +503,17 @@
 
     &:focus-visible {
       outline: none;
-      @include ea.focus-ring;
+      @include ea.focus-ring-inset-banded;
     }
 
     &[aria-selected='true'] {
       box-shadow: 0 0 0 2px var(--color-brand-default);
+
+      &:focus-visible {
+        @include ea.focus-ring-inset-banded(
+          $shadow: 0 0 0 2px var(--color-brand-default)
+        );
+      }
     }
   }
 }

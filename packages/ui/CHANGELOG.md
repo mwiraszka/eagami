@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.78.0] - 2026-10-28
+
+### Changed
+
+- Draw the button's focus ring just inside it, over a band of the page colour, so it never overlaps a neighbouring button and stays clear on a filled one.
+- Move the focus ring inside the segmented control's options, the tabs, the date picker's days, the time picker's fields and AM/PM options, the color picker's format toggle, inputs and presets, the transfer list's items, the tree's rows and the breadcrumbs' links, where it overlapped the parts beside it or was cut off.
+
 ## [5.77.0] - 2026-10-27
 
 ### Added
@@ -2023,6 +2030,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.78.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.77.0...ui-v5.78.0
 [5.77.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.76.0...ui-v5.77.0
 [5.76.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.75.0...ui-v5.76.0
 [5.75.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.74.0...ui-v5.75.0

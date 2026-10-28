@@ -40,6 +40,31 @@ $target-size-min: 24px;
   }
 }
 
+// The inset ring for an element that can carry a solid fill of its own, such as a
+// filled button or a selected day, where a ring in the focus colour alone could all
+// but vanish into the fill. A band of the page colour runs just inside the ring to
+// set it apart. `$offset` moves the ring and the band follows it, and `$shadow`
+// keeps a shadow the element already wears.
+@mixin focus-ring-inset-banded(
+  $offset: calc(-1 * var(--border-width-medium)),
+  $shadow: null
+) {
+  $band: inset 0 0 0 calc(var(--border-width-medium) - #{$offset}) var(--color-bg-base);
+
+  outline: var(--border-width-medium) solid var(--color-border-focus);
+  outline-offset: $offset;
+
+  @if $shadow {
+    box-shadow: $band, $shadow;
+  } @else {
+    box-shadow: $band;
+  }
+
+  @media (forced-colors: active) {
+    outline-color: Highlight;
+  }
+}
+
 // Floating surfaces (menus, dialogs, popovers, toasts) lean on elevation shadow
 // for their boundary, but shadows are dropped in forced-colors mode. Add a
 // hairline border there so the surface stays separated from the content behind.

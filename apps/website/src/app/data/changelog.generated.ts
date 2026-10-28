@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.78.0',
+    date: '2026-10-28',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          "Draw the button's focus ring just inside it, over a band of the page colour, so it never overlaps a neighbouring button and stays clear on a filled one.",
+          "Move the focus ring inside the segmented control's options, the tabs, the date picker's days, the time picker's fields and AM/PM options, the color picker's format toggle, inputs and presets, the transfer list's items, the tree's rows and the breadcrumbs' links, where it overlapped the parts beside it or was cut off.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.77.0',
     date: '2026-10-27',
     sections: [

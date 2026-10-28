@@ -107,7 +107,7 @@ ea-breadcrumbs {
 
     &:focus-visible {
       outline: none;
-      @include ea.focus-ring;
+      @include ea.focus-ring-inset;
     }
 
     &--disabled {
