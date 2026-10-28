@@ -11,19 +11,20 @@ $target-size-min: 24px;
 // transparent, so it reads the same on any surface, however coloured. Pass a full
 // box-shadow value to draw a halo instead, such as an error ring; box-shadow is
 // dropped in forced-colors (Windows High Contrast) mode, so a real outline stands
-// in for it there.
-@mixin focus-ring($ring: null) {
+// in for it there. Pass `$offset` to move the outline's gap, which a negative
+// value turns inward.
+@mixin focus-ring($ring: null, $offset: 2px) {
   @if $ring {
     outline: none;
     box-shadow: $ring;
   } @else {
     outline: var(--border-width-medium) solid var(--color-border-focus);
-    outline-offset: 2px;
+    outline-offset: $offset;
   }
 
   @media (forced-colors: active) {
     outline: 2px solid Highlight;
-    outline-offset: 2px;
+    outline-offset: $offset;
   }
 }
 
