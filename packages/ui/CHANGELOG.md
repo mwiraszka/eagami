@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.77.0] - 2026-10-27
+
+### Added
+
+- Add an `--ea-button-focus-ring-offset` hook, so a button packed tightly among others can draw its focus ring inside itself.
+
 ## [5.76.0] - 2026-10-26
 
 ### Added
@@ -2017,6 +2023,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.77.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.76.0...ui-v5.77.0
 [5.76.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.75.0...ui-v5.76.0
 [5.75.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.74.0...ui-v5.75.0
 [5.74.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.73.0...ui-v5.74.0

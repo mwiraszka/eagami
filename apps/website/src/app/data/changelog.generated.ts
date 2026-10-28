@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.77.0',
+    date: '2026-10-27',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add an `--ea-button-focus-ring-offset` hook, so a button packed tightly among others can draw its focus ring inside itself.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.76.0',
     date: '2026-10-26',
     sections: [

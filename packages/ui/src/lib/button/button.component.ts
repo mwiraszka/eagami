@@ -37,7 +37,10 @@ export type ButtonAlign = 'start' | 'center' | 'end';
  * while preserving the rendered width. Chrome is tunable per instance via
  * `--ea-button-padding`, `--ea-button-min-height` and `--ea-button-radius`,
  * which is how an icon-only button comes down to little more than its glyph
- * and how a call-to-action becomes a pill. For navigation, put
+ * and how a call-to-action becomes a pill, and `--ea-button-focus-ring-offset`
+ * moves the focus ring's gap, which a negative length draws inside a button
+ * packed too tightly among others for the ring to fit around it. For
+ * navigation, put
  * `ButtonLinkComponent` on an anchor instead (`<a eaButtonLink href="...">`):
  * it takes the same styling inputs and keeps real link behaviour.
  */
