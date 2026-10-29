@@ -1967,7 +1967,7 @@ export const is: WebMessages = {
             size: 'Sjónræn þykkt stikunnar.',
             value: 'Núverandi framvindugildi.',
             max: 'Gildi sem stikan er full við.',
-            buffer: 'Biðminnisstaða á undan gildinu, sýnd í aukalitum.',
+            buffer: 'Biðminnisstaða á undan gildinu, sýnd í fölari tóni af fyllilitnum.',
             showPercentage: 'Sýnir núverandi prósentu við hlið stikunnar.',
             indeterminate:
               'Birtir endurtekna hreyfingu fyrir framvindu af óþekktri tímalengd.',

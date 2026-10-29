@@ -2010,7 +2010,7 @@ export const frFR: WebMessages = {
             value: 'Valeur de progression actuelle.',
             max: 'Valeur à laquelle la barre est pleine.',
             buffer:
-              'Position tamponnée en avance sur la valeur, affichée dans la couleur secondaire.',
+              'Position tamponnée en avance sur la valeur, affichée dans une teinte plus pâle de la couleur de remplissage.',
             showPercentage: 'Affiche le pourcentage actuel à côté de la barre.',
             indeterminate:
               'Joue une animation en boucle pour une progression de durée inconnue.',

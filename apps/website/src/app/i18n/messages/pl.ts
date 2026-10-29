@@ -1964,7 +1964,8 @@ export const pl: WebMessages = {
             size: 'Wizualna grubość paska.',
             value: 'Bieżąca wartość postępu.',
             max: 'Wartość, przy której pasek jest pełny.',
-            buffer: 'Zbuforowana pozycja przed wartością, pokazana w kolorze dodatkowym.',
+            buffer:
+              'Zbuforowana pozycja przed wartością, pokazana w bledszym odcieniu koloru wypełnienia.',
             showPercentage: 'Wyświetla bieżący procent obok paska.',
             indeterminate:
               'Odtwarza zapętloną animację dla postępu o nieznanym czasie trwania.',

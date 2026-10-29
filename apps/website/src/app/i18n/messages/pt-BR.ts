@@ -1966,7 +1966,8 @@ export const ptBR: WebMessages = {
             size: 'Espessura visual da barra.',
             value: 'Valor de progresso atual.',
             max: 'Valor em que a barra fica cheia.',
-            buffer: 'Posição em buffer à frente do valor, exibida na cor secundária.',
+            buffer:
+              'Posição em buffer à frente do valor, exibida em um tom mais claro da cor de preenchimento.',
             showPercentage: 'Mostra a porcentagem atual ao lado da barra.',
             indeterminate:
               'Renderiza uma animação em loop para progresso de duração desconhecida.',

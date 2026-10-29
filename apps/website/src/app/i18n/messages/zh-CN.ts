@@ -1826,7 +1826,7 @@ export const zhCN: WebMessages = {
             size: '进度条的视觉粗细。',
             value: '当前进度值。',
             max: '进度条填满时的值。',
-            buffer: '领先于当前值的缓冲位置，以辅助色显示。',
+            buffer: '领先于当前值的缓冲位置，以较浅的填充色显示。',
             showPercentage: '在进度条旁显示当前百分比。',
             indeterminate: '为时长未知的进度渲染循环动画。',
             label: '渲染在进度条上方的文本标签。',

@@ -1915,7 +1915,8 @@ export const en: WebMessages = {
             size: 'Visual thickness of the bar.',
             value: 'Current progress value.',
             max: 'Value the bar is full at.',
-            buffer: 'Buffered position ahead of the value, shown in the secondary color.',
+            buffer:
+              'Buffered position ahead of the value, shown in a paler shade of the fill color.',
             showPercentage: 'Shows the current percentage alongside the bar.',
             indeterminate:
               'Renders a looping animation for progress of unknown duration.',

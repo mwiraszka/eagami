@@ -1974,7 +1974,7 @@ export const nl: WebMessages = {
             value: 'Huidige voortgangswaarde.',
             max: 'Waarde waarbij de balk vol is.',
             buffer:
-              'Gebufferde positie vóór de waarde, weergegeven in de secundaire kleur.',
+              'Gebufferde positie vóór de waarde, weergegeven in een blekere tint van de vulkleur.',
             showPercentage: 'Toont het huidige percentage naast de balk.',
             indeterminate:
               'Geeft een herhalende animatie weer voor voortgang van onbekende duur.',

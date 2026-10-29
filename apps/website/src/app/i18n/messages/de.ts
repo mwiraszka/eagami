@@ -1996,7 +1996,8 @@ export const de: WebMessages = {
             size: 'Visuelle Dicke des Balkens.',
             value: 'Aktueller Fortschrittswert.',
             max: 'Wert, bei dem der Balken voll ist.',
-            buffer: 'Gepufferte Position vor dem Wert, dargestellt in der Sekundärfarbe.',
+            buffer:
+              'Gepufferte Position vor dem Wert, dargestellt in einem blasseren Ton der Füllfarbe.',
             showPercentage: 'Zeigt den aktuellen Prozentsatz neben dem Balken.',
             indeterminate:
               'Rendert eine endlose Animation für Fortschritt unbekannter Dauer.',

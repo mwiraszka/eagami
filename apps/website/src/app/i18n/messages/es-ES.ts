@@ -1997,7 +1997,7 @@ export const esES: WebMessages = {
             value: 'Valor de progreso actual.',
             max: 'Valor con el que la barra está llena.',
             buffer:
-              'Posición de búfer por delante del valor, mostrada en el color secundario.',
+              'Posición de búfer por delante del valor, mostrada en un tono más pálido del color de relleno.',
             showPercentage: 'Muestra el porcentaje actual junto a la barra.',
             indeterminate:
               'Reproduce una animación en bucle para progreso de duración desconocida.',

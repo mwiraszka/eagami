@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 0.375em;
   font-family: var(--font-family-sans);
+  --_ea-progress-bar-color: var(--color-brand-default);
 
   // The track and the header text scale on their own curves: a 2px track pairs
   // with readable 12px text, not with text derived from the track. Each size
@@ -68,7 +69,8 @@
   }
 
   // Sits behind the fill: the stretch from the fill's edge to the buffer's edge
-  // shows through in the secondary brand colour.
+  // shows through as a washed-out fill colour, lighter on a light track and
+  // duller on a dark one.
   &__buffer {
     z-index: 0;
     position: absolute;
@@ -76,7 +78,7 @@
     inset-inline-start: 0;
     height: 100%;
     border-radius: var(--radius-full);
-    background-color: var(--color-brand-secondary-default);
+    background-color: color-mix(in srgb, var(--_ea-progress-bar-color) 35%, transparent);
     transition: width var(--duration-slow) var(--ease-out);
   }
 
@@ -85,24 +87,24 @@
     position: relative;
     height: 100%;
     border-radius: var(--radius-full);
-    background-color: var(--color-brand-default);
+    background-color: var(--_ea-progress-bar-color);
     transition: width var(--duration-slow) var(--ease-out);
   }
 
-  &--success .ea-progress-bar__fill {
-    background-color: var(--color-success-default);
+  &--success {
+    --_ea-progress-bar-color: var(--color-success-default);
   }
 
-  &--warning .ea-progress-bar__fill {
-    background-color: var(--color-warning-default);
+  &--warning {
+    --_ea-progress-bar-color: var(--color-warning-default);
   }
 
-  &--error .ea-progress-bar__fill {
-    background-color: var(--color-error-default);
+  &--error {
+    --_ea-progress-bar-color: var(--color-error-default);
   }
 
-  &--info .ea-progress-bar__fill {
-    background-color: var(--color-info-default);
+  &--info {
+    --_ea-progress-bar-color: var(--color-info-default);
   }
 
   &--indeterminate .ea-progress-bar__fill {
