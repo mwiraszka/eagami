@@ -14,6 +14,21 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.79.0',
+    date: '2026-10-29',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          "Fill only the stepper's current step with the primary colour and tint the completed steps, instead of painting the current step in the secondary colour.",
+          "Draw the progress bar's buffer in a paler shade of its fill colour instead of the secondary colour, so it also follows the success, warning, error and info variants.",
+          'Open the color picker with its value input focused and selected, so a new value can be typed straight away, while a touch open focuses the colour area and keeps the on-screen keyboard down.',
+          "Show a fixed `#` in front of the color picker's hex input, which absorbs a typed or pasted `#` so a full `#rrggbbaa` still fits.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.78.0',
     date: '2026-10-28',
     sections: [
