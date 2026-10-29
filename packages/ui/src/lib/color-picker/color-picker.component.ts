@@ -3,8 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  Injector,
-  afterNextRender,
+  afterRenderEffect,
   computed,
   effect,
   forwardRef,
@@ -13,6 +12,7 @@ import {
   model,
   output,
   signal,
+  untracked,
   viewChild,
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -57,6 +57,9 @@ interface EyeDropperLike {
   open(): Promise<EyeDropperResult>;
 }
 type EyeDropperCtor = new () => EyeDropperLike;
+
+/** `rrggbbaa`, the longest hex the input takes once its `#` is set aside. */
+const HEX_DIGITS_MAX = 8;
 
 const DEFAULT_PRESETS: readonly string[] = [
   '#ef4444',
@@ -114,9 +117,10 @@ export class ColorPickerComponent
 {
   protected readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
   private readonly svAreaEl = viewChild<ElementRef<HTMLDivElement>>('svAreaEl');
+  private readonly valueInputEl = viewChild<ElementRef<HTMLInputElement>>('valueInputEl');
   private readonly hueTrackEl = viewChild<ElementRef<HTMLDivElement>>('hueTrackEl');
   private readonly alphaTrackEl = viewChild<ElementRef<HTMLDivElement>>('alphaTrackEl');
-  private readonly injector = inject(Injector);
+  private readonly popover = viewChild(PopoverComponent);
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly placeholder = input<string | undefined>(undefined);
@@ -160,11 +164,41 @@ export class ColorPickerComponent
   });
   /** Whether the in-popover format toggle is shown (only when `format` is `all`). */
   readonly canToggleFormat = computed(() => this.format() === 'all');
-  /** What the hex input shows. Kept separate from the canonical hex so the user
-   * can type a partial value (`#1`, `#12`, `#123`...) without each keystroke being
-   * expanded back into a 6-digit canonical form. */
+  /** What the hex input shows, without the `#` the field draws in front of it.
+   * Kept separate from the canonical hex so the user can type a partial value
+   * (`1`, `12`, `123`...) without each keystroke being expanded back into a
+   * 6-digit canonical form. */
   readonly hexInputValue = signal('');
   private readonly _formDisabled = signal(false);
+  /** Pointer type of the latest press on the trigger, read by the next `open()`. */
+  private triggerPointerType = '';
+  /** Where focus goes once the popover is on screen. A touch or pen open takes
+   * the saturation area, so the on-screen keyboard does not rise over the
+   * popover; any other open takes the value input. */
+  private readonly pendingFocus = signal<'value' | 'sv-area' | null>(null);
+
+  // The popover stays invisible until it has measured itself, and an invisible
+  // element cannot take focus, so the focus call waits on that signal
+  private readonly focusOnOpen = afterRenderEffect(() => {
+    const target = this.pendingFocus();
+    if (!target || !this.popover()?.isPositioned()) {
+      return;
+    }
+    untracked(() => {
+      this.pendingFocus.set(null);
+      const valueInput = this.valueInputEl()?.nativeElement;
+      // `preventScroll: true`: see the matching note in `ea-menu` for why:
+      // focusing inside a `position: fixed` popover nested under a sticky/scrolled
+      // ancestor otherwise nudges the document scroll position toward the trigger.
+      if (target === 'value' && valueInput) {
+        valueInput.focus({ preventScroll: true });
+        // Selected, so typing replaces the current value straight away
+        valueInput.select();
+      } else {
+        this.svAreaEl()?.nativeElement.focus({ preventScroll: true });
+      }
+    });
+  });
 
   /** The last value this component emitted, so the value-sync effect can tell an
    * external `[(value)]` / reset change from its own commit and skip the echo. */
@@ -358,19 +392,19 @@ export class ColorPickerComponent
       return;
     }
     this.isOpen.set(true);
-    // `preventScroll: true`: see the matching note in `ea-menu` for why:
-    // focusing inside a `position: fixed` popover nested under a sticky/scrolled
-    // ancestor otherwise nudges the document scroll position toward the trigger.
-    afterNextRender(() => this.svAreaEl()?.nativeElement.focus({ preventScroll: true }), {
-      injector: this.injector,
-    });
+    const openedByTouch =
+      this.triggerPointerType === 'touch' || this.triggerPointerType === 'pen';
+    this.triggerPointerType = '';
+    this.pendingFocus.set(openedByTouch ? 'sv-area' : 'value');
   }
 
   close(): void {
+    this.triggerPointerType = '';
     if (!this.isOpen()) {
       return;
     }
     this.isOpen.set(false);
+    this.pendingFocus.set(null);
     this.dragging.set(null);
     this.onTouched();
   }
@@ -614,14 +648,30 @@ export class ColorPickerComponent
   /**
    * Mirrors the user's literal text into `hexInputValue` and (if the text
    * parses) applies the new color silently, without rewriting the input.
-   * Without `refreshHex: false`, typing `#123` would parse, commit, and then
-   * snap the input back to `#112233` mid-keystroke, fighting the user's caret.
+   * Without `refreshHex: false`, typing `123` would parse, commit, and then
+   * snap the input back to `112233` mid-keystroke, fighting the user's caret.
    * Canonicalization happens only on blur via {@link onHexBlur}.
    */
   onHexInput(event: Event): void {
-    const raw = (event.target as HTMLInputElement).value;
-    this.hexInputValue.set(raw);
-    const parsed = parseColor(raw.startsWith('#') ? raw : `#${raw}`);
+    const input = event.target as HTMLInputElement;
+    const raw = input.value;
+    const caret = input.selectionStart ?? raw.length;
+    // The field draws its own `#`, so a typed or pasted one is absorbed
+    let digits = raw.replaceAll('#', '');
+    let digitCaret = caret - (raw.slice(0, caret).split('#').length - 1);
+    // Trims the end of what was just inserted, as `maxlength` would, but counts
+    // only the digits, so a pasted `#rrggbbaa` still fits whole
+    const excess = digits.length - HEX_DIGITS_MAX;
+    if (excess > 0) {
+      digits = digits.slice(0, digitCaret - excess) + digits.slice(digitCaret);
+      digitCaret -= excess;
+    }
+    if (digits !== raw) {
+      input.value = digits;
+      input.setSelectionRange(digitCaret, digitCaret);
+    }
+    this.hexInputValue.set(digits);
+    const parsed = parseColor(`#${digits}`);
     if (parsed) {
       this.applyRgba(parsed.r, parsed.g, parsed.b, parsed.a, true, false);
     }
@@ -629,7 +679,7 @@ export class ColorPickerComponent
 
   onHexBlur(): void {
     // Reset the partial text to the canonical hex of the current color
-    this.hexInputValue.set(this.hexDisplay());
+    this.refreshHexInput();
     this.onTouched();
   }
 
@@ -716,6 +766,10 @@ export class ColorPickerComponent
     this.applyRgba(parsed.r, parsed.g, parsed.b, parsed.a, true);
   }
 
+  onTriggerPointerDown(event: PointerEvent): void {
+    this.triggerPointerType = event.pointerType;
+  }
+
   onTriggerKeydown(event: KeyboardEvent): void {
     if (this.isDisabled()) {
       return;
@@ -791,7 +845,7 @@ export class ColorPickerComponent
   }
 
   private refreshHexInput(): void {
-    this.hexInputValue.set(this.hexDisplay());
+    this.hexInputValue.set(this.hexDisplay().slice(1));
   }
 }
 

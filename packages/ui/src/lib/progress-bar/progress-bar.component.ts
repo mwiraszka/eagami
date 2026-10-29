@@ -43,7 +43,7 @@ export class ProgressBarComponent {
   readonly indeterminate = input<boolean>(false);
   /**
    * Optional buffered position ahead of `value` (same scale as `value`),
-   * rendered as a secondary-colour segment behind the fill. Use for
+   * rendered as a washed-out shade of the fill colour behind the fill. Use for
    * download/upload-then-process style progress.
    */
   readonly buffer = input<number | undefined>(undefined);

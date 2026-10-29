@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.79.0] - 2026-10-29
+
+### Changed
+
+- Fill only the stepper's current step with the primary colour and tint the completed steps, instead of painting the current step in the secondary colour.
+- Draw the progress bar's buffer in a paler shade of its fill colour instead of the secondary colour, so it also follows the success, warning, error and info variants.
+- Open the color picker with its value input focused and selected, so a new value can be typed straight away, while a touch open focuses the colour area and keeps the on-screen keyboard down.
+- Show a fixed `#` in front of the color picker's hex input, which absorbs a typed or pasted `#` so a full `#rrggbbaa` still fits.
+
 ## [5.78.0] - 2026-10-28
 
 ### Changed
@@ -2030,6 +2039,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.79.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.78.0...ui-v5.79.0
 [5.78.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.77.0...ui-v5.78.0
 [5.77.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.76.0...ui-v5.77.0
 [5.76.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.75.0...ui-v5.76.0

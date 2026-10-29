@@ -94,14 +94,12 @@
     }
   }
 
-  // The current step wears the secondary brand so "where you are" reads
-  // distinctly from the primary-brand completed steps behind it.
-  &__button--active &__circle {
-    border-color: var(--color-brand-secondary-default);
-    background-color: var(--color-brand-secondary-default);
-    // Fixed white label (not `text-inverse`, which flips to near-black in dark
-    // mode) so the numeral stays legible on the brand surface in both modes.
-    color: var(--color-neutral-0);
+  // The dark-mode tint is translucent, so a tinted border would draw a darker
+  // ring where it overlaps the fill
+  &__button--completed &__circle {
+    border-color: transparent;
+    background-color: var(--color-brand-muted);
+    color: var(--color-brand-text);
 
     @media (forced-colors: active) {
       background-color: Highlight;
@@ -110,9 +108,14 @@
     }
   }
 
-  &__button--completed &__circle {
+  // The current step is the only solid brand circle, so "where you are" reads
+  // ahead of the tinted completed steps. It follows the completed rule so a
+  // revisited completed step still reads as current.
+  &__button--active &__circle {
     border-color: var(--color-brand-default);
     background-color: var(--color-brand-default);
+    // Fixed white label (not `text-inverse`, which flips to near-black in dark
+    // mode) so the numeral stays legible on the brand surface in both modes.
     color: var(--color-neutral-0);
 
     @media (forced-colors: active) {
