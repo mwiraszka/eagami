@@ -29,6 +29,18 @@ describe('ColorPickerComponent', () => {
     fixture.detectChanges();
   }
 
+  function nextFrame(): Promise<void> {
+    return new Promise(resolve => requestAnimationFrame(() => resolve()));
+  }
+
+  // The popover only becomes visible, and so focusable, once it has measured
+  // itself a frame after opening
+  async function openAndSettle(): Promise<void> {
+    open();
+    await nextFrame();
+    fixture.detectChanges();
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ColorPickerComponent],
@@ -104,6 +116,32 @@ describe('ColorPickerComponent', () => {
       open();
 
       expect(getTrigger().getAttribute('aria-expanded')).toBe('true');
+    });
+
+    it('focuses the value input with its text selected on open', async () => {
+      component.writeValue('#ff0000');
+      fixture.detectChanges();
+
+      await openAndSettle();
+
+      const input = getPopover()?.querySelector<HTMLInputElement>(
+        '.ea-color-picker__input',
+      );
+      expect(document.activeElement).toBe(input);
+      expect(input?.selectionStart).toBe(0);
+      expect(input?.selectionEnd).toBe(input?.value.length);
+    });
+
+    it('focuses the saturation area instead on a touch open', async () => {
+      getTrigger().dispatchEvent(
+        new PointerEvent('pointerdown', { bubbles: true, pointerType: 'touch' }),
+      );
+
+      await openAndSettle();
+
+      expect(document.activeElement).toBe(
+        getPopover()?.querySelector('.ea-color-picker__sv-area'),
+      );
     });
 
     it('traps Tab within the open dialog', () => {
@@ -408,7 +446,7 @@ describe('ColorPickerComponent', () => {
       // 3-digit shorthand expands to RGB internally
       expect(component.rgb()).toEqual({ r: 17, g: 34, b: 51 });
       // but the input keeps the user's literal text
-      expect(component.hexInputValue()).toBe('#123');
+      expect(component.hexInputValue()).toBe('123');
     });
 
     it('canonicalizes the hex input on blur', () => {
@@ -422,7 +460,49 @@ describe('ColorPickerComponent', () => {
       hexInput.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
 
-      expect(component.hexInputValue()).toBe('#112233');
+      expect(component.hexInputValue()).toBe('112233');
+    });
+
+    it('absorbs a # typed or pasted into the hex input', () => {
+      open();
+      const hexInput = document.body.querySelector<HTMLInputElement>(
+        '.ea-color-picker__input-group--hex .ea-color-picker__input',
+      )!;
+
+      hexInput.value = '#00#aaff';
+      hexInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(hexInput.value).toBe('00aaff');
+      expect(component.rgb()).toEqual({ r: 0, g: 170, b: 255 });
+    });
+
+    it('takes a pasted #rrggbbaa whole, not counting its #', () => {
+      fixture.componentRef.setInput('showAlpha', true);
+      open();
+      const hexInput = document.body.querySelector<HTMLInputElement>(
+        '.ea-color-picker__input-group--hex .ea-color-picker__input',
+      )!;
+
+      hexInput.value = '#12345600';
+      hexInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(hexInput.value).toBe('12345600');
+      expect(component.value()).toBe('#12345600');
+    });
+
+    it('stops the hex input at eight digits', () => {
+      open();
+      const hexInput = document.body.querySelector<HTMLInputElement>(
+        '.ea-color-picker__input-group--hex .ea-color-picker__input',
+      )!;
+
+      hexInput.value = '123456789';
+      hexInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(hexInput.value).toBe('12345678');
     });
   });
 
@@ -1078,7 +1158,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       expect(component.rgb()).toEqual({ r: 170, g: 187, b: 204 });
-      expect(component.hexInputValue()).toBe('#aabbcc');
+      expect(component.hexInputValue()).toBe('aabbcc');
     });
   });
 

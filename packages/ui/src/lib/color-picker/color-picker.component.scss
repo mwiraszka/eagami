@@ -429,6 +429,27 @@
     }
   }
 
+  &__hex-field {
+    position: relative;
+    display: block;
+  }
+
+  // Sits just before the centred digits: the monospace font makes them
+  // `--_ea-hex-length` ch wide, so the prefix starts half that plus its own
+  // width left of centre
+  &__hex-prefix {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - (var(--_ea-hex-length, 0) / 2 + 1) * 1ch);
+    display: flex;
+    align-items: center;
+    font-size: 0.75em;
+    font-family: var(--font-family-mono);
+    color: var(--color-text-tertiary);
+    pointer-events: none;
+  }
+
   &__tools {
     display: flex;
     justify-content: flex-start;

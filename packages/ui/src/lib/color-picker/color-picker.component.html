@@ -30,6 +30,7 @@
         [attr.aria-describedby]="
           showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
         "
+        (pointerdown)="onTriggerPointerDown($event)"
         (click)="toggle()"
         (keydown)="onTriggerKeydown($event)">
         <span
@@ -181,22 +182,32 @@
               <label
                 class="ea-color-picker__input-group ea-color-picker__input-group--hex">
                 <span class="ea-color-picker__input-label">HEX</span>
-                <input
-                  class="ea-color-picker__input"
-                  type="text"
-                  dir="auto"
-                  spellcheck="false"
-                  autocomplete="off"
-                  maxlength="9"
-                  [value]="hexInputValue()"
-                  (input)="onHexInput($event)"
-                  (blur)="onHexBlur()" />
+                <span
+                  class="ea-color-picker__hex-field"
+                  dir="ltr"
+                  [style.--_ea-hex-length]="hexInputValue().length">
+                  <span
+                    class="ea-color-picker__hex-prefix"
+                    aria-hidden="true">
+                    #
+                  </span>
+                  <input
+                    #valueInputEl
+                    class="ea-color-picker__input"
+                    type="text"
+                    spellcheck="false"
+                    autocomplete="off"
+                    [value]="hexInputValue()"
+                    (input)="onHexInput($event)"
+                    (blur)="onHexBlur()" />
+                </span>
               </label>
             }
             @case ('rgb') {
               <label class="ea-color-picker__input-group">
                 <span class="ea-color-picker__input-label">R</span>
                 <input
+                  #valueInputEl
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
                   inputmode="numeric"
@@ -245,6 +256,7 @@
               <label class="ea-color-picker__input-group">
                 <span class="ea-color-picker__input-label">H</span>
                 <input
+                  #valueInputEl
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
                   inputmode="numeric"
