@@ -1,6 +1,9 @@
 import {
   AlertCircleIconComponent,
+  BarChartComponent,
   ButtonComponent,
+  CardComponent,
+  type ChartSeries,
   CheckCircleIconComponent,
   ColorPickerComponent,
   type ContrastViolation,
@@ -9,13 +12,11 @@ import {
   type EagamiPaletteConfig,
   type ModePalette,
   type PaletteShade,
-  ProgressBarComponent,
-  StepComponent,
-  StepperComponent,
-  type StepperOrientation,
   SwitchComponent,
   TabComponent,
   TabsComponent,
+  TimelineComponent,
+  type TimelineItem,
   derivePalette,
   validatePalette,
 } from '@eagami/ui';
@@ -48,10 +49,11 @@ const HEX = /^#[0-9a-fA-F]{6}$/;
 
 const PREVIEW_STYLE_ID = 'web-theme-builder-preview';
 
-// The page and anything it portals to the body (the preview's calendar), but not
-// the chrome around it: the docs nav and site header keep the site's own palette
-// rather than repainting with whatever colours are being tried out.
-const PREVIEW_SCOPE = '.theme-builder, .ea-date-picker__popover, .ea-popover__surface';
+// The page and anything it portals to the body (the preview's calendar and chart
+// tooltip), but not the chrome around it: the docs nav and site header keep the
+// site's own palette rather than repainting with whatever colours are being tried out.
+const PREVIEW_SCOPE =
+  '.theme-builder, .ea-date-picker__popover, .ea-popover__surface, .ea-tooltip';
 
 const SHADES: readonly PaletteShade[] = [
   '50',
@@ -86,19 +88,19 @@ interface ViolationRow {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AlertCircleIconComponent,
+    BarChartComponent,
     ButtonComponent,
+    CardComponent,
     CheckCircleIconComponent,
     CodeSnippetComponent,
     ColorPickerComponent,
     DatePickerComponent,
     DividerComponent,
-    ProgressBarComponent,
     SectionHeadingComponent,
-    StepComponent,
-    StepperComponent,
     SwitchComponent,
     TabComponent,
     TabsComponent,
+    TimelineComponent,
   ],
 })
 export class UiThemeBuilderPageComponent {
@@ -114,7 +116,38 @@ export class UiThemeBuilderPageComponent {
   protected readonly focusBase = signal<string | null>(null);
 
   protected readonly demoSwitch = signal(true);
-  protected readonly stepperOrientation = signal<StepperOrientation>('horizontal');
+
+  protected readonly chartLabels = computed(() => {
+    const weekday = new Intl.DateTimeFormat(this.i18n.locale(), { weekday: 'short' });
+    // 1 January 2024 was a Monday, so the week from it names the days in order
+    return Array.from({ length: 7 }, (_, i) => weekday.format(new Date(2024, 0, 1 + i)));
+  });
+
+  protected readonly chartSeries = computed<ChartSeries[]>(() => {
+    const m = this.messages().ui.themeBuilder;
+    return [
+      {
+        name: m.previewSeriesThisWeek,
+        data: [12, 18, 15, 22, 28, 35, 30],
+        color: 'var(--color-brand-default)',
+      },
+      {
+        name: m.previewSeriesLastWeek,
+        data: [9, 14, 13, 17, 20, 26, 24],
+        color: 'var(--color-brand-secondary-default)',
+      },
+    ];
+  });
+
+  // The current item wears the secondary brand, between a primary and a default node
+  protected readonly timelineItems = computed<TimelineItem[]>(() => {
+    const m = this.messages().ui.themeBuilder;
+    return [
+      { heading: m.previewTimeline1, color: 'primary' },
+      { heading: m.previewTimeline2, current: true },
+      { heading: m.previewTimeline3 },
+    ];
+  });
 
   private readonly config = computed<EagamiPaletteConfig>(() => {
     const config: EagamiPaletteConfig = {};
@@ -164,15 +197,6 @@ export class UiThemeBuilderPageComponent {
       inject(DestroyRef).onDestroy(() =>
         document.getElementById(PREVIEW_STYLE_ID)?.remove(),
       );
-
-      // A row of three steps stops fitting the preview well before the page's
-      // own breakpoint, so this one is measured against the preview column
-      const query = window.matchMedia('(max-width: 640px)');
-      const update = (): void =>
-        this.stepperOrientation.set(query.matches ? 'vertical' : 'horizontal');
-      update();
-      query.addEventListener('change', update);
-      inject(DestroyRef).onDestroy(() => query.removeEventListener('change', update));
     }
   }
 

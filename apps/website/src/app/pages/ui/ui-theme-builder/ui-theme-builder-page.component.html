@@ -94,32 +94,79 @@
     }
 
     <h2 class="tb-subsection__title">{{ messages().ui.themeBuilder.previewHeading }}</h2>
-    <p class="tb-hint">{{ messages().ui.themeBuilder.previewHint }}</p>
 
     <div class="tb-preview">
-      <ea-button variant="primary">
-        {{ messages().ui.themeBuilder.previewButton }}
-      </ea-button>
-      <ea-switch
-        [label]="messages().ui.themeBuilder.previewSwitch"
-        [(checked)]="demoSwitch" />
-      <ea-date-picker class="tb-preview__date" />
-      <ea-progress-bar
-        class="tb-preview__progress"
-        [label]="messages().ui.themeBuilder.previewProgress"
-        [value]="45"
-        [buffer]="72"
-        [showPercentage]="true" />
-      <ea-stepper
-        class="tb-preview__stepper"
-        [activeStep]="1"
-        [orientation]="stepperOrientation()">
-        <ea-step
-          [label]="messages().ui.themeBuilder.previewStep1"
-          [completed]="true" />
-        <ea-step [label]="messages().ui.themeBuilder.previewStep2" />
-        <ea-step [label]="messages().ui.themeBuilder.previewStep3" />
-      </ea-stepper>
+      <div class="tb-demo__bar">
+        <span
+          class="tb-demo__logo"
+          aria-hidden="true">
+          <span class="tb-demo__logo-dot tb-demo__logo-dot--primary"></span>
+          <span class="tb-demo__logo-dot tb-demo__logo-dot--secondary"></span>
+        </span>
+        <ul class="tb-demo__nav">
+          <li class="tb-demo__nav-item tb-demo__nav-item--active">
+            {{ messages().ui.themeBuilder.previewNavOverview }}
+          </li>
+          <li class="tb-demo__nav-item">
+            {{ messages().ui.themeBuilder.previewNavEvents }}
+          </li>
+          <li class="tb-demo__nav-item">
+            {{ messages().ui.themeBuilder.previewNavMembers }}
+          </li>
+        </ul>
+        <ea-button
+          variant="primary"
+          size="sm">
+          {{ messages().ui.themeBuilder.previewButton }}
+        </ea-button>
+      </div>
+
+      <div class="tb-demo__body">
+        <div class="tb-demo__main">
+          <div class="tb-demo__intro">
+            <p class="tb-demo__title">{{ messages().ui.themeBuilder.previewTitle }}</p>
+            <p class="tb-demo__text">
+              {{ messages().ui.themeBuilder.previewBody }}
+              <ea-button variant="link">
+                {{ messages().ui.themeBuilder.previewLink }}
+              </ea-button>
+            </p>
+          </div>
+          <ea-card
+            variant="outlined"
+            headerAlign="start">
+            <p
+              slot="header"
+              class="tb-demo__card-title">
+              {{ messages().ui.themeBuilder.previewChartTitle }}
+            </p>
+            <ea-bar-chart
+              [labels]="chartLabels()"
+              [series]="chartSeries()"
+              [height]="180"
+              [aria-label]="messages().ui.themeBuilder.previewChartTitle" />
+          </ea-card>
+        </div>
+
+        <div class="tb-demo__side">
+          <ea-date-picker [label]="messages().ui.themeBuilder.previewDateLabel" />
+          <ea-switch
+            [label]="messages().ui.themeBuilder.previewSwitch"
+            [(checked)]="demoSwitch" />
+          <ea-card
+            variant="outlined"
+            headerAlign="start">
+            <p
+              slot="header"
+              class="tb-demo__card-title">
+              {{ messages().ui.themeBuilder.previewTimelineTitle }}
+            </p>
+            <ea-timeline
+              size="sm"
+              [items]="timelineItems()" />
+          </ea-card>
+        </div>
+      </div>
     </div>
   </div>
 
