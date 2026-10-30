@@ -2328,6 +2328,7 @@ export const nl: WebMessages = {
               'Wisselt de AM/PM-periode in de 12-uursmodus door de 12-uursverschuiving om te schakelen.',
           },
           autocomplete: {
+            clearable: 'Toont een wisknop terwijl het veld een waarde heeft.',
             disabled: 'Schakelt het veld uit.',
             emptyMessage:
               'Melding getoond in de lijst wanneer geen opties overeenkomen met de huidige invoer, die terugvalt op de vertaling van de actieve taal indien weggelaten.',

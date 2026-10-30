@@ -2353,6 +2353,7 @@ export const esES: WebMessages = {
               'Cambia el periodo AM/PM en el modo de 12 horas invirtiendo el desplazamiento de 12 horas.',
           },
           autocomplete: {
+            clearable: 'Muestra un botón de borrado cuando el campo tiene un valor.',
             disabled: 'Deshabilita el campo.',
             emptyMessage:
               'Mensaje mostrado en la lista cuando ninguna opción coincide con la entrada actual; si se omite, se usa la traducción del idioma activo.',

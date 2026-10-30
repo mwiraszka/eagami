@@ -2349,6 +2349,7 @@ export const de: WebMessages = {
               'Wechselt die AM/PM-Periode im 12-Stunden-Modus durch Umschalten des 12-Stunden-Offsets.',
           },
           autocomplete: {
+            clearable: 'Zeigt einen Löschen-Button, solange das Feld einen Wert hat.',
             disabled: 'Deaktiviert das Feld.',
             emptyMessage:
               'Meldung, die in der Liste angezeigt wird, wenn keine Optionen zur aktuellen Eingabe passen, mit der Übersetzung des aktiven Sprachraums als Standard, wenn weggelassen.',

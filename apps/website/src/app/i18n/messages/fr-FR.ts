@@ -2352,6 +2352,8 @@ export const frFR: WebMessages = {
               'Bascule la période AM/PM en mode 12 h en inversant le décalage de 12 heures.',
           },
           autocomplete: {
+            clearable:
+              'Affiche un bouton d’effacement lorsque le champ contient une valeur.',
             disabled: 'Désactive le champ.',
             emptyMessage:
               'Message affiché dans la liste lorsqu’aucune option ne correspond à la saisie, avec repli sur la traduction de la locale active si omis.',

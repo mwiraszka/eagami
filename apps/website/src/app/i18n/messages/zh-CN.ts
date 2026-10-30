@@ -2092,6 +2092,7 @@ export const zhCN: WebMessages = {
             togglePeriod: '在 12 小时制中通过切换 12 小时偏移来切换 AM/PM 时段。',
           },
           autocomplete: {
+            clearable: '当字段有值时显示清除按钮。',
             disabled: '禁用该字段。',
             emptyMessage:
               '当没有选项与当前输入匹配时在列表中显示的消息，省略时回退到当前语言的翻译。',
