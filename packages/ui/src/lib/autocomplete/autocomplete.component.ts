@@ -19,6 +19,7 @@ import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import { injectControlErrorState } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption, SelectOptions } from '../select-option';
 import {
@@ -44,7 +45,13 @@ export type AutocompleteSize = EaSize;
  */
 @Component({
   selector: 'ea-autocomplete',
-  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass, PopoverComponent],
+  imports: [
+    FieldLabelComponent,
+    FieldMessagesComponent,
+    NgClass,
+    PopoverComponent,
+    XIconComponent,
+  ],
   templateUrl: './autocomplete.component.html',
   styleUrl: './autocomplete.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -75,6 +82,8 @@ export class AutocompleteComponent
   /** Maximum number of characters the input accepts (native `maxlength`). */
   readonly maxLength = input<number | undefined>(undefined);
   readonly maxResults = input<number>(10);
+  /** Shows a clear button while the field has a value. */
+  readonly clearable = input<boolean>(false);
   readonly emptyMessage = input<string | undefined>(undefined);
   readonly id = input<string>(uniqueId('ea-autocomplete'));
 
@@ -99,6 +108,12 @@ export class AutocompleteComponent
   private onTouched: () => void = () => {};
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
+
+  readonly showClear = computed(
+    () => this.clearable() && !!this.value() && !this.isDisabled() && !this.readonly(),
+  );
+
+  protected readonly clearLabel = computed(() => this.i18n.messages().input.clear);
 
   private readonly errorState = injectControlErrorState({
     errorMsg: this.errorMsg,
@@ -262,6 +277,20 @@ export class AutocompleteComponent
     this.selected.emit(option);
     this.justSelected = true;
     this.close();
+    this.inputEl()?.nativeElement.focus();
+  }
+
+  // Keeps focus in the input while the mouse presses the clear button
+  protected onClearMousedown(event: MouseEvent): void {
+    event.preventDefault();
+  }
+
+  /** Clears the current value and restores focus to the input. */
+  clear(): void {
+    this.value.set('');
+    this.onChange('');
+    this.changed.emit('');
+    this.focusedIndex.set(-1);
     this.inputEl()?.nativeElement.focus();
   }
 
