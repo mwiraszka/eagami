@@ -2301,6 +2301,7 @@ export const is: WebMessages = {
               'Skiptir um f.h./e.h. tímabil í 12 tíma ham með því að víxla 12 tíma hliðruninni.',
           },
           autocomplete: {
+            clearable: 'Sýnir hreinsunarhnapp á meðan reiturinn hefur gildi.',
             disabled: 'Gerir reitinn óvirkan.',
             emptyMessage:
               'Skilaboð sýnd í listanum þegar engir valkostir passa við núverandi inntak, fellur aftur á þýðingu virka svæðisins þegar því er sleppt.',

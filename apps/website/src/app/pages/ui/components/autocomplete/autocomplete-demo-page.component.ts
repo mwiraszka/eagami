@@ -54,6 +54,7 @@ interface AutocompleteKnobState {
   minLength: number;
   maxLength: number;
   maxResults: number;
+  clearable: boolean;
   disabled: boolean;
   readonly: boolean;
   required: boolean;

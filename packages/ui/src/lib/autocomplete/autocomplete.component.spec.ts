@@ -30,6 +30,8 @@ const FRUITS: SelectOption[] = [
       [minLength]="minLength()"
       [maxLength]="maxLength()"
       [maxResults]="maxResults()"
+      [clearable]="clearable()"
+      (changed)="changes.push($event)"
       (selected)="onSelected($event)" />
   `,
 })
@@ -47,6 +49,8 @@ class TestHostComponent {
   minLength = signal(0);
   maxLength = signal<number | undefined>(undefined);
   maxResults = signal(10);
+  clearable = signal(false);
+  changes: string[] = [];
   lastSelected: SelectOption | null = null;
 
   onSelected(option: SelectOption): void {
@@ -390,6 +394,61 @@ describe('AutocompleteComponent', () => {
       fixture.detectChanges();
 
       expect(getInput().disabled).toBe(true);
+    });
+  });
+
+  describe('Clear button', () => {
+    function getClearButton(): HTMLButtonElement | null {
+      return fixture.nativeElement.querySelector('.ea-autocomplete__clear');
+    }
+
+    beforeEach(() => {
+      host.clearable.set(true);
+      host.value.set('Apple');
+      fixture.detectChanges();
+    });
+
+    it('shows only while the field is clearable and holds a value', () => {
+      expect(getClearButton()?.getAttribute('aria-label')).toBe('Clear');
+
+      host.value.set('');
+      fixture.detectChanges();
+
+      expect(getClearButton()).toBeNull();
+
+      host.value.set('Apple');
+      host.clearable.set(false);
+      fixture.detectChanges();
+
+      expect(getClearButton()).toBeNull();
+    });
+
+    it('hides while the field is disabled', () => {
+      host.disabled.set(true);
+      fixture.detectChanges();
+
+      expect(getClearButton()).toBeNull();
+    });
+
+    it('clears the value, reports the change and refocuses the input on click', () => {
+      const focusSpy = vi.spyOn(getInput(), 'focus');
+
+      getClearButton()?.dispatchEvent(new MouseEvent('click'));
+      fixture.detectChanges();
+
+      expect(host.value()).toBe('');
+      expect(host.changes).toEqual(['']);
+      expect(focusSpy).toHaveBeenCalled();
+      expect(getClearButton()).toBeNull();
+    });
+
+    it('keeps focus in the input on mousedown without clearing', () => {
+      const event = new MouseEvent('mousedown', { cancelable: true });
+
+      getClearButton()?.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+      expect(host.value()).toBe('Apple');
     });
   });
 

@@ -2308,6 +2308,7 @@ export const pl: WebMessages = {
               'Przełącza okres AM/PM w trybie 12-godzinnym przez zmianę przesunięcia o 12 godzin.',
           },
           autocomplete: {
+            clearable: 'Wyświetla przycisk czyszczenia, gdy pole ma wartość.',
             disabled: 'Wyłącza pole.',
             emptyMessage:
               'Komunikat wyświetlany na liście, gdy żadna opcja nie pasuje do wpisanego tekstu; w razie pominięcia używane jest tłumaczenie aktywnego języka.',

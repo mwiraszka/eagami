@@ -2240,6 +2240,7 @@ export const en: WebMessages = {
               'Switches the AM/PM period in 12-hour mode by toggling the 12-hour offset.',
           },
           autocomplete: {
+            clearable: 'Shows a clear button while the field has a value.',
             disabled: 'Disables the field.',
             emptyMessage:
               "Message shown in the list when no options match the current input, falling back to the active locale's translation when omitted.",

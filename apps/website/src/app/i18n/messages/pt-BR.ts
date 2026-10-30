@@ -2313,6 +2313,7 @@ export const ptBR: WebMessages = {
               'Alterna o período AM/PM no modo de 12 horas alternando o deslocamento de 12 horas.',
           },
           autocomplete: {
+            clearable: 'Mostra um botão de limpar enquanto o campo tem um valor.',
             disabled: 'Desativa o campo.',
             emptyMessage:
               'Mensagem exibida na lista quando nenhuma opção corresponde à entrada atual, recorrendo à tradução do idioma ativo quando omitida.',

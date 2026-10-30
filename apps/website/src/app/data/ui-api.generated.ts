@@ -188,6 +188,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'clearable',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
@@ -359,6 +366,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     methods: [
+      {
+        name: 'clear',
+        signature: 'clear(): void',
+      },
       {
         name: 'close',
         signature: 'close(): void',

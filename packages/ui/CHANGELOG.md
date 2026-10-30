@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.80.0] - 2026-10-30
+
+### Added
+
+- Add a `clearable` input to the autocomplete, showing a clear button while the field has a value, as the input already offers.
+
 ## [5.79.0] - 2026-10-29
 
 ### Changed
@@ -2039,6 +2045,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.80.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.79.0...ui-v5.80.0
 [5.79.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.78.0...ui-v5.79.0
 [5.78.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.77.0...ui-v5.78.0
 [5.77.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.76.0...ui-v5.77.0

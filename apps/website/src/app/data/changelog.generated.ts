@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.80.0',
+    date: '2026-10-30',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `clearable` input to the autocomplete, showing a clear button while the field has a value, as the input already offers.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.79.0',
     date: '2026-10-29',
     sections: [

@@ -52,6 +52,17 @@
     <span class="ea-autocomplete__suffix">
       <ng-content select="[slot=suffix]" />
     </span>
+
+    @if (showClear()) {
+      <button
+        type="button"
+        class="ea-autocomplete__clear"
+        [attr.aria-label]="clearLabel()"
+        (mousedown)="onClearMousedown($event)"
+        (click)="clear()">
+        <ea-icon-x />
+      </button>
+    }
   </div>
 
   <ea-popover
