@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.81.0',
+    date: '2026-10-31',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a `rowLink` column option to the data table, set to `false` to keep a column's cells out of the link `rowHref` gives the row, so links and buttons inside them are neither nested in it nor hidden from assistive technology.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Let a link or button in a clickable data table row act on its own click or Enter, rather than the row cancelling it and emitting `rowActivate`.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.80.0',
     date: '2026-10-30',
     sections: [
