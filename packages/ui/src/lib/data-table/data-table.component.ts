@@ -50,6 +50,24 @@ function isModifiedClick(event: MouseEvent): boolean {
   );
 }
 
+const CELL_CONTROL_SELECTOR =
+  'a[href], button, input, select, textarea, label, summary, [role="button"], [role="link"], [role="checkbox"], [role="switch"], [role="menuitem"], [role="tab"]';
+
+// Whether the event came from a control a cell template put in the row, as opposed to
+// the row's own link
+function isFromCellControl(event: Event): boolean {
+  const row = event.currentTarget;
+  const control =
+    event.target instanceof Element ? event.target.closest(CELL_CONTROL_SELECTOR) : null;
+  return (
+    !!control &&
+    row instanceof Element &&
+    row !== control &&
+    row.contains(control) &&
+    !control.classList.contains('ea-data-table__row-link')
+  );
+}
+
 /** Column definition for the data table, including optional cell/header templates. */
 export interface DataTableColumn<T = Record<string, unknown>> {
   key: string;
@@ -62,6 +80,13 @@ export interface DataTableColumn<T = Record<string, unknown>> {
   headerTemplate?: TemplateRef<{ $implicit: DataTableColumn<T> }>;
   /** Shown in this column's cells while the table is `loading`, in place of a skeleton bar. */
   placeholderTemplate?: TemplateRef<{ $implicit: DataTableColumn<T>; index: number }>;
+  /**
+   * Set to `false` for a column whose cells hold links or buttons of their own, to keep
+   * them out of the link `rowHref` gives every cell: a link inside a link is invalid, and
+   * the row's links after the first are hidden from assistive technology. A click
+   * elsewhere in the cell still activates the row.
+   */
+  rowLink?: boolean;
 }
 
 /** A body row's context-menu request, as `rowContextMenu` emits it. */
@@ -162,9 +187,10 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly clickable = input<boolean>(false);
   /**
    * Gives a row its link target, or `null` for none. Every cell of the row then holds
-   * a real link, so the browser shows the target on hover and a modified click opens
-   * it elsewhere, while a plain click still emits `rowActivate` for the app to route.
-   * A row given `null` is inert: no link, hover highlight, focus or activation.
+   * a real link, unless its column sets `rowLink: false`, so the browser shows the
+   * target on hover and a modified click opens it elsewhere, while a plain click still
+   * emits `rowActivate` for the app to route. A row given `null` is inert: no link,
+   * hover highlight, focus or activation.
    */
   readonly rowHref = input<((row: T) => string | null) | undefined>(undefined);
   /**
@@ -196,6 +222,11 @@ export class DataTableComponent<T = Record<string, unknown>> {
   /** Empty-state text, falling back to the active locale's translation. */
   readonly resolvedNoDataText = computed(
     () => this.noDataText() ?? this.i18n.messages().dataTable.noData,
+  );
+
+  // The one row link assistive technology announces, so a row reads as a single link
+  protected readonly announcedLinkColumn = computed(() =>
+    this.columns().findIndex(col => col.rowLink !== false),
   );
 
   readonly placeholderRows = computed(() =>
@@ -354,12 +385,16 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
   // Suppresses the default of Enter/Space and of a row link's plain click, which
   // the app routes itself. A modified click on a row link is the browser's to open
-  // elsewhere. In navigable mode the keydown bubbles up from the focused cell.
+  // elsewhere, and a link or button of a cell's own does what it does instead. In
+  // navigable mode the keydown bubbles up from the focused cell.
   onRowActivate(row: T, event?: Event): void {
     if (!this.clickable() || this.isInert(row)) {
       return;
     }
     if (event instanceof MouseEvent && isModifiedClick(event)) {
+      return;
+    }
+    if (event && isFromCellControl(event)) {
       return;
     }
     event?.preventDefault();

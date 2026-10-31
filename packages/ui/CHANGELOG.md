@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.81.0] - 2026-10-31
+
+### Added
+
+- Add a `rowLink` column option to the data table, set to `false` to keep a column's cells out of the link `rowHref` gives the row, so links and buttons inside them are neither nested in it nor hidden from assistive technology.
+
+### Fixed
+
+- Let a link or button in a clickable data table row act on its own click or Enter, rather than the row cancelling it and emitting `rowActivate`.
+
 ## [5.80.0] - 2026-10-30
 
 ### Added
@@ -2045,6 +2055,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.81.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.80.0...ui-v5.81.0
 [5.80.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.79.0...ui-v5.80.0
 [5.79.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.78.0...ui-v5.79.0
 [5.78.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.77.0...ui-v5.78.0
