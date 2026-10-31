@@ -189,12 +189,14 @@
                   [attr.data-ea-cell]="navigable() ? rowIndex + 1 + '-' + colIndex : null"
                   [attr.tabindex]="bodyCellTabindex(rowIndex + 1, colIndex)"
                   (focus)="onCellFocus(rowIndex + 1, colIndex)">
-                  @if (rowHref()?.(row); as url) {
+                  @if (col.rowLink !== false && rowHref()?.(row); as url) {
                     <a
                       class="ea-data-table__row-link"
                       [href]="url"
                       tabindex="-1"
-                      [attr.aria-hidden]="colIndex > 0 ? true : null">
+                      [attr.aria-hidden]="
+                        colIndex !== announcedLinkColumn() ? true : null
+                      ">
                       <ng-container
                         [ngTemplateOutlet]="cellContent"
                         [ngTemplateOutletContext]="{ $implicit: row, col }" />

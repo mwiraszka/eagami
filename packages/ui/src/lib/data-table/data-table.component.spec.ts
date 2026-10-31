@@ -252,6 +252,22 @@ describe('DataTableComponent', () => {
     it('marks the table as linked', () => {
       expect(getHost().classList.contains('ea-data-table--linked')).toBe(true);
     });
+
+    it('keeps a column that opts out of the row link as plain cells, announcing the next one instead', () => {
+      fixture.componentRef.setInput('columns', [
+        { ...testColumns[0], rowLink: false },
+        ...testColumns.slice(1),
+      ]);
+      fixture.detectChanges();
+
+      const [idCell] = getCellsInRow(getBodyRows()[0]);
+      const links = getRowLinks(getBodyRows()[0]);
+
+      expect(idCell.querySelector('.ea-data-table__row-link')).toBeNull();
+      expect(links).toHaveLength(2);
+      expect(links[0].getAttribute('aria-hidden')).toBeNull();
+      expect(links[1].getAttribute('aria-hidden')).toBe('true');
+    });
   });
 
   describe('Loading', () => {
