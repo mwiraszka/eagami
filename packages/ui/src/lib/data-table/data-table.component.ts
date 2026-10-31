@@ -50,6 +50,24 @@ function isModifiedClick(event: MouseEvent): boolean {
   );
 }
 
+const CELL_CONTROL_SELECTOR =
+  'a[href], button, input, select, textarea, label, summary, [role="button"], [role="link"], [role="checkbox"], [role="switch"], [role="menuitem"], [role="tab"]';
+
+// Whether the event came from a control a cell template put in the row, as opposed to
+// the row's own link
+function isFromCellControl(event: Event): boolean {
+  const row = event.currentTarget;
+  const control =
+    event.target instanceof Element ? event.target.closest(CELL_CONTROL_SELECTOR) : null;
+  return (
+    !!control &&
+    row instanceof Element &&
+    row !== control &&
+    row.contains(control) &&
+    !control.classList.contains('ea-data-table__row-link')
+  );
+}
+
 /** Column definition for the data table, including optional cell/header templates. */
 export interface DataTableColumn<T = Record<string, unknown>> {
   key: string;
@@ -367,12 +385,16 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
   // Suppresses the default of Enter/Space and of a row link's plain click, which
   // the app routes itself. A modified click on a row link is the browser's to open
-  // elsewhere. In navigable mode the keydown bubbles up from the focused cell.
+  // elsewhere, and a link or button of a cell's own does what it does instead. In
+  // navigable mode the keydown bubbles up from the focused cell.
   onRowActivate(row: T, event?: Event): void {
     if (!this.clickable() || this.isInert(row)) {
       return;
     }
     if (event instanceof MouseEvent && isModifiedClick(event)) {
+      return;
+    }
+    if (event && isFromCellControl(event)) {
       return;
     }
     event?.preventDefault();

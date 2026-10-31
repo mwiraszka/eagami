@@ -45,6 +45,39 @@ class PlaceholderHostComponent {
   ]);
 }
 
+type CellTemplate = TemplateRef<{ $implicit: TestRow; value: unknown }>;
+
+@Component({
+  imports: [DataTableComponent],
+  template: `
+    <ea-data-table
+      [clickable]="true"
+      [columns]="columns()"
+      [data]="data"
+      [rowHref]="hrefOf"
+      (rowActivate)="activated.push($event)" />
+    <ng-template
+      #nameCell
+      let-row>
+      <a
+        class="own-link"
+        [href]="'#' + row.name">
+        {{ row.name }}
+      </a>
+    </ng-template>
+  `,
+})
+class CellControlHostComponent {
+  readonly data: TestRow[] = [{ id: 1, name: 'Charlie', age: 30 }];
+  readonly activated: TestRow[] = [];
+  readonly hrefOf = (row: TestRow) => `/rows/${row.id}`;
+  private readonly nameCell = viewChild.required<CellTemplate>('nameCell');
+  readonly columns = computed<DataTableColumn<TestRow>[]>(() => [
+    { key: 'id', label: 'ID' },
+    { key: 'name', label: 'Name', cellTemplate: this.nameCell(), rowLink: false },
+  ]);
+}
+
 describe('DataTableComponent', () => {
   let fixture: ComponentFixture<DataTableComponent<TestRow>>;
   let component: DataTableComponent<TestRow>;
@@ -267,6 +300,51 @@ describe('DataTableComponent', () => {
       expect(links).toHaveLength(2);
       expect(links[0].getAttribute('aria-hidden')).toBeNull();
       expect(links[1].getAttribute('aria-hidden')).toBe('true');
+    });
+  });
+
+  describe('Controls in cells', () => {
+    let host: ComponentFixture<CellControlHostComponent>;
+
+    beforeEach(() => {
+      host = TestBed.createComponent(CellControlHostComponent);
+      host.detectChanges();
+    });
+
+    function ownLink(): HTMLAnchorElement {
+      return host.nativeElement.querySelector('.own-link');
+    }
+
+    it("leaves a click on a cell's own link to that link, without activating the row", () => {
+      const event = new MouseEvent('click', { bubbles: true, cancelable: true });
+
+      ownLink().dispatchEvent(event);
+
+      expect(host.componentInstance.activated).toEqual([]);
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it("leaves Enter on a cell's own link to that link", () => {
+      const event = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        bubbles: true,
+        cancelable: true,
+      });
+
+      ownLink().dispatchEvent(event);
+
+      expect(host.componentInstance.activated).toEqual([]);
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('still activates the row on a click elsewhere in the cell', () => {
+      const cell = ownLink().closest('td')!;
+
+      cell.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+
+      expect(host.componentInstance.activated).toEqual([
+        { id: 1, name: 'Charlie', age: 30 },
+      ]);
     });
   });
 
