@@ -25,7 +25,7 @@
     "check-i18n": "node ../../packages/ui/scripts/check-i18n-drift.mjs src/app/i18n/messages"
   },
   "dependencies": {
-    "@angular/cdk": "22.2.3",
+    "@angular/cdk": "22.2.4",
     "@angular/common": "22.2.3",
     "@angular/compiler": "22.2.3",
     "@angular/core": "22.2.3",
@@ -34,7 +34,7 @@
     "@angular/platform-browser-dynamic": "22.2.3",
     "@angular/platform-server": "22.2.3",
     "@angular/router": "22.2.3",
-    "@angular/ssr": "22.2.2",
+    "@angular/ssr": "22.2.4",
     "@eagami/ui": "workspace:*",
     "@sentry/angular": "11.9.0",
     "express": "5.3.0",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "22.2.2",
-    "@angular/cli": "22.2.2",
+    "@angular/cli": "22.2.4",
     "@angular/compiler-cli": "22.2.3",
     "@eslint/js": "10.0.1",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
