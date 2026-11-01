@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.81.1',
+    date: '2026-11-01',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Stop the eagami wordmark loading Syne from Google Fonts itself, so it uses the Syne the app already loads and sends no request to Google.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.81.0',
     date: '2026-10-31',
     sections: [
