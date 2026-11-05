@@ -1584,6 +1584,8 @@ export const nl: WebMessages = {
             showArea:
               'Vult het vlak onder elke lijn met een lichte tint van de eigen kleur.',
             showPoints: 'Markeert elke waarde met een punt.',
+            connectGaps:
+              'Trekt elke lijn door over ontbrekende waarden in plaats van haar daar te onderbreken, zodat reeksen die op verschillende punten zijn gemeten elk één lijn blijven.',
             showGrid: 'Tekent horizontale rasterlijnen bij elke maatstreep van de y-as.',
             showLegend:
               'Toont een legenda onder de grafiek wanneer deze meer dan één reeks weergeeft.',

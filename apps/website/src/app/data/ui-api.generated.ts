@@ -3127,6 +3127,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'connectGaps',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'curve',
         type: 'LineChartCurve',
         default: "'linear'",

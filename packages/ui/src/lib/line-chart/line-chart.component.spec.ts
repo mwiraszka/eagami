@@ -65,6 +65,24 @@ describe('LineChartComponent', () => {
       expect(secondSeries.querySelectorAll('.ea-line-chart__line')).toHaveLength(2);
     });
 
+    it('carries a line across a null value when connectGaps is set', () => {
+      fixture.componentRef.setInput('connectGaps', true);
+      fixture.detectChanges();
+
+      const secondSeries = queryAll('.ea-line-chart__series')[1];
+      expect(secondSeries.querySelectorAll('.ea-line-chart__line')).toHaveLength(1);
+      expect(secondSeries.querySelectorAll('.ea-line-chart__point')).toHaveLength(3);
+    });
+
+    it('carries an area fill across a null value when connectGaps is set', () => {
+      fixture.componentRef.setInput('connectGaps', true);
+      fixture.componentRef.setInput('showArea', true);
+      fixture.detectChanges();
+
+      const secondSeries = queryAll('.ea-line-chart__series')[1];
+      expect(secondSeries.querySelectorAll('.ea-line-chart__area')).toHaveLength(1);
+    });
+
     it('marks every plotted value with a point by default', () => {
       expect(queryAll('.ea-line-chart__point')).toHaveLength(7);
     });

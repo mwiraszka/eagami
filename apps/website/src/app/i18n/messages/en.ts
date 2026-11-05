@@ -1553,6 +1553,8 @@ export const en: WebMessages = {
             curve: 'How the line bends between points.',
             showArea: 'Fills the area beneath each line with a light wash of its color.',
             showPoints: 'Marks every value with a point.',
+            connectGaps:
+              'Carries each line on across its missing values instead of breaking it there, so series measured at different points each stay one line.',
             showGrid: 'Draws horizontal gridlines at each y-axis tick.',
             showLegend:
               'Shows a legend beneath the chart when it plots more than one series.',

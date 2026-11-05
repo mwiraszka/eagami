@@ -1623,6 +1623,8 @@ export const frFR: WebMessages = {
             curve: 'Manière dont la ligne s’incurve entre les points.',
             showArea: 'Remplit l’aire sous chaque ligne d’un léger voile de sa couleur.',
             showPoints: 'Marque chaque valeur d’un point.',
+            connectGaps:
+              'Prolonge chaque ligne par-dessus ses valeurs manquantes au lieu de l’interrompre, afin que des séries mesurées à des points différents restent chacune une seule ligne.',
             showGrid:
               'Trace des lignes de grille horizontales à chaque graduation de l’axe des y.',
             showLegend:

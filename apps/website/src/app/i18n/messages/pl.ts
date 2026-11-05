@@ -1590,6 +1590,8 @@ export const pl: WebMessages = {
             curve: 'Sposób, w jaki linia wygina się między punktami.',
             showArea: 'Wypełnia obszar pod każdą linią jasnym odcieniem jej koloru.',
             showPoints: 'Oznacza każdą wartość punktem.',
+            connectGaps:
+              'Prowadzi każdą linię dalej przez brakujące wartości zamiast ją tam przerywać, dzięki czemu serie mierzone w różnych punktach pozostają każda jedną linią.',
             showGrid: 'Rysuje poziome linie siatki przy każdej podziałce osi y.',
             showLegend:
               'Wyświetla legendę pod wykresem, gdy przedstawia on więcej niż jedną serię.',

@@ -1593,6 +1593,8 @@ export const is: WebMessages = {
             curve: 'Hvernig línan sveigist milli punkta.',
             showArea: 'Fyllir flötinn undir hverri línu með ljósum blæ af lit hennar.',
             showPoints: 'Merkir hvert gildi með punkti.',
+            connectGaps:
+              'Heldur hverri línu áfram yfir gildi sem vantar í stað þess að rjúfa hana þar, svo raðir mældar á mismunandi stöðum haldist hver um sig ein lína.',
             showGrid: 'Teiknar láréttar hnitalínur við hvert kvarðastrik y-ássins.',
             showLegend:
               'Sýnir skýringar fyrir neðan ritið þegar það teiknar fleiri en eina röð.',

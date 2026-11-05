@@ -192,6 +192,11 @@ export class LineChartComponent {
   readonly showArea = input<boolean>(false);
   /** Marks every value with a point. */
   readonly showPoints = input<boolean>(true);
+  /**
+   * Carries each line on across its missing values instead of breaking it
+   * there, so series measured at different points each stay one line.
+   */
+  readonly connectGaps = input<boolean>(false);
   /** Draws horizontal gridlines at each y-axis tick. */
   readonly showGrid = input<boolean>(true);
   /** Shows a legend beneath the chart when it plots more than one series. */
@@ -330,16 +335,17 @@ export class LineChartComponent {
   // Each series split into runs of consecutive plotted values, in data space
   private readonly runs = computed(() => {
     const positions = this.positions();
+    const connectGaps = this.connectGaps();
     return this.series().map(s => {
       const runs: DataPoint[][] = [];
       let run: DataPoint[] = [];
       positions.forEach((position, index) => {
         const value = s.data[index];
         if (!this.isValue(value) || !isFinite(position)) {
-          if (run.length) {
+          if (!connectGaps && run.length) {
             runs.push(run);
+            run = [];
           }
-          run = [];
           return;
         }
         run.push({ index, position, value });
