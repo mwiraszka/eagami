@@ -1513,6 +1513,8 @@ export const zhCN: WebMessages = {
             curve: '折线在数据点之间的弯曲方式。',
             showArea: '用各折线颜色的浅色填充其下方区域。',
             showPoints: '用数据点标记每个值。',
+            connectGaps:
+              '让每条线越过缺失值继续延伸，而不是在缺失处断开，使在不同位置测量的系列各自保持为一条线。',
             showGrid: '在 y 轴的每个刻度处绘制水平网格线。',
             showLegend: '当图表绘制多个系列时，在图表下方显示图例。',
             yMin: 'y 轴的下限；未设置时根据数据推导。',

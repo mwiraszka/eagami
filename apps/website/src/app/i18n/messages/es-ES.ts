@@ -1601,6 +1601,8 @@ export const esES: WebMessages = {
             curve: 'Cómo se curva la línea entre los puntos.',
             showArea: 'Rellena el área bajo cada línea con un tono suave de su color.',
             showPoints: 'Marca cada valor con un punto.',
+            connectGaps:
+              'Continúa cada línea a través de sus valores ausentes en lugar de cortarla en ellos, de modo que las series medidas en puntos distintos sigan siendo una sola línea cada una.',
             showGrid: 'Dibuja líneas de cuadrícula horizontales en cada marca del eje y.',
             showLegend:
               'Muestra una leyenda debajo del gráfico cuando representa más de una serie.',

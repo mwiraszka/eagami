@@ -1598,6 +1598,8 @@ export const de: WebMessages = {
             showArea:
               'Füllt die Fläche unter jeder Linie mit einem hellen Schimmer ihrer Farbe.',
             showPoints: 'Markiert jeden Wert mit einem Punkt.',
+            connectGaps:
+              'Führt jede Linie über ihre fehlenden Werte hinweg fort, statt sie dort zu unterbrechen, sodass an unterschiedlichen Stellen gemessene Reihen jeweils eine Linie bleiben.',
             showGrid:
               'Zeichnet horizontale Rasterlinien an jedem Teilstrich der y-Achse.',
             showLegend:

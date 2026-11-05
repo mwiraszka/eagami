@@ -1583,6 +1583,8 @@ export const ptBR: WebMessages = {
             curve: 'Como a linha se curva entre os pontos.',
             showArea: 'Preenche a área abaixo de cada linha com um tom suave da sua cor.',
             showPoints: 'Marca cada valor com um ponto.',
+            connectGaps:
+              'Continua cada linha através dos valores ausentes em vez de interrompê-la neles, para que séries medidas em pontos diferentes continuem sendo uma única linha cada.',
             showGrid: 'Desenha linhas de grade horizontais em cada marcação do eixo y.',
             showLegend:
               'Mostra uma legenda abaixo do gráfico quando ele plota mais de uma série.',
