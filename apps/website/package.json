@@ -38,7 +38,7 @@
     "@eagami/ui": "workspace:*",
     "@sentry/angular": "11.9.0",
     "express": "5.3.0",
-    "nodemailer": "10.1.1",
+    "nodemailer": "10.2.1",
     "rxjs": "7.8.2",
     "tslib": "2.8.1",
     "zone.js": "0.16.3"
