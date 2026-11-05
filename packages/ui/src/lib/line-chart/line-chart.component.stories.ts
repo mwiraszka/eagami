@@ -63,6 +63,20 @@ export const WithGaps: Story = {
   }),
 };
 
+export const ConnectedGaps: Story = {
+  render: args => ({
+    props: {
+      ...args,
+      labels: LABELS,
+      series: [
+        { name: 'North', data: [4, null, 9, null, 15, 18, null, 19] },
+        { name: 'South', data: [null, 7, null, 12, null, 16, 20, null] },
+      ],
+    },
+    template: `<ea-line-chart ${argsToTemplate(args)} [labels]="labels" [series]="series" [connectGaps]="true" />`,
+  }),
+};
+
 export const Empty: Story = {
   render: args => ({
     props: args,
