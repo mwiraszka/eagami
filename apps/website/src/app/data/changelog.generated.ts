@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.82.0',
+    date: '2026-11-05',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `connectGaps` input to the line chart, carrying each line across its missing values instead of breaking it there, so series measured at different points each stay one line.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.81.1',
     date: '2026-11-01',
     sections: [
