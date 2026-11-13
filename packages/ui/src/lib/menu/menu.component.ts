@@ -47,8 +47,10 @@ export class MenuComponent {
   private readonly i18n = inject(EagamiI18nService);
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
   private readonly popover = viewChild(PopoverComponent);
-  private readonly focusFirstItemOnReveal = focusOnReveal(this.popover, () =>
-    this.focusFirstItem(),
+  private readonly focusFirstItemOnReveal = focusOnReveal(
+    () => this.open(),
+    () => this.popover(),
+    () => this.focusFirstItem(),
   );
 
   readonly placement = input<MenuPlacement>('bottom-start');

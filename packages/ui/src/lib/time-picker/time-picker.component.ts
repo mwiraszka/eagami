@@ -102,11 +102,15 @@ export class TimePickerComponent
   protected readonly i18n = inject(EagamiI18nService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly popover = viewChild(PopoverComponent);
-  private readonly focusHoursOnReveal = focusOnReveal(this.popover, () => {
-    const el = this.hoursEl()?.nativeElement;
-    el?.focus();
-    el?.select();
-  });
+  private readonly focusHoursOnReveal = focusOnReveal(
+    () => this.isOpen(),
+    () => this.popover(),
+    () => {
+      const el = this.hoursEl()?.nativeElement;
+      el?.focus();
+      el?.select();
+    },
+  );
 
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<TimePickerSize>('md');

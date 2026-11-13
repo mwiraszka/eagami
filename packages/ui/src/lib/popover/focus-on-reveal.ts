@@ -1,36 +1,42 @@
-import { type Signal, afterRenderEffect, signal, untracked } from '@angular/core';
+import { afterRenderEffect, signal, untracked } from '@angular/core';
 
 import { type PopoverComponent } from './popover.component';
+
+// Only the newest request on the page moves focus, so two surfaces revealed in the
+// same frame do not pass it back and forth
+let latestRequest = 0;
 
 /**
  * Returns a function that requests `focus` to run once `popover` has revealed its
  * surface. The surface stays invisible until it has measured and positioned itself,
  * and an invisible element cannot take focus, so moving focus into it on the first
- * render after opening does nothing. A request made while the surface already shows
- * runs after the next render. A request is dropped when the popover closes first, or
- * when focus has moved somewhere else in the meantime. Call it in an injection context.
+ * render after opening does nothing. `isOpen` reads the owner's own open state, which
+ * is current as soon as the owner opens, unlike the popover's input. A request is
+ * dropped once the owner closes, when a newer request is made, or when focus has moved
+ * somewhere else before the reveal. Call it in an injection context.
  */
 export function focusOnReveal(
-  popover: Signal<PopoverComponent | undefined>,
+  isOpen: () => boolean,
+  popover: () => PopoverComponent | undefined,
   focus: () => void,
 ): () => void {
-  const pending = signal(false);
+  const pending = signal(0);
   let focusedAtRequest: Element | null = null;
 
   afterRenderEffect(() => {
-    const surface = popover();
-    if (!pending() || !surface) {
+    const request = pending();
+    if (request === 0) {
       return;
     }
-    if (!surface.open()) {
-      pending.set(false);
+    if (!isOpen() || request !== latestRequest) {
+      pending.set(0);
       return;
     }
-    if (!surface.isPositioned()) {
+    if (!popover()?.isPositioned()) {
       return;
     }
     untracked(() => {
-      pending.set(false);
+      pending.set(0);
       const active = document.activeElement;
       if (active === focusedAtRequest || active === null || active === document.body) {
         focus();
@@ -39,7 +45,8 @@ export function focusOnReveal(
   });
 
   return () => {
+    latestRequest += 1;
     focusedAtRequest = typeof document === 'undefined' ? null : document.activeElement;
-    pending.set(true);
+    pending.set(latestRequest);
   };
 }

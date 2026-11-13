@@ -99,8 +99,10 @@ export class DatePickerComponent
   protected readonly fieldEl = viewChild<ElementRef<HTMLElement>>('fieldEl');
   protected readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
   private readonly popover = viewChild(PopoverComponent);
-  private readonly focusDayCellOnReveal = focusOnReveal(this.popover, () =>
-    this.focusFocusedDayCell(),
+  private readonly focusDayCellOnReveal = focusOnReveal(
+    () => this.isOpen(),
+    () => this.popover(),
+    () => this.focusFocusedDayCell(),
   );
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);

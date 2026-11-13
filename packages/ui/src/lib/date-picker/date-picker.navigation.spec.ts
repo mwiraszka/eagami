@@ -63,9 +63,13 @@ describe('DatePickerComponent calendar navigation', () => {
     fixture.detectChanges();
   }
 
+  function nextFrame(): Promise<void> {
+    return new Promise(resolve => requestAnimationFrame(() => resolve()));
+  }
+
   // The popover reveals its surface on the frame after opening, and focus follows it in
   async function revealSurface(): Promise<void> {
-    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+    await nextFrame();
     fixture.detectChanges();
   }
 
@@ -458,8 +462,9 @@ describe('DatePickerComponent calendar navigation', () => {
   });
 
   describe('Focus management', () => {
-    it('leaves keys it does not handle to the browser', () => {
+    it('leaves keys it does not handle to the browser', async () => {
       open();
+      await revealSurface();
       const event = new KeyboardEvent('keydown', {
         key: 'Tab',
         bubbles: true,
@@ -563,6 +568,8 @@ describe('DatePickerComponent calendar navigation', () => {
       second.nativeElement.querySelector('.ea-date-picker__calendar-button').click();
       second.detectChanges();
       await second.whenStable();
+      await nextFrame();
+      second.detectChanges();
 
       // The stale lookup matched the first picker in document order, so it is
       // the second one whose focus went astray
