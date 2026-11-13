@@ -2222,8 +2222,6 @@ export const en: WebMessages = {
             commitDigits:
               "Parses the buffered digit string, clamps it to the unit's valid range, and writes it to the value.",
             flushBuffer: 'Commits any pending typed-digit buffer and clears it.',
-            focusHoursWhenReady:
-              'Focuses the hours input once the popover surface has been rendered to the DOM.',
             hoursFromTyped:
               'Converts a typed hours value to its 24-hour equivalent, accounting for the current AM/PM period.',
             onPopoverCloseRequested:

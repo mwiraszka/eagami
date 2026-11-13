@@ -2079,7 +2079,6 @@ export const zhCN: WebMessages = {
             cannotExtend: '当没有更多数字能有效扩展给定单位的当前缓冲区时返回 true。',
             commitDigits: '解析缓冲的数字字符串，将其钳制到单位的有效范围，并写入值。',
             flushBuffer: '提交任何待处理的已键入数字缓冲区并将其清空。',
-            focusHoursWhenReady: '在浮层表面渲染到 DOM 后聚焦小时输入。',
             hoursFromTyped:
               '将键入的小时值转换为其 24 小时制等价值，并考虑当前的 AM/PM 时段。',
             onPopoverCloseRequested: '当用户在选择器外点击时关闭浮层。',

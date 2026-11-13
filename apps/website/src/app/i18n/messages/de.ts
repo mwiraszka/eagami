@@ -2331,8 +2331,6 @@ export const de: WebMessages = {
               'Parst die gepufferte Ziffern-Zeichenkette, begrenzt sie auf den gültigen Bereich der Einheit und schreibt sie in den Wert.',
             flushBuffer:
               'Übernimmt einen ausstehenden Eingabeziffern-Puffer und leert ihn.',
-            focusHoursWhenReady:
-              'Fokussiert das Stunden-Input, sobald die Popover-Oberfläche im DOM gerendert wurde.',
             hoursFromTyped:
               'Wandelt einen eingegebenen Stundenwert in sein 24-Stunden-Äquivalent um, unter Berücksichtigung der aktuellen AM/PM-Periode.',
             onPopoverCloseRequested:

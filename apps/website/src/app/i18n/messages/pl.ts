@@ -2289,8 +2289,6 @@ export const pl: WebMessages = {
               'Analizuje buforowany ciąg cyfr, ogranicza go do prawidłowego zakresu jednostki i zapisuje do wartości.',
             flushBuffer:
               'Zatwierdza wszelkie oczekujące buforowane cyfry i czyści bufor.',
-            focusHoursWhenReady:
-              'Ustawia fokus na polu godzin po wyrenderowaniu powierzchni popovera w DOM.',
             hoursFromTyped:
               'Konwertuje wpisaną wartość godzin na odpowiednik 24-godzinny, uwzględniając bieżący okres AM/PM.',
             onPopoverCloseRequested:
