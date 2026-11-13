@@ -2310,8 +2310,6 @@ export const nl: WebMessages = {
             commitDigits:
               'Parseert de gebufferde cijfertekst, kapt deze af binnen het geldige bereik van de eenheid en schrijft deze naar de waarde.',
             flushBuffer: 'Legt elke openstaande getypte-cijferbuffer vast en wist deze.',
-            focusHoursWhenReady:
-              'Focust de ureninvoer zodra het popoveroppervlak naar de DOM is gerenderd.',
             hoursFromTyped:
               'Zet een getypte urenwaarde om naar het 24-uurs equivalent, rekening houdend met de huidige AM/PM-periode.',
             onPopoverCloseRequested:

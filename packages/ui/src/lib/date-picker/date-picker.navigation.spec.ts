@@ -63,6 +63,16 @@ describe('DatePickerComponent calendar navigation', () => {
     fixture.detectChanges();
   }
 
+  function nextFrame(): Promise<void> {
+    return new Promise(resolve => requestAnimationFrame(() => resolve()));
+  }
+
+  // The popover reveals its surface on the frame after opening, and focus follows it in
+  async function revealSurface(): Promise<void> {
+    await nextFrame();
+    fixture.detectChanges();
+  }
+
   function focusDay(day: number): void {
     component.focusedDate.set(new Date(component.viewYear(), component.viewMonth(), day));
     fixture.detectChanges();
@@ -452,8 +462,9 @@ describe('DatePickerComponent calendar navigation', () => {
   });
 
   describe('Focus management', () => {
-    it('leaves keys it does not handle to the browser', () => {
+    it('leaves keys it does not handle to the browser', async () => {
       open();
+      await revealSurface();
       const event = new KeyboardEvent('keydown', {
         key: 'Tab',
         bubbles: true,
@@ -467,10 +478,19 @@ describe('DatePickerComponent calendar navigation', () => {
       expect(component.isOpen()).toBe(true);
     });
 
-    it('moves focus into the calendar when it opens', async () => {
+    it('keeps focus on the calendar button while the calendar is still hidden', () => {
+      calendarButton().focus();
+
       open();
 
-      await fixture.whenStable();
+      expect(document.activeElement).toBe(calendarButton());
+    });
+
+    it('moves focus into the calendar once it is revealed', async () => {
+      calendarButton().focus();
+      open();
+
+      await revealSurface();
 
       expect(document.activeElement).toBe(focusedCell());
     });
@@ -548,6 +568,8 @@ describe('DatePickerComponent calendar navigation', () => {
       second.nativeElement.querySelector('.ea-date-picker__calendar-button').click();
       second.detectChanges();
       await second.whenStable();
+      await nextFrame();
+      second.detectChanges();
 
       // The stale lookup matched the first picker in document order, so it is
       // the second one whose focus went astray

@@ -2334,8 +2334,6 @@ export const frFR: WebMessages = {
             commitDigits:
               'Analyse la chaîne de chiffres en tampon, la borne à la plage valide de l’unité et l’écrit dans la valeur.',
             flushBuffer: 'Valide tout tampon de chiffres en attente et l’efface.',
-            focusHoursWhenReady:
-              'Place le focus sur le champ des heures une fois la surface de la popover rendue dans le DOM.',
             hoursFromTyped:
               'Convertit une valeur d’heures saisie en son équivalent 24 h en tenant compte de la période AM/PM actuelle.',
             onPopoverCloseRequested:

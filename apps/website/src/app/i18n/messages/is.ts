@@ -2283,8 +2283,6 @@ export const is: WebMessages = {
               'Þáttar biðminnaða tölustafsstrenginn, festir hann að gilda bili einingarinnar og skrifar hann í gildið.',
             flushBuffer:
               'Skuldbindur biðjandi innslegið tölustafsbiðminni og hreinsar það.',
-            focusHoursWhenReady:
-              'Setur fókus á klukkustundainntakið þegar yfirborð sprettigluggans hefur verið birt í DOM.',
             hoursFromTyped:
               'Breytir innslegnu klukkustundagildi í 24 tíma jafngildi þess, með tilliti til núverandi f.h./e.h. tímabils.',
             onPopoverCloseRequested:

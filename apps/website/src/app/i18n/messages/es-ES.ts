@@ -2334,8 +2334,6 @@ export const esES: WebMessages = {
             commitDigits:
               'Analiza la cadena de dígitos del búfer, la acota al rango válido de la unidad y la escribe en el valor.',
             flushBuffer: 'Confirma cualquier búfer de dígitos pendiente y lo vacía.',
-            focusHoursWhenReady:
-              'Enfoca el campo de horas una vez que la superficie del popover se ha renderizado en el DOM.',
             hoursFromTyped:
               'Convierte un valor de horas introducido a su equivalente de 24 horas, teniendo en cuenta el periodo AM/PM actual.',
             onPopoverCloseRequested:

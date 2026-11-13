@@ -26,6 +26,7 @@ import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 import { XIconComponent } from '../icons/x.component';
+import { focusOnReveal } from '../popover/focus-on-reveal';
 import { PopoverComponent } from '../popover/popover.component';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
@@ -97,6 +98,12 @@ export class DatePickerComponent
 {
   protected readonly fieldEl = viewChild<ElementRef<HTMLElement>>('fieldEl');
   protected readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
+  private readonly popover = viewChild(PopoverComponent);
+  private readonly focusDayCellOnReveal = focusOnReveal(
+    () => this.isOpen(),
+    () => this.popover(),
+    () => this.focusFocusedDayCell(),
+  );
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
@@ -329,7 +336,7 @@ export class DatePickerComponent
     this.viewMonth.set(current.getMonth());
     this.focusedDate.set(this.startOfDay(current));
     this.isOpen.set(true);
-    afterNextRender(() => this.focusFocusedDayCell(), { injector: this.injector });
+    this.focusDayCellOnReveal();
   }
 
   /** Closes the calendar popover. */

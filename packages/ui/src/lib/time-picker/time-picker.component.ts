@@ -4,8 +4,6 @@ import {
   Component,
   DestroyRef,
   type ElementRef,
-  Injector,
-  afterNextRender,
   computed,
   forwardRef,
   inject,
@@ -26,6 +24,7 @@ import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { ChevronUpIconComponent } from '../icons/chevron-up.component';
 import { ClockIconComponent } from '../icons/clock.component';
 import { XIconComponent } from '../icons/x.component';
+import { focusOnReveal } from '../popover/focus-on-reveal';
 import { PopoverComponent } from '../popover/popover.component';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
@@ -102,7 +101,16 @@ export class TimePickerComponent
   protected readonly secondsEl = viewChild<ElementRef<HTMLInputElement>>('secondsEl');
   protected readonly i18n = inject(EagamiI18nService);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly injector = inject(Injector);
+  private readonly popover = viewChild(PopoverComponent);
+  private readonly focusHoursOnReveal = focusOnReveal(
+    () => this.isOpen(),
+    () => this.popover(),
+    () => {
+      const el = this.hoursEl()?.nativeElement;
+      el?.focus();
+      el?.select();
+    },
+  );
 
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<TimePickerSize>('md');
@@ -282,22 +290,6 @@ export class TimePickerComponent
     this.isOpen.set(true);
   }
 
-  /**
-   * Push focus into the hours input once the popover surface has been
-   * rendered. `afterNextRender` guarantees the DOM has been updated (and the
-   * surface is no longer `display: none`) before we call `.focus()`.
-   */
-  private focusHoursWhenReady(): void {
-    afterNextRender(
-      () => {
-        const el = this.hoursEl()?.nativeElement;
-        el?.focus();
-        el?.select();
-      },
-      { injector: this.injector },
-    );
-  }
-
   close(): void {
     this.isOpen.set(false);
   }
@@ -328,7 +320,7 @@ export class TimePickerComponent
       if (!this.isOpen()) {
         this.isOpen.set(true);
       }
-      this.focusHoursWhenReady();
+      this.focusHoursOnReveal();
     } else if (event.key === 'Enter') {
       event.preventDefault();
       this.commitTyped();

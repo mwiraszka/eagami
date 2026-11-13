@@ -2294,8 +2294,6 @@ export const ptBR: WebMessages = {
               'Analisa a string de dígitos no buffer, limita-a ao intervalo válido da unidade e a grava no valor.',
             flushBuffer:
               'Confirma qualquer buffer pendente de dígitos digitados e o limpa.',
-            focusHoursWhenReady:
-              'Foca o input de horas assim que a superfície do popover é renderizada no DOM.',
             hoursFromTyped:
               'Converte um valor de horas digitado em seu equivalente de 24 horas, considerando o período AM/PM atual.',
             onPopoverCloseRequested:
