@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.82.1',
+    date: '2026-11-13',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Move focus into a menu, a date picker's calendar or a time picker's panel once it opens, rather than leaving it on the trigger where the menu's items could not be reached from the keyboard.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.82.0',
     date: '2026-11-05',
     sections: [

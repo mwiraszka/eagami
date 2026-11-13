@@ -6116,10 +6116,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'flushBuffer(): void',
       },
       {
-        name: 'focusHoursWhenReady',
-        signature: 'focusHoursWhenReady(): void',
-      },
-      {
         name: 'hoursFromTyped',
         signature: 'hoursFromTyped(typed: number): number',
       },
