@@ -63,6 +63,12 @@ describe('DatePickerComponent calendar navigation', () => {
     fixture.detectChanges();
   }
 
+  // The popover reveals its surface on the frame after opening, and focus follows it in
+  async function revealSurface(): Promise<void> {
+    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+    fixture.detectChanges();
+  }
+
   function focusDay(day: number): void {
     component.focusedDate.set(new Date(component.viewYear(), component.viewMonth(), day));
     fixture.detectChanges();
@@ -467,10 +473,19 @@ describe('DatePickerComponent calendar navigation', () => {
       expect(component.isOpen()).toBe(true);
     });
 
-    it('moves focus into the calendar when it opens', async () => {
+    it('keeps focus on the calendar button while the calendar is still hidden', () => {
+      calendarButton().focus();
+
       open();
 
-      await fixture.whenStable();
+      expect(document.activeElement).toBe(calendarButton());
+    });
+
+    it('moves focus into the calendar once it is revealed', async () => {
+      calendarButton().focus();
+      open();
+
+      await revealSurface();
 
       expect(document.activeElement).toBe(focusedCell());
     });

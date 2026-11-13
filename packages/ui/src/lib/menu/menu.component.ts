@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { focusOnReveal } from '../popover/focus-on-reveal';
 import { type PopoverAnchorPoint } from '../popover/popover-positioning';
 import { PopoverComponent } from '../popover/popover.component';
 import { type EaSize } from '../sizes';
@@ -45,6 +46,10 @@ export class MenuComponent {
   private readonly injector = inject(Injector);
   private readonly i18n = inject(EagamiI18nService);
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
+  private readonly popover = viewChild(PopoverComponent);
+  private readonly focusFirstItemOnReveal = focusOnReveal(this.popover, () =>
+    this.focusFirstItem(),
+  );
 
   readonly placement = input<MenuPlacement>('bottom-start');
   /** Visual size of the menu; every item inherits it. */
@@ -158,7 +163,7 @@ export class MenuComponent {
     this.triggerEl.set(triggerEl);
     this.open.set(true);
     this.opened.emit();
-    afterNextRender(() => this.focusFirstItem(), { injector: this.injector });
+    this.focusFirstItemOnReveal();
   }
 
   /**

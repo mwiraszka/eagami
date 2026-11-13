@@ -69,6 +69,12 @@ describe('MenuComponent', () => {
     return Array.from(surface.querySelectorAll('.ea-menu-item'));
   }
 
+  // The popover reveals its surface on the frame after opening, and focus follows it in
+  async function revealSurface(): Promise<void> {
+    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+    fixture.detectChanges();
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TestHostComponent],
@@ -243,6 +249,69 @@ describe('MenuComponent', () => {
     });
   });
 
+  describe('Focus on open', () => {
+    let elsewhere: HTMLButtonElement;
+
+    function openFromKeyboard(): void {
+      getTrigger().focus();
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      fixture.detectChanges();
+    }
+
+    beforeEach(() => {
+      elsewhere = document.createElement('button');
+      document.body.appendChild(elsewhere);
+    });
+
+    afterEach(() => {
+      elsewhere.remove();
+    });
+
+    it('keeps focus on the trigger while the surface is still hidden', () => {
+      openFromKeyboard();
+
+      expect(document.activeElement).toBe(getTrigger());
+    });
+
+    it('moves focus to the first item once the surface is revealed', async () => {
+      openFromKeyboard();
+
+      await revealSurface();
+
+      expect(document.activeElement).toBe(getItems()[0]);
+    });
+
+    it('moves focus to the first item when opened by a click', async () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      await revealSurface();
+
+      expect(document.activeElement).toBe(getItems()[0]);
+    });
+
+    it('leaves focus where the user moved it before the surface was revealed', async () => {
+      openFromKeyboard();
+      elsewhere.focus();
+
+      await revealSurface();
+
+      expect(document.activeElement).toBe(elsewhere);
+    });
+
+    it('drops the pending focus when closed before the surface was revealed', async () => {
+      openFromKeyboard();
+      host.isOpen.set(false);
+      fixture.detectChanges();
+
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      await revealSurface();
+
+      expect(document.activeElement).toBe(getTrigger());
+    });
+  });
+
   describe('Menu items', () => {
     beforeEach(() => {
       host.isOpen.set(true);
@@ -321,7 +390,7 @@ describe('MenuComponent', () => {
     it('focuses the first item', async () => {
       host.menu().openAsContextMenu(getTrigger(), { x: 50, y: 60 });
       fixture.detectChanges();
-      await fixture.whenStable();
+      await revealSurface();
 
       expect(document.activeElement).toBe(getItems()[0]);
     });
@@ -359,7 +428,7 @@ describe('MenuComponent', () => {
       outside.focus();
       host.menu().openAsContextMenu(getTrigger(), { x: 50, y: 60 });
       fixture.detectChanges();
-      await fixture.whenStable();
+      await revealSurface();
 
       getItems()[0].click();
       fixture.detectChanges();
@@ -394,7 +463,7 @@ describe('MenuComponent', () => {
     it('sets tabindex 0 only on the focused first item after opening', async () => {
       getTrigger().click();
       fixture.detectChanges();
-      await fixture.whenStable();
+      await revealSurface();
       fixture.detectChanges();
 
       const items = getItems();
@@ -408,7 +477,7 @@ describe('MenuComponent', () => {
     it('moves tabindex 0 along with focus on arrow navigation', async () => {
       getTrigger().click();
       fixture.detectChanges();
-      await fixture.whenStable();
+      await revealSurface();
 
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
       fixture.detectChanges();
@@ -424,7 +493,7 @@ describe('MenuComponent', () => {
     it('wraps focus from the last item back to the first', async () => {
       getTrigger().click();
       fixture.detectChanges();
-      await fixture.whenStable();
+      await revealSurface();
 
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'End' }));
       fixture.detectChanges();
@@ -440,7 +509,7 @@ describe('MenuComponent', () => {
     it('wraps backwards from the first item to the last', async () => {
       getTrigger().click();
       fixture.detectChanges();
-      await fixture.whenStable();
+      await revealSurface();
 
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
       fixture.detectChanges();
@@ -451,7 +520,7 @@ describe('MenuComponent', () => {
     it('jumps to the first item on Home', async () => {
       getTrigger().click();
       fixture.detectChanges();
-      await fixture.whenStable();
+      await revealSurface();
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'End' }));
       fixture.detectChanges();
 
@@ -464,7 +533,7 @@ describe('MenuComponent', () => {
     it('keeps the roving tabindex after the items re-render', async () => {
       getTrigger().click();
       fixture.detectChanges();
-      await fixture.whenStable();
+      await revealSurface();
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
       fixture.detectChanges();

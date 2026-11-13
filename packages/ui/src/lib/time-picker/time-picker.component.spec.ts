@@ -38,6 +38,12 @@ describe('TimePickerComponent', () => {
     return Array.from(surface.querySelectorAll('.ea-time-picker__value'));
   }
 
+  // The popover reveals its surface on the frame after opening, and focus follows it in
+  async function revealSurface(): Promise<void> {
+    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+    fixture.detectChanges();
+  }
+
   function getStepButtons(): HTMLButtonElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
     if (!surface) {
@@ -529,6 +535,25 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       expect(getPopover()).toBeTruthy();
+    });
+
+    it('keeps focus in the field while the popover opened by ArrowDown is still hidden', () => {
+      getInput().focus();
+
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(getInput());
+    });
+
+    it('moves focus to the hours once the popover opened by ArrowDown is revealed', async () => {
+      getInput().focus();
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      await revealSurface();
+
+      expect(document.activeElement).toBe(getValueDisplays()[0]);
     });
 
     it('closes on Escape from the field when open', () => {
