@@ -13,7 +13,8 @@ import { TabsComponent, type TabsOrientation } from './tabs.component';
       [ariaLabel]="ariaLabel()">
       <ea-tab
         value="one"
-        label="Tab One">
+        label="Tab One"
+        [disabled]="oneDisabled()">
         Content one
       </ea-tab>
       <ea-tab
@@ -32,6 +33,7 @@ import { TabsComponent, type TabsOrientation } from './tabs.component';
 })
 class TestHostComponent {
   activeTab = signal('one');
+  oneDisabled = signal(false);
   orientation = signal<TabsOrientation>('horizontal');
   ariaLabel = signal<string | undefined>(undefined);
 }
@@ -112,6 +114,64 @@ describe('TabsComponent', () => {
     it('sets tabindex 0 on active trigger and -1 on others', () => {
       expect(getTriggers()[0].tabIndex).toBe(0);
       expect(getTriggers()[1].tabIndex).toBe(-1);
+    });
+  });
+
+  describe('Fallback selection', () => {
+    it('selects the first tab when activeTab is empty', () => {
+      fixture.componentInstance.activeTab.set('');
+
+      fixture.detectChanges();
+
+      expect(getTriggers().map(t => t.getAttribute('aria-selected'))).toEqual([
+        'true',
+        'false',
+        'false',
+      ]);
+      expect(getTriggers().map(t => t.tabIndex)).toEqual([0, -1, -1]);
+      expect(getPanel()?.textContent?.trim()).toBe('Content one');
+    });
+
+    it('selects the first tab when activeTab matches no tab', () => {
+      fixture.componentInstance.activeTab.set('missing');
+
+      fixture.detectChanges();
+
+      expect(getTriggers()[0].getAttribute('aria-selected')).toBe('true');
+      expect(getTriggers()[0].tabIndex).toBe(0);
+      expect(getPanel()?.textContent?.trim()).toBe('Content one');
+    });
+
+    it('skips a disabled first tab', () => {
+      fixture.componentInstance.oneDisabled.set(true);
+      fixture.componentInstance.activeTab.set('');
+
+      fixture.detectChanges();
+
+      expect(getTriggers()[1].getAttribute('aria-selected')).toBe('true');
+      expect(getTriggers()[1].tabIndex).toBe(0);
+      expect(getPanel()?.textContent?.trim()).toBe('Content two');
+    });
+
+    it('leaves activeTab untouched until a tab is chosen', () => {
+      fixture.componentInstance.activeTab.set('');
+
+      fixture.detectChanges();
+
+      expect(fixture.componentInstance.activeTab()).toBe('');
+    });
+
+    it('moves on from the fallback tab with the arrow keys', () => {
+      fixture.componentInstance.activeTab.set('');
+      fixture.detectChanges();
+
+      getTabList().dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(fixture.componentInstance.activeTab()).toBe('two');
+      expect(getPanel()?.textContent?.trim()).toBe('Content two');
     });
   });
 

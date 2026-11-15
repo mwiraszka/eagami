@@ -50,7 +50,7 @@ export class TabComponent implements OnInit, OnDestroy {
   readonly disabled = input<boolean>(false);
   readonly id = input<string>(uniqueId('ea-tab'));
 
-  readonly isActive = computed(() => this.tabs.activeTab() === this.value());
+  readonly isActive = computed(() => this.tabs.selectedTab() === this.value());
   protected readonly vertical = computed(() => this.tabs.orientation() === 'vertical');
 
   ngOnInit(): void {

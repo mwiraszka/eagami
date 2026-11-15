@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   input,
   model,
   output,
@@ -42,6 +43,15 @@ export class TabsComponent {
 
   readonly activeTab = model<string>('');
 
+  readonly selectedTab = computed(() => {
+    const tabs = this.registeredTabs();
+    const active = this.activeTab();
+    if (tabs.some(t => t.value() === active)) {
+      return active;
+    }
+    return tabs.find(t => !t.disabled())?.value();
+  });
+
   /** Fires with the value of the newly active tab. */
   readonly changed = output<string>();
 
@@ -63,7 +73,7 @@ export class TabsComponent {
 
   handleKeydown(event: KeyboardEvent): void {
     const tabList = this.registeredTabs().filter(t => !t.disabled());
-    const currentIndex = tabList.findIndex(t => t.value() === this.activeTab());
+    const currentIndex = tabList.findIndex(t => t.value() === this.selectedTab());
     let forwardKey = 'ArrowDown';
     let backwardKey = 'ArrowUp';
     if (this.orientation() === 'horizontal') {
