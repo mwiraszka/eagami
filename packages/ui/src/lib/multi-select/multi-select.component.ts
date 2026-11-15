@@ -565,7 +565,8 @@ export class MultiSelectComponent
       this.close();
       this.triggerEl()?.nativeElement.focus();
     } else if (event.key === 'Tab') {
-      // Combobox popups dismiss on Tab; focus moves on to the next element
+      // Popups dismiss on Tab, which moves on from the trigger, not the portaled panel
+      this.triggerEl()?.nativeElement.focus();
       this.close();
     }
   }

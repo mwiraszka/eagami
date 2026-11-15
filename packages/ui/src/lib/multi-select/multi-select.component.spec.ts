@@ -179,6 +179,34 @@ describe('MultiSelectComponent', () => {
       expect(document.activeElement).toBe(getTrigger());
     });
 
+    it('hands focus to the trigger before Tab leaves the panel', async () => {
+      await openPanel();
+      const event = new KeyboardEvent('keydown', { key: 'Tab', cancelable: true });
+
+      getSearchInput()!.dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+      expect(document.activeElement).toBe(getTrigger());
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('hands focus to the trigger before Shift+Tab leaves the panel', async () => {
+      await openPanel();
+      const event = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        shiftKey: true,
+        cancelable: true,
+      });
+
+      getSearchInput()!.dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+      expect(document.activeElement).toBe(getTrigger());
+      expect(event.defaultPrevented).toBe(false);
+    });
+
     it('renders one option row per option', () => {
       getTrigger().click();
       fixture.detectChanges();

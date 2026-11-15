@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.82.2] - 2026-11-15
+
+### Fixed
+
+- Show the first enabled tab when `activeTab` is empty or matches no tab, so the tab list can always be reached from the keyboard.
+- Move focus back to the multi-select's trigger when Tab or Shift+Tab closes its open panel, so focus continues from the field instead of being lost.
+
 ## [5.82.1] - 2026-11-13
 
 ### Fixed
@@ -2073,6 +2080,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.82.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.82.1...ui-v5.82.2
 [5.82.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.82.0...ui-v5.82.1
 [5.82.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.81.1...ui-v5.82.0
 [5.81.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.81.0...ui-v5.81.1
