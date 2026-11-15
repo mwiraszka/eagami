@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.82.2',
+    date: '2026-11-15',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Show the first enabled tab when `activeTab` is empty or matches no tab, so the tab list can always be reached from the keyboard.',
+          "Move focus back to the multi-select's trigger when Tab or Shift+Tab closes its open panel, so focus continues from the field instead of being lost.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.82.1',
     date: '2026-11-13',
     sections: [
