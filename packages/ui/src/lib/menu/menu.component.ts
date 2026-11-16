@@ -233,6 +233,14 @@ export class MenuComponent {
     if (!list || !active || !list.contains(active)) {
       return;
     }
+    if (event.key === 'Tab') {
+      // Focusing the trigger first makes Tab continue from it, not the portaled list.
+      // A context menu's popover returns focus too late for the Tab, so it stays open.
+      if (!this.asContextMenu()) {
+        this.close(true);
+      }
+      return;
+    }
     const items = this.getEnabledItems();
     if (items.length === 0) {
       return;

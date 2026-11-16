@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.82.3',
+    date: '2026-11-16',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Dismiss a menu when Tab or Shift+Tab leaves it, handing focus to its trigger first so focus continues from there instead of from the menu list.',
+          "Ensure Tab and Shift+Tab close a dropdown's open list without changing its value, as its searchable mode already did.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.82.2',
     date: '2026-11-15',
     sections: [

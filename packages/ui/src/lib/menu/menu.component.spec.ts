@@ -299,6 +299,38 @@ describe('MenuComponent', () => {
       expect(document.activeElement).toBe(elsewhere);
     });
 
+    it('closes and hands focus to the trigger before Tab leaves the list', async () => {
+      openFromKeyboard();
+      await revealSurface();
+      const event = new KeyboardEvent('keydown', { key: 'Tab', cancelable: true });
+
+      document.dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+      expect(getTrigger().getAttribute('aria-expanded')).toBe('false');
+      expect(document.activeElement).toBe(getTrigger());
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('closes and hands focus to the trigger before Shift+Tab leaves the list', async () => {
+      openFromKeyboard();
+      await revealSurface();
+      const event = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        shiftKey: true,
+        cancelable: true,
+      });
+
+      document.dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+      expect(getTrigger().getAttribute('aria-expanded')).toBe('false');
+      expect(document.activeElement).toBe(getTrigger());
+      expect(event.defaultPrevented).toBe(false);
+    });
+
     it('drops the pending focus when closed before the surface was revealed', async () => {
       openFromKeyboard();
       host.isOpen.set(false);
