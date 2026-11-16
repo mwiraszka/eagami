@@ -24,6 +24,7 @@
       [attr.aria-controls]="isOpen() ? listboxId() : null"
       [attr.aria-activedescendant]="searchable() ? null : activeOptionId()"
       [attr.aria-labelledby]="triggerLabelledBy()"
+      [attr.aria-label]="triggerAriaLabel()"
       [attr.aria-required]="required() || null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
@@ -56,7 +57,10 @@
       placement="bottom-start"
       [role]="searchable() ? 'dialog' : 'listbox'"
       [surfaceId]="searchable() ? id() + '-popover' : listboxId()"
-      [aria-label]="searchable() ? i18n.messages().dropdown.dialogLabel : label()"
+      [aria-label]="
+        searchable() ? i18n.messages().dropdown.dialogLabel : listboxAriaLabel()
+      "
+      [aria-labelledby]="searchable() ? undefined : listboxLabelledBy()"
       [matchAnchorWidth]="true"
       [closeOnEscape]="false"
       [scrollBehavior]="searchable() ? 'reposition' : 'close'"
@@ -89,7 +93,8 @@
           class="ea-dropdown__list"
           [attr.id]="searchable() ? listboxId() : null"
           [attr.role]="searchable() ? 'listbox' : 'none'"
-          [attr.aria-label]="searchable() ? (label() ?? null) : null">
+          [attr.aria-label]="searchable() ? listboxAriaLabel() : null"
+          [attr.aria-labelledby]="searchable() ? listboxLabelledBy() : null">
           @for (group of renderedGroups(); track $index) {
             <div
               class="ea-dropdown__group"

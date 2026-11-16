@@ -72,6 +72,10 @@ function isTypedCharacter(event: KeyboardEvent): boolean {
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The name belongs on the inner element that forwards it, not on the host element
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -90,6 +94,12 @@ export class DropdownComponent
   protected readonly i18n = inject(EagamiI18nService);
   private readonly injector = inject(Injector);
 
+  /** Accessible name for the dropdown when no visible `label` is set. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the dropdown, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly placeholder = input<string | undefined>(undefined);
   /** Selectable options, either flat or split into groups. */
   readonly options = input<SelectOptions>([]);
@@ -185,8 +195,23 @@ export class DropdownComponent
     () => this.placeholder() ?? this.i18n.messages().dropdown.placeholder,
   );
 
-  readonly triggerLabelledBy = computed(() =>
-    this.label() ? `${this.id()}-label ${this.id()}` : null,
+  // The trigger's own id comes last so the selected value is part of its name
+  readonly triggerLabelledBy = computed(() => {
+    const labelledBy =
+      this.ariaLabelledby() || (this.label() ? `${this.id()}-label` : null);
+    return labelledBy ? `${labelledBy} ${this.id()}` : null;
+  });
+
+  protected readonly triggerAriaLabel = computed(() =>
+    this.label() || this.ariaLabelledby() ? null : this.ariaLabel() || null,
+  );
+
+  protected readonly listboxLabelledBy = computed(
+    () => this.ariaLabelledby() || undefined,
+  );
+
+  protected readonly listboxAriaLabel = computed(() =>
+    this.ariaLabelledby() ? undefined : this.label() || this.ariaLabel() || undefined,
   );
 
   protected readonly showClear = computed(
