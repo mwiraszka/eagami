@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.82.3] - 2026-11-16
+
+### Fixed
+
+- Dismiss a menu when Tab or Shift+Tab leaves it, handing focus to its trigger first so focus continues from there instead of from the menu list.
+- Ensure Tab and Shift+Tab close a dropdown's open list without changing its value, as its searchable mode already did.
+
 ## [5.82.2] - 2026-11-15
 
 ### Fixed
@@ -2080,6 +2087,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.82.3]: https://github.com/mwiraszka/eagami/compare/ui-v5.82.2...ui-v5.82.3
 [5.82.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.82.1...ui-v5.82.2
 [5.82.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.82.0...ui-v5.82.1
 [5.82.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.81.1...ui-v5.82.0
