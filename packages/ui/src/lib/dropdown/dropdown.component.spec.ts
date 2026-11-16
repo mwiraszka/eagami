@@ -178,6 +178,42 @@ describe('DropdownComponent', () => {
       fixture.detectChanges();
       expect(getMenu()).toBeNull();
     });
+
+    it('closes on Tab without changing the value', () => {
+      component.value.set('a');
+      getTrigger().click();
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+      const event = new KeyboardEvent('keydown', { key: 'Tab', cancelable: true });
+
+      getTrigger().dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(getMenu()).toBeNull();
+      expect(getTrigger().getAttribute('aria-expanded')).toBe('false');
+      expect(component.value()).toBe('a');
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('closes on Shift+Tab without changing the value', () => {
+      component.value.set('a');
+      getTrigger().click();
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+      const event = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        shiftKey: true,
+        cancelable: true,
+      });
+
+      getTrigger().dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(getMenu()).toBeNull();
+      expect(getTrigger().getAttribute('aria-expanded')).toBe('false');
+      expect(component.value()).toBe('a');
+      expect(event.defaultPrevented).toBe(false);
+    });
   });
 
   describe('Typeahead and focus movement', () => {

@@ -333,6 +333,11 @@ export class DropdownComponent
           this.elRef()?.nativeElement.focus();
         }
         break;
+      case 'Tab':
+        if (this.isOpen()) {
+          this.close();
+        }
+        break;
       case 'Home':
         event.preventDefault();
         if (!this.isOpen()) {
