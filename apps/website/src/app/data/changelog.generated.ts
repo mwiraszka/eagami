@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.83.0',
+    date: '2026-11-16',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `aria-label` and `aria-labelledby` inputs to the dropdown, naming its trigger and option list so a dropdown with no visible label is announced by more than its current value.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.82.3',
     date: '2026-11-16',
     sections: [

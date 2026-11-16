@@ -2200,6 +2200,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-dropdown',
     inputs: [
       {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'clearable',
         type: 'boolean',
         default: 'false',
