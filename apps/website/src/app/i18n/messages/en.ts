@@ -695,6 +695,7 @@ export const en: WebMessages = {
         infoLabel: 'Info',
         heading: 'Heading',
         content: 'Content',
+        icon: 'Icon',
         time: 'Time',
         current: 'Current',
         emphasized: 'Emphasized',
@@ -2431,6 +2432,8 @@ export const en: WebMessages = {
             id: 'id applied to the trigger and label for, auto-generated when omitted.',
             labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             options:
               'List of selectable options rendered in the dropdown list, flat or split into groups.',
             placeholder: 'Placeholder shown on the trigger while no option is selected.',

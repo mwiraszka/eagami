@@ -726,6 +726,7 @@ export const de: WebMessages = {
         infoLabel: 'Info',
         heading: 'Überschrift',
         content: 'Inhalt',
+        icon: 'Symbol',
         time: 'Uhrzeit',
         current: 'Aktuell',
         emphasized: 'Hervorgehoben',
@@ -2560,6 +2561,8 @@ export const de: WebMessages = {
             labelIcon:
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             options:
               'Liste der auswählbaren Optionen, die in der Dropdown-Liste gerendert werden, flach oder in Gruppen unterteilt.',
             placeholder:

@@ -23,6 +23,7 @@ const GROUPED_OPTIONS: SelectOptions = [
   template: `
     <ea-dropdown
       [label]="label"
+      [aria-label]="ariaLabel"
       [options]="options"
       [hint]="hint"
       [errorMsg]="errorMsg"
@@ -33,7 +34,8 @@ const GROUPED_OPTIONS: SelectOptions = [
   `,
 })
 class HostComponent {
-  label = 'Country';
+  label: string | undefined = 'Country';
+  ariaLabel: string | undefined = undefined;
   options: SelectOptions = TEST_OPTIONS;
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
@@ -41,6 +43,19 @@ class HostComponent {
   clearable = false;
   searchable = false;
   value = '';
+}
+
+@Component({
+  imports: [DropdownComponent],
+  template: `
+    <span id="sort-label">Sort by</span>
+    <ea-dropdown
+      aria-labelledby="sort-label"
+      [options]="options" />
+  `,
+})
+class LabelledByHostComponent {
+  options: SelectOption[] = TEST_OPTIONS;
 }
 
 describe('DropdownComponent a11y', () => {
@@ -131,6 +146,40 @@ describe('DropdownComponent a11y', () => {
     const el = await render(host => (host.searchable = true));
 
     const results = await axe(openList(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations named by aria-label without a visible label', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Sort by';
+    });
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with an aria-label-named list open', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Sort by';
+    });
+
+    const results = await axe(openList(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations named by aria-labelledby', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

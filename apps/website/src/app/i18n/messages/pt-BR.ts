@@ -720,6 +720,7 @@ export const ptBR: WebMessages = {
         infoLabel: 'Informação',
         heading: 'Título',
         content: 'Conteúdo',
+        icon: 'Ícone',
         time: 'Hora',
         current: 'Atual',
         emphasized: 'Destacado',
@@ -2516,6 +2517,8 @@ export const ptBR: WebMessages = {
             id: 'id aplicado ao gatilho e ao for do rótulo, gerado automaticamente quando omitido.',
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             options:
               'Lista de opções selecionáveis renderizadas na lista suspensa, plana ou dividida em grupos.',
             placeholder:

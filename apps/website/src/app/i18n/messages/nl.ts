@@ -721,6 +721,7 @@ export const nl: WebMessages = {
         infoLabel: 'Info',
         heading: 'Kop',
         content: 'Inhoud',
+        icon: 'Icoon',
         time: 'Tijd',
         current: 'Huidig',
         emphasized: 'Benadrukt',
@@ -2540,6 +2541,8 @@ export const nl: WebMessages = {
             labelIcon:
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             options:
               'Lijst van selecteerbare opties weergegeven in de dropdownlijst, plat of opgesplitst in groepen.',
             placeholder:

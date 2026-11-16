@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import type { SelectOption, SelectOptionGroup } from '../select-option';
@@ -809,6 +810,119 @@ describe('DropdownComponent', () => {
       expect(getMenu()).toBeTruthy();
       expect(getSearch().value).toBe('b');
       expect(optionLabels()).toEqual(['Banana', 'Crème brûlée']);
+    });
+  });
+
+  describe('Accessible name', () => {
+    @Component({
+      imports: [DropdownComponent],
+      template: `
+        <span id="sort-label">Sort by</span>
+        <ea-dropdown
+          aria-labelledby="sort-label"
+          [id]="'sort'"
+          [options]="options" />
+      `,
+    })
+    class LabelledByHostComponent {
+      options: SelectOption[] = testOptions;
+    }
+
+    function getListbox(): HTMLElement | null {
+      return document.querySelector<HTMLElement>('[role="listbox"]');
+    }
+
+    it('names the trigger with aria-label when no label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Sort by');
+
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-label')).toBe('Sort by');
+      expect(getTrigger().getAttribute('aria-labelledby')).toBeNull();
+    });
+
+    it('leaves the name to the visible label when one is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Sort by');
+      fixture.componentRef.setInput('label', 'Sort');
+
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-label')).toBeNull();
+      expect(getTrigger().getAttribute('aria-labelledby')).toBe(
+        `${component.id()}-label ${component.id()}`,
+      );
+    });
+
+    it('names the trigger from aria-labelledby ahead of the label, keeping the value', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'toolbar-sort');
+      fixture.componentRef.setInput('aria-label', 'Sort by');
+      fixture.componentRef.setInput('label', 'Sort');
+
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-labelledby')).toBe(
+        `toolbar-sort ${component.id()}`,
+      );
+      expect(getTrigger().getAttribute('aria-label')).toBeNull();
+    });
+
+    it('names the listbox with aria-label when no label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Sort by');
+      fixture.detectChanges();
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getListbox()?.getAttribute('aria-label')).toBe('Sort by');
+      expect(getListbox()?.getAttribute('aria-labelledby')).toBeNull();
+    });
+
+    it('names the listbox from aria-labelledby ahead of the label', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'toolbar-sort');
+      fixture.componentRef.setInput('label', 'Sort');
+      fixture.detectChanges();
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getListbox()?.getAttribute('aria-labelledby')).toBe('toolbar-sort');
+      expect(getListbox()?.getAttribute('aria-label')).toBeNull();
+    });
+
+    it('names the searchable listbox with aria-label when no label is set', () => {
+      fixture.componentRef.setInput('searchable', true);
+      fixture.componentRef.setInput('aria-label', 'Sort by');
+      fixture.detectChanges();
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getListbox()?.getAttribute('aria-label')).toBe('Sort by');
+    });
+
+    it('names the searchable listbox from aria-labelledby', () => {
+      fixture.componentRef.setInput('searchable', true);
+      fixture.componentRef.setInput('aria-labelledby', 'toolbar-sort');
+      fixture.detectChanges();
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getListbox()?.getAttribute('aria-labelledby')).toBe('toolbar-sort');
+      expect(getListbox()?.getAttribute('aria-label')).toBeNull();
+    });
+
+    it('forwards aria-labelledby to the trigger, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const element: HTMLElement = host.nativeElement.querySelector('ea-dropdown');
+      const trigger = element.querySelector('[role="combobox"]')!;
+      expect(element.hasAttribute('aria-labelledby')).toBe(false);
+      expect(trigger.getAttribute('aria-labelledby')).toBe('sort-label sort');
+      expect(trigger.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

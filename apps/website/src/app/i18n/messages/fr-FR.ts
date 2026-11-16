@@ -748,6 +748,7 @@ export const frFR: WebMessages = {
         infoLabel: 'Info',
         heading: 'Titre',
         content: 'Contenu',
+        icon: 'Icône',
         time: 'Heure',
         current: 'Actuel',
         emphasized: 'Mis en évidence',
@@ -2560,6 +2561,8 @@ export const frFR: WebMessages = {
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             options:
               'Liste des options sélectionnables affichées dans la liste déroulante, plate ou répartie en groupes.',
             placeholder:
