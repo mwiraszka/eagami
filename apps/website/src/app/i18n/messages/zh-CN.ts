@@ -667,6 +667,7 @@ export const zhCN: WebMessages = {
         infoLabel: '信息',
         heading: '标题',
         content: '内容',
+        icon: '图标',
         time: '时间',
         current: '当前',
         emphasized: '强调',
@@ -2247,6 +2248,8 @@ export const zhCN: WebMessages = {
             id: '应用于触发器和 label for 的 id，省略时自动生成。',
             labelIcon: '可选的图标组件，显示在标签文本之前。',
             label: '渲染在字段上方的文本标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             options: '渲染在下拉列表中的可选选项列表，可为扁平列表或按组划分。',
             placeholder: '未选择选项时显示在触发器上的占位符。',
             readonly: '将字段渲染为只读。',

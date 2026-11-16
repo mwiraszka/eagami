@@ -62,6 +62,7 @@
             (valueChange)="updateItem(item.id, { content: $event })" />
           <ea-dropdown
             class="demo-item-row__icon-picker"
+            [aria-label]="messages().ui.component.common.icon"
             [options]="iconOptions"
             [value]="item.icon"
             (changed)="updateItem(item.id, { icon: $event })" />

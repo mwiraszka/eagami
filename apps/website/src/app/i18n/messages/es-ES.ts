@@ -730,6 +730,7 @@ export const esES: WebMessages = {
         infoLabel: 'Información',
         heading: 'Título',
         content: 'Contenido',
+        icon: 'Icono',
         time: 'Hora',
         current: 'Actual',
         emphasized: 'Destacado',
@@ -2563,6 +2564,8 @@ export const esES: WebMessages = {
             labelIcon:
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             options:
               'Lista de opciones seleccionables mostradas en la lista desplegable, plana o dividida en grupos.',
             placeholder:

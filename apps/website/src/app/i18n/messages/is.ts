@@ -724,6 +724,7 @@ export const is: WebMessages = {
         infoLabel: 'Upplýsingar',
         heading: 'Fyrirsögn',
         content: 'Efni',
+        icon: 'Táknmynd',
         time: 'Tími',
         current: 'Núverandi',
         emphasized: 'Áherslumerkt',
@@ -2501,6 +2502,8 @@ export const is: WebMessages = {
             labelIcon:
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             options:
               'Listi valanlegra valkosta birtur í fellilistanum, flatur eða skiptur í hópa.',
             placeholder:

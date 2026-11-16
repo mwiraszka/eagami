@@ -553,6 +553,7 @@ export interface WebMessages {
         infoLabel: string;
         heading: string;
         content: string;
+        icon: string;
         description: string;
         time: string;
         current: string;

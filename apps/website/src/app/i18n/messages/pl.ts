@@ -721,6 +721,7 @@ export const pl: WebMessages = {
         infoLabel: 'Informacja',
         heading: 'Nagłówek',
         content: 'Treść',
+        icon: 'Ikona',
         time: 'Godzina',
         current: 'Bieżący',
         emphasized: 'Wyróżniony',
@@ -2506,6 +2507,8 @@ export const pl: WebMessages = {
             id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             options:
               'Lista opcji do wyboru renderowanych na liście rozwijanej, płaska lub podzielona na grupy.',
             placeholder:
