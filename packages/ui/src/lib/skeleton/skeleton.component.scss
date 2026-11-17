@@ -3,6 +3,11 @@
   background-color: var(--color-bg-muted);
   border-radius: var(--radius-md);
 
+  // GrayText marks a placeholder without reading as content
+  @media (forced-colors: active) {
+    background-color: GrayText;
+  }
+
   &--text {
     width: 100%;
     height: 1rem;

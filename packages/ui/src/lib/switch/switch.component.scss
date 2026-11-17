@@ -90,10 +90,18 @@
 
     .ea-switch__thumb {
       transform: translateX(calc(100% * var(--ea-rtl-sign)));
+
+      @media (forced-colors: active) {
+        background-color: HighlightText;
+      }
     }
 
     .ea-switch__thumb-icon {
       color: var(--ea-switch-tone, var(--color-brand-default));
+
+      @media (forced-colors: active) {
+        color: Highlight;
+      }
     }
   }
 
@@ -152,6 +160,11 @@
     border-radius: var(--radius-full);
     box-shadow: var(--shadow-sm);
     transition: transform var(--duration-fast) var(--ease-out);
+
+    // The white thumb is forced to Canvas, the same colour as the off track behind it
+    @media (forced-colors: active) {
+      background-color: CanvasText;
+    }
   }
 
   // The thumb stays white in both themes, so the off glyph takes a fixed neutral
@@ -160,6 +173,10 @@
     display: inline-flex;
     font-size: calc(var(--ea-switch-size, 1.25em) * 0.5);
     color: var(--ea-switch-tone, var(--color-neutral-600));
+
+    @media (forced-colors: active) {
+      color: Canvas;
+    }
   }
 
   &__label {

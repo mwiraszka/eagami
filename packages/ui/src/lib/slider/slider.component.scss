@@ -92,6 +92,11 @@
     border-radius: var(--radius-full);
     cursor: pointer;
     touch-action: none;
+
+    // An outline, unlike a border, leaves the fill the track's full height
+    @media (forced-colors: active) {
+      outline: 1px solid CanvasText;
+    }
   }
 
   &__fill {
