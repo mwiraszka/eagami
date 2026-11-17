@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.83.1',
+    date: '2026-11-17',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Keep the progress bar, the slider's track, the switch's thumb and the skeleton visible in forced-colors mode (Windows High Contrast), drawing them in system colours instead of a background that the mode paints over.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.83.0',
     date: '2026-11-16',
     sections: [
