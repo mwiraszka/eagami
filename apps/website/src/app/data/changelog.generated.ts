@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.83.2',
+    date: '2026-11-17',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Announce toasts through polite and assertive live regions that the toast outlet renders before the first toast appears, so screen readers no longer miss status toasts.',
+          "Lift the contrast of the avatar editor's dropzone prompt, at rest and while an image is dragged over it, so it reads clearly in dark mode.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.83.1',
     date: '2026-11-17',
     sections: [

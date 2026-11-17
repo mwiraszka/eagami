@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.83.2] - 2026-11-17
+
+### Fixed
+
+- Announce toasts through polite and assertive live regions that the toast outlet renders before the first toast appears, so screen readers no longer miss status toasts.
+- Lift the contrast of the avatar editor's dropzone prompt, at rest and while an image is dragged over it, so it reads clearly in dark mode.
+
 ## [5.83.1] - 2026-11-17
 
 ### Fixed
@@ -2099,6 +2106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.83.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.83.1...ui-v5.83.2
 [5.83.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.83.0...ui-v5.83.1
 [5.83.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.82.3...ui-v5.83.0
 [5.82.3]: https://github.com/mwiraszka/eagami/compare/ui-v5.82.2...ui-v5.82.3

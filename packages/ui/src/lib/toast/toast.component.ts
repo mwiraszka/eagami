@@ -1,4 +1,4 @@
-import { NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,7 +17,12 @@ import { CheckCircleIconComponent } from '../icons/check-circle.component';
 import { InfoIconComponent } from '../icons/info.component';
 import { XIconComponent } from '../icons/x.component';
 import { type EaSize } from '../sizes';
-import { type ToastSegment, ToastService, type ToastText } from './toast.service';
+import {
+  type ToastSegment,
+  ToastService,
+  type ToastText,
+  type ToastVariant,
+} from './toast.service';
 
 /** Corner or edge of the viewport the toast stack is pinned to. */
 export type ToastPosition =
@@ -35,6 +40,7 @@ export type ToastSize = EaSize;
   selector: 'ea-toast',
   imports: [
     NgComponentOutlet,
+    NgTemplateOutlet,
     XIconComponent,
     CheckCircleIconComponent,
     InfoIconComponent,
@@ -65,9 +71,20 @@ export class ToastComponent {
     () => `ea-toast-container ea-toast-container--${this.position()}`,
   );
 
+  protected readonly politeToasts = computed(() =>
+    this.toastService.toasts().filter(toast => !this.isAssertive(toast.variant)),
+  );
+  protected readonly assertiveToasts = computed(() =>
+    this.toastService.toasts().filter(toast => this.isAssertive(toast.variant)),
+  );
+
   // Errors and warnings interrupt like `ea-alert`; the rest wait politely
-  protected toastRole(variant: string): 'alert' | 'status' {
-    return variant === 'error' || variant === 'warning' ? 'alert' : 'status';
+  private isAssertive(variant: ToastVariant): boolean {
+    return variant === 'error' || variant === 'warning';
+  }
+
+  protected plainText(text: ToastText): string {
+    return typeof text === 'string' ? text : text.map(segment => segment.text).join('');
   }
 
   // null keeps plain text a bare text node rather than a wrapped segment
