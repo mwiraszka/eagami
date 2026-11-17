@@ -16,6 +16,12 @@ describe('ToastComponent', () => {
     return Array.from(fixture.nativeElement.querySelectorAll('.ea-toast'));
   }
 
+  function getLiveRegion(politeness: 'polite' | 'assertive'): HTMLElement | null {
+    return fixture.nativeElement.querySelector(
+      `.ea-toast-container__live[aria-live="${politeness}"]`,
+    );
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ToastComponent],
@@ -33,6 +39,31 @@ describe('ToastComponent', () => {
   it('keeps the container itself out of the live-region tree', () => {
     expect(getContainer()?.hasAttribute('aria-live')).toBe(false);
     expect(getToasts()).toHaveLength(0);
+  });
+
+  it('renders empty polite and assertive live regions before the first toast', () => {
+    const polite = getLiveRegion('polite');
+    const assertive = getLiveRegion('assertive');
+
+    expect(getToasts()).toHaveLength(0);
+    expect(polite).not.toBeNull();
+    expect(assertive).not.toBeNull();
+    expect(polite!.textContent!.trim()).toBe('');
+    expect(assertive!.textContent!.trim()).toBe('');
+  });
+
+  it('adds toast text into the live regions that were already rendered', () => {
+    const polite = getLiveRegion('polite');
+    const assertive = getLiveRegion('assertive');
+
+    toastService.success('Saved', 0);
+    toastService.error('Upload failed', 0);
+    fixture.detectChanges();
+
+    expect(getLiveRegion('polite')).toBe(polite);
+    expect(getLiveRegion('assertive')).toBe(assertive);
+    expect(polite!.textContent).toContain('Saved');
+    expect(assertive!.textContent).toContain('Upload failed');
   });
 
   it('renders one element per active toast', () => {
@@ -100,12 +131,55 @@ describe('ToastComponent', () => {
     toastService.warning('careful', 0);
     toastService.success('ok', 0);
     toastService.info('fyi', 0);
+    toastService.show('plain', { duration: 0 });
     fixture.detectChanges();
 
-    expect(getToasts()[0].getAttribute('role')).toBe('alert');
-    expect(getToasts()[1].getAttribute('role')).toBe('alert');
-    expect(getToasts()[2].getAttribute('role')).toBe('status');
-    expect(getToasts()[3].getAttribute('role')).toBe('status');
+    const assertive = getLiveRegion('assertive')!.textContent;
+    const polite = getLiveRegion('polite')!.textContent;
+
+    expect(assertive).toContain('boom');
+    expect(assertive).toContain('careful');
+    expect(assertive).not.toContain('ok');
+    expect(polite).toContain('ok');
+    expect(polite).toContain('fyi');
+    expect(polite).toContain('plain');
+    expect(polite).not.toContain('boom');
+  });
+
+  it('leaves the visible toasts out of the live-region tree', () => {
+    toastService.error('boom', 0);
+    toastService.success('ok', 0);
+    fixture.detectChanges();
+
+    for (const toast of getToasts()) {
+      expect(toast.hasAttribute('role')).toBe(false);
+      expect(toast.hasAttribute('aria-live')).toBe(false);
+    }
+  });
+
+  it('announces a title and a segmented message as plain text', () => {
+    toastService.show([{ text: 'Moved ' }, { text: 'Q3 roadmap', strong: true }], {
+      title: 'Board updated',
+      duration: 0,
+    });
+    fixture.detectChanges();
+
+    const lines = Array.from(
+      getLiveRegion('polite')!.querySelectorAll(':scope > div > div'),
+      line => line.textContent,
+    );
+
+    expect(lines).toEqual(['Board updated', 'Moved Q3 roadmap']);
+  });
+
+  it('removes a toast from its live region once it is dismissed', () => {
+    const id = toastService.success('Saved', 0);
+    fixture.detectChanges();
+
+    toastService.dismiss(id);
+    fixture.detectChanges();
+
+    expect(getLiveRegion('polite')!.textContent!.trim()).toBe('');
   });
 
   it('pauses auto-dismiss while hovered and resumes on leave', () => {

@@ -5,10 +5,26 @@
   (mouseleave)="onMouseLeave()"
   (focusin)="onFocusIn()"
   (focusout)="onFocusOut($event)">
+  <div
+    class="ea-toast-container__live"
+    aria-live="polite">
+    @for (toast of politeToasts(); track toast.id) {
+      <ng-container
+        [ngTemplateOutlet]="announcement"
+        [ngTemplateOutletContext]="{ $implicit: toast }" />
+    }
+  </div>
+  <div
+    class="ea-toast-container__live"
+    aria-live="assertive">
+    @for (toast of assertiveToasts(); track toast.id) {
+      <ng-container
+        [ngTemplateOutlet]="announcement"
+        [ngTemplateOutletContext]="{ $implicit: toast }" />
+    }
+  </div>
   @for (toast of toastService.toasts(); track toast.id) {
-    <div
-      class="ea-toast ea-toast--{{ toast.variant }} ea-toast--{{ size() }}"
-      [attr.role]="toastRole(toast.variant)">
+    <div class="ea-toast ea-toast--{{ toast.variant }} ea-toast--{{ size() }}">
       @if (toast.icon !== undefined) {
         @if (toast.icon) {
           <span
@@ -67,3 +83,14 @@
     </div>
   }
 </div>
+
+<ng-template
+  #announcement
+  let-toast>
+  <div>
+    @if (toast.title) {
+      <div>{{ plainText(toast.title) }}</div>
+    }
+    <div>{{ plainText(toast.message) }}</div>
+  </div>
+</ng-template>
