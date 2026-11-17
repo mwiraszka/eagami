@@ -33,14 +33,14 @@
     border: 2px dashed var(--color-border-default);
     border-radius: var(--radius-lg);
     background-color: var(--color-bg-subtle);
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary);
     cursor: pointer;
     transition: var(--transition-colors);
 
     // The surface holds steady on hover; a half-step of text contrast carries
     // the feedback
     &:hover {
-      color: color-mix(in srgb, var(--color-text-tertiary), var(--color-text-secondary));
+      color: color-mix(in srgb, var(--color-text-secondary), var(--color-text-primary));
     }
 
     &:focus-visible {
@@ -52,6 +52,10 @@
   &--drag-over &__dropzone {
     border-color: var(--color-border-focus);
     background-color: var(--color-brand-subtle);
+    color: var(--color-brand-text);
+  }
+
+  &--drag-over &__upload-icon {
     color: var(--color-brand-default);
   }
 
