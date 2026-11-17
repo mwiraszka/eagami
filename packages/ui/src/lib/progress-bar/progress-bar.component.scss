@@ -66,6 +66,11 @@
     height: var(--ea-progress-bar-size, 0.375rem);
     border-radius: var(--radius-full);
     background-color: var(--color-bg-muted);
+
+    // An outline, unlike a border, leaves the fill the track's full height
+    @media (forced-colors: active) {
+      outline: 1px solid CanvasText;
+    }
   }
 
   // Sits behind the fill: the stretch from the fill's edge to the buffer's edge
@@ -89,6 +94,10 @@
     border-radius: var(--radius-full);
     background-color: var(--_ea-progress-bar-color);
     transition: width var(--duration-slow) var(--ease-out);
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+    }
   }
 
   &--success {
