@@ -21,6 +21,7 @@ const FRUITS: SelectOption[] = [
       [options]="options()"
       [label]="label()"
       [ariaLabel]="ariaLabel()"
+      [aria-labelledby]="ariaLabelledby()"
       [placeholder]="placeholder()"
       [size]="size()"
       [disabled]="disabled()"
@@ -40,6 +41,7 @@ class TestHostComponent {
   options = signal<SelectOptions>(FRUITS);
   label = signal<string | undefined>(undefined);
   ariaLabel = signal<string | undefined>(undefined);
+  ariaLabelledby = signal<string | undefined>(undefined);
   placeholder = signal('');
   size = signal<AutocompleteSize>('md');
   disabled = signal(false);
@@ -195,6 +197,53 @@ describe('AutocompleteComponent', () => {
       );
 
       expect(surface?.getAttribute('aria-label')).toBe('Fruit');
+    });
+
+    it('names the input from aria-labelledby ahead of the label and ariaLabel', () => {
+      host.ariaLabelledby.set('fruit-heading');
+      host.ariaLabel.set('Fruit search');
+      host.label.set('Fruit');
+
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('aria-labelledby')).toBe('fruit-heading');
+      expect(getInput().getAttribute('aria-label')).toBeNull();
+    });
+
+    it('names the listbox popup from aria-labelledby when set', () => {
+      host.ariaLabelledby.set('fruit-heading');
+      host.ariaLabel.set('Fruit');
+      fixture.detectChanges();
+
+      focus();
+
+      const surface = document.querySelector<HTMLElement>(
+        '.ea-popover__surface:not([aria-hidden])',
+      );
+      expect(surface?.getAttribute('aria-labelledby')).toBe('fruit-heading');
+      expect(surface?.hasAttribute('aria-label')).toBe(false);
+    });
+
+    it('forwards aria-labelledby to the input, leaving the host element bare', () => {
+      @Component({
+        imports: [AutocompleteComponent],
+        template: `
+          <span id="fruit-label">Fruit</span>
+          <ea-autocomplete aria-labelledby="fruit-label" />
+        `,
+      })
+      class LabelledByHostComponent {}
+      const labelledHost = TestBed.createComponent(LabelledByHostComponent);
+
+      labelledHost.detectChanges();
+
+      const element: HTMLElement =
+        labelledHost.nativeElement.querySelector('ea-autocomplete');
+      expect(element.hasAttribute('aria-labelledby')).toBe(false);
+      expect(
+        element.querySelector('.ea-autocomplete__input')!.getAttribute('aria-labelledby'),
+      ).toBe('fruit-label');
+      labelledHost.destroy();
     });
   });
 

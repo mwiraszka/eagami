@@ -10,6 +10,7 @@ import { RatingComponent } from './rating.component';
   template: `
     <ea-rating
       [label]="label"
+      [aria-label]="ariaLabel"
       [(value)]="value"
       [allowHalf]="allowHalf"
       [readonly]="readonly"
@@ -20,6 +21,7 @@ import { RatingComponent } from './rating.component';
 })
 class HostComponent {
   label: string | undefined = 'Rate this product';
+  ariaLabel: string | undefined = undefined;
   value = 3;
   allowHalf = false;
   readonly = false;
@@ -50,6 +52,17 @@ describe('RatingComponent a11y', () => {
 
   it('has no detectable violations in the default state', async () => {
     const el = await render();
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by aria-label without a visible label', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Rate this product';
+    });
 
     const results = await axe(el);
 

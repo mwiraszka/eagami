@@ -24,6 +24,13 @@
   }
 
   <div class="ea-range-slider">
+    @if (fieldAriaLabel(); as fieldName) {
+      <span
+        class="ea-range-slider__name"
+        [id]="id() + '-aria-label'">
+        {{ fieldName }}
+      </span>
+    }
     <span
       class="ea-range-slider__thumb-label"
       [id]="id() + '-low-label'">

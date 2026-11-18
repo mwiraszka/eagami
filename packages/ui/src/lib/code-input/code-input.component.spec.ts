@@ -405,6 +405,38 @@ describe('CodeInputComponent', () => {
     });
   });
 
+  describe('aria-label', () => {
+    it('names the group with aria-label when no label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Verification code');
+
+      fixture.detectChanges();
+
+      expect(getGroup().getAttribute('aria-label')).toBe('Verification code');
+      expect(getGroup().hasAttribute('aria-labelledby')).toBe(false);
+    });
+
+    it('leaves the name to the visible label when one is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Verification code');
+      fixture.componentRef.setInput('label', 'Code');
+
+      fixture.detectChanges();
+
+      expect(getGroup().hasAttribute('aria-label')).toBe(false);
+      expect(getGroup().getAttribute('aria-labelledby')).toBe(`${component.id()}-label`);
+    });
+
+    it('names the group from aria-labelledby ahead of aria-label and the label', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'sms-code');
+      fixture.componentRef.setInput('aria-label', 'Verification code');
+      fixture.componentRef.setInput('label', 'Code');
+
+      fixture.detectChanges();
+
+      expect(getGroup().getAttribute('aria-labelledby')).toBe('sms-code');
+      expect(getGroup().hasAttribute('aria-label')).toBe(false);
+    });
+  });
+
   describe('aria-labelledby', () => {
     @Component({
       imports: [CodeInputComponent],

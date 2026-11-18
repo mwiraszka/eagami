@@ -93,6 +93,8 @@ export class RangeSliderComponent
   readonly ariaLabelHigh = input<string | undefined>(undefined, {
     alias: 'aria-label-high',
   });
+  /** Accessible name for the range slider when no visible `label` is set, read ahead of each thumb's own label. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the slider, ahead of each thumb's own label, such as a label outside the component. */
   readonly ariaLabelledby = input<string | undefined>(undefined, {
     alias: 'aria-labelledby',
@@ -131,13 +133,20 @@ export class RangeSliderComponent
     () => this.ariaLabelHigh() ?? this.i18n.messages().rangeSlider.highThumbLabel,
   );
 
+  // Rendered as hidden text so both thumbs can reference it ahead of their own labels
+  protected readonly fieldAriaLabel = computed(() =>
+    this.label() || this.ariaLabelledby() ? null : this.ariaLabel() || null,
+  );
+
   readonly lowThumbLabelledBy = computed(() => this.thumbLabelledBy('low'));
   readonly highThumbLabelledBy = computed(() => this.thumbLabelledBy('high'));
 
   private thumbLabelledBy(thumb: Thumb): string {
     const thumbLabelId = `${this.id()}-${thumb}-label`;
     const fieldLabelledBy =
-      this.ariaLabelledby() || (this.label() ? `${this.id()}-label` : null);
+      this.ariaLabelledby() ||
+      (this.label() ? `${this.id()}-label` : null) ||
+      (this.fieldAriaLabel() ? `${this.id()}-aria-label` : null);
     return fieldLabelledBy ? `${fieldLabelledBy} ${thumbLabelId}` : thumbLabelId;
   }
 

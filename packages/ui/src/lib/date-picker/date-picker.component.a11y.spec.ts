@@ -11,13 +11,15 @@ import { DatePickerComponent } from './date-picker.component';
   template: `
     <ea-date-picker
       [label]="label"
+      [aria-label]="ariaLabel"
       [hint]="hint"
       [errorMsg]="errorMsg"
       [disabled]="disabled" />
   `,
 })
 class HostComponent {
-  label = 'Start date';
+  label: string | undefined = 'Start date';
+  ariaLabel: string | undefined = undefined;
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
@@ -75,6 +77,17 @@ describe('DatePickerComponent a11y', () => {
     labelled.detectChanges();
 
     const results = await axe(labelled.nativeElement);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by aria-label without a visible label', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Start date';
+    });
+
+    const results = await axe(el);
 
     expect(results).toHaveNoViolations();
   });

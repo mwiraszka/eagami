@@ -22,7 +22,7 @@
     [attr.aria-labelledby]="ariaLabelledby() || (label() ? id() + '-label' : null)"
     [attr.aria-label]="
       !label() && !ariaLabelledby()
-        ? i18n.messages().codeInput.groupLabel(length())
+        ? (ariaLabel() ?? i18n.messages().codeInput.groupLabel(length()))
         : null
     "
     [attr.aria-describedby]="

@@ -54,6 +54,8 @@ export class CodeInputComponent
   readonly digitEls = viewChildren<ElementRef<HTMLInputElement>>('digitEl');
   protected readonly i18n = inject(EagamiI18nService);
 
+  /** Accessible name for the group of digit fields when no visible `label` is set. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the group of digit fields, such as a label outside the component. */
   readonly ariaLabelledby = input<string | undefined>(undefined, {
     alias: 'aria-labelledby',

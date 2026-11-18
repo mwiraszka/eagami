@@ -55,6 +55,10 @@ export type AutocompleteSize = EaSize;
   templateUrl: './autocomplete.component.html',
   styleUrl: './autocomplete.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The name belongs on the native input, which forwards it, not on the host element
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -72,6 +76,10 @@ export class AutocompleteComponent
 
   /** Accessible name for the input and suggestion list when no visible label is provided. */
   readonly ariaLabel = input<string | undefined>(undefined);
+  /** Space-separated ids of the elements whose text names the input and suggestion list, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly placeholder = input<string>('');
   /** Selectable options, either flat or split into groups. */
   readonly options = input<SelectOptions>([]);

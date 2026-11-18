@@ -10,6 +10,7 @@ import { RangeSliderComponent, type RangeSliderValue } from './range-slider.comp
   template: `
     <ea-range-slider
       [label]="label"
+      [aria-label]="ariaLabel"
       [(value)]="value"
       [min]="min"
       [max]="max"
@@ -20,6 +21,7 @@ import { RangeSliderComponent, type RangeSliderValue } from './range-slider.comp
 })
 class HostComponent {
   label: string | undefined = 'Price range';
+  ariaLabel: string | undefined = undefined;
   value: RangeSliderValue = [20, 80];
   min = 0;
   max = 100;
@@ -52,6 +54,17 @@ describe('RangeSliderComponent a11y', () => {
 
   it('has no detectable violations in the default state', async () => {
     const el = await render();
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by aria-label without a visible label', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Price range';
+    });
 
     const results = await axe(el);
 

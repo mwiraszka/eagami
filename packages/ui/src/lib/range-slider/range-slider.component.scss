@@ -87,6 +87,7 @@
     --ea-range-slider-size: 1.625rem;
   }
 
+  &__name,
   &__thumb-label {
     @include ea.visually-hidden;
   }

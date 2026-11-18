@@ -411,6 +411,55 @@ describe('RangeSliderComponent', () => {
     });
   });
 
+  describe('aria-label', () => {
+    function getName(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('#price-aria-label');
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('id', 'price');
+    });
+
+    it('reads aria-label ahead of each thumb label when no label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Price');
+
+      fixture.detectChanges();
+
+      expect(getName()?.textContent?.trim()).toBe('Price');
+      expect(getLowThumb().getAttribute('aria-labelledby')).toBe(
+        'price-aria-label price-low-label',
+      );
+      expect(getHighThumb().getAttribute('aria-labelledby')).toBe(
+        'price-aria-label price-high-label',
+      );
+    });
+
+    it('leaves the name to the visible label when one is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Price');
+      fixture.componentRef.setInput('label', 'Price range');
+
+      fixture.detectChanges();
+
+      expect(getName()).toBeNull();
+      expect(getLowThumb().getAttribute('aria-labelledby')).toBe(
+        'price-label price-low-label',
+      );
+    });
+
+    it('names the thumbs from aria-labelledby ahead of aria-label and the label', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'filter-price');
+      fixture.componentRef.setInput('aria-label', 'Price');
+      fixture.componentRef.setInput('label', 'Price range');
+
+      fixture.detectChanges();
+
+      expect(getName()).toBeNull();
+      expect(getLowThumb().getAttribute('aria-labelledby')).toBe(
+        'filter-price price-low-label',
+      );
+    });
+  });
+
   describe('aria-labelledby', () => {
     @Component({
       imports: [RangeSliderComponent],

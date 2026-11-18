@@ -10,6 +10,7 @@ import { CodeInputComponent, type CodeInputSize } from './code-input.component';
   template: `
     <ea-code-input
       [label]="label"
+      [aria-label]="ariaLabel"
       [length]="length"
       [size]="size"
       [disabled]="disabled"
@@ -19,6 +20,7 @@ import { CodeInputComponent, type CodeInputSize } from './code-input.component';
 })
 class HostComponent {
   label: string | undefined = 'Verification code';
+  ariaLabel: string | undefined = undefined;
   length = 6;
   size: CodeInputSize = 'md';
   disabled = false;
@@ -48,6 +50,17 @@ describe('CodeInputComponent a11y', () => {
 
   it('has no detectable violations in the default state', async () => {
     const el = await render();
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by aria-label without a visible label', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Verification code';
+    });
 
     const results = await axe(el);
 
