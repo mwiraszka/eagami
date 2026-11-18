@@ -35,6 +35,8 @@
           [attr.aria-expanded]="isOpen()"
           [attr.aria-haspopup]="'dialog'"
           [attr.aria-controls]="isOpen() ? popoverId() : null"
+          [attr.aria-label]="label() || ariaLabelledby() ? null : (ariaLabel() ?? null)"
+          [attr.aria-labelledby]="ariaLabelledby() ?? null"
           [attr.aria-required]="required() || null"
           [attr.aria-invalid]="hasError() || null"
           [attr.aria-describedby]="

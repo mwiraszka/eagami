@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
@@ -1332,6 +1333,64 @@ describe('TimePickerComponent', () => {
 
       expect(component.period()).toBeNull();
       expect(component.value()).toBe('09:00');
+    });
+  });
+
+  describe('Accessible name', () => {
+    @Component({
+      imports: [TimePickerComponent],
+      template: `
+        <span id="start-label">Start time</span>
+        <ea-time-picker
+          aria-labelledby="start-label"
+          [id]="'start'" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the input with aria-label when no label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Start time');
+
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('aria-label')).toBe('Start time');
+      expect(getInput().getAttribute('aria-labelledby')).toBeNull();
+    });
+
+    it('leaves the name to the visible label when one is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Start time');
+      fixture.componentRef.setInput('label', 'Start');
+
+      fixture.detectChanges();
+
+      const label = fixture.nativeElement.querySelector('label');
+      expect(getInput().getAttribute('aria-label')).toBeNull();
+      expect(getInput().getAttribute('aria-labelledby')).toBeNull();
+      expect(label?.getAttribute('for')).toBe(component.id());
+    });
+
+    it('names the input from aria-labelledby ahead of the label', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'shift-start');
+      fixture.componentRef.setInput('aria-label', 'Start time');
+      fixture.componentRef.setInput('label', 'Start');
+
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('aria-labelledby')).toBe('shift-start');
+      expect(getInput().getAttribute('aria-label')).toBeNull();
+    });
+
+    it('forwards aria-labelledby to the input, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const element: HTMLElement = host.nativeElement.querySelector('ea-time-picker');
+      const input = element.querySelector('input[role="combobox"]')!;
+      expect(element.hasAttribute('aria-labelledby')).toBe(false);
+      expect(input.getAttribute('aria-labelledby')).toBe('start-label');
+      expect(input.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });
