@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.84.0',
+    date: '2026-11-18',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `aria-label` and `aria-labelledby` inputs to the time picker and the color picker, so either can be named without a visible label, with `aria-labelledby` taking precedence over the label.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.83.2',
     date: '2026-11-17',
     sections: [

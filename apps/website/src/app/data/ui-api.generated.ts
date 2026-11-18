@@ -1307,6 +1307,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-color-picker',
     inputs: [
       {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'clearable',
         type: 'boolean',
         default: 'true',
@@ -5965,6 +5979,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   'time-picker': {
     selector: 'ea-time-picker',
     inputs: [
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'disabled',
         type: 'boolean',
