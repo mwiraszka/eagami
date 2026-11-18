@@ -2358,6 +2358,8 @@ export const esES: WebMessages = {
               'Cambia el periodo AM/PM en el modo de 12 horas invirtiendo el desplazamiento de 12 horas.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             clearable: 'Muestra un botón de borrado cuando el campo tiene un valor.',
             disabled: 'Deshabilita el campo.',
             emptyMessage:

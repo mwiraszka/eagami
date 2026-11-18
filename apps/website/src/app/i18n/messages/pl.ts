@@ -2313,6 +2313,8 @@ export const pl: WebMessages = {
               'Przełącza okres AM/PM w trybie 12-godzinnym przez zmianę przesunięcia o 12 godzin.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             clearable: 'Wyświetla przycisk czyszczenia, gdy pole ma wartość.',
             disabled: 'Wyłącza pole.',
             emptyMessage:

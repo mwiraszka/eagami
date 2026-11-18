@@ -2175,6 +2175,8 @@ export const he: WebMessages = {
               'מחליף את תקופת ה-AM/PM במצב 12 שעות על ידי החלפת הסטה של 12 שעות.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'מזהי הרכיבים שהטקסט שלהם נותן לשדה את שמו, כמו תווית מחוץ לרכיב, מועברים למאפיין aria-labelledby המקורי.',
             clearable: 'מציג כפתור ניקוי כל עוד יש ערך בשדה.',
             disabled: 'משבית את השדה.',
             emptyMessage:

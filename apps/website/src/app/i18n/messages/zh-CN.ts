@@ -2098,6 +2098,8 @@ export const zhCN: WebMessages = {
             togglePeriod: '在 12 小时制中通过切换 12 小时偏移来切换 AM/PM 时段。',
           },
           autocomplete: {
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             clearable: '当字段有值时显示清除按钮。',
             disabled: '禁用该字段。',
             emptyMessage:

@@ -2354,6 +2354,8 @@ export const de: WebMessages = {
               'Wechselt die AM/PM-Periode im 12-Stunden-Modus durch Umschalten des 12-Stunden-Offsets.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             clearable: 'Zeigt einen Löschen-Button, solange das Feld einen Wert hat.',
             disabled: 'Deaktiviert das Feld.',
             emptyMessage:

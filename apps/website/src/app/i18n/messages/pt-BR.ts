@@ -2318,6 +2318,8 @@ export const ptBR: WebMessages = {
               'Alterna o período AM/PM no modo de 12 horas alternando o deslocamento de 12 horas.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             clearable: 'Mostra um botão de limpar enquanto o campo tem um valor.',
             disabled: 'Desativa o campo.',
             emptyMessage:
