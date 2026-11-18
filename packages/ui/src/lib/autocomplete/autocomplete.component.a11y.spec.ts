@@ -45,6 +45,15 @@ class HostComponent {
   value = '';
 }
 
+@Component({
+  imports: [AutocompleteComponent],
+  template: `
+    <span id="fruit-label">Fruit</span>
+    <ea-autocomplete aria-labelledby="fruit-label" />
+  `,
+})
+class LabelledByHostComponent {}
+
 describe('AutocompleteComponent a11y', () => {
   let fixture: ComponentFixture<HostComponent>;
 
@@ -83,6 +92,18 @@ describe('AutocompleteComponent a11y', () => {
     });
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

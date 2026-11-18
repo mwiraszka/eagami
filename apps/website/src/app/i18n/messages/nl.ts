@@ -2333,6 +2333,8 @@ export const nl: WebMessages = {
               'Wisselt de AM/PM-periode in de 12-uursmodus door de 12-uursverschuiving om te schakelen.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             clearable: 'Toont een wisknop terwijl het veld een waarde heeft.',
             disabled: 'Schakelt het veld uit.',
             emptyMessage:

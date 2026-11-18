@@ -109,6 +109,8 @@ export class DatePickerComponent
 
   /** Placeholder shown in the field when no date is selected. */
   readonly placeholder = input<string | undefined>(undefined);
+  /** Accessible name for the date picker when no visible `label` is set. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the field, such as a label outside the component. */
   readonly ariaLabelledby = input<string | undefined>(undefined, {
     alias: 'aria-labelledby',
@@ -185,7 +187,10 @@ export class DatePickerComponent
 
   /** Accessible name when neither `label` nor `aria-labelledby` is given. */
   protected readonly fallbackLabel = computed(
-    () => this.placeholder() ?? this.i18n.messages().datePicker.placeholder,
+    () =>
+      this.ariaLabel() ??
+      this.placeholder() ??
+      this.i18n.messages().datePicker.placeholder,
   );
 
   readonly dialogId = computed(() => `${this.id()}-dialog`);

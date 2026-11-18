@@ -120,6 +120,39 @@ describe('DatePickerComponent', () => {
       expect(getInput().hasAttribute('aria-label')).toBe(false);
     });
 
+    it('names a field with no label from aria-label ahead of the placeholder', () => {
+      fixture.componentRef.setInput('placeholder', 'Pick a date');
+      fixture.componentRef.setInput('aria-label', 'Start date');
+
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('aria-label')).toBe('Start date');
+      expect(getInput().hasAttribute('aria-labelledby')).toBe(false);
+    });
+
+    it('leaves the name to the visible label when one is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Start date');
+      fixture.componentRef.setInput('label', 'Start');
+
+      fixture.detectChanges();
+
+      const label = fixture.nativeElement.querySelector('label');
+      expect(getInput().hasAttribute('aria-label')).toBe(false);
+      expect(getInput().hasAttribute('aria-labelledby')).toBe(false);
+      expect(label?.getAttribute('for')).toBe(component.id());
+    });
+
+    it('names the field from aria-labelledby ahead of aria-label and the label', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'trip-start');
+      fixture.componentRef.setInput('aria-label', 'Start date');
+      fixture.componentRef.setInput('label', 'Start');
+
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('aria-labelledby')).toBe('trip-start');
+      expect(getInput().hasAttribute('aria-label')).toBe(false);
+    });
+
     it('keeps aria-labelledby off the host element', () => {
       @Component({
         imports: [DatePickerComponent],

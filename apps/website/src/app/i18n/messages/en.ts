@@ -2245,6 +2245,8 @@ export const en: WebMessages = {
               'Switches the AM/PM period in 12-hour mode by toggling the 12-hour offset.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             clearable: 'Shows a clear button while the field has a value.',
             disabled: 'Disables the field.',
             emptyMessage:

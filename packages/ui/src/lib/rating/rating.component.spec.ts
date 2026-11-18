@@ -319,6 +319,37 @@ describe('RatingComponent', () => {
     });
   });
 
+  describe('aria-label', () => {
+    it('names the slider with aria-label when no label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Score');
+
+      fixture.detectChanges();
+
+      expect(getGroup().getAttribute('aria-label')).toBe('Score');
+      expect(getGroup().hasAttribute('aria-labelledby')).toBe(false);
+    });
+
+    it('names the slider from the visible label ahead of aria-label', () => {
+      fixture.componentRef.setInput('aria-label', 'Score');
+      fixture.componentRef.setInput('label', 'Rating');
+
+      fixture.detectChanges();
+
+      expect(getGroup().getAttribute('aria-label')).toBe('Rating');
+    });
+
+    it('names the slider from aria-labelledby ahead of aria-label and the label', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'review-score');
+      fixture.componentRef.setInput('aria-label', 'Score');
+      fixture.componentRef.setInput('label', 'Rating');
+
+      fixture.detectChanges();
+
+      expect(getGroup().getAttribute('aria-labelledby')).toBe('review-score');
+      expect(getGroup().hasAttribute('aria-label')).toBe(false);
+    });
+  });
+
   describe('aria-labelledby', () => {
     @Component({
       imports: [RatingComponent],

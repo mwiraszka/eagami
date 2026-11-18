@@ -2357,6 +2357,8 @@ export const frFR: WebMessages = {
               'Bascule la période AM/PM en mode 12 h en inversant le décalage de 12 heures.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             clearable:
               'Affiche un bouton d’effacement lorsque le champ contient une valeur.',
             disabled: 'Désactive le champ.',

@@ -2207,6 +2207,8 @@ export const ar: WebMessages = {
             togglePeriod: 'يبدّل فترة AM/PM في نظام 12 ساعة عبر تبديل إزاحة الـ 12 ساعة.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'معرّفات العناصر التي يسمّي نصها الحقل، مثل تسمية خارج المكوّن، تُمرَّر إلى خاصية aria-labelledby الأصلية.',
             clearable: 'يُظهِر زر مسح ما دامت للحقل قيمة.',
             disabled: 'يعطّل الحقل.',
             emptyMessage:

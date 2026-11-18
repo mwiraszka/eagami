@@ -87,6 +87,8 @@ export class RatingComponent
   private readonly starsEl = viewChild<ElementRef<HTMLElement>>('starsEl');
   protected readonly i18n = inject(EagamiI18nService);
 
+  /** Accessible name for the rating when no visible `label` is set. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the rating, such as a label outside the component. */
   readonly ariaLabelledby = input<string | undefined>(undefined, {
     alias: 'aria-labelledby',
@@ -165,7 +167,7 @@ export class RatingComponent
   });
 
   protected readonly resolvedAriaLabel = computed(
-    () => this.label() ?? this.i18n.messages().rating.label,
+    () => this.label() ?? this.ariaLabel() ?? this.i18n.messages().rating.label,
   );
 
   /** Resolves the render state for star `pos` against the current display value. */

@@ -2306,6 +2306,8 @@ export const is: WebMessages = {
               'Skiptir um f.h./e.h. tímabil í 12 tíma ham með því að víxla 12 tíma hliðruninni.',
           },
           autocomplete: {
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             clearable: 'Sýnir hreinsunarhnapp á meðan reiturinn hefur gildi.',
             disabled: 'Gerir reitinn óvirkan.',
             emptyMessage:
