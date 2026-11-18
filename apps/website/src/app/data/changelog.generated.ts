@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.85.0',
+    date: '2026-11-19',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add an `aria-label` input to the date picker, code input, rating and range slider, and an `aria-labelledby` input to the autocomplete, so each can be named without a visible label, with `aria-labelledby` taking precedence over the label.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.84.0',
     date: '2026-11-18',
     sections: [

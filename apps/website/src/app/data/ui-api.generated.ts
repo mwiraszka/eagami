@@ -188,6 +188,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'clearable',
         type: 'boolean',
         default: 'false',
@@ -1161,6 +1168,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaLabelledby',
         type: 'string | undefined',
         default: 'undefined',
@@ -1763,6 +1777,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   'date-picker': {
     selector: 'ea-date-picker',
     inputs: [
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'ariaLabelledby',
         type: 'string | undefined',
@@ -4508,6 +4529,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-range-slider',
     inputs: [
       {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaLabelHigh',
         type: 'string | undefined',
         default: 'undefined',
@@ -4696,6 +4724,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'allowHalf',
         type: 'boolean',
         default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
