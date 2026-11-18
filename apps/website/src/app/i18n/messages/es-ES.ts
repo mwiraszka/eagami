@@ -1917,6 +1917,8 @@ export const esES: WebMessages = {
           'color-picker': {
             compact:
               'Muestra el activador como una muestra de color simple, sin el valor ni el botón de borrado.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             disabled: 'Deshabilita el campo.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
@@ -2300,6 +2302,8 @@ export const esES: WebMessages = {
             tooltipPosition: 'Posición del tooltip respecto a su elemento anfitrión.',
           },
           'time-picker': {
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             disabled: 'Deshabilita el selector.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',

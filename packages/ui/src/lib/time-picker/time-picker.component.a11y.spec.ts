@@ -11,6 +11,7 @@ import { TimePickerComponent } from './time-picker.component';
   template: `
     <ea-time-picker
       [label]="label"
+      [aria-label]="ariaLabel"
       [hint]="hint"
       [errorMsg]="errorMsg"
       [disabled]="disabled" />
@@ -18,10 +19,20 @@ import { TimePickerComponent } from './time-picker.component';
 })
 class HostComponent {
   label: string | undefined = 'Start time';
+  ariaLabel: string | undefined = undefined;
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
 }
+
+@Component({
+  imports: [TimePickerComponent],
+  template: `
+    <span id="start-label">Start time</span>
+    <ea-time-picker aria-labelledby="start-label" />
+  `,
+})
+class LabelledByHostComponent {}
 
 describe('TimePickerComponent a11y', () => {
   let fixture: ComponentFixture<HostComponent>;
@@ -80,6 +91,29 @@ describe('TimePickerComponent a11y', () => {
     const el = await render();
 
     const results = await axe(openPanel(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations named by aria-label without a visible label', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Start time';
+    });
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations named by aria-labelledby', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

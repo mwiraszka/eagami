@@ -1898,6 +1898,8 @@ export const is: WebMessages = {
           'color-picker': {
             compact:
               'Sýnir hnappinn sem einfaldan litareit, án gildis og hreinsunarhnapps.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             disabled: 'Gerir reitinn óvirkan.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
@@ -2253,6 +2255,8 @@ export const is: WebMessages = {
             tooltipPosition: 'Staðsetning ábendingarinnar miðað við hýsilstak hennar.',
           },
           'time-picker': {
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             disabled: 'Gerir veljuna óvirka.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',

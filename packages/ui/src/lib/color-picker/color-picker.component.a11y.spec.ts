@@ -11,17 +11,28 @@ import { ColorPickerComponent } from './color-picker.component';
   template: `
     <ea-color-picker
       [label]="label"
+      [aria-label]="ariaLabel"
       [hint]="hint"
       [errorMsg]="errorMsg"
       [disabled]="disabled" />
   `,
 })
 class HostComponent {
-  label = 'Brand color';
+  label: string | undefined = 'Brand color';
+  ariaLabel: string | undefined = undefined;
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
 }
+
+@Component({
+  imports: [ColorPickerComponent],
+  template: `
+    <span id="accent-label">Accent</span>
+    <ea-color-picker aria-labelledby="accent-label" />
+  `,
+})
+class LabelledByHostComponent {}
 
 describe('ColorPickerComponent a11y', () => {
   let fixture: ComponentFixture<HostComponent>;
@@ -80,6 +91,29 @@ describe('ColorPickerComponent a11y', () => {
     const el = await render();
 
     const results = await axe(openPanel(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations named by aria-label without a visible label', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Brand color';
+    });
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations named by aria-labelledby', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

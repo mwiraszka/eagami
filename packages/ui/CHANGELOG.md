@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.84.0] - 2026-11-18
+
+### Added
+
+- Add `aria-label` and `aria-labelledby` inputs to the time picker and the color picker, so either can be named without a visible label, with `aria-labelledby` taking precedence over the label.
+
 ## [5.83.2] - 2026-11-17
 
 ### Fixed
@@ -2106,6 +2112,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.84.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.83.2...ui-v5.84.0
 [5.83.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.83.1...ui-v5.83.2
 [5.83.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.83.0...ui-v5.83.1
 [5.83.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.82.3...ui-v5.83.0

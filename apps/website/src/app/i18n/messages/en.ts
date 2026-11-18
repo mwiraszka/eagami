@@ -1848,6 +1848,8 @@ export const en: WebMessages = {
           'color-picker': {
             compact:
               'Renders the trigger as a bare swatch, without the value text or the clear button.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             disabled: 'Disables the field.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
@@ -2194,6 +2196,8 @@ export const en: WebMessages = {
             tooltipPosition: 'Placement of the tooltip relative to its host element.',
           },
           'time-picker': {
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             disabled: 'Disables the picker.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',

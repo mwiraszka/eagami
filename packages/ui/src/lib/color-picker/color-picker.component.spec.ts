@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ColorPickerComponent } from './color-picker.component';
@@ -1561,6 +1562,66 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       expect(svArea().getAttribute('aria-valuenow')).toBe('99');
+    });
+  });
+
+  describe('Accessible name', () => {
+    @Component({
+      imports: [ColorPickerComponent],
+      template: `
+        <span id="accent-label">Accent</span>
+        <ea-color-picker
+          aria-labelledby="accent-label"
+          [id]="'accent'" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the trigger with aria-label when no label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Accent');
+
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-label')).toBe('Accent');
+      expect(getTrigger().getAttribute('aria-labelledby')).toBeNull();
+    });
+
+    it('leaves the name to the visible label when one is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Accent');
+      fixture.componentRef.setInput('label', 'Brand');
+
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-label')).toBeNull();
+      expect(getTrigger().getAttribute('aria-labelledby')).toBe(
+        `${component.id()}-label ${component.id()}`,
+      );
+    });
+
+    it('names the trigger from aria-labelledby ahead of the label, keeping the value', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'theme-accent');
+      fixture.componentRef.setInput('aria-label', 'Accent');
+      fixture.componentRef.setInput('label', 'Brand');
+
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-labelledby')).toBe(
+        `theme-accent ${component.id()}`,
+      );
+      expect(getTrigger().getAttribute('aria-label')).toBeNull();
+    });
+
+    it('forwards aria-labelledby to the trigger, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const element: HTMLElement = host.nativeElement.querySelector('ea-color-picker');
+      const trigger = element.querySelector('.ea-color-picker__trigger')!;
+      expect(element.hasAttribute('aria-labelledby')).toBe(false);
+      expect(trigger.getAttribute('aria-labelledby')).toBe('accent-label accent');
+      expect(trigger.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

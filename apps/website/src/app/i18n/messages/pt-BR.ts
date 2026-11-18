@@ -1895,6 +1895,8 @@ export const ptBR: WebMessages = {
           'color-picker': {
             compact:
               'Mostra o gatilho como uma amostra de cor simples, sem o valor nem o botão de limpar.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             disabled: 'Desativa o campo.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
@@ -2261,6 +2263,8 @@ export const ptBR: WebMessages = {
               'Posicionamento da dica em relação ao seu elemento hospedeiro.',
           },
           'time-picker': {
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             disabled: 'Desativa o seletor.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',

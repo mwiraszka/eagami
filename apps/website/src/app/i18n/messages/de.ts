@@ -1916,6 +1916,8 @@ export const de: WebMessages = {
           'color-picker': {
             compact:
               'Zeigt den Auslöser als reines Farbfeld, ohne Wert und ohne Löschschaltfläche.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             disabled: 'Deaktiviert das Feld.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
@@ -2297,6 +2299,8 @@ export const de: WebMessages = {
             tooltipPosition: 'Platzierung des Tooltips relativ zu seinem Host-Element.',
           },
           'time-picker': {
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             disabled: 'Deaktiviert die Auswahl.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',

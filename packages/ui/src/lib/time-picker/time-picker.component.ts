@@ -72,6 +72,9 @@ interface ParsedTime {
   templateUrl: './time-picker.component.html',
   styleUrl: './time-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   imports: [
     ChevronDownIconComponent,
     ChevronUpIconComponent,
@@ -122,6 +125,12 @@ export class TimePickerComponent
   readonly minuteStep = input<number>(1);
   readonly secondStep = input<number>(1);
   readonly id = input<string>(uniqueId('ea-time-picker'));
+  /** Accessible name for the time picker when no visible `label` is set. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the field, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
 
   readonly popoverId = computed(() => `${this.id()}-popover`);
 

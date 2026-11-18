@@ -1893,6 +1893,8 @@ export const pl: WebMessages = {
           'color-picker': {
             compact:
               'Pokazuje przycisk jako samą próbkę koloru, bez wartości i przycisku czyszczenia.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             disabled: 'Wyłącza pole.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
@@ -2256,6 +2258,8 @@ export const pl: WebMessages = {
             tooltipPosition: 'Pozycja podpowiedzi względem elementu nadrzędnego.',
           },
           'time-picker': {
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             disabled: 'Wyłącza selektor.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',

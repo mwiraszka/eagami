@@ -103,6 +103,9 @@ const DEFAULT_PRESETS: readonly string[] = [
   templateUrl: './color-picker.component.html',
   styleUrl: './color-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -142,6 +145,12 @@ export class ColorPickerComponent
   /** Preset swatches shown at the bottom of the popover. Pass an empty array to hide. */
   readonly presets = input<readonly string[]>(DEFAULT_PRESETS);
   readonly id = input<string>(uniqueId('ea-color-picker'));
+  /** Accessible name for the color picker when no visible `label` is set. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the field, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
 
   readonly value = model<string | null>(null);
 
@@ -307,8 +316,14 @@ export class ColorPickerComponent
 
   readonly popoverId = computed(() => `${this.id()}-popover`);
 
-  readonly triggerLabelledBy = computed(() =>
-    this.label() ? `${this.id()}-label ${this.id()}` : null,
+  // The trigger's own id comes last so the current colour is part of its name
+  readonly triggerLabelledBy = computed(() => {
+    const labelledBy =
+      this.ariaLabelledby() || (this.label() ? `${this.id()}-label` : null);
+    return labelledBy ? `${labelledBy} ${this.id()}` : null;
+  });
+  protected readonly triggerAriaLabel = computed(() =>
+    this.label() || this.ariaLabelledby() ? null : this.ariaLabel() || null,
   );
 
   readonly triggerClasses = computed(() => ({

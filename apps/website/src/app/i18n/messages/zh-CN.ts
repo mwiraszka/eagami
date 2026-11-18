@@ -1770,6 +1770,8 @@ export const zhCN: WebMessages = {
           },
           'color-picker': {
             compact: '将触发器显示为纯色块，不显示数值和清除按钮。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             disabled: '禁用该字段。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
             format: '发出的颜色值的输出格式（hex、rgb 或 hsl）。',
@@ -2058,6 +2060,8 @@ export const zhCN: WebMessages = {
             tooltipPosition: '工具提示相对于其宿主元素的放置位置。',
           },
           'time-picker': {
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             disabled: '禁用该选择器。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
             format: '触发器标签的显示格式；底层值始终为 24 小时制。',

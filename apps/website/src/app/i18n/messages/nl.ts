@@ -1901,6 +1901,8 @@ export const nl: WebMessages = {
           'color-picker': {
             compact:
               'Toont de trigger als een kaal kleurvlak, zonder waarde en zonder wisknop.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             disabled: 'Schakelt het veld uit.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
@@ -2278,6 +2280,8 @@ export const nl: WebMessages = {
             tooltipPosition: 'Plaatsing van de tooltip ten opzichte van het hostelement.',
           },
           'time-picker': {
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             disabled: 'Schakelt de kiezer uit.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',

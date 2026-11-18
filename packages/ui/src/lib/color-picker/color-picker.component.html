@@ -24,6 +24,7 @@
         [attr.aria-expanded]="isOpen()"
         [attr.aria-haspopup]="'dialog'"
         [attr.aria-labelledby]="triggerLabelledBy()"
+        [attr.aria-label]="triggerAriaLabel()"
         [attr.aria-controls]="isOpen() ? popoverId() : null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="hasError() || null"
