@@ -1934,6 +1934,8 @@ export const frFR: WebMessages = {
           'color-picker': {
             compact:
               'Affiche le déclencheur comme une simple pastille, sans la valeur ni le bouton d’effacement.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             disabled: 'Désactive le champ.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
@@ -2301,6 +2303,8 @@ export const frFR: WebMessages = {
             tooltipPosition: 'Position de l’infobulle par rapport à son élément hôte.',
           },
           'time-picker': {
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             disabled: 'Désactive le sélecteur.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
