@@ -1570,6 +1570,7 @@ export const el: WebMessages = {
           accordion: { headingLevel: '(μόνο σημασιολογικά)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Και τα δύο ανοίγουν τον ίδιο διάλογο.' },
+          'transfer-list': { headingLevel: '(μόνο σημασιολογικά)' },
         },
 
         descriptions: {
@@ -2903,6 +2904,8 @@ export const el: WebMessages = {
           'transfer-list': {
             disabled:
               'Απενεργοποιεί ολόκληρη τη λίστα μεταφοράς και όλα τα χειριστήρια μετακίνησης.',
+            headingLevel:
+              'Επίπεδο επικεφαλίδας που χρησιμοποιείται για τις επικεφαλίδες και των δύο πάνελ ώστε να ταιριάζουν στη δομή του εγγράφου.',
             items:
               'Πλήρης δεξαμενή στοιχείων διαθέσιμων και στα δύο πάνελ, αναγνωρίσιμων μέσω id.',
             selectedIds:

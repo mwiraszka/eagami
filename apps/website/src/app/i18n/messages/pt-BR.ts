@@ -1531,6 +1531,7 @@ export const ptBR: WebMessages = {
           accordion: { headingLevel: '(apenas semântico)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Ambos abrem o mesmo diálogo.' },
+          'transfer-list': { headingLevel: '(apenas semântico)' },
         },
 
         descriptions: {
@@ -2812,6 +2813,8 @@ export const ptBR: WebMessages = {
           'transfer-list': {
             disabled:
               'Desativa toda a lista de transferência e todos os controles de movimentação.',
+            headingLevel:
+              'Nível de título usado para os títulos dos dois painéis de modo que se encaixem no esquema do documento ao redor.',
             items:
               'Conjunto completo de itens disponíveis em ambos os painéis, identificados por id.',
             selectedIds:

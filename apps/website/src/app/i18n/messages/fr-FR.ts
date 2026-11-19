@@ -1569,6 +1569,7 @@ export const frFR: WebMessages = {
           accordion: { headingLevel: '(sémantique uniquement)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Les deux ouvrent la même boîte de dialogue.' },
+          'transfer-list': { headingLevel: '(sémantique uniquement)' },
         },
 
         descriptions: {
@@ -2861,6 +2862,8 @@ export const frFR: WebMessages = {
           'transfer-list': {
             disabled:
               'Désactive l’intégralité de la liste de transfert et tous les contrôles de déplacement.',
+            headingLevel:
+              'Niveau de titre utilisé pour les en-têtes des deux volets afin qu’ils s’intègrent au plan du document environnant.',
             items:
               'Ensemble complet des éléments disponibles dans les deux volets, identifiés par id.',
             selectedIds:

@@ -1503,6 +1503,7 @@ export const ar: WebMessages = {
           accordion: { headingLevel: '(دلالي فقط)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'كلاهما يفتح مربّع الحوار نفسه.' },
+          'transfer-list': { headingLevel: '(دلالي فقط)' },
         },
 
         descriptions: {
@@ -2647,6 +2648,8 @@ export const ar: WebMessages = {
           },
           'transfer-list': {
             disabled: 'يعطّل قائمة النقل بأكملها وكل عناصر تحكّم النقل.',
+            headingLevel:
+              'مستوى العنوان المستخدم لعنوانَي اللوحتين بحيث يلائمان مخطّط المستند المحيط.',
             items: 'المجموعة الكاملة للعناصر المتاحة عبر اللوحتين، تُعرَّف بالمعرّف.',
             selectedIds:
               'معرّفات العناصر الموجودة حاليًا على الجانب الهدف (الأيمن)، قابلة للربط الثنائي عبر [(selectedIds)].',

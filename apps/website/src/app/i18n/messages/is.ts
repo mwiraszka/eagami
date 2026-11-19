@@ -1544,6 +1544,7 @@ export const is: WebMessages = {
           accordion: { headingLevel: '(aðeins merkingarlegt)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Báðir opna sama gluggann.' },
+          'transfer-list': { headingLevel: '(aðeins merkingarlegt)' },
         },
 
         descriptions: {
@@ -2789,6 +2790,8 @@ export const is: WebMessages = {
           },
           'transfer-list': {
             disabled: 'Gerir allan flutningslistann og allar færslustýringar óvirkar.',
+            headingLevel:
+              'Fyrirsagnarstig notað fyrir fyrirsagnir beggja hliða svo þær passi í umliggjandi skjalauppbyggingu.',
             items: 'Fullt safn atriða tiltækra á báðum hliðum, auðkennt eftir auðkenni.',
             selectedIds:
               'Auðkenni atriðanna sem nú eru á markhliðinni (hægri), tvíátta bindanleg með [(selectedIds)].',

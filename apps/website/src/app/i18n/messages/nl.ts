@@ -1533,6 +1533,7 @@ export const nl: WebMessages = {
           accordion: { headingLevel: '(alleen semantisch)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Beide openen hetzelfde dialoogvenster.' },
+          'transfer-list': { headingLevel: '(alleen semantisch)' },
         },
 
         descriptions: {
@@ -2844,6 +2845,8 @@ export const nl: WebMessages = {
           },
           'transfer-list': {
             disabled: 'Schakelt de hele transfer list en alle verplaatsbediening uit.',
+            headingLevel:
+              'Kopniveau gebruikt voor de kopteksten van beide deelvensters zodat ze passen in de omliggende documentstructuur.',
             items:
               'Volledige pool van items beschikbaar over beide deelvensters, geïdentificeerd door id.',
             selectedIds:

@@ -1502,6 +1502,7 @@ export const hi: WebMessages = {
           accordion: { headingLevel: '(केवल सिमैंटिक)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'दोनों एक ही डायलॉग खोलते हैं।' },
+          'transfer-list': { headingLevel: '(केवल सिमैंटिक)' },
         },
 
         descriptions: {
@@ -2752,6 +2753,8 @@ export const hi: WebMessages = {
           },
           'transfer-list': {
             disabled: 'पूरी ट्रांसफ़र सूची और सभी मूव नियंत्रणों को अक्षम करता है।',
+            headingLevel:
+              'दोनों पैन के शीर्षकों के लिए उपयोग किया गया शीर्षक स्तर ताकि वे आसपास की दस्तावेज़ रूपरेखा में फिट हों।',
             items: 'दोनों पैन में उपलब्ध आइटम का पूरा पूल, id द्वारा पहचाना गया।',
             selectedIds:
               'वर्तमान में लक्ष्य (दाएं) ओर के आइटम की Id, [(selectedIds)] के माध्यम से दो-तरफ़ा बाइंड करने योग्य।',

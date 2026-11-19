@@ -1469,6 +1469,7 @@ export const zhCN: WebMessages = {
           accordion: { headingLevel: '(仅语义)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: '两者打开的是同一个对话框。' },
+          'transfer-list': { headingLevel: '(仅语义)' },
         },
 
         descriptions: {
@@ -2478,6 +2479,7 @@ export const zhCN: WebMessages = {
           },
           'transfer-list': {
             disabled: '禁用整个穿梭列表及所有移动控件。',
+            headingLevel: '用于两个面板标题的标题级别，使其契合周围的文档大纲。',
             items: '两个面板间可用的完整项目池，按 id 标识。',
             selectedIds:
               '当前位于目标（右）侧的项目 id，可通过 [(selectedIds)] 双向绑定。',

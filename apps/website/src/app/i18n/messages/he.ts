@@ -1486,6 +1486,7 @@ export const he: WebMessages = {
           accordion: { headingLevel: '(סמנטי בלבד)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'שניהם פותחים את אותו דו-שיח.' },
+          'transfer-list': { headingLevel: '(סמנטי בלבד)' },
         },
 
         descriptions: {
@@ -2608,6 +2609,8 @@ export const he: WebMessages = {
           },
           'transfer-list': {
             disabled: 'משבית את כל רשימת ההעברה ואת כל בקרות ההזזה.',
+            headingLevel:
+              'רמת הכותרת המשמשת עבור הכותרות של שתי החלוניות כדי שיתאימו למתאר המסמך הסובב.',
             items: 'המאגר המלא של הפריטים הזמינים בשני החלוניות, מזוהים לפי מזהה.',
             selectedIds:
               'מזהי הפריטים הנמצאים כעת בצד היעד (הימני), ניתנים לקישור דו-כיווני באמצעות [(selectedIds)].',
