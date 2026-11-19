@@ -37,7 +37,8 @@ export const Playground: Story = {
         [size]="size"
         [disabled]="disabled"
         [sourceLabel]="sourceLabel"
-        [targetLabel]="targetLabel" />
+        [targetLabel]="targetLabel"
+        [headingLevel]="headingLevel" />
     `,
   }),
 };

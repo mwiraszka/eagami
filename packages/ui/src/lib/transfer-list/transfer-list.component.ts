@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,6 +18,8 @@ import { type EaSize } from '../sizes';
 import type { TransferListItem } from './transfer-list.types';
 
 export type TransferListSize = EaSize;
+/** Heading level used for the pane labels so they fit the surrounding document outline. */
+export type TransferListHeadingLevel = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 /**
  * `<ea-transfer-list>` is a two-pane shuttle control for moving items between
@@ -39,6 +42,7 @@ export type TransferListSize = EaSize;
     ChevronRightIconComponent,
     ChevronsLeftIconComponent,
     ChevronsRightIconComponent,
+    NgTemplateOutlet,
   ],
 })
 export class TransferListComponent {
@@ -62,6 +66,9 @@ export class TransferListComponent {
    * hide the heading row entirely.
    */
   readonly targetLabel = input<string | undefined>(undefined);
+
+  /** Heading level of both pane labels, so they fit the surrounding document outline. */
+  readonly headingLevel = input<TransferListHeadingLevel>('h3');
 
   readonly size = input<TransferListSize>('md');
 

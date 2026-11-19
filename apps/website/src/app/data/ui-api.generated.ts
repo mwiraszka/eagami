@@ -6478,6 +6478,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'headingLevel',
+        type: 'TransferListHeadingLevel',
+        default: "'h3'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'items',
         type: 'readonly TransferListItem[]',
         default: '',

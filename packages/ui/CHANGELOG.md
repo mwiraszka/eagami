@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.87.0] - 2026-11-19
+
+### Added
+
+- Add a `headingLevel` input to the transfer list, so its pane headings can fit the surrounding page outline instead of always rendering as `h3`.
+
 ## [5.86.0] - 2026-11-19
 
 ### Added
@@ -2124,6 +2130,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.87.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.86.0...ui-v5.87.0
 [5.86.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.85.0...ui-v5.86.0
 [5.85.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.84.0...ui-v5.85.0
 [5.84.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.83.2...ui-v5.84.0

@@ -1548,6 +1548,7 @@ export const esES: WebMessages = {
           accordion: { headingLevel: '(solo semántico)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Ambos abren el mismo diálogo.' },
+          'transfer-list': { headingLevel: '(solo semántico)' },
         },
 
         descriptions: {
@@ -2868,6 +2869,8 @@ export const esES: WebMessages = {
           'transfer-list': {
             disabled:
               'Deshabilita toda la lista de transferencia y todos los controles de movimiento.',
+            headingLevel:
+              'Nivel de encabezado usado para los encabezados de ambos paneles de modo que encajen en el esquema del documento circundante.',
             items:
               'Conjunto completo de elementos disponibles en ambos paneles, identificados por id.',
             selectedIds:

@@ -1,5 +1,6 @@
 import {
   TransferListComponent,
+  type TransferListHeadingLevel,
   type TransferListItem,
   type TransferListSize,
 } from '@eagami/ui';
@@ -29,6 +30,7 @@ interface TransferListKnobState {
   disabled: boolean;
   sourceLabel: string;
   targetLabel: string;
+  headingLevel: TransferListHeadingLevel;
 }
 
 const SLUG = 'transfer-list';

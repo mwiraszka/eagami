@@ -1528,6 +1528,7 @@ export const uk: WebMessages = {
           accordion: { headingLevel: '(лише семантично)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Обидва відкривають той самий діалог.' },
+          'transfer-list': { headingLevel: '(лише семантично)' },
         },
 
         descriptions: {
@@ -2795,6 +2796,8 @@ export const uk: WebMessages = {
           'transfer-list': {
             disabled:
               'Вимикає весь список передавання та всі елементи керування переміщенням.',
+            headingLevel:
+              'Рівень заголовка, що використовується для заголовків обох панелей, аби вони вписувалися в навколишню структуру документа.',
             items:
               'Повний пул елементів, доступних в обох панелях, ідентифікованих за id.',
             selectedIds:

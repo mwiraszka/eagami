@@ -1531,6 +1531,7 @@ export const ru: WebMessages = {
           accordion: { headingLevel: '(только семантически)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Оба открывают один и тот же диалог.' },
+          'transfer-list': { headingLevel: '(только семантически)' },
         },
 
         descriptions: {
@@ -2815,6 +2816,8 @@ export const ru: WebMessages = {
           'transfer-list': {
             disabled:
               'Отключает весь список передачи и все элементы управления перемещением.',
+            headingLevel:
+              'Уровень заголовка, используемый для заголовков обеих панелей, чтобы они вписывались в структуру окружающего документа.',
             items:
               'Полный пул элементов, доступных в обеих панелях, идентифицируемых по id.',
             selectedIds:

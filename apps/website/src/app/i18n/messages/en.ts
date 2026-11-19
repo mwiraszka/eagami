@@ -1504,6 +1504,7 @@ export const en: WebMessages = {
           accordion: { headingLevel: '(semantic-only)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Both open the same dialog.' },
+          'transfer-list': { headingLevel: '(semantic-only)' },
         },
 
         descriptions: {
@@ -2710,6 +2711,8 @@ export const en: WebMessages = {
           },
           'transfer-list': {
             disabled: 'Disables the entire transfer list and all move controls.',
+            headingLevel:
+              'Heading level used for both pane headings so they fit the surrounding document outline.',
             items: 'Full pool of items available across both panes, identified by id.',
             selectedIds:
               'Ids of the items currently on the target (right) side, two-way bindable via [(selectedIds)].',

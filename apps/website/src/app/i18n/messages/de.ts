@@ -1545,6 +1545,7 @@ export const de: WebMessages = {
           accordion: { headingLevel: '(nur semantisch)' },
           'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Beide öffnen denselben Dialog.' },
+          'transfer-list': { headingLevel: '(nur semantisch)' },
         },
 
         descriptions: {
@@ -2866,6 +2867,8 @@ export const de: WebMessages = {
           'transfer-list': {
             disabled:
               'Deaktiviert die gesamte Transferliste und alle Verschiebe-Steuerungen.',
+            headingLevel:
+              'Überschriftsebene, die für die Überschriften beider Bereiche verwendet wird, damit sie in die umgebende Dokumentgliederung passen.',
             items:
               'Vollständiger Pool von Einträgen, die über beide Bereiche verfügbar sind, identifiziert durch id.',
             selectedIds:
