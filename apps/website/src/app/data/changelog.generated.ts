@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.87.0',
+    date: '2026-11-19',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `headingLevel` input to the transfer list, so its pane headings can fit the surrounding page outline instead of always rendering as `h3`.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.86.0',
     date: '2026-11-19',
     sections: [
