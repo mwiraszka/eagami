@@ -14,11 +14,16 @@ export const TRANSFER_LIST_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     sourceLabel: { control: 'text' },
     targetLabel: { control: 'text' },
+    headingLevel: {
+      control: 'select',
+      options: ['h2', 'h3', 'h4', 'h5', 'h6'],
+    },
   },
   args: {
     size: 'md',
     disabled: false,
     sourceLabel: '',
     targetLabel: '',
+    headingLevel: 'h2',
   },
 };

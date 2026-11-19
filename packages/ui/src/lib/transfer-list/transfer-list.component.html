@@ -1,7 +1,7 @@
 <div [class]="hostClasses()">
   <div class="ea-transfer-list__pane">
-    @if (resolvedSourceLabel()) {
-      <h3 class="ea-transfer-list__pane-label">{{ resolvedSourceLabel() }}</h3>
+    @if (resolvedSourceLabel(); as sourceLabel) {
+      <ng-container *ngTemplateOutlet="paneLabel; context: { $implicit: sourceLabel }" />
     }
     <ul
       class="ea-transfer-list__list"
@@ -71,8 +71,8 @@
   </div>
 
   <div class="ea-transfer-list__pane">
-    @if (resolvedTargetLabel()) {
-      <h3 class="ea-transfer-list__pane-label">{{ resolvedTargetLabel() }}</h3>
+    @if (resolvedTargetLabel(); as targetLabel) {
+      <ng-container *ngTemplateOutlet="paneLabel; context: { $implicit: targetLabel }" />
     }
     <ul
       class="ea-transfer-list__list"
@@ -109,3 +109,28 @@
     {{ announcement() }}
   </p>
 </div>
+
+<ng-template
+  #paneLabel
+  let-text>
+  @switch (headingLevel()) {
+    @case ('h2') {
+      <h2 class="ea-transfer-list__pane-label">{{ text }}</h2>
+    }
+    @case ('h3') {
+      <h3 class="ea-transfer-list__pane-label">{{ text }}</h3>
+    }
+    @case ('h4') {
+      <h4 class="ea-transfer-list__pane-label">{{ text }}</h4>
+    }
+    @case ('h5') {
+      <h5 class="ea-transfer-list__pane-label">{{ text }}</h5>
+    }
+    @case ('h6') {
+      <h6 class="ea-transfer-list__pane-label">{{ text }}</h6>
+    }
+    @default {
+      <h3 class="ea-transfer-list__pane-label">{{ text }}</h3>
+    }
+  }
+</ng-template>

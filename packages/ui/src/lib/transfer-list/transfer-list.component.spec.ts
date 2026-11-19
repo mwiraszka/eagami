@@ -70,6 +70,40 @@ describe('TransferListComponent', () => {
     fixture.detectChanges();
   });
 
+  describe('Pane headings', () => {
+    function paneHeadingTags(root: HTMLElement): string[] {
+      return Array.from(
+        root.querySelectorAll('.ea-transfer-list__pane-label'),
+        heading => heading.tagName,
+      );
+    }
+
+    it('renders both pane labels as h3 headings by default', () => {
+      expect(paneHeadingTags(fixture.nativeElement)).toEqual(['H3', 'H3']);
+    });
+
+    it('renders both pane labels at the configured heading level', () => {
+      const direct = TestBed.createComponent(TransferListComponent);
+      direct.componentRef.setInput('items', ITEMS);
+      direct.componentRef.setInput('headingLevel', 'h2');
+
+      direct.detectChanges();
+
+      expect(paneHeadingTags(direct.nativeElement)).toEqual(['H2', 'H2']);
+    });
+
+    it('omits a pane heading whose label is set to an empty string', () => {
+      const direct = TestBed.createComponent(TransferListComponent);
+      direct.componentRef.setInput('items', ITEMS);
+      direct.componentRef.setInput('headingLevel', 'h4');
+      direct.componentRef.setInput('sourceLabel', '');
+
+      direct.detectChanges();
+
+      expect(paneHeadingTags(direct.nativeElement)).toEqual(['H4']);
+    });
+  });
+
   it('starts with all items in the source pane', () => {
     expect(getListItems('source').map(el => el.textContent?.trim())).toEqual([
       'Alpha',
