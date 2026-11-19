@@ -52,9 +52,7 @@
                   ? 'ascending'
                   : sort().column === col.key && sort().direction === 'desc'
                     ? 'descending'
-                    : col.sortable
-                      ? 'none'
-                      : null
+                    : null
               "
               (keydown.enter)="onHeaderKeydown($event, col)"
               (keydown.space)="onHeaderKeydown($event, col)"

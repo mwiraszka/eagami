@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.87.1',
+    date: '2026-11-19',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Set `aria-sort` on the data table's sorted column only, rather than marking every other sortable header as `none`.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.87.0',
     date: '2026-11-19',
     sections: [
