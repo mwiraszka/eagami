@@ -15,6 +15,7 @@ import {
 
 import { isRtl } from '../direction';
 import { type EaSize } from '../sizes';
+import { Typeahead } from '../typeahead';
 import { TreeNodeComponent } from './tree-node.component';
 import { type TreeNode, visibleNodeIds, walkTree } from './tree.types';
 
@@ -22,10 +23,10 @@ export type TreeSize = EaSize;
 
 /**
  * `<ea-tree>` renders a hierarchical, single-selection treeview with full
- * keyboard navigation (Arrow keys, Home, End, Enter / Space). Selection and
- * expansion state are model signals: pass `[selectedId]` / `[expandedIds]`
- * to control them, or bind `[(selectedId)]` / `[(expandedIds)]` for two-way
- * sync.
+ * keyboard navigation (Arrow keys, Home, End, Enter / Space, and typeahead
+ * on node labels). Selection and expansion state are model signals: pass
+ * `[selectedId]` / `[expandedIds]` to control them, or bind
+ * `[(selectedId)]` / `[(expandedIds)]` for two-way sync.
  *
  * The component implements the ARIA `tree` pattern:
  * - The outer `<ul>` carries `role="tree"`
@@ -63,6 +64,8 @@ export class TreeComponent {
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
 
   private readonly _focusedId = signal<string | null>(null);
+
+  private readonly typeahead = new Typeahead();
 
   protected readonly expandedSet: Signal<ReadonlySet<string>> = computed(
     () => new Set(this.expandedIds()),
@@ -156,6 +159,16 @@ export class TreeComponent {
 
     const currentId = this.focusedId();
     const currentIdx = currentId ? visible.indexOf(currentId) : -1;
+
+    if (this.typeahead.accepts(event)) {
+      event.preventDefault();
+      const labels = visible.map(id => this.findNode(id)?.label ?? null);
+      const idx = this.typeahead.match(event.key, labels, currentIdx);
+      if (idx >= 0) {
+        this.focusNode(visible[idx]);
+      }
+      return;
+    }
 
     // In RTL the horizontal arrows swap: the arrow pointing towards the child
     // indent expands, the one pointing towards the root collapses

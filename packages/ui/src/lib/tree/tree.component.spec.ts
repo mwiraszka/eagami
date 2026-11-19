@@ -344,5 +344,65 @@ describe('TreeComponent', () => {
 
       expect(host.expandedIds()).not.toContain('fruits');
     });
+
+    describe('Typeahead', () => {
+      beforeEach(() => {
+        vi.useFakeTimers();
+        host.expandedIds.set(['fruits', 'vegetables']);
+        fixture.detectChanges();
+      });
+
+      afterEach(() => {
+        vi.useRealTimers();
+      });
+
+      it('moves focus to the next visible node whose label starts with a typed letter', () => {
+        press('c');
+
+        expect(focusedId()).toBe('cherry');
+      });
+
+      it('cycles through matches when the letter is typed again after a pause', () => {
+        press('c');
+        vi.advanceTimersByTime(500);
+
+        press('c');
+
+        expect(focusedId()).toBe('carrot');
+
+        vi.advanceTimersByTime(500);
+        press('c');
+
+        expect(focusedId()).toBe('cherry');
+      });
+
+      it('narrows to a longer match as the query grows', () => {
+        press('c');
+        press('a');
+
+        expect(focusedId()).toBe('carrot');
+      });
+
+      it('never lands on a disabled node', () => {
+        press('b');
+
+        expect(focusedId()).toBe('fruits');
+      });
+
+      it('never lands on a node inside a collapsed branch', () => {
+        press('s');
+
+        expect(focusedId()).toBe('fruits');
+      });
+
+      it('lets Space extend a query in progress instead of selecting', () => {
+        for (const key of ['l', 'e', 'a', 'f', 'y', ' ', 'g']) {
+          press(key);
+        }
+
+        expect(focusedId()).toBe('leafy');
+        expect(host.selectedId()).toBeNull();
+      });
+    });
   });
 });

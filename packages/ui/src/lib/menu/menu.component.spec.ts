@@ -43,6 +43,22 @@ class TestHostComponent {
   }
 }
 
+@Component({
+  selector: 'ea-typeahead-test-host',
+  imports: [MenuComponent, MenuTriggerDirective, MenuItemComponent],
+  template: `
+    <button [eaMenuTrigger]="menu">File</button>
+    <ea-menu #menu>
+      <ea-menu-item>New</ea-menu-item>
+      <ea-menu-item>Save</ea-menu-item>
+      <ea-menu-item>Save as</ea-menu-item>
+      <ea-menu-item [disabled]="true">Share</ea-menu-item>
+      <ea-menu-item>Settings</ea-menu-item>
+    </ea-menu>
+  `,
+})
+class TypeaheadHostComponent {}
+
 describe('MenuComponent', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let host: TestHostComponent;
@@ -579,5 +595,122 @@ describe('MenuComponent', () => {
       expect(items[1].tabIndex).toBe(-1);
       expect(items[2].tabIndex).toBe(0);
     });
+  });
+});
+
+describe('MenuComponent typeahead', () => {
+  let fixture: ComponentFixture<TypeaheadHostComponent>;
+
+  function getTrigger(): HTMLButtonElement {
+    return fixture.nativeElement.querySelector('button');
+  }
+
+  async function openMenu(): Promise<void> {
+    getTrigger().click();
+    fixture.detectChanges();
+    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+    fixture.detectChanges();
+  }
+
+  function type(key: string, init: KeyboardEventInit = {}): KeyboardEvent {
+    const event = new KeyboardEvent('keydown', { key, cancelable: true, ...init });
+    document.dispatchEvent(event);
+    fixture.detectChanges();
+    return event;
+  }
+
+  function focusedLabel(): string | undefined {
+    return document.activeElement?.textContent?.trim();
+  }
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [TypeaheadHostComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(TypeaheadHostComponent);
+    fixture.detectChanges();
+    await openMenu();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    fixture.destroy();
+    document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
+  });
+
+  it('moves focus to the next item whose label starts with a typed letter', () => {
+    expect(focusedLabel()).toBe('New');
+
+    type('s');
+
+    expect(focusedLabel()).toBe('Save');
+  });
+
+  it('moves on to the next match when the letter is typed again after a pause', () => {
+    vi.useFakeTimers();
+    type('s');
+    vi.advanceTimersByTime(500);
+
+    type('s');
+
+    expect(focusedLabel()).toBe('Save as');
+  });
+
+  it('wraps from the last item back to the first', () => {
+    type('End');
+
+    type('n');
+
+    expect(focusedLabel()).toBe('New');
+  });
+
+  it('narrows to a longer match as the query grows', () => {
+    type('s');
+    type('e');
+
+    expect(focusedLabel()).toBe('Settings');
+  });
+
+  it('never lands on a disabled item', () => {
+    type('s');
+    type('h');
+
+    expect(focusedLabel()).toBe('Save');
+  });
+
+  it('lets Space extend a query in progress instead of activating the item', () => {
+    type('s');
+    type('a');
+    type('v');
+    type('e');
+
+    const event = type(' ');
+
+    expect(focusedLabel()).toBe('Save as');
+    expect(event.defaultPrevented).toBe(true);
+  });
+
+  it('leaves Space to activate the item while no query is in progress', () => {
+    const event = type(' ');
+
+    expect(event.defaultPrevented).toBe(false);
+  });
+
+  it('ignores letters typed with a modifier', () => {
+    const event = type('s', { ctrlKey: true });
+
+    expect(focusedLabel()).toBe('New');
+    expect(event.defaultPrevented).toBe(false);
+  });
+
+  it('drops a query in progress when the menu closes', async () => {
+    type('s');
+    type('Escape');
+    await openMenu();
+
+    type('a');
+
+    expect(focusedLabel()).toBe('New');
   });
 });
