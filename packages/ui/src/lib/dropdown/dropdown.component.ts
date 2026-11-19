@@ -2,7 +2,6 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   type ElementRef,
   Injector,
   afterNextRender,
@@ -38,6 +37,7 @@ import {
   toRenderedGroups,
 } from '../select-option-list';
 import { type EaSize } from '../sizes';
+import { Typeahead, isTypedCharacter } from '../typeahead';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the dropdown trigger. */
@@ -45,10 +45,6 @@ export type DropdownSize = EaSize;
 
 /** Keys the search field hands to the option list rather than its own text. */
 const LIST_KEYS = new Set(['ArrowDown', 'ArrowUp', 'Home', 'End', 'Enter', 'Escape']);
-
-function isTypedCharacter(event: KeyboardEvent): boolean {
-  return event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
-}
 
 /**
  * Single-select dropdown with a custom popup list. Supports keyboard
@@ -122,15 +118,13 @@ export class DropdownComponent
   protected readonly searchTerm = signal('');
   private readonly _formDisabled = signal(false);
 
-  private typeaheadQuery = '';
-  private typeaheadTimer: ReturnType<typeof setTimeout> | undefined;
+  private readonly typeahead = new Typeahead();
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
   constructor() {
     super();
-    inject(DestroyRef).onDestroy(() => clearTimeout(this.typeaheadTimer));
 
     // The panel stays invisible until the popover has measured itself, and an
     // invisible input cannot take focus, so the focus call waits on that signal
@@ -295,8 +289,7 @@ export class DropdownComponent
     this.isOpen.set(false);
     this.focusedIndex.set(-1);
     this.searchTerm.set('');
-    this.typeaheadQuery = '';
-    clearTimeout(this.typeaheadTimer);
+    this.typeahead.reset();
     if (searching) {
       this.focus();
     }
@@ -327,8 +320,7 @@ export class DropdownComponent
 
     switch (event.key) {
       case ' ':
-        // Space extends an in-progress typeahead query instead of selecting
-        if (this.typeaheadQuery) {
+        if (this.typeahead.accepts(event)) {
           this.handleTypeahead(event);
         } else {
           this.selectFocusedOrOpen(event);
@@ -471,34 +463,19 @@ export class DropdownComponent
   }
 
   private handleTypeahead(event: KeyboardEvent): void {
-    if (!isTypedCharacter(event)) {
+    if (!this.typeahead.accepts(event)) {
       return;
     }
     event.preventDefault();
-    if (this.typeaheadTimer !== undefined) {
-      clearTimeout(this.typeaheadTimer);
-    }
-    this.typeaheadTimer = setTimeout(() => (this.typeaheadQuery = ''), 500);
-    this.typeaheadQuery += foldForSearch(event.key);
     const wasOpen = this.isOpen();
     if (!wasOpen) {
       this.toggle();
     }
-    const opts = this.filteredOptions();
-    if (opts.length === 0) {
-      return;
-    }
-    const start = Math.max(this.focusedIndex(), 0);
-    // A repeated first character cycles matches while open; a growing query or a
-    // just-opened list starts the scan at the current focus
-    const firstOffset = this.typeaheadQuery.length > 1 || !wasOpen ? 0 : 1;
-    for (let offset = firstOffset; offset <= opts.length; offset++) {
-      const idx = (start + offset) % opts.length;
-      const opt = opts[idx];
-      if (!opt.disabled && foldForSearch(opt.label).startsWith(this.typeaheadQuery)) {
-        this.setFocusedIndex(idx);
-        return;
-      }
+    const labels = this.filteredOptions().map(o => (o.disabled ? null : o.label));
+    // A just-opened list starts the scan at the option it opened onto
+    const idx = this.typeahead.match(event.key, labels, this.focusedIndex(), !wasOpen);
+    if (idx >= 0) {
+      this.setFocusedIndex(idx);
     }
   }
 
