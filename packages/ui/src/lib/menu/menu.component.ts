@@ -20,6 +20,7 @@ import { focusOnReveal } from '../popover/focus-on-reveal';
 import { type PopoverAnchorPoint } from '../popover/popover-positioning';
 import { PopoverComponent } from '../popover/popover.component';
 import { type EaSize } from '../sizes';
+import { Typeahead } from '../typeahead';
 import { uniqueId } from '../unique-id';
 
 /** Placement of the menu list relative to its trigger. */
@@ -31,9 +32,9 @@ export type MenuSize = EaSize;
 /**
  * Popup action menu attached to any focusable element via the
  * `[eaMenuTrigger]` directive. Supports keyboard navigation
- * (arrow keys, Home/End), closes on outside click or Escape, and restores
- * focus to the trigger on close. Positioning, dismissal, and SSR-safe scroll
- * handling are provided by `<ea-popover>`.
+ * (arrow keys, Home/End, typeahead on item labels), closes on outside click
+ * or Escape, and restores focus to the trigger on close. Positioning,
+ * dismissal, and SSR-safe scroll handling are provided by `<ea-popover>`.
  */
 @Component({
   selector: 'ea-menu',
@@ -52,6 +53,7 @@ export class MenuComponent {
     () => this.popover(),
     () => this.focusFirstItem(),
   );
+  private readonly typeahead = new Typeahead();
 
   readonly placement = input<MenuPlacement>('bottom-start');
   /** Visual size of the menu; every item inherits it. */
@@ -98,6 +100,7 @@ export class MenuComponent {
     // tab stop must be assigned whenever the menu opens, not only on openAt()
     effect(() => {
       if (!this.open()) {
+        this.typeahead.reset();
         this.activeItemId.set(null);
         this.asContextMenu.set(false);
         this.anchorPoint.set(null);
@@ -265,6 +268,15 @@ export class MenuComponent {
       case 'End':
         event.preventDefault();
         next = items.length - 1;
+        break;
+      default:
+        if (this.typeahead.accepts(event)) {
+          event.preventDefault();
+          const labels = items.map(
+            item => item.querySelector('.ea-menu-item__label')?.textContent?.trim() ?? '',
+          );
+          next = this.typeahead.match(event.key, labels, current);
+        }
         break;
     }
 
