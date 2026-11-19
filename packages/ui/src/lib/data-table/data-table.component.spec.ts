@@ -797,8 +797,12 @@ describe('DataTableComponent', () => {
       expect(getHeaderCells()[0].classList).toContain('ea-data-table__cell--sortable');
     });
 
-    it('sets aria-sort to none on unsorted sortable columns', () => {
-      expect(getHeaderCells()[0].getAttribute('aria-sort')).toBe('none');
+    it('leaves aria-sort off every header while nothing is sorted', () => {
+      expect(getHeaderCells().map(cell => cell.hasAttribute('aria-sort'))).toEqual([
+        false,
+        false,
+        false,
+      ]);
     });
 
     it('sorts ascending on first click', () => {
@@ -815,6 +819,29 @@ describe('DataTableComponent', () => {
       fixture.detectChanges();
 
       expect(getHeaderCells()[1].getAttribute('aria-sort')).toBe('ascending');
+    });
+
+    it('sets aria-sort on the sorted header only', () => {
+      getSortButtons()[1].click();
+      fixture.detectChanges();
+
+      const headers = getHeaderCells();
+
+      expect(headers[0].hasAttribute('aria-sort')).toBe(false);
+      expect(headers[2].hasAttribute('aria-sort')).toBe(false);
+    });
+
+    it('moves aria-sort to the newly sorted header', () => {
+      getSortButtons()[1].click();
+      fixture.detectChanges();
+
+      getSortButtons()[2].click();
+      fixture.detectChanges();
+
+      const headers = getHeaderCells();
+
+      expect(headers[1].hasAttribute('aria-sort')).toBe(false);
+      expect(headers[2].getAttribute('aria-sort')).toBe('ascending');
     });
 
     it('sorts descending on second click', () => {
@@ -852,6 +879,18 @@ describe('DataTableComponent', () => {
       const names = getBodyRows().map(r => getCellsInRow(r)[1].textContent?.trim());
 
       expect(names).toEqual(['Charlie', 'Alice', 'Bob']);
+    });
+
+    it('removes aria-sort once the sort is cleared', () => {
+      getSortButtons()[1].click();
+      fixture.detectChanges();
+      getSortButtons()[1].click();
+      fixture.detectChanges();
+
+      getSortButtons()[1].click();
+      fixture.detectChanges();
+
+      expect(getHeaderCells()[1].hasAttribute('aria-sort')).toBe(false);
     });
 
     it('sorts numerically for number columns', () => {
