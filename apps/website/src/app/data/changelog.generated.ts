@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.86.0',
+    date: '2026-11-19',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add first-character typeahead to the menu and the tree, so typing a letter, or a few in quick succession, moves focus to the next enabled item or visible node whose label starts with it.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.85.0',
     date: '2026-11-19',
     sections: [
