@@ -29,6 +29,7 @@ export const nl: WebMessages = {
       copyLabel: 'Kopiëren naar klembord',
       copySuccess: 'Gekopieerd naar klembord',
       copyError: 'Kon niet naar klembord kopiëren',
+      label: 'Codevoorbeeld',
     },
     copyLinkLabel: 'URL-link naar deze sectie ophalen',
   },
@@ -1371,6 +1372,7 @@ export const nl: WebMessages = {
             count: 'Aantal',
             size: 'Grootte',
             disabled: 'Uitgeschakeld',
+            readonly: 'Alleen-lezen',
             required: 'Verplicht',
             indeterminate: 'Onbepaald',
           },
@@ -1441,6 +1443,7 @@ export const nl: WebMessages = {
             labelIcon: 'Labelicoon',
             size: 'Grootte',
             disabled: 'Uitgeschakeld',
+            readonly: 'Alleen-lezen',
             optional: 'Optioneel',
           },
           'range-slider': {
@@ -1455,6 +1458,7 @@ export const nl: WebMessages = {
             showValue: 'Waarde tonen',
             showMinMaxLabels: 'Min/max-labels tonen',
             disabled: 'Uitgeschakeld',
+            readonly: 'Alleen-lezen',
             required: 'Verplicht',
             optional: 'Optioneel',
           },
@@ -1486,6 +1490,7 @@ export const nl: WebMessages = {
             showValue: 'Waarde tonen',
             showMinMaxLabels: 'Min/max-labels tonen',
             disabled: 'Uitgeschakeld',
+            readonly: 'Alleen-lezen',
             required: 'Verplicht',
             optional: 'Optioneel',
             label: 'Label',
@@ -1502,6 +1507,7 @@ export const nl: WebMessages = {
             onIcon: 'Icoon aan',
             offIcon: 'Icoon uit',
             disabled: 'Uitgeschakeld',
+            readonly: 'Alleen-lezen',
             required: 'Verplicht',
           },
           tag: {
@@ -1860,6 +1866,8 @@ export const nl: WebMessages = {
               'Huidige aangevinkte toestand, in twee richtingen te binden via [(checked)].',
             count: 'Aanvullende waarde die gedimd direct na het label wordt getoond.',
             disabled: 'Schakelt de checkbox uit.',
+            readonly:
+              'Houdt het besturingselement focusbaar en aangekondigd, maar blokkeert wijzigingen, anders dan disabled.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
@@ -2010,6 +2018,8 @@ export const nl: WebMessages = {
             ariaLabelLow:
               'Toegankelijk label voor de lage (begin)schuif, dat terugvalt op het veldlabel indien weggelaten.',
             disabled: 'Schakelt de slider uit.',
+            readonly:
+              'Houdt het besturingselement focusbaar en aangekondigd, maar blokkeert wijzigingen, anders dan disabled.',
             errorMsg:
               'Foutmelding onder de slider, die de hint vervangt en het veld als ongeldig markeert.',
             formatValue:
@@ -2093,6 +2103,8 @@ export const nl: WebMessages = {
             ariaLabelledby:
               'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             disabled: 'Schakelt de slider uit.',
+            readonly:
+              'Houdt het besturingselement focusbaar en aangekondigd, maar blokkeert wijzigingen, anders dan disabled.',
             errorMsg:
               'Foutmelding onder de slider, die de hint vervangt en het veld als ongeldig markeert.',
             formatValue:
@@ -2134,6 +2146,8 @@ export const nl: WebMessages = {
             checked:
               'Huidige aan/uit-toestand, in twee richtingen te binden via [(checked)].',
             disabled: 'Schakelt de switch uit en blokkeert omschakelen.',
+            readonly:
+              'Houdt het besturingselement focusbaar en aangekondigd, maar blokkeert wijzigingen, anders dan disabled.',
             errorMsg:
               'Foutmelding onder de switch, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder de switch, verborgen terwijl een fout wordt getoond.',
@@ -2759,6 +2773,8 @@ export const nl: WebMessages = {
             ariaLabelledby:
               'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             disabled: 'Schakelt alle radio-opties in de groep uit.',
+            readonly:
+              'Houdt het besturingselement focusbaar en aangekondigd, maar blokkeert wijzigingen, anders dan disabled.',
             errorMsg:
               'Foutmelding onder de groep, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder de groep, verborgen terwijl een fout wordt getoond.',
@@ -2784,6 +2800,8 @@ export const nl: WebMessages = {
             ariaLabelledby:
               'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             disabled: 'Schakelt de segmented control uit.',
+            readonly:
+              'Houdt het besturingselement focusbaar en aangekondigd, maar blokkeert wijzigingen, anders dan disabled.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             fullWidth:

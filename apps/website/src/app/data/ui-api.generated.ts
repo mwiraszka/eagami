@@ -1118,6 +1118,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'readonly',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'required',
         type: 'boolean',
         default: 'false',
@@ -4481,6 +4488,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'readonly',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'required',
         type: 'boolean',
         default: 'false',
@@ -4642,6 +4656,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'optional',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'readonly',
         type: 'boolean',
         default: 'false',
         required: false,
@@ -4997,6 +5018,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'readonly',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'required',
         type: 'boolean',
         default: 'false',
@@ -5179,6 +5207,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'optional',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'readonly',
         type: 'boolean',
         default: 'false',
         required: false,
@@ -5563,6 +5598,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'onIcon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'readonly',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },

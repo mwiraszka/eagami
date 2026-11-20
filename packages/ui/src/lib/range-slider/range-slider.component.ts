@@ -80,6 +80,8 @@ export class RangeSliderComponent
   readonly step = input<number>(1);
   readonly size = input<RangeSliderSize>('md');
   readonly disabled = input<boolean>(false);
+  /** Keeps both thumbs focusable and announced while blocking changes, unlike `disabled`. */
+  readonly readonly = input<boolean>(false);
   readonly showValue = input<boolean>(false);
   readonly showMinMaxLabels = input<boolean>(false);
   readonly formatValue = input<(value: number) => string>(FORMAT_PLAIN);
@@ -182,6 +184,7 @@ export class RangeSliderComponent
     [`ea-range-slider--${this.size()}`]: true,
     'ea-range-slider--error': this.hasError(),
     'ea-range-slider--disabled': this.isDisabled(),
+    'ea-range-slider--readonly': this.readonly(),
     'ea-range-slider--dragging': this.dragging() !== null,
   }));
 
@@ -209,7 +212,7 @@ export class RangeSliderComponent
   }
 
   handleKeydown(event: KeyboardEvent, thumb: Thumb): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled() || this.readonly()) {
       return;
     }
 
@@ -259,7 +262,7 @@ export class RangeSliderComponent
   }
 
   handleTrackPointerDown(event: PointerEvent): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled() || this.readonly()) {
       return;
     }
     const track = this.trackEl()?.nativeElement;

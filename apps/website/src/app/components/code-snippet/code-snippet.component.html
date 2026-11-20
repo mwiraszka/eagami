@@ -1,5 +1,11 @@
 <div class="code-snippet">
-  <pre class="code-snippet__code"><code>{{ code() }}</code></pre>
+  <pre
+    class="code-snippet__code"
+    role="group"
+    tabindex="0"
+    [attr.aria-label]="
+      messages().common.codeSnippet.label
+    "><code>{{ code() }}</code></pre>
   <button
     type="button"
     class="code-snippet__copy"

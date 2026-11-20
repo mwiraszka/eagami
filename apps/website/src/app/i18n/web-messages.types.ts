@@ -75,6 +75,7 @@ export interface WebMessages {
       copyLabel: string;
       copySuccess: string;
       copyError: string;
+      label: string;
     };
     copyLinkLabel: string;
   };

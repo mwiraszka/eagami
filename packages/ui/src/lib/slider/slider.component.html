@@ -52,6 +52,7 @@
         [attr.aria-valuenow]="clampedValue()"
         [attr.aria-valuetext]="formatDisplay(clampedValue())"
         [attr.aria-disabled]="isDisabled() || null"
+        [attr.aria-readonly]="readonly() || null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="showError() || null"
         [attr.aria-describedby]="

@@ -187,6 +187,13 @@
   }
 }
 
+.ea-slider--readonly {
+  .ea-slider__track,
+  .ea-slider__thumb {
+    cursor: default;
+  }
+}
+
 .ea-slider--error {
   .ea-slider__fill {
     background-color: var(--color-error-default);

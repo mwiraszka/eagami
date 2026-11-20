@@ -75,6 +75,10 @@
     cursor: default;
   }
 
+  &--readonly {
+    cursor: default;
+  }
+
   &--checked,
   &--indeterminate {
     .ea-checkbox__box {
@@ -93,6 +97,7 @@
 
   &:hover:not(
       .ea-checkbox--disabled,
+      .ea-checkbox--readonly,
       .ea-checkbox--checked,
       .ea-checkbox--indeterminate,
       .ea-checkbox--error

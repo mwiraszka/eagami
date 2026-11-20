@@ -35,6 +35,7 @@ interface RangeSliderKnobState {
   showMinMaxLabels: boolean;
   groupThousands: boolean;
   disabled: boolean;
+  readonly: boolean;
   required: boolean;
   optional: boolean;
   triggerError: boolean;

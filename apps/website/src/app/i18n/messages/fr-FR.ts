@@ -32,6 +32,7 @@ export const frFR: WebMessages = {
       copyLabel: 'Copier dans le presse-papiers',
       copySuccess: 'Copié dans le presse-papiers',
       copyError: 'Impossible de copier dans le presse-papiers',
+      label: 'Exemple de code',
     },
     copyLinkLabel: 'Obtenir le lien URL vers cette section',
   },
@@ -1407,6 +1408,7 @@ export const frFR: WebMessages = {
             count: 'Compteur',
             size: 'Taille',
             disabled: 'Désactivé',
+            readonly: 'Lecture seule',
             required: 'Requis',
             indeterminate: 'Indéterminé',
           },
@@ -1477,6 +1479,7 @@ export const frFR: WebMessages = {
             labelIcon: 'Icône du libellé',
             size: 'Taille',
             disabled: 'Désactivé',
+            readonly: 'Lecture seule',
             optional: 'Facultatif',
           },
           'range-slider': {
@@ -1491,6 +1494,7 @@ export const frFR: WebMessages = {
             showValue: 'Afficher la valeur',
             showMinMaxLabels: 'Afficher les libellés min/max',
             disabled: 'Désactivé',
+            readonly: 'Lecture seule',
             required: 'Requis',
             optional: 'Facultatif',
           },
@@ -1522,6 +1526,7 @@ export const frFR: WebMessages = {
             showValue: 'Afficher la valeur',
             showMinMaxLabels: 'Afficher les libellés min/max',
             disabled: 'Désactivé',
+            readonly: 'Lecture seule',
             required: 'Requis',
             optional: 'Facultatif',
             label: 'Libellé',
@@ -1538,6 +1543,7 @@ export const frFR: WebMessages = {
             onIcon: 'Icône marche',
             offIcon: 'Icône arrêt',
             disabled: 'Désactivé',
+            readonly: 'Lecture seule',
             required: 'Requis',
           },
           tag: {
@@ -1895,6 +1901,8 @@ export const frFR: WebMessages = {
             checked: 'État coché actuel, liable en deux sens via [(checked)].',
             count: 'Valeur complémentaire affichée en grisé juste après le libellé.',
             disabled: 'Désactive la case à cocher.',
+            readonly:
+              'Garde le contrôle focalisable et annoncé tout en bloquant les modifications, contrairement à disabled.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
@@ -2045,6 +2053,8 @@ export const frFR: WebMessages = {
             ariaLabelLow:
               'Libellé accessible du curseur bas (début), revenant au libellé du champ si omis.',
             disabled: 'Désactive le curseur.',
+            readonly:
+              'Garde le contrôle focalisable et annoncé tout en bloquant les modifications, contrairement à disabled.',
             errorMsg:
               'Message d’erreur affiché sous le curseur, remplaçant l’indication et marquant le champ comme invalide.',
             formatValue: 'Formateur appliqué à chaque valeur avant son affichage.',
@@ -2121,6 +2131,8 @@ export const frFR: WebMessages = {
             ariaLabelledby:
               'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             disabled: 'Désactive le curseur.',
+            readonly:
+              'Garde le contrôle focalisable et annoncé tout en bloquant les modifications, contrairement à disabled.',
             errorMsg:
               'Message d’erreur affiché sous le curseur, remplaçant l’indication et marquant le champ comme invalide.',
             formatValue: 'Formateur qui transforme la valeur numérique en texte affiché.',
@@ -2159,6 +2171,8 @@ export const frFR: WebMessages = {
               'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             checked: 'État actuel marche/arrêt, liable en deux sens via [(checked)].',
             disabled: 'Désactive l’interrupteur et bloque la bascule.',
+            readonly:
+              'Garde le contrôle focalisable et annoncé tout en bloquant les modifications, contrairement à disabled.',
             errorMsg:
               'Message d’erreur affiché sous l’interrupteur, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous l’interrupteur, masqué en cas d’erreur.',
@@ -2777,6 +2791,8 @@ export const frFR: WebMessages = {
             ariaLabelledby:
               'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             disabled: 'Désactive toutes les options radio du groupe.',
+            readonly:
+              'Garde le contrôle focalisable et annoncé tout en bloquant les modifications, contrairement à disabled.',
             errorMsg:
               'Message d’erreur affiché sous le groupe, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le groupe, masqué en cas d’erreur.',
@@ -2800,6 +2816,8 @@ export const frFR: WebMessages = {
             ariaLabelledby:
               'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             disabled: 'Désactive le contrôle segmenté.',
+            readonly:
+              'Garde le contrôle focalisable et annoncé tout en bloquant les modifications, contrairement à disabled.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             fullWidth: 'Étire le contrôle pour remplir la largeur de son conteneur.',

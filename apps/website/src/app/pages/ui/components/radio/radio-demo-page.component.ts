@@ -34,6 +34,7 @@ interface RadioKnobState {
   labelIcon: string;
   size: RadioSize;
   disabled: boolean;
+  readonly: boolean;
   optional: boolean;
   triggerError: boolean;
 }

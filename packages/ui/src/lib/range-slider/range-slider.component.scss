@@ -173,6 +173,13 @@
   }
 }
 
+.ea-range-slider--readonly {
+  .ea-range-slider__track,
+  .ea-range-slider__thumb {
+    cursor: default;
+  }
+}
+
 .ea-range-slider--error {
   .ea-range-slider__fill {
     background-color: var(--color-error-default);

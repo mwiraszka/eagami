@@ -29,6 +29,7 @@ export const de: WebMessages = {
       copyLabel: 'In die Zwischenablage kopieren',
       copySuccess: 'In die Zwischenablage kopiert',
       copyError: 'Kopieren in die Zwischenablage nicht möglich',
+      label: 'Codebeispiel',
     },
     copyLinkLabel: 'URL-Link zu diesem Abschnitt abrufen',
   },
@@ -1383,6 +1384,7 @@ export const de: WebMessages = {
             count: 'Anzahl',
             size: 'Größe',
             disabled: 'Deaktiviert',
+            readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
             indeterminate: 'Unbestimmt',
           },
@@ -1453,6 +1455,7 @@ export const de: WebMessages = {
             labelIcon: 'Beschriftungssymbol',
             size: 'Größe',
             disabled: 'Deaktiviert',
+            readonly: 'Schreibgeschützt',
             optional: 'Optional',
           },
           'range-slider': {
@@ -1467,6 +1470,7 @@ export const de: WebMessages = {
             showValue: 'Wert anzeigen',
             showMinMaxLabels: 'Min/Max-Labels anzeigen',
             disabled: 'Deaktiviert',
+            readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
             optional: 'Optional',
           },
@@ -1498,6 +1502,7 @@ export const de: WebMessages = {
             showValue: 'Wert anzeigen',
             showMinMaxLabels: 'Min/Max-Labels anzeigen',
             disabled: 'Deaktiviert',
+            readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
             optional: 'Optional',
             label: 'Beschriftung',
@@ -1514,6 +1519,7 @@ export const de: WebMessages = {
             onIcon: 'Symbol an',
             offIcon: 'Symbol aus',
             disabled: 'Deaktiviert',
+            readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
           },
           tag: {
@@ -1876,6 +1882,8 @@ export const de: WebMessages = {
             checked: 'Aktueller Ankreuzzustand, bidirektional bindbar über [(checked)].',
             count: 'Zusatzwert, der gedimmt direkt nach dem Label angezeigt wird.',
             disabled: 'Deaktiviert die Checkbox.',
+            readonly:
+              'Hält das Steuerelement fokussierbar und angesagt, blockiert aber Änderungen, anders als disabled.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
@@ -2032,6 +2040,8 @@ export const de: WebMessages = {
             ariaLabelLow:
               'Barrierefreies Label für den niedrigen (Start-)Regler, das auf das Feldlabel zurückgreift, wenn weggelassen.',
             disabled: 'Deaktiviert den Schieberegler.',
+            readonly:
+              'Hält das Steuerelement fokussierbar und angesagt, blockiert aber Änderungen, anders als disabled.',
             errorMsg:
               'Fehlermeldung unter dem Schieberegler, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             formatValue:
@@ -2113,6 +2123,8 @@ export const de: WebMessages = {
             ariaLabelledby:
               'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             disabled: 'Deaktiviert den Schieberegler.',
+            readonly:
+              'Hält das Steuerelement fokussierbar und angesagt, blockiert aber Änderungen, anders als disabled.',
             errorMsg:
               'Fehlermeldung unter dem Schieberegler, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             formatValue:
@@ -2153,6 +2165,8 @@ export const de: WebMessages = {
               'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             checked: 'Aktueller An/Aus-Zustand, bidirektional bindbar über [(checked)].',
             disabled: 'Deaktiviert den Schalter und blockiert das Umschalten.',
+            readonly:
+              'Hält das Steuerelement fokussierbar und angesagt, blockiert aber Änderungen, anders als disabled.',
             errorMsg:
               'Fehlermeldung unter dem Schalter, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Schalter, ausgeblendet, solange ein Fehler angezeigt wird.',
@@ -2780,6 +2794,8 @@ export const de: WebMessages = {
             ariaLabelledby:
               'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             disabled: 'Deaktiviert alle Radio-Optionen in der Gruppe.',
+            readonly:
+              'Hält das Steuerelement fokussierbar und angesagt, blockiert aber Änderungen, anders als disabled.',
             errorMsg:
               'Fehlermeldung unter der Gruppe, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter der Gruppe, ausgeblendet, solange ein Fehler angezeigt wird.',
@@ -2804,6 +2820,8 @@ export const de: WebMessages = {
             ariaLabelledby:
               'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             disabled: 'Deaktiviert die segmentierte Steuerung.',
+            readonly:
+              'Hält das Steuerelement fokussierbar und angesagt, blockiert aber Änderungen, anders als disabled.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             fullWidth: 'Streckt die Steuerung, um die Breite ihres Containers zu füllen.',

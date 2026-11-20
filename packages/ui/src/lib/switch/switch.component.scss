@@ -110,7 +110,11 @@
     cursor: default;
   }
 
-  &:hover:not(.ea-switch--disabled, .ea-switch--checked) {
+  &--readonly {
+    cursor: default;
+  }
+
+  &:hover:not(.ea-switch--disabled, .ea-switch--readonly, .ea-switch--checked) {
     .ea-switch__track {
       border-color: var(--ea-switch-tone, var(--color-border-strong));
     }

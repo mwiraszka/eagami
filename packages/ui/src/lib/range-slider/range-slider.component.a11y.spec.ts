@@ -16,6 +16,7 @@ import { RangeSliderComponent, type RangeSliderValue } from './range-slider.comp
       [max]="max"
       [hint]="hint"
       [errorMsg]="errorMsg"
+      [readonly]="readonly"
       [disabled]="disabled" />
   `,
 })
@@ -28,6 +29,7 @@ class HostComponent {
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
+  readonly = false;
 }
 
 @Component({
@@ -89,6 +91,14 @@ describe('RangeSliderComponent a11y', () => {
 
   it('has no detectable violations when disabled', async () => {
     const el = await render(host => (host.disabled = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when read-only', async () => {
+    const el = await render(host => (host.readonly = true));
 
     const results = await axe(el);
 

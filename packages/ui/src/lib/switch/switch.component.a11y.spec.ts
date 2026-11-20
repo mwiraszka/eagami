@@ -14,6 +14,7 @@ import { SwitchComponent, type SwitchVariant } from './switch.component';
       [label]="label"
       [hint]="hint"
       [errorMsg]="errorMsg"
+      [readonly]="readonly"
       [disabled]="disabled"
       [checked]="checked"
       [variant]="variant"
@@ -26,6 +27,7 @@ class HostComponent {
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
+  readonly = false;
   checked = false;
   variant: SwitchVariant = 'default';
   onIcon: Type<unknown> | undefined = undefined;
@@ -77,6 +79,14 @@ describe('SwitchComponent a11y', () => {
 
   it('has no detectable violations when disabled', async () => {
     const el = await render(host => (host.disabled = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when read-only', async () => {
+    const el = await render(host => (host.readonly = true));
 
     const results = await axe(el);
 

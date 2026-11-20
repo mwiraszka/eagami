@@ -284,4 +284,39 @@ describe('SegmentedComponent', () => {
       host.destroy();
     });
   });
+
+  describe('Read-only state', () => {
+    beforeEach(() => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+    });
+
+    it('keeps the options enabled and marks the group aria-readonly', () => {
+      const group: HTMLElement =
+        fixture.nativeElement.querySelector('[role="radiogroup"]');
+
+      expect(group.getAttribute('aria-readonly')).toBe('true');
+      expect(getOptions()[1].disabled).toBe(false);
+    });
+
+    it('keeps the value when another option is clicked', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      getOptions()[1].click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('a');
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('keeps the value on the arrow keys', () => {
+      getOptions()[0].dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('a');
+    });
+  });
 });

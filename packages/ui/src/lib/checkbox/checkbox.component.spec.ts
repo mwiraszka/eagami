@@ -183,6 +183,46 @@ describe('CheckboxComponent', () => {
     });
   });
 
+  describe('Read-only state', () => {
+    it('omits aria-readonly by default', () => {
+      expect(getNativeInput().hasAttribute('aria-readonly')).toBe(false);
+    });
+
+    it('stays enabled and exposes aria-readonly', () => {
+      fixture.componentRef.setInput('readonly', true);
+
+      fixture.detectChanges();
+
+      expect(getNativeInput().disabled).toBe(false);
+      expect(getNativeInput().getAttribute('aria-readonly')).toBe('true');
+      expect(getLabel().classList).toContain('ea-checkbox--readonly');
+    });
+
+    it('does not toggle when clicked', () => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      getNativeInput().click();
+      fixture.detectChanges();
+
+      expect(component.checked()).toBe(false);
+      expect(getNativeInput().checked).toBe(false);
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('does not toggle on Enter', () => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+
+      getNativeInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      fixture.detectChanges();
+
+      expect(component.checked()).toBe(false);
+    });
+  });
+
   describe('Indeterminate state', () => {
     it('sets indeterminate on native input', () => {
       fixture.componentRef.setInput('indeterminate', true);

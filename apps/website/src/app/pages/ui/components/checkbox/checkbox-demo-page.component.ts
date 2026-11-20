@@ -26,6 +26,7 @@ interface CheckboxKnobState {
   count: string | number;
   size: CheckboxSize;
   disabled: boolean;
+  readonly: boolean;
   required: boolean;
   indeterminate: boolean;
   truncate: boolean;

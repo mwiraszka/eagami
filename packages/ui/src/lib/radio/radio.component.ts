@@ -38,6 +38,7 @@ export class RadioComponent {
   readonly hostClasses = computed(() => ({
     [`ea-radio--${this.size()}`]: true,
     'ea-radio--disabled': this.isDisabled(),
+    'ea-radio--readonly': this.group.readonly(),
     'ea-radio--checked': this.isChecked(),
   }));
 
@@ -46,5 +47,13 @@ export class RadioComponent {
       return;
     }
     this.group.select(this.value());
+  }
+
+  // Cancelling the click, which arrow keys dispatch too, puts the native selection
+  // back, since the unchanged [checked] bindings would never undo it
+  protected blockReadonlyClick(event: MouseEvent): void {
+    if (this.group.readonly()) {
+      event.preventDefault();
+    }
   }
 }

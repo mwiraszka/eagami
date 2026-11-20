@@ -10,7 +10,8 @@ import { RadioComponent } from './radio.component';
   template: `
     <ea-radio-group
       [(value)]="selected"
-      [disabled]="groupDisabled()">
+      [disabled]="groupDisabled()"
+      [readonly]="groupReadonly()">
       <ea-radio
         value="a"
         label="Option A"></ea-radio>
@@ -27,6 +28,7 @@ import { RadioComponent } from './radio.component';
 class TestHostComponent {
   selected = signal('');
   groupDisabled = signal(false);
+  groupReadonly = signal(false);
 }
 
 describe('RadioGroup + Radio', () => {
@@ -115,6 +117,36 @@ describe('RadioGroup + Radio', () => {
       host.groupDisabled.set(true);
       fixture.detectChanges();
       getRadios().forEach(r => expect(r.disabled).toBe(true));
+    });
+  });
+
+  describe('Read-only state', () => {
+    beforeEach(() => {
+      host.selected.set('a');
+      host.groupReadonly.set(true);
+      fixture.detectChanges();
+    });
+
+    it('keeps the radios enabled and marks the group aria-readonly', () => {
+      const group: HTMLElement =
+        fixture.nativeElement.querySelector('[role="radiogroup"]');
+
+      expect(group.getAttribute('aria-readonly')).toBe('true');
+      expect(getRadios()[1].disabled).toBe(false);
+      expect(getLabels()[1].classList).toContain('ea-radio--readonly');
+    });
+
+    // happy-dom, unlike a browser, does not re-check the previous radio after a
+    // cancelled click, so the test stops at the cancel and the unchanged value
+    it('cancels a click on another radio and keeps the selection', () => {
+      const click = new MouseEvent('click', { bubbles: true, cancelable: true });
+
+      getRadios()[1].dispatchEvent(click);
+      fixture.detectChanges();
+
+      expect(click.defaultPrevented).toBe(true);
+      expect(host.selected()).toBe('a');
+      expect(getRadios()[1].checked).toBe(false);
     });
   });
 

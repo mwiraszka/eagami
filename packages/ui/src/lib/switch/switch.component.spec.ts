@@ -188,6 +188,36 @@ describe('SwitchComponent', () => {
     });
   });
 
+  describe('Read-only state', () => {
+    it('omits aria-readonly by default', () => {
+      expect(getInput().hasAttribute('aria-readonly')).toBe(false);
+    });
+
+    it('stays enabled and exposes aria-readonly', () => {
+      fixture.componentRef.setInput('readonly', true);
+
+      fixture.detectChanges();
+
+      expect(getInput().disabled).toBe(false);
+      expect(getInput().getAttribute('aria-readonly')).toBe('true');
+      expect(getSwitchLabel().classList).toContain('ea-switch--readonly');
+    });
+
+    it('does not toggle when clicked', () => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      getInput().click();
+      fixture.detectChanges();
+
+      expect(component.checked()).toBe(false);
+      expect(getInput().checked).toBe(false);
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
   describe('Required', () => {
     it('forwards required to the native input', () => {
       fixture.componentRef.setInput('required', true);
