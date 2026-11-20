@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.88.0] - 2026-11-20
+
+### Added
+
+- Add a `readonly` input to the checkbox, switch, radio group, slider, range slider and segmented control, so a read-only form can keep them focusable and undimmed while blocking changes.
+
 ## [5.87.1] - 2026-11-19
 
 ### Fixed
@@ -2136,6 +2142,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.88.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.87.1...ui-v5.88.0
 [5.87.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.87.0...ui-v5.87.1
 [5.87.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.86.0...ui-v5.87.0
 [5.86.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.85.0...ui-v5.86.0
