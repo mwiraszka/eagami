@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.88.0',
+    date: '2026-11-20',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `readonly` input to the checkbox, switch, radio group, slider, range slider and segmented control, so a read-only form can keep them focusable and undimmed while blocking changes.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.87.1',
     date: '2026-11-19',
     sections: [
