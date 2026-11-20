@@ -1343,6 +1343,7 @@ export const en: WebMessages = {
             count: 'Count',
             size: 'Size',
             disabled: 'Disabled',
+            readonly: 'Read-only',
             required: 'Required',
             indeterminate: 'Indeterminate',
           },
@@ -1413,6 +1414,7 @@ export const en: WebMessages = {
             labelIcon: 'Label icon',
             size: 'Size',
             disabled: 'Disabled',
+            readonly: 'Read-only',
             optional: 'Optional',
           },
           'range-slider': {
@@ -1427,6 +1429,7 @@ export const en: WebMessages = {
             showValue: 'Show value',
             showMinMaxLabels: 'Show min/max labels',
             disabled: 'Disabled',
+            readonly: 'Read-only',
             required: 'Required',
             optional: 'Optional',
           },
@@ -1458,6 +1461,7 @@ export const en: WebMessages = {
             showValue: 'Show value',
             showMinMaxLabels: 'Show min/max labels',
             disabled: 'Disabled',
+            readonly: 'Read-only',
             required: 'Required',
             optional: 'Optional',
             label: 'Label',
@@ -1474,6 +1478,7 @@ export const en: WebMessages = {
             onIcon: 'On icon',
             offIcon: 'Off icon',
             disabled: 'Disabled',
+            readonly: 'Read-only',
             required: 'Required',
           },
           tag: {
@@ -1811,6 +1816,8 @@ export const en: WebMessages = {
             checked: 'Current checked state, two-way bindable via [(checked)].',
             count: 'Supplementary value shown dimmed right after the label.',
             disabled: 'Disables the checkbox.',
+            readonly:
+              'Keeps the control focusable and announced while blocking changes, unlike disabled.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
@@ -1952,6 +1959,8 @@ export const en: WebMessages = {
             ariaLabelLow:
               'Accessible label for the low (start) thumb, falling back to the field label when omitted.',
             disabled: 'Disables the slider.',
+            readonly:
+              'Keeps the control focusable and announced while blocking changes, unlike disabled.',
             errorMsg:
               'Error message shown below the slider, replacing the hint and flagging the field invalid.',
             formatValue: 'Formatter applied to each value before it is displayed.',
@@ -2024,6 +2033,8 @@ export const en: WebMessages = {
             ariaLabelledby:
               'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             disabled: 'Disables the slider.',
+            readonly:
+              'Keeps the control focusable and announced while blocking changes, unlike disabled.',
             errorMsg:
               'Error message shown below the slider, replacing the hint and flagging the field invalid.',
             formatValue:
@@ -2062,6 +2073,8 @@ export const en: WebMessages = {
               'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             checked: 'Current on/off state, two-way bindable via [(checked)].',
             disabled: 'Disables the switch and blocks toggling.',
+            readonly:
+              'Keeps the control focusable and announced while blocking changes, unlike disabled.',
             errorMsg:
               'Error message shown below the switch, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the switch, hidden while an error is showing.',
@@ -2636,6 +2649,8 @@ export const en: WebMessages = {
             ariaLabelledby:
               'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             disabled: 'Disables all radio options in the group.',
+            readonly:
+              'Keeps the control focusable and announced while blocking changes, unlike disabled.',
             errorMsg:
               'Error message shown below the group, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the group, hidden while an error is showing.',
@@ -2658,6 +2673,8 @@ export const en: WebMessages = {
             ariaLabelledby:
               'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             disabled: 'Disables the segmented control.',
+            readonly:
+              'Keeps the control focusable and announced while blocking changes, unlike disabled.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             fullWidth: 'Stretches the control to fill the width of its container.',

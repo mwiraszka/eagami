@@ -1383,6 +1383,7 @@ export const is: WebMessages = {
             count: 'Fjöldi',
             size: 'Stærð',
             disabled: 'Óvirkt',
+            readonly: 'Skrifvarið',
             required: 'Krafist',
             indeterminate: 'Óákveðið',
           },
@@ -1453,6 +1454,7 @@ export const is: WebMessages = {
             labelIcon: 'Táknmynd merkimiða',
             size: 'Stærð',
             disabled: 'Óvirkt',
+            readonly: 'Skrifvarið',
             optional: 'Valfrjálst',
           },
           'range-slider': {
@@ -1467,6 +1469,7 @@ export const is: WebMessages = {
             showValue: 'Sýna gildi',
             showMinMaxLabels: 'Sýna lágm./hám. merkimiða',
             disabled: 'Óvirkt',
+            readonly: 'Skrifvarið',
             required: 'Krafist',
             optional: 'Valfrjálst',
           },
@@ -1498,6 +1501,7 @@ export const is: WebMessages = {
             showValue: 'Sýna gildi',
             showMinMaxLabels: 'Sýna lágm./hám. merkimiða',
             disabled: 'Óvirkt',
+            readonly: 'Skrifvarið',
             required: 'Krafist',
             optional: 'Valfrjálst',
             label: 'Merkimiði',
@@ -1514,6 +1518,7 @@ export const is: WebMessages = {
             onIcon: 'Táknmynd á',
             offIcon: 'Táknmynd af',
             disabled: 'Óvirkt',
+            readonly: 'Skrifvarið',
             required: 'Krafist',
           },
           tag: {
@@ -1859,6 +1864,8 @@ export const is: WebMessages = {
             checked: 'Núverandi valið ástand, tvíátta bindanlegt með [(checked)].',
             count: 'Viðbótargildi sýnt deyft strax á eftir merkimiðanum.',
             disabled: 'Gerir gátreitinn óvirkan.',
+            readonly:
+              'Heldur stýringunni fókusanlegri og tilkynntri en hindrar breytingar, ólíkt disabled.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
@@ -2002,6 +2009,8 @@ export const is: WebMessages = {
             ariaLabelLow:
               'Aðgengilegur merkimiði fyrir lága (upphafs) þumalinn, fellur aftur á reitmerkimiðann þegar honum er sleppt.',
             disabled: 'Gerir sleðann óvirkan.',
+            readonly:
+              'Heldur stýringunni fókusanlegri og tilkynntri en hindrar breytingar, ólíkt disabled.',
             errorMsg:
               'Villuboð sýnd fyrir neðan sleðann, koma í stað vísbendingar og merkja reitinn ógildan.',
             formatValue: 'Sniðari beitt á hvert gildi áður en það er birt.',
@@ -2079,6 +2088,8 @@ export const is: WebMessages = {
             ariaLabelledby:
               'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             disabled: 'Gerir sleðann óvirkan.',
+            readonly:
+              'Heldur stýringunni fókusanlegri og tilkynntri en hindrar breytingar, ólíkt disabled.',
             errorMsg:
               'Villuboð sýnd fyrir neðan sleðann, koma í stað vísbendingar og merkja reitinn ógildan.',
             formatValue: 'Sniðari sem breytir tölugildinu í birta textann.',
@@ -2117,6 +2128,8 @@ export const is: WebMessages = {
               'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             checked: 'Núverandi á/af ástand, tvíátta bindanlegt með [(checked)].',
             disabled: 'Gerir rofann óvirkan og hindrar víxlun.',
+            readonly:
+              'Heldur stýringunni fókusanlegri og tilkynntri en hindrar breytingar, ólíkt disabled.',
             errorMsg:
               'Villuboð sýnd fyrir neðan rofann, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan rofann, falinn á meðan villa er sýnd.',
@@ -2713,6 +2726,8 @@ export const is: WebMessages = {
             ariaLabelledby:
               'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             disabled: 'Gerir alla valhnappavalkosti í hópnum óvirka.',
+            readonly:
+              'Heldur stýringunni fókusanlegri og tilkynntri en hindrar breytingar, ólíkt disabled.',
             errorMsg:
               'Villuboð sýnd fyrir neðan hópinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan hópinn, falinn á meðan villa er sýnd.',
@@ -2736,6 +2751,8 @@ export const is: WebMessages = {
             ariaLabelledby:
               'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             disabled: 'Gerir bútastýringuna óvirka.',
+            readonly:
+              'Heldur stýringunni fókusanlegri og tilkynntri en hindrar breytingar, ólíkt disabled.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             fullWidth: 'Teygir stýringuna til að fylla breidd ílátsins.',

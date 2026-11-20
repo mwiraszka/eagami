@@ -35,6 +35,7 @@ interface SwitchKnobState {
   onIcon: string;
   offIcon: string;
   disabled: boolean;
+  readonly: boolean;
   required: boolean;
   triggerError: boolean;
 }

@@ -1370,6 +1370,7 @@ export const ptBR: WebMessages = {
             count: 'Contagem',
             size: 'Tamanho',
             disabled: 'Desativado',
+            readonly: 'Somente leitura',
             required: 'Obrigatório',
             indeterminate: 'Indeterminado',
           },
@@ -1440,6 +1441,7 @@ export const ptBR: WebMessages = {
             labelIcon: 'Ícone do rótulo',
             size: 'Tamanho',
             disabled: 'Desativado',
+            readonly: 'Somente leitura',
             optional: 'Opcional',
           },
           'range-slider': {
@@ -1454,6 +1456,7 @@ export const ptBR: WebMessages = {
             showValue: 'Mostrar valor',
             showMinMaxLabels: 'Mostrar rótulos mín/máx',
             disabled: 'Desativado',
+            readonly: 'Somente leitura',
             required: 'Obrigatório',
             optional: 'Opcional',
           },
@@ -1485,6 +1488,7 @@ export const ptBR: WebMessages = {
             showValue: 'Mostrar valor',
             showMinMaxLabels: 'Mostrar rótulos mín/máx',
             disabled: 'Desativado',
+            readonly: 'Somente leitura',
             required: 'Obrigatório',
             optional: 'Opcional',
             label: 'Rótulo',
@@ -1501,6 +1505,7 @@ export const ptBR: WebMessages = {
             onIcon: 'Ícone ligado',
             offIcon: 'Ícone desligado',
             disabled: 'Desativado',
+            readonly: 'Somente leitura',
             required: 'Obrigatório',
           },
           tag: {
@@ -1856,6 +1861,8 @@ export const ptBR: WebMessages = {
               'Estado marcado atual, vinculável de forma bidirecional via [(checked)].',
             count: 'Valor suplementar exibido esmaecido logo após o rótulo.',
             disabled: 'Desativa a caixa de seleção.',
+            readonly:
+              'Mantém o controle focável e anunciado enquanto bloqueia alterações, ao contrário de disabled.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
@@ -2003,6 +2010,8 @@ export const ptBR: WebMessages = {
             ariaLabelLow:
               'Rótulo acessível para o controle baixo (inicial), recorrendo ao rótulo do campo quando omitido.',
             disabled: 'Desativa o controle deslizante.',
+            readonly:
+              'Mantém o controle focável e anunciado enquanto bloqueia alterações, ao contrário de disabled.',
             errorMsg:
               'Mensagem de erro exibida abaixo do controle, substituindo a dica e marcando o campo como inválido.',
             formatValue: 'Formatador aplicado a cada valor antes de ser exibido.',
@@ -2082,6 +2091,8 @@ export const ptBR: WebMessages = {
             ariaLabelledby:
               'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             disabled: 'Desativa o controle deslizante.',
+            readonly:
+              'Mantém o controle focável e anunciado enquanto bloqueia alterações, ao contrário de disabled.',
             errorMsg:
               'Mensagem de erro exibida abaixo do controle, substituindo a dica e marcando o campo como inválido.',
             formatValue: 'Formatador que transforma o valor numérico no texto exibido.',
@@ -2121,6 +2132,8 @@ export const ptBR: WebMessages = {
             checked:
               'Estado ligado/desligado atual, vinculável de forma bidirecional via [(checked)].',
             disabled: 'Desativa o interruptor e bloqueia a alternância.',
+            readonly:
+              'Mantém o controle focável e anunciado enquanto bloqueia alterações, ao contrário de disabled.',
             errorMsg:
               'Mensagem de erro exibida abaixo do interruptor, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do interruptor, oculto enquanto um erro é exibido.',
@@ -2732,6 +2745,8 @@ export const ptBR: WebMessages = {
             ariaLabelledby:
               'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             disabled: 'Desativa todas as opções de rádio no grupo.',
+            readonly:
+              'Mantém o controle focável e anunciado enquanto bloqueia alterações, ao contrário de disabled.',
             errorMsg:
               'Mensagem de erro exibida abaixo do grupo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do grupo, oculto enquanto um erro é exibido.',
@@ -2755,6 +2770,8 @@ export const ptBR: WebMessages = {
             ariaLabelledby:
               'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             disabled: 'Desativa o controle segmentado.',
+            readonly:
+              'Mantém o controle focável e anunciado enquanto bloqueia alterações, ao contrário de disabled.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             fullWidth: 'Estica o controle para preencher a largura de seu contêiner.',

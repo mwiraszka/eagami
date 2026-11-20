@@ -1379,6 +1379,7 @@ export const pl: WebMessages = {
             count: 'Liczba',
             size: 'Rozmiar',
             disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
             required: 'Wymagane',
             indeterminate: 'Stan nieokreślony',
           },
@@ -1449,6 +1450,7 @@ export const pl: WebMessages = {
             labelIcon: 'Ikona etykiety',
             size: 'Rozmiar',
             disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
             optional: 'Opcjonalne',
           },
           'range-slider': {
@@ -1463,6 +1465,7 @@ export const pl: WebMessages = {
             showValue: 'Pokaż wartość',
             showMinMaxLabels: 'Pokaż etykiety min/maks',
             disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
             required: 'Wymagane',
             optional: 'Opcjonalne',
           },
@@ -1494,6 +1497,7 @@ export const pl: WebMessages = {
             showValue: 'Pokaż wartość',
             showMinMaxLabels: 'Pokaż etykiety min/maks',
             disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
             required: 'Wymagane',
             optional: 'Opcjonalne',
             label: 'Etykieta',
@@ -1510,6 +1514,7 @@ export const pl: WebMessages = {
             onIcon: 'Ikona włączenia',
             offIcon: 'Ikona wyłączenia',
             disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
             required: 'Wymagane',
           },
           tag: {
@@ -1856,6 +1861,8 @@ export const pl: WebMessages = {
               'Bieżący stan zaznaczenia, dwukierunkowo wiązalny przez [(checked)].',
             count: 'Dodatkowa wartość wyświetlana przyciemniona zaraz po etykiecie.',
             disabled: 'Wyłącza pole wyboru.',
+            readonly:
+              'Pozostawia kontrolkę fokusowalną i ogłaszaną, blokując zmiany, w przeciwieństwie do disabled.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
@@ -2002,6 +2009,8 @@ export const pl: WebMessages = {
             ariaLabelLow:
               'Dostępna etykieta dla niskiego (początkowego) uchwytu, w razie braku używa etykiety pola.',
             disabled: 'Wyłącza suwak.',
+            readonly:
+              'Pozostawia kontrolkę fokusowalną i ogłaszaną, blokując zmiany, w przeciwieństwie do disabled.',
             errorMsg:
               'Komunikat o błędzie pod suwakiem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             formatValue: 'Formater stosowany do każdej wartości przed jej wyświetleniem.',
@@ -2078,6 +2087,8 @@ export const pl: WebMessages = {
             ariaLabelledby:
               'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             disabled: 'Wyłącza suwak.',
+            readonly:
+              'Pozostawia kontrolkę fokusowalną i ogłaszaną, blokując zmiany, w przeciwieństwie do disabled.',
             errorMsg:
               'Komunikat o błędzie pod suwakiem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             formatValue: 'Formater zamieniający wartość liczbową na wyświetlany tekst.',
@@ -2116,6 +2127,8 @@ export const pl: WebMessages = {
             checked:
               'Bieżący stan włączony/wyłączony, dwukierunkowo wiązalny przez [(checked)].',
             disabled: 'Wyłącza przełącznik i blokuje przełączanie.',
+            readonly:
+              'Pozostawia kontrolkę fokusowalną i ogłaszaną, blokując zmiany, w przeciwieństwie do disabled.',
             errorMsg:
               'Komunikat o błędzie pod przełącznikiem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod przełącznikiem, ukryty gdy występuje błąd.',
@@ -2719,6 +2732,8 @@ export const pl: WebMessages = {
             ariaLabelledby:
               'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             disabled: 'Wyłącza wszystkie opcje radia w grupie.',
+            readonly:
+              'Pozostawia kontrolkę fokusowalną i ogłaszaną, blokując zmiany, w przeciwieństwie do disabled.',
             errorMsg:
               'Komunikat o błędzie pod grupą, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod grupą, ukryty gdy występuje błąd.',
@@ -2741,6 +2756,8 @@ export const pl: WebMessages = {
             ariaLabelledby:
               'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             disabled: 'Wyłącza kontrolkę segmentową.',
+            readonly:
+              'Pozostawia kontrolkę fokusowalną i ogłaszaną, blokując zmiany, w przeciwieństwie do disabled.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             fullWidth: 'Rozciąga kontrolkę, aby wypełniła szerokość swojego kontenera.',

@@ -1387,6 +1387,7 @@ export const esES: WebMessages = {
             count: 'Recuento',
             size: 'Tamaño',
             disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
             required: 'Obligatorio',
             indeterminate: 'Indeterminado',
           },
@@ -1457,6 +1458,7 @@ export const esES: WebMessages = {
             labelIcon: 'Icono de la etiqueta',
             size: 'Tamaño',
             disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
             optional: 'Opcional',
           },
           'range-slider': {
@@ -1471,6 +1473,7 @@ export const esES: WebMessages = {
             showValue: 'Mostrar valor',
             showMinMaxLabels: 'Mostrar etiquetas mín./máx.',
             disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
             required: 'Obligatorio',
             optional: 'Opcional',
           },
@@ -1502,6 +1505,7 @@ export const esES: WebMessages = {
             showValue: 'Mostrar valor',
             showMinMaxLabels: 'Mostrar etiquetas mín./máx.',
             disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
             required: 'Obligatorio',
             optional: 'Opcional',
             label: 'Etiqueta',
@@ -1518,6 +1522,7 @@ export const esES: WebMessages = {
             onIcon: 'Icono activado',
             offIcon: 'Icono desactivado',
             disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
             required: 'Obligatorio',
           },
           tag: {
@@ -1877,6 +1882,8 @@ export const esES: WebMessages = {
               'Estado actual de marcado, vinculable en dos sentidos mediante [(checked)].',
             count: 'Valor complementario mostrado atenuado justo después de la etiqueta.',
             disabled: 'Deshabilita la casilla.',
+            readonly:
+              'Mantiene el control enfocable y anunciado mientras bloquea los cambios, a diferencia de disabled.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
@@ -2033,6 +2040,8 @@ export const esES: WebMessages = {
             ariaLabelLow:
               'Etiqueta accesible para el control bajo (inicial), que recurre a la etiqueta del campo si se omite.',
             disabled: 'Deshabilita el control deslizante.',
+            readonly:
+              'Mantiene el control enfocable y anunciado mientras bloquea los cambios, a diferencia de disabled.',
             errorMsg:
               'Mensaje de error mostrado bajo el control deslizante, que sustituye la ayuda y marca el campo como no válido.',
             formatValue: 'Formateador aplicado a cada valor antes de mostrarse.',
@@ -2115,6 +2124,8 @@ export const esES: WebMessages = {
             ariaLabelledby:
               'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             disabled: 'Deshabilita el control deslizante.',
+            readonly:
+              'Mantiene el control enfocable y anunciado mientras bloquea los cambios, a diferencia de disabled.',
             errorMsg:
               'Mensaje de error mostrado bajo el control deslizante, que sustituye la ayuda y marca el campo como no válido.',
             formatValue:
@@ -2157,6 +2168,8 @@ export const esES: WebMessages = {
             checked:
               'Estado actual de encendido/apagado, vinculable en dos sentidos mediante [(checked)].',
             disabled: 'Deshabilita el interruptor y bloquea su alternancia.',
+            readonly:
+              'Mantiene el control enfocable y anunciado mientras bloquea los cambios, a diferencia de disabled.',
             errorMsg:
               'Mensaje de error mostrado bajo el interruptor, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el interruptor, oculto cuando hay un error.',
@@ -2784,6 +2797,8 @@ export const esES: WebMessages = {
             ariaLabelledby:
               'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             disabled: 'Deshabilita todas las opciones de radio del grupo.',
+            readonly:
+              'Mantiene el control enfocable y anunciado mientras bloquea los cambios, a diferencia de disabled.',
             errorMsg:
               'Mensaje de error mostrado bajo el grupo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el grupo, oculto cuando hay un error.',
@@ -2810,6 +2825,8 @@ export const esES: WebMessages = {
             ariaLabelledby:
               'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             disabled: 'Deshabilita el control segmentado.',
+            readonly:
+              'Mantiene el control enfocable y anunciado mientras bloquea los cambios, a diferencia de disabled.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             fullWidth: 'Estira el control para ocupar el ancho de su contenedor.',
