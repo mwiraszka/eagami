@@ -136,12 +136,16 @@ describe('RadioGroup + Radio', () => {
       expect(getLabels()[1].classList).toContain('ea-radio--readonly');
     });
 
-    it('keeps the selection when another radio is clicked', () => {
-      getRadios()[1].click();
+    // happy-dom, unlike a browser, does not re-check the previous radio after a
+    // cancelled click, so the test stops at the cancel and the unchanged value
+    it('cancels a click on another radio and keeps the selection', () => {
+      const click = new MouseEvent('click', { bubbles: true, cancelable: true });
+
+      getRadios()[1].dispatchEvent(click);
       fixture.detectChanges();
 
+      expect(click.defaultPrevented).toBe(true);
       expect(host.selected()).toBe('a');
-      expect(getRadios()[0].checked).toBe(true);
       expect(getRadios()[1].checked).toBe(false);
     });
   });
