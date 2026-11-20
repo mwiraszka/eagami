@@ -32,6 +32,7 @@ export const frFR: WebMessages = {
       copyLabel: 'Copier dans le presse-papiers',
       copySuccess: 'Copié dans le presse-papiers',
       copyError: 'Impossible de copier dans le presse-papiers',
+      label: 'Exemple de code',
     },
     copyLinkLabel: 'Obtenir le lien URL vers cette section',
   },

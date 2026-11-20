@@ -29,6 +29,7 @@ export const pl: WebMessages = {
       copyLabel: 'Skopiuj do schowka',
       copySuccess: 'Skopiowano do schowka',
       copyError: 'Nie udało się skopiować do schowka',
+      label: 'Przykład kodu',
     },
     copyLinkLabel: 'Uzyskaj link URL do tej sekcji',
   },

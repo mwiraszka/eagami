@@ -29,6 +29,7 @@ export const ar: WebMessages = {
       copyLabel: 'النسخ إلى الحافظة',
       copySuccess: 'تم النسخ إلى الحافظة',
       copyError: 'تعذّر النسخ إلى الحافظة',
+      label: 'نموذج شيفرة',
     },
     copyLinkLabel: 'الحصول على رابط URL لهذا القسم',
   },

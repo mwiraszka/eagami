@@ -28,6 +28,7 @@ export const he: WebMessages = {
       copyLabel: 'העתק ללוח',
       copySuccess: 'הועתק ללוח',
       copyError: 'לא ניתן היה להעתיק ללוח',
+      label: 'דוגמת קוד',
     },
     copyLinkLabel: 'קבלת קישור URL למקטע זה',
   },

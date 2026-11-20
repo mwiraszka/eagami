@@ -29,6 +29,7 @@ export const ptBR: WebMessages = {
       copyLabel: 'Copiar para a área de transferência',
       copySuccess: 'Copiado para a área de transferência',
       copyError: 'Não foi possível copiar para a área de transferência',
+      label: 'Exemplo de código',
     },
     copyLinkLabel: 'Obter link URL para esta seção',
   },

@@ -28,6 +28,7 @@ export const esES: WebMessages = {
       copyLabel: 'Copiar al portapapeles',
       copySuccess: 'Copiado al portapapeles',
       copyError: 'No se pudo copiar al portapapeles',
+      label: 'Ejemplo de código',
     },
     copyLinkLabel: 'Obtener enlace URL a esta sección',
   },

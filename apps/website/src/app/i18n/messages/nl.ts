@@ -29,6 +29,7 @@ export const nl: WebMessages = {
       copyLabel: 'Kopiëren naar klembord',
       copySuccess: 'Gekopieerd naar klembord',
       copyError: 'Kon niet naar klembord kopiëren',
+      label: 'Codevoorbeeld',
     },
     copyLinkLabel: 'URL-link naar deze sectie ophalen',
   },

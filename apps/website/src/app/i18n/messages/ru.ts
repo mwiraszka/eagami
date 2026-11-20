@@ -29,6 +29,7 @@ export const ru: WebMessages = {
       copyLabel: 'Скопировать в буфер обмена',
       copySuccess: 'Скопировано в буфер обмена',
       copyError: 'Не удалось скопировать в буфер обмена',
+      label: 'Пример кода',
     },
     copyLinkLabel: 'Получить URL-ссылку на этот раздел',
   },

@@ -28,6 +28,7 @@ export const hi: WebMessages = {
       copyLabel: 'क्लिपबोर्ड पर कॉपी करें',
       copySuccess: 'क्लिपबोर्ड पर कॉपी किया गया',
       copyError: 'क्लिपबोर्ड पर कॉपी नहीं किया जा सका',
+      label: 'कोड उदाहरण',
     },
     copyLinkLabel: 'इस सेक्शन का URL लिंक प्राप्त करें',
   },

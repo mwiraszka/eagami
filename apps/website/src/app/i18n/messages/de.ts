@@ -29,6 +29,7 @@ export const de: WebMessages = {
       copyLabel: 'In die Zwischenablage kopieren',
       copySuccess: 'In die Zwischenablage kopiert',
       copyError: 'Kopieren in die Zwischenablage nicht möglich',
+      label: 'Codebeispiel',
     },
     copyLinkLabel: 'URL-Link zu diesem Abschnitt abrufen',
   },

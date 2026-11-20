@@ -29,6 +29,7 @@ export const el: WebMessages = {
       copyLabel: 'Αντιγραφή στο πρόχειρο',
       copySuccess: 'Αντιγράφηκε στο πρόχειρο',
       copyError: 'Αποτυχία αντιγραφής στο πρόχειρο',
+      label: 'Δείγμα κώδικα',
     },
     copyLinkLabel: 'Λήψη συνδέσμου URL για αυτήν την ενότητα',
   },

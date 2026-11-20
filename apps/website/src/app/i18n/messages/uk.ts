@@ -29,6 +29,7 @@ export const uk: WebMessages = {
       copyLabel: 'Скопіювати до буфера обміну',
       copySuccess: 'Скопійовано до буфера обміну',
       copyError: 'Не вдалося скопіювати до буфера обміну',
+      label: 'Приклад коду',
     },
     copyLinkLabel: 'Отримати URL-посилання на цей розділ',
   },

@@ -29,6 +29,7 @@ export const is: WebMessages = {
       copyLabel: 'Afrita á klippiborð',
       copySuccess: 'Afritað á klippiborð',
       copyError: 'Ekki tókst að afrita á klippiborð',
+      label: 'Kóðadæmi',
     },
     copyLinkLabel: 'Fá URL-tengil á þennan hluta',
   },

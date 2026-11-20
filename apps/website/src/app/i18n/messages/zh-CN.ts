@@ -28,6 +28,7 @@ export const zhCN: WebMessages = {
       copyLabel: '复制到剪贴板',
       copySuccess: '已复制到剪贴板',
       copyError: '无法复制到剪贴板',
+      label: '代码示例',
     },
     copyLinkLabel: '获取该部分的 URL 链接',
   },

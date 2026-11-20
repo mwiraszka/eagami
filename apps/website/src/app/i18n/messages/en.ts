@@ -28,6 +28,7 @@ export const en: WebMessages = {
       copyLabel: 'Copy to clipboard',
       copySuccess: 'Copied to clipboard',
       copyError: 'Could not copy to clipboard',
+      label: 'Code example',
     },
     copyLinkLabel: 'Get URL link to this section',
   },
