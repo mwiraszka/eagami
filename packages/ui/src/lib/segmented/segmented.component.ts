@@ -59,6 +59,8 @@ export class SegmentedComponent
   readonly options = input.required<SelectOption[]>();
   readonly size = input<SegmentedSize>('md');
   readonly disabled = input<boolean>(false);
+  /** Keeps the options focusable and announced while blocking changes, unlike `disabled`. */
+  readonly readonly = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the group, such as a label outside the component. */
@@ -106,6 +108,7 @@ export class SegmentedComponent
     [`ea-segmented--${this.size()}`]: true,
     'ea-segmented--full-width': this.fullWidth(),
     'ea-segmented--disabled': this.isDisabled(),
+    'ea-segmented--readonly': this.readonly(),
     'ea-segmented--error': this.hasError(),
   }));
 
@@ -135,7 +138,7 @@ export class SegmentedComponent
 
   /** Programmatically selects the given option. */
   select(option: SelectOption): void {
-    if (this.isOptionDisabled(option)) {
+    if (this.isOptionDisabled(option) || this.readonly()) {
       return;
     }
     if (this.value() === option.value) {
@@ -149,7 +152,7 @@ export class SegmentedComponent
   }
 
   handleKeydown(event: KeyboardEvent, index: number): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled() || this.readonly()) {
       return;
     }
 

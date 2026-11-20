@@ -440,4 +440,45 @@ describe('SliderComponent', () => {
       host.destroy();
     });
   });
+
+  describe('Read-only state', () => {
+    beforeEach(() => {
+      fixture.componentRef.setInput('value', 50);
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+    });
+
+    it('keeps the thumb focusable and exposes aria-readonly', () => {
+      expect(getThumb().getAttribute('tabindex')).toBe('0');
+      expect(getThumb().getAttribute('aria-readonly')).toBe('true');
+      expect(getThumb().hasAttribute('aria-disabled')).toBe(false);
+    });
+
+    it('ignores the arrow keys', () => {
+      getThumb().dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(component.value()).toBe(50);
+    });
+
+    it('ignores a press on the track', () => {
+      const track: HTMLElement = fixture.nativeElement.querySelector('.ea-slider__track');
+      track.getBoundingClientRect = () =>
+        ({ left: 0, width: 100, top: 0, height: 8 }) as DOMRect;
+
+      track.dispatchEvent(
+        new PointerEvent('pointerdown', {
+          clientX: 80,
+          bubbles: true,
+          pointerId: 1,
+          buttons: 1,
+        }),
+      );
+      fixture.detectChanges();
+
+      expect(component.value()).toBe(50);
+    });
+  });
 });

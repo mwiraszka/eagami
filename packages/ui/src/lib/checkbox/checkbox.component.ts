@@ -61,6 +61,8 @@ export class CheckboxComponent extends FieldControlBase implements ControlValueA
    */
   readonly truncate = input<boolean>(false);
   readonly disabled = input<boolean>(false);
+  /** Keeps the checkbox focusable and announced while blocking changes, unlike `disabled`. */
+  readonly readonly = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the checkbox, such as a label outside the component. */
@@ -101,6 +103,7 @@ export class CheckboxComponent extends FieldControlBase implements ControlValueA
     [`ea-checkbox--${this.size()}`]: true,
     'ea-checkbox--truncate': this.truncate(),
     'ea-checkbox--disabled': this.isDisabled(),
+    'ea-checkbox--readonly': this.readonly(),
     'ea-checkbox--checked': this.checked(),
     'ea-checkbox--indeterminate': this.indeterminate(),
     'ea-checkbox--error': this.hasError(),
@@ -137,7 +140,7 @@ export class CheckboxComponent extends FieldControlBase implements ControlValueA
   }
 
   handleChange(): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled() || this.readonly()) {
       return;
     }
     const newValue = !this.checked();
@@ -145,5 +148,13 @@ export class CheckboxComponent extends FieldControlBase implements ControlValueA
     this.onChange(newValue);
     this.onTouched();
     this.changed.emit(newValue);
+  }
+
+  // Cancelling the click stops the native box from flipping, which the unchanged
+  // [checked] binding would never undo
+  protected blockReadonlyClick(event: MouseEvent): void {
+    if (this.readonly()) {
+      event.preventDefault();
+    }
   }
 }

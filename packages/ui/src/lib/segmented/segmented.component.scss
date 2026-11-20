@@ -106,7 +106,8 @@
     cursor: pointer;
     transition: var(--transition-colors), var(--transition-shadow);
 
-    &:hover:not(.ea-segmented__option--selected):not(.ea-segmented__option--disabled) {
+    .ea-segmented:not(.ea-segmented--readonly)
+      &:hover:not(.ea-segmented__option--selected):not(.ea-segmented__option--disabled) {
       color: var(--color-text-primary);
       background-color: var(--color-state-active);
     }
@@ -132,5 +133,9 @@
     &--disabled {
       cursor: default;
     }
+  }
+
+  &--readonly &__option {
+    cursor: default;
   }
 }

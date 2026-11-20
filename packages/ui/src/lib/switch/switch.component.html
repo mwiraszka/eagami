@@ -14,11 +14,13 @@
       [attr.aria-checked]="checked()"
       [attr.aria-label]="!label() && !ariaLabelledby() ? (ariaLabel() ?? null) : null"
       [attr.aria-labelledby]="ariaLabelledby() ?? null"
+      [attr.aria-readonly]="readonly() || null"
       [attr.aria-required]="required() || null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "
+      (click)="blockReadonlyClick($event)"
       (change)="handleChange()" />
     <span class="ea-switch__track">
       <span class="ea-switch__thumb">

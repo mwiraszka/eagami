@@ -54,6 +54,8 @@ export class RadioGroupComponent
   readonly size = input<RadioSize>('md');
   readonly orientation = input<RadioOrientation>('vertical');
   readonly disabled = input<boolean>(false);
+  /** Keeps the options focusable and announced while blocking changes, unlike `disabled`. */
+  readonly readonly = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the group, such as a label outside the component. */
   readonly ariaLabelledby = input<string | undefined>(undefined, {
@@ -99,7 +101,7 @@ export class RadioGroupComponent
 
   /** Programmatically selects the option with the given value. */
   select(val: string): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled() || this.readonly()) {
       return;
     }
     this.value.set(val);

@@ -10,6 +10,7 @@
     [value]="value()"
     [checked]="isChecked()"
     [disabled]="isDisabled()"
+    (click)="blockReadonlyClick($event)"
     (change)="handleChange()" />
 
   <span

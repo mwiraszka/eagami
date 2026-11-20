@@ -10,7 +10,8 @@ import { RadioComponent } from './radio.component';
   template: `
     <ea-radio-group
       [(value)]="selected"
-      [disabled]="groupDisabled()">
+      [disabled]="groupDisabled()"
+      [readonly]="groupReadonly()">
       <ea-radio
         value="a"
         label="Option A"></ea-radio>
@@ -27,6 +28,7 @@ import { RadioComponent } from './radio.component';
 class TestHostComponent {
   selected = signal('');
   groupDisabled = signal(false);
+  groupReadonly = signal(false);
 }
 
 describe('RadioGroup + Radio', () => {
@@ -115,6 +117,32 @@ describe('RadioGroup + Radio', () => {
       host.groupDisabled.set(true);
       fixture.detectChanges();
       getRadios().forEach(r => expect(r.disabled).toBe(true));
+    });
+  });
+
+  describe('Read-only state', () => {
+    beforeEach(() => {
+      host.selected.set('a');
+      host.groupReadonly.set(true);
+      fixture.detectChanges();
+    });
+
+    it('keeps the radios enabled and marks the group aria-readonly', () => {
+      const group: HTMLElement =
+        fixture.nativeElement.querySelector('[role="radiogroup"]');
+
+      expect(group.getAttribute('aria-readonly')).toBe('true');
+      expect(getRadios()[1].disabled).toBe(false);
+      expect(getLabels()[1].classList).toContain('ea-radio--readonly');
+    });
+
+    it('keeps the selection when another radio is clicked', () => {
+      getRadios()[1].click();
+      fixture.detectChanges();
+
+      expect(host.selected()).toBe('a');
+      expect(getRadios()[0].checked).toBe(true);
+      expect(getRadios()[1].checked).toBe(false);
     });
   });
 

@@ -58,6 +58,8 @@ export class SwitchComponent extends FieldControlBase implements ControlValueAcc
   /** Optional icon component drawn in the thumb while the switch is off. */
   readonly offIcon = input<Type<unknown> | undefined>(undefined);
   readonly disabled = input<boolean>(false);
+  /** Keeps the switch focusable and announced while blocking changes, unlike `disabled`. */
+  readonly readonly = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the switch, such as a label outside the component. */
   readonly ariaLabelledby = input<string | undefined>(undefined, {
@@ -91,6 +93,7 @@ export class SwitchComponent extends FieldControlBase implements ControlValueAcc
     [`ea-switch--tone-${this.variant()}`]: this.variant() !== 'default',
     'ea-switch--checked': this.checked(),
     'ea-switch--disabled': this.isDisabled(),
+    'ea-switch--readonly': this.readonly(),
     'ea-switch--error': this.hasError(),
   }));
 
@@ -115,7 +118,7 @@ export class SwitchComponent extends FieldControlBase implements ControlValueAcc
   }
 
   handleChange(): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled() || this.readonly()) {
       return;
     }
     const newValue = !this.checked();
@@ -123,5 +126,13 @@ export class SwitchComponent extends FieldControlBase implements ControlValueAcc
     this.onChange(newValue);
     this.onTouched();
     this.changed.emit(newValue);
+  }
+
+  // Cancelling the click stops the native switch from flipping, which the unchanged
+  // [checked] binding would never undo
+  protected blockReadonlyClick(event: MouseEvent): void {
+    if (this.readonly()) {
+      event.preventDefault();
+    }
   }
 }

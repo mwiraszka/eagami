@@ -71,6 +71,8 @@ export class SliderComponent
   readonly step = input<number>(1);
   readonly size = input<SliderSize>('md');
   readonly disabled = input<boolean>(false);
+  /** Keeps the slider focusable and announced while blocking changes, unlike `disabled`. */
+  readonly readonly = input<boolean>(false);
   readonly showValue = input<boolean>(false);
   readonly showMinMaxLabels = input<boolean>(false);
   readonly formatValue = input<(value: number) => string>(FORMAT_PLAIN);
@@ -156,6 +158,7 @@ export class SliderComponent
     [`ea-slider--${this.size()}`]: true,
     'ea-slider--error': this.showError(),
     'ea-slider--disabled': this.isDisabled(),
+    'ea-slider--readonly': this.readonly(),
     'ea-slider--dragging': this.dragging(),
   }));
 
@@ -176,7 +179,7 @@ export class SliderComponent
   }
 
   handleKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled() || this.readonly()) {
       return;
     }
 
@@ -220,7 +223,7 @@ export class SliderComponent
   }
 
   handlePointerDown(event: PointerEvent): void {
-    if (this.isDisabled() || event.button !== 0) {
+    if (this.isDisabled() || this.readonly() || event.button !== 0) {
       return;
     }
     const track = this.trackEl()?.nativeElement;

@@ -11,6 +11,7 @@ import { CheckboxComponent, type CheckboxSize } from './checkbox.component';
     <ea-checkbox
       [label]="label"
       [size]="size"
+      [readonly]="readonly"
       [disabled]="disabled"
       [indeterminate]="indeterminate"
       [hint]="hint"
@@ -21,6 +22,7 @@ class HostComponent {
   label: string | undefined = 'I agree to the terms';
   size: CheckboxSize = 'md';
   disabled = false;
+  readonly = false;
   indeterminate = false;
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
@@ -63,6 +65,14 @@ describe('CheckboxComponent a11y', () => {
 
   it('has no detectable violations when disabled', async () => {
     const el = await render(host => (host.disabled = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when read-only', async () => {
+    const el = await render(host => (host.readonly = true));
 
     const results = await axe(el);
 

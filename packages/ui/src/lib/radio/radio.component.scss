@@ -59,6 +59,10 @@
     cursor: default;
   }
 
+  &--readonly {
+    cursor: default;
+  }
+
   &--checked {
     .ea-radio__circle {
       border-color: var(--color-brand-default);
@@ -78,7 +82,7 @@
     }
   }
 
-  &:hover:not(.ea-radio--disabled, .ea-radio--checked) {
+  &:hover:not(.ea-radio--disabled, .ea-radio--readonly, .ea-radio--checked) {
     .ea-radio__circle {
       border-color: var(--color-border-emphasis);
     }

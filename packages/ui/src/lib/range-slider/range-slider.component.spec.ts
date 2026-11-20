@@ -484,4 +484,46 @@ describe('RangeSliderComponent', () => {
       host.destroy();
     });
   });
+
+  describe('Read-only state', () => {
+    beforeEach(() => {
+      fixture.componentRef.setInput('value', [20, 80] as RangeSliderValue);
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+    });
+
+    it('keeps both thumbs focusable and exposes aria-readonly on each', () => {
+      for (const thumb of [getLowThumb(), getHighThumb()]) {
+        expect(thumb.getAttribute('tabindex')).toBe('0');
+        expect(thumb.getAttribute('aria-readonly')).toBe('true');
+      }
+    });
+
+    it('ignores the arrow keys on either thumb', () => {
+      dispatchKey(getLowThumb(), 'ArrowRight');
+      dispatchKey(getHighThumb(), 'ArrowLeft');
+
+      expect(component.value()).toEqual([20, 80]);
+    });
+
+    it('ignores a press on the track', () => {
+      const track: HTMLElement = fixture.nativeElement.querySelector(
+        '.ea-range-slider__track',
+      );
+      track.getBoundingClientRect = () =>
+        ({ left: 0, width: 100, top: 0, height: 8 }) as DOMRect;
+
+      track.dispatchEvent(
+        new PointerEvent('pointerdown', {
+          clientX: 50,
+          bubbles: true,
+          pointerId: 1,
+          buttons: 1,
+        }),
+      );
+      fixture.detectChanges();
+
+      expect(component.value()).toEqual([20, 80]);
+    });
+  });
 });
