@@ -21,6 +21,12 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
         heading: 'Changed',
         entries: ['Update third-party packages.'],
       },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Extend the line chart's y-axis in a panned window up to the next tick, so the highest point in view always has a labelled value above it.",
+        ],
+      },
     ],
   },
   {
