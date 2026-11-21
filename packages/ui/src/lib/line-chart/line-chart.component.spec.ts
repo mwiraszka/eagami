@@ -1167,10 +1167,30 @@ describe('LineChartComponent', () => {
       const ticks = yTicks();
 
       expect(Math.min(...ticks)).toBeGreaterThanOrEqual(50);
-      expect(Math.max(...ticks)).toBeLessThanOrEqual(100);
       const baseline = Number(query('.ea-line-chart__baseline')!.getAttribute('y1'));
       const p7 = Number(queryAll('.ea-line-chart__point')[7].getAttribute('cy'));
       expect(baseline - p7).toBeGreaterThanOrEqual(12);
+    });
+
+    it('labels a y-axis value above the highest point in view, at the top of the plot', () => {
+      fixture.componentRef.setInput('series', [
+        {
+          name: 'Rating',
+          data: [1786, 1782, 1806, 1821, 1823, 1837, 1854, 1844, 1827, 1856, 1878],
+        },
+      ]);
+      fixture.componentRef.setInput('showAxisBreak', true);
+
+      fixture.detectChanges();
+
+      const labels = queryAll('.ea-line-chart__axis--y');
+      const values = labels.map(t => Number(t.textContent!.replace(/\D/g, '')));
+      const topY = Math.min(...labels.map(t => Number(t.getAttribute('y'))));
+      const highestY = Math.min(
+        ...queryAll('.ea-line-chart__point').map(p => Number(p.getAttribute('cy'))),
+      );
+      expect(Math.max(...values)).toBeGreaterThan(1878);
+      expect(topY).toBeLessThan(highestY);
     });
 
     it('pans with a horizontal wheel and with Shift + wheel', () => {
@@ -1181,7 +1201,8 @@ describe('LineChartComponent', () => {
       expect(swipe.defaultPrevented).toBe(true);
       expect(inView()).toEqual(['P0', 'P1', 'P2', 'P3']);
       expect(ranges.at(-1)).toEqual({ start: 0, end: 30 });
-      expect(Math.max(...yTicks())).toBeLessThanOrEqual(30);
+      expect(Math.max(...yTicks())).toBeGreaterThan(30);
+      expect(Math.max(...yTicks())).toBeLessThanOrEqual(50);
 
       const shifted = new WheelEvent('wheel', {
         deltaY: 10,
@@ -1365,7 +1386,8 @@ describe('LineChartComponent', () => {
       press('Home');
 
       expect(ranges.at(-1)).toEqual({ start: 0, end: 30 });
-      expect(Math.max(...yTicks())).toBeLessThanOrEqual(30);
+      expect(Math.max(...yTicks())).toBeGreaterThan(30);
+      expect(Math.max(...yTicks())).toBeLessThanOrEqual(50);
 
       press('End');
 

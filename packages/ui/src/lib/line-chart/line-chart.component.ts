@@ -866,8 +866,9 @@ export class LineChartComponent {
     const breakClearance = axisPx * BREAK_CLEARANCE;
     const derivedFloor = yMin === undefined && !zeroFloor && dataMin > 0;
 
-    // A panned window fits its bounds to the points in view without rounding, so
-    // the axis glides as it pans instead of jumping between round numbers
+    // A panned window fits its floor to the points in view without rounding, so the
+    // axis glides as it pans, while its top rounds up to the next tick so the highest
+    // point always has a labelled value above it
     if (this.windowed() && isFinite(lo) && isFinite(hi)) {
       const spread = hi - lo || Math.abs(hi) || 1;
       const pad = (clearance * spread) / Math.max(1, plotHeight - 2 * clearance);
@@ -875,10 +876,9 @@ export class LineChartComponent {
         (breakClearance * spread) / Math.max(1, plotHeight - clearance - breakClearance);
       const min =
         yMin ?? (zeroFloor ? lo : derivedFloor ? Math.max(0, lo - breakPad) : lo - pad);
-      const max = yMax ?? hi + pad;
-      const ticks = niceScale(min, max, maxTicks, maxStep).ticks.filter(
-        t => t >= min && t <= max,
-      );
+      const scale = niceScale(min, yMax ?? hi + pad, maxTicks, maxStep);
+      const max = yMax ?? scale.ticks[scale.ticks.length - 1];
+      const ticks = scale.ticks.filter(t => t >= min && t <= max);
       return { min, max, ticks };
     }
 
