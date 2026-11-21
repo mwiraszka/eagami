@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update third-party packages.
 
+### Fixed
+
+- Extend the line chart's y-axis in a panned window up to the next tick, so the highest point in view always has a labelled value above it.
+
 ## [5.88.0] - 2026-11-20
 
 ### Added

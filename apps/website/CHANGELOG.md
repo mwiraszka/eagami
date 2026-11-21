@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Pick up @eagami/ui v5.88.1.
 - Update third-party packages.
 
 ## [3.37.16] - 2026-11-20
