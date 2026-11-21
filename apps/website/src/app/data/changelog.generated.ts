@@ -14,6 +14,22 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.88.1',
+    date: '2026-11-21',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: ['Update third-party packages.'],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Extend the line chart's y-axis in a panned window up to the next tick, so the highest point in view always has a labelled value above it.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.88.0',
     date: '2026-11-20',
     sections: [
