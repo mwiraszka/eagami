@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.88.3',
+    date: '2026-11-22',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add `--ea-button-white-space` and `--ea-button-line-height`, so a button's label can wrap onto more than one line.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Keep a dialog's footer buttons inside the dialog, moving them onto new lines when they don't fit side by side and wrapping any label wider than the dialog.",
+          "Size a heading slotted into a dialog's header to match the header, rather than the browser's larger heading sizes.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.88.2',
     date: '2026-11-22',
     sections: [
