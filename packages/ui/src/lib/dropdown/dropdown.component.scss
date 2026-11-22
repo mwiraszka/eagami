@@ -126,6 +126,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    max-width: calc(100vw - 2 * var(--space-2));
     max-height: 15rem;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
@@ -221,8 +222,8 @@
   &__option {
     padding: 0.5em 0.75em;
     font-size: inherit;
-    white-space: nowrap;
     font-family: var(--font-family-sans);
+    overflow-wrap: break-word;
     color: var(--color-text-primary);
     cursor: pointer;
     transition: var(--transition-colors);
