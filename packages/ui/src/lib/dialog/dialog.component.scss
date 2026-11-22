@@ -140,6 +140,14 @@
     font-weight: var(--ea-dialog-header-font-weight, var(--text-h4-weight));
     line-height: var(--text-h4-lh);
     color: var(--color-text-primary);
+
+    // A heading slotted in as the title keeps the header's size rather than the browser's larger heading sizes
+    > :is(h1, h2, h3, h4, h5, h6) {
+      margin: 0;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
   }
 
   &__body {
@@ -181,8 +189,13 @@
     }
   }
 
+  // Buttons move onto a new line when they don't fit side by side, and a label longer than the dialog wraps inside its button
   &__footer {
+    --ea-button-white-space: normal;
+    --ea-button-line-height: var(--line-height-tight);
+
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
     gap: var(--space-3);
@@ -191,7 +204,9 @@
 
     > * {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: flex-end;
       gap: var(--space-3);
     }
 

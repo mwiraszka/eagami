@@ -17,14 +17,15 @@
   position: relative;
   min-height: var(--ea-button-min-height, 2.5em);
   padding: var(--ea-button-padding, 0.5em 1em);
-  white-space: nowrap;
+  white-space: var(--ea-button-white-space, nowrap);
   user-select: none;
 
   font-family: var(--font-family-sans);
   font-weight: var(--ea-button-font-weight, var(--font-weight-medium));
   letter-spacing: var(--letter-spacing-wide);
   text-decoration: none;
-  line-height: var(--line-height-none);
+  line-height: var(--ea-button-line-height, var(--line-height-none));
+  text-align: center;
 
   border-width: var(--border-width-thin);
   border-style: solid;
