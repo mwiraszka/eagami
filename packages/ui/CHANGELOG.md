@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.88.2] - 2026-11-22
+
+### Fixed
+
+- Prevent long dropdown options from running off narrow screens by wrapping them and keeping the menu inside the viewport.
+
 ## [5.88.1] - 2026-11-21
 
 ### Changed
@@ -2152,6 +2158,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.88.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.88.1...ui-v5.88.2
 [5.88.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.88.0...ui-v5.88.1
 [5.88.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.87.1...ui-v5.88.0
 [5.87.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.87.0...ui-v5.87.1
