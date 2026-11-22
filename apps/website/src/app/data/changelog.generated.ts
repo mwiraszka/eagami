@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.88.2',
+    date: '2026-11-22',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Prevent long dropdown options from running off narrow screens by wrapping them and keeping the menu inside the viewport.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.88.1',
     date: '2026-11-21',
     sections: [
