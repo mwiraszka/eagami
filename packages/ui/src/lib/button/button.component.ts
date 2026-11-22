@@ -40,7 +40,9 @@ export type ButtonAlign = 'start' | 'center' | 'end';
  * and how a call-to-action becomes a pill. The focus ring is drawn just inside
  * the button over a band of the page colour, so it never overlaps a neighbour
  * and stands out on any fill; `--ea-button-focus-ring-offset` moves it, and a
- * positive length draws it outside instead. For navigation, put
+ * positive length draws it outside instead. A label stays on one line unless
+ * `--ea-button-white-space` is `normal`, with `--ea-button-line-height` spacing
+ * its wrapped lines. For navigation, put
  * `ButtonLinkComponent` on an anchor instead (`<a eaButtonLink href="...">`):
  * it takes the same styling inputs and keeps real link behaviour.
  */
