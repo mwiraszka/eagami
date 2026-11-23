@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.88.4',
+    date: '2026-11-23',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Fill every box of a code input when a keyboard suggestion or autofill enters the whole code at once, rather than keeping only its first digit.',
+          'Show a box emptied in the middle of a code as empty rather than filled.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.88.3',
     date: '2026-11-22',
     sections: [
