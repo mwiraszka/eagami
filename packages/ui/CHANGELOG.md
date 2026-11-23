@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.88.4] - 2026-11-23
+
+### Fixed
+
+- Fill every box of a code input when a keyboard suggestion or autofill enters the whole code at once, rather than keeping only its first digit.
+- Show a box emptied in the middle of a code as empty rather than filled.
+
 ## [5.88.3] - 2026-11-22
 
 ### Added
@@ -2169,6 +2176,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.88.4]: https://github.com/mwiraszka/eagami/compare/ui-v5.88.3...ui-v5.88.4
 [5.88.3]: https://github.com/mwiraszka/eagami/compare/ui-v5.88.2...ui-v5.88.3
 [5.88.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.88.1...ui-v5.88.2
 [5.88.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.88.0...ui-v5.88.1
