@@ -95,10 +95,11 @@ export class CodeInputComponent
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
+  // A space in the value stands for a box emptied in the middle of the code
   readonly digits = computed(() => {
     const val = this.value();
     const len = this.length();
-    return Array.from({ length: len }, (_, i) => val[i] ?? '');
+    return Array.from({ length: len }, (_, i) => (val[i] ?? '').trim());
   });
 
   readonly placeholders = computed(() => {
@@ -129,7 +130,18 @@ export class CodeInputComponent
       return;
     }
     const input = event.target as HTMLInputElement;
-    const char = this.sanitize(input.value).slice(-1);
+    const data = event instanceof InputEvent ? event.data : null;
+    const inserted = this.sanitize(data ?? '');
+    const entered = this.sanitize(input.value);
+    // A keyboard's code suggestion inserts the whole code as typed text, and autofill sets it without any
+    const code =
+      inserted.length > 1 ? inserted : data === null && entered.length > 1 ? entered : '';
+    if (code) {
+      this.fillFrom(index, code);
+      return;
+    }
+
+    const char = inserted.slice(-1) || entered.slice(-1);
     input.value = char;
 
     const current = this.value();
@@ -220,6 +232,28 @@ export class CodeInputComponent
     const val = this.value();
     const index = Math.min(val.length, this.length() - 1);
     this.focusDigit(index);
+  }
+
+  // A whole code always starts at the first box, wherever it was entered
+  private fillFrom(index: number, code: string): void {
+    const start = code.length >= this.length() ? 0 : index;
+    const chars = this.value().padEnd(this.length(), ' ').split('');
+    [...code.slice(0, this.length() - start)].forEach((char, offset) => {
+      chars[start + offset] = char;
+    });
+    const newValue = chars.join('').replace(/ +$/, '');
+    this.digitEls().forEach((el, i) => {
+      el.nativeElement.value = newValue[i]?.trim() ?? '';
+    });
+
+    this.value.set(newValue);
+    this.onChange(newValue);
+    this.changed.emit(newValue);
+    this.focusDigit(Math.min(start + code.length, this.length() - 1));
+
+    if (newValue.length === this.length() && !newValue.includes(' ')) {
+      this.completed.emit(newValue);
+    }
   }
 
   // Removes disallowed characters: whitespace in free mode, non-digits otherwise
