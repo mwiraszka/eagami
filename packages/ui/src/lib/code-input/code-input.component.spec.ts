@@ -217,6 +217,79 @@ describe('CodeInputComponent', () => {
     });
   });
 
+  describe('Whole code entered into one box', () => {
+    function insertText(input: HTMLInputElement, text: string): void {
+      input.value += text;
+      input.dispatchEvent(
+        new InputEvent('input', { data: text, inputType: 'insertText' }),
+      );
+    }
+
+    it('fills every box when a keyboard suggestion inserts the whole code into the first one', () => {
+      const spy = vi.fn();
+      component.completed.subscribe(spy);
+      const inputs = getDigitInputs();
+
+      insertText(inputs[0], '424242');
+
+      expect(component.value()).toBe('424242');
+      expect(inputs.map(input => input.value)).toEqual(['4', '2', '4', '2', '4', '2']);
+      expect(spy).toHaveBeenCalledWith('424242');
+    });
+
+    it('starts a whole code at the first box wherever it is inserted', () => {
+      const inputs = getDigitInputs();
+
+      insertText(inputs[3], '987654');
+
+      expect(component.value()).toBe('987654');
+    });
+
+    it('continues from the box where the rest of a code is inserted', () => {
+      component.value.set('12');
+      fixture.detectChanges();
+      const inputs = getDigitInputs();
+
+      insertText(inputs[2], '345');
+
+      expect(component.value()).toBe('12345');
+      expect(document.activeElement).toBe(inputs[5]);
+    });
+
+    it('takes a whole code that autofill sets on one box', () => {
+      const inputs = getDigitInputs();
+      inputs[0].value = '654321';
+
+      inputs[0].dispatchEvent(new Event('input'));
+
+      expect(component.value()).toBe('654321');
+    });
+
+    it('shows a box emptied in the middle of the code as empty', () => {
+      component.value.set('123456');
+      fixture.detectChanges();
+      const inputs = getDigitInputs();
+
+      inputs[2].dispatchEvent(new KeyboardEvent('keydown', { key: 'Backspace' }));
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('12 456');
+      expect(inputs[2].value).toBe('');
+      expect(inputs[2].classList).not.toContain('ea-code-input--filled');
+    });
+
+    it('replaces the digit in a box when another one is typed into it', () => {
+      component.value.set('1');
+      fixture.detectChanges();
+      const inputs = getDigitInputs();
+
+      insertText(inputs[0], '5');
+
+      expect(component.value()).toBe('5');
+      expect(inputs[0].value).toBe('5');
+    });
+  });
+
   describe('Completed output', () => {
     it('emits completed when the last digit is entered', () => {
       const spy = vi.fn();
