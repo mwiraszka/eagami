@@ -9,17 +9,21 @@ import {
   FileSpreadsheetIconComponent,
   GlobeIconComponent,
   HistoryIconComponent,
+  LanguagesIconComponent,
   LineChartIconComponent,
   LinkIconComponent,
   MailIconComponent,
+  MapPinIconComponent,
   MenuIconComponent,
   MoonIconComponent,
   MusicIconComponent,
   PhoneIconComponent,
   PlayCircleIconComponent,
+  QrCodeIconComponent,
   SearchIconComponent,
   SmartphoneIconComponent,
   TagComponent,
+  TicketIconComponent,
   UserCircleIconComponent,
   UserPlusIconComponent,
   UsersIconComponent,
@@ -100,6 +104,10 @@ const TAGS: Record<HomeProjectTagId, { kind: TagKind; icon: Type<unknown> }> = {
   darkMode: { kind: 'experience', icon: MoonIconComponent },
   installable: { kind: 'experience', icon: SmartphoneIconComponent },
   sectionMenus: { kind: 'experience', icon: MenuIconComponent },
+  ticketSales: { kind: 'commerce', icon: TicketIconComponent },
+  qrCheckIn: { kind: 'place', icon: QrCodeIconComponent },
+  venueMaps: { kind: 'place', icon: MapPinIconComponent },
+  bilingual: { kind: 'experience', icon: LanguagesIconComponent },
 };
 
 interface ProjectDetails {
@@ -116,6 +124,26 @@ interface ProjectDetails {
 }
 
 const PROJECTS: Record<HomeProjectId, ProjectDetails> = {
+  wawasocial: {
+    name: 'Wawa Social',
+    url: 'https://wawasocial.com',
+    display: 'wawasocial.com',
+    page: 'wawasocial.com',
+    logo: 'assets/projects/wawasocial.svg',
+    video: 'assets/projects/demos/wawasocial.mp4',
+    poster: 'assets/projects/demos/wawasocial.jpg',
+    tags: [
+      'ticketSales',
+      'events',
+      'venueMaps',
+      'qrCheckIn',
+      'accounts',
+      'analytics',
+      'bilingual',
+      'darkMode',
+    ],
+    pageTrack: 'assets/projects/demos/wawasocial.vtt',
+  },
   chordbomb: {
     name: 'Chordbomb',
     url: 'https://chordbomb.com',
@@ -230,7 +258,7 @@ export class HomeProjectStoriesComponent {
   });
 
   /** The one project shown on narrow screens, where the picker switches between them */
-  protected readonly selectedId = signal<HomeProjectId>('chordbomb');
+  protected readonly selectedId = signal<HomeProjectId>('wawasocial');
 
   /** Projects whose feature tags are showing */
   protected readonly expanded = signal<ReadonlySet<HomeProjectId>>(new Set());

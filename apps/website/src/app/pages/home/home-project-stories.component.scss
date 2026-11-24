@@ -22,7 +22,7 @@ $staggered-features: 12;
     gap: 8px;
   }
 
-  // Phones set the options in an even two-by-two grid, so all four stay in view
+  // Phones set the options in a two-column grid, so every one stays in view
   @include mixins.respond-to('lt-md') {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

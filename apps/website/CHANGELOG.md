@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add Wawa Social to the released projects on the home page.
 - Animate home page section headings word by word as they first scroll into view.
 
 ### Changed

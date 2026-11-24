@@ -180,9 +180,18 @@ export const de: WebMessages = {
         darkMode: 'Dunkelmodus',
         installable: 'Installierbare App',
         sectionMenus: 'Abschnittsmenüs',
+        ticketSales: 'Ticketverkauf',
+        qrCheckIn: 'QR-Check-in',
+        venueMaps: 'Lagepläne',
+        bilingual: 'Zweisprachig',
       },
       features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Veranstaltet verschiedenste gesellige Events in Warschau, darunter Singleabende, Brettspielabende und Mixer für Expats.',
+        },
         {
           id: 'chordbomb',
           description:

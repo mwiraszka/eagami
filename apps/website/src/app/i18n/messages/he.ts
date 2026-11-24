@@ -147,9 +147,18 @@ export const he: WebMessages = {
         darkMode: 'מצב כהה',
         installable: 'אפליקציה להתקנה',
         sectionMenus: 'תפריטי מקטעים',
+        ticketSales: 'מכירת כרטיסים',
+        qrCheckIn: 'צ׳ק־אין עם QR',
+        venueMaps: 'מפות מקומות',
+        bilingual: 'דו־לשוני',
       },
       features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'מארגן מגוון אירועים חברתיים בוורשה, ובהם ערבי רווקים ורווקות, ערבי משחקי קופסה ומפגשים לאקספטים.',
+        },
         {
           id: 'chordbomb',
           description: 'מזהה את השיר שמתנגן סביבכם ומפענח את רצף האקורדים שלו.',

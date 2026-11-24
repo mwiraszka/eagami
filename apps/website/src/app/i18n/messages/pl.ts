@@ -180,9 +180,18 @@ export const pl: WebMessages = {
         darkMode: 'Tryb ciemny',
         installable: 'Aplikacja do instalacji',
         sectionMenus: 'Menu sekcji',
+        ticketSales: 'Sprzedaż biletów',
+        qrCheckIn: 'Wejście z kodem QR',
+        venueMaps: 'Mapy miejsc',
+        bilingual: 'Dwie wersje językowe',
       },
       features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Organizuje różnorodne wydarzenia towarzyskie w Warszawie, w tym wieczory dla singli, wieczory gier planszowych i spotkania dla obcokrajowców.',
+        },
         {
           id: 'chordbomb',
           description:

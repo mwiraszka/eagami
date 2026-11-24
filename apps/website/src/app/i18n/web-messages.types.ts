@@ -16,7 +16,7 @@ export type HomeFeatureId =
   | 'pwa';
 
 export type HomeProjectId =
-  'chordbomb' | 'londonchess' | 'brewskibets' | 'circaesthetics';
+  'wawasocial' | 'chordbomb' | 'londonchess' | 'brewskibets' | 'circaesthetics';
 
 export type HomeProjectTagId =
   | 'stripe'
@@ -40,7 +40,11 @@ export type HomeProjectTagId =
   | 'richResults'
   | 'darkMode'
   | 'installable'
-  | 'sectionMenus';
+  | 'sectionMenus'
+  | 'ticketSales'
+  | 'qrCheckIn'
+  | 'venueMaps'
+  | 'bilingual';
 
 /**
  * Every user-facing string, grouped by page or shared section. Parameterized

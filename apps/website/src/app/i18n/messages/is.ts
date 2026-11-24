@@ -186,9 +186,18 @@ export const is: WebMessages = {
         darkMode: 'Dökkur hamur',
         installable: 'Uppsetjanlegt app',
         sectionMenus: 'Kaflavalmyndir',
+        ticketSales: 'Miðasala',
+        qrCheckIn: 'Innritun með QR-kóða',
+        venueMaps: 'Kort af stöðum',
+        bilingual: 'Tvítyngt',
       },
       features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Heldur fjölbreytta félagsviðburði í Varsjá, meðal annars kvöld fyrir einhleypa, borðspilakvöld og hittinga fyrir útlendinga.',
+        },
         {
           id: 'chordbomb',
           description:

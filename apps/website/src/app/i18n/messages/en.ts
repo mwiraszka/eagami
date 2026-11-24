@@ -159,9 +159,18 @@ export const en: WebMessages = {
         darkMode: 'Dark mode',
         installable: 'Installable app',
         sectionMenus: 'Section menus',
+        ticketSales: 'Ticket sales',
+        qrCheckIn: 'QR check-in',
+        venueMaps: 'Venue maps',
+        bilingual: 'Bilingual',
       },
       features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Hosts a variety of social events in Warsaw, including singles nights, board game nights, and mixers for expats.',
+        },
         {
           id: 'chordbomb',
           description:

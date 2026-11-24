@@ -180,9 +180,18 @@ export const ru: WebMessages = {
         darkMode: 'Тёмный режим',
         installable: 'Сайт как приложение',
         sectionMenus: 'Меню разделов',
+        ticketSales: 'Продажа билетов',
+        qrCheckIn: 'Вход по QR-коду',
+        venueMaps: 'Карты площадок',
+        bilingual: 'Два языка',
       },
       features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Проводит самые разные встречи в Варшаве, в том числе вечеринки для одиноких, вечера настольных игр и встречи для экспатов.',
+        },
         {
           id: 'chordbomb',
           description:
