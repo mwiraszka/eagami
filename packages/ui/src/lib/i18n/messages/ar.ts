@@ -22,6 +22,8 @@ const messages: EagamiMessages = {
     remove: 'إزالة الصورة',
     invalidType: 'يجب أن يكون الملف صورة',
     tooLarge: (maxMb: number) => `الملف يتجاوز حد ${maxMb} MB`,
+    lowResolution:
+      'قد تظهر هذه الصورة بدقة منخفضة بهذا الحجم. استخدم صورة أكبر أو صغّر العرض.',
   },
   breadcrumbs: {
     label: 'مسار التنقل',

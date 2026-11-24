@@ -2258,10 +2258,15 @@ export const esES: WebMessages = {
           'avatar-editor': {
             accept:
               'Tipos MIME aceptados por el selector de archivos, transmitidos al campo nativo.',
-            canvasSize: 'Ancho y alto en píxeles del lienzo de recorte cuadrado.',
+            aspectRatio:
+              'Ancho dividido entre alto del marco de recorte, así que 1 es cuadrado y 1,6 es 16:10.',
+            canvasSize:
+              'Ancho en píxeles del lienzo de recorte; el alto se deriva de aspectRatio.',
             cropState:
               'Estado inicial de desplazamiento/zoom que se restaura al cargar una imagen fuente.',
             currentSrc: 'URL de la imagen que se carga en el editor al inicializarse.',
+            displayWidth:
+              'Ancho en píxeles al que se mostrará el recorte exportado; el editor avisa cuando la imagen dentro del marco es más estrecha y se vería pixelada.',
             exportQuality:
               'Calidad JPEG/WebP al exportar la imagen recortada, entre 0 y 1.',
             exportType:

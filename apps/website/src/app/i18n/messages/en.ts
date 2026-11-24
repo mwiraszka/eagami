@@ -2158,9 +2158,13 @@ export const en: WebMessages = {
           'avatar-editor': {
             accept:
               'Accepted MIME types for the file picker, forwarded to the native input.',
-            canvasSize: 'Pixel width and height of the square crop canvas.',
+            aspectRatio:
+              'Width divided by height of the crop frame, so 1 is square and 1.6 is 16:10.',
+            canvasSize: 'Pixel width of the crop canvas; its height follows aspectRatio.',
             cropState: 'Initial pan/zoom state to restore when a source image is loaded.',
             currentSrc: 'URL of the image to load into the editor on initialisation.',
+            displayWidth:
+              'Width in pixels the exported crop will be shown at; the editor warns when the image inside the frame is narrower and would look pixelated.',
             exportQuality:
               'JPEG/WebP quality used when exporting the cropped image, between 0 and 1.',
             exportType:

@@ -22,6 +22,7 @@ const messages: EagamiMessages = {
     remove: '移除图片',
     invalidType: '文件必须是图片',
     tooLarge: (maxMb: number) => `文件超过 ${maxMb} MB 限制`,
+    lowResolution: '在此尺寸下图片可能会出现像素化。请使用更大的图片或缩小画面。',
   },
   breadcrumbs: {
     label: '面包屑导航',

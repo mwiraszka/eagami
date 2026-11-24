@@ -2214,11 +2214,15 @@ export const pl: WebMessages = {
           'avatar-editor': {
             accept:
               'Akceptowane typy MIME w selektorze plików, przekazywane do natywnego pola.',
+            aspectRatio:
+              'Szerokość podzielona przez wysokość obszaru kadrowania, więc 1 to kwadrat, a 1,6 to 16:10.',
             canvasSize:
-              'Szerokość i wysokość w pikselach kwadratowego obszaru kadrowania.',
+              'Szerokość obszaru kadrowania w pikselach; wysokość wynika z aspectRatio.',
             cropState:
               'Początkowy stan przesunięcia/zoomu do przywrócenia przy wczytywaniu obrazu źródłowego.',
             currentSrc: 'URL obrazu wczytywanego do edytora przy inicjalizacji.',
+            displayWidth:
+              'Szerokość w pikselach, w jakiej kadr zostanie wyświetlony; edytor ostrzega, gdy obraz w ramce jest węższy i wyglądałby na rozpikselowany.',
             exportQuality:
               'Jakość JPEG/WebP przy eksporcie przyciętego obrazu, w przedziale 0-1.',
             exportType:

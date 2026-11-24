@@ -2254,11 +2254,16 @@ export const de: WebMessages = {
           'avatar-editor': {
             accept:
               'Akzeptierte MIME-Typen für die Dateiauswahl, an das native Input weitergeleitet.',
-            canvasSize: 'Pixelbreite und -höhe des quadratischen Zuschnitt-Canvas.',
+            aspectRatio:
+              'Breite geteilt durch Höhe des Zuschnittrahmens, also 1 für quadratisch und 1,6 für 16:10.',
+            canvasSize:
+              'Pixelbreite des Zuschnitt-Canvas; die Höhe ergibt sich aus aspectRatio.',
             cropState:
               'Anfänglicher Pan/Zoom-Zustand, der wiederhergestellt wird, wenn ein Quellbild geladen wird.',
             currentSrc:
               'URL des Bildes, das bei der Initialisierung in den Editor geladen wird.',
+            displayWidth:
+              'Pixelbreite, in der der exportierte Zuschnitt angezeigt wird; der Editor warnt, wenn das Bild im Rahmen schmaler ist und verpixelt wirken würde.',
             exportQuality:
               'JPEG/WebP-Qualität, die beim Exportieren des zugeschnittenen Bildes verwendet wird, zwischen 0 und 1.',
             exportType:

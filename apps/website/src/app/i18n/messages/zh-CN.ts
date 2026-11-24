@@ -2029,9 +2029,12 @@ export const zhCN: WebMessages = {
           },
           'avatar-editor': {
             accept: '文件选择器接受的 MIME 类型，转发给原生输入。',
-            canvasSize: '正方形裁剪画布的像素宽度和高度。',
+            aspectRatio: '裁剪框的宽高比（宽度除以高度），1 为正方形，1.6 为 16:10。',
+            canvasSize: '裁剪画布的像素宽度；高度由 aspectRatio 决定。',
             cropState: '加载源图片时要恢复的初始平移/缩放状态。',
             currentSrc: '初始化时要加载到编辑器中的图片 URL。',
+            displayWidth:
+              '导出裁剪图将显示的像素宽度；当框内图片窄于此宽度、会出现像素化时，编辑器会给出警告。',
             exportQuality: '导出裁剪图片时使用的 JPEG/WebP 质量，介于 0 和 1 之间。',
             exportType: '导出图片 blob 的 MIME 类型（例如 image/png 或 image/jpeg）。',
             loading: '在外部资源加载时显示骨架覆盖层。',

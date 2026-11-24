@@ -23,6 +23,8 @@ const messages: EagamiMessages = {
     remove: 'Afbeelding verwijderen',
     invalidType: 'Bestand moet een afbeelding zijn',
     tooLarge: (maxMb: number) => `Bestand overschrijdt de limiet van ${maxMb} MB`,
+    lowResolution:
+      'Deze afbeelding kan er op dit formaat gepixeld uitzien. Gebruik een grotere afbeelding of zoom uit.',
   },
   breadcrumbs: {
     label: 'Broodkruimelnavigatie',

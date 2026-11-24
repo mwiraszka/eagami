@@ -2259,10 +2259,15 @@ export const frFR: WebMessages = {
           'avatar-editor': {
             accept:
               'Types MIME acceptés par le sélecteur de fichiers, transmis à l’entrée native.',
-            canvasSize: 'Largeur et hauteur en pixels du canevas de recadrage carré.',
+            aspectRatio:
+              'Largeur divisée par la hauteur du cadre de recadrage, soit 1 pour un carré et 1,6 pour du 16/10.',
+            canvasSize:
+              'Largeur en pixels du canevas de recadrage, sa hauteur découlant de aspectRatio.',
             cropState:
               'État de panoramique/zoom initial à restaurer lors du chargement d’une image source.',
             currentSrc: 'URL de l’image à charger dans l’éditeur à l’initialisation.',
+            displayWidth:
+              'Largeur en pixels à laquelle le recadrage exporté sera affiché, l’éditeur avertissant lorsque l’image dans le cadre est plus étroite et paraîtrait pixélisée.',
             exportQuality:
               'Qualité JPEG/WebP utilisée lors de l’exportation de l’image recadrée, entre 0 et 1.',
             exportType:

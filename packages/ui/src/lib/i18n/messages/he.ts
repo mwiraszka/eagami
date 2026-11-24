@@ -22,6 +22,8 @@ const messages: EagamiMessages = {
     remove: 'הסרת תמונה',
     invalidType: 'הקובץ חייב להיות תמונה',
     tooLarge: (maxMb: number) => `הקובץ חורג ממגבלת ${maxMb} MB`,
+    lowResolution:
+      'התמונה עלולה להיראות מפוקסלת בגודל הזה. השתמש בתמונה גדולה יותר או הקטן את התצוגה.',
   },
   breadcrumbs: {
     label: 'נתיב ניווט',

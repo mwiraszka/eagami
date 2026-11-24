@@ -12,6 +12,8 @@ export const AVATAR_EDITOR_KNOBS: ComponentKnobs = {
       options: ['circle', 'square'],
     },
     canvasSize: { control: 'number', unit: 'px', min: 100, max: 400, maxLength: 3 },
+    aspectRatio: { control: 'number', min: 0.25, max: 4, step: 0.1, maxLength: 4 },
+    displayWidth: { control: 'number', unit: 'px', min: 0, max: 4000, maxLength: 4 },
     minZoom: { control: 'number', min: 1, max: 10, maxLength: 2 },
     maxZoom: { control: 'number', min: 1, max: 10, maxLength: 2 },
     loading: { control: 'boolean' },
@@ -24,6 +26,8 @@ export const AVATAR_EDITOR_KNOBS: ComponentKnobs = {
   args: {
     shape: 'circle',
     canvasSize: 200,
+    aspectRatio: 1,
+    displayWidth: 0,
     minZoom: 1,
     maxZoom: 3,
     loading: false,

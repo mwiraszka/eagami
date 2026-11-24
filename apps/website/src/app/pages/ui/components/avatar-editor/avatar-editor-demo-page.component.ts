@@ -25,6 +25,8 @@ interface AvatarEditorKnobState {
   [key: string]: KnobValue;
   shape: AvatarEditorShape;
   canvasSize: number;
+  aspectRatio: number;
+  displayWidth: number;
   minZoom: number;
   maxZoom: number;
   loading: boolean;

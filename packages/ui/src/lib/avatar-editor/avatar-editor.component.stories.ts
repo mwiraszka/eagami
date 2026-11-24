@@ -19,3 +19,7 @@ export default meta;
 type Story = StoryObj<AvatarEditorComponent>;
 
 export const Playground: Story = {};
+
+export const Wide: Story = {
+  args: { shape: 'square', canvasSize: 320, aspectRatio: 1.6 },
+};

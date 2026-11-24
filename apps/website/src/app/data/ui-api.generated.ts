@@ -444,6 +444,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'aspectRatio',
+        type: 'number',
+        default: '1',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'canvasSize',
         type: 'number',
         default: '200',
@@ -460,6 +467,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'currentSrc',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'displayWidth',
+        type: 'number | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -558,7 +572,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'exportCrop',
-        signature: 'exportCrop(): Promise<Blob>',
+        signature: 'exportCrop(width?: number): Promise<Blob>',
       },
       {
         name: 'openFilePicker',
@@ -579,7 +593,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'updateImageDarkness',
         signature:
-          'updateImageDarkness(ctx: CanvasRenderingContext2D, size: number): void',
+          'updateImageDarkness(ctx: CanvasRenderingContext2D, width: number, height: number): void',
       },
     ],
   },

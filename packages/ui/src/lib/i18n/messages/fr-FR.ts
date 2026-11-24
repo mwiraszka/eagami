@@ -23,6 +23,8 @@ const messages: EagamiMessages = {
     remove: "Supprimer l'image",
     invalidType: 'Le fichier doit être une image',
     tooLarge: (maxMb: number) => `Le fichier dépasse la limite de ${maxMb} MB`,
+    lowResolution:
+      'Cette image risque d’être pixélisée à cette taille. Utilisez une image plus grande ou dézoomez.',
   },
   breadcrumbs: {
     label: "Fil d'Ariane",

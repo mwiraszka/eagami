@@ -19,6 +19,7 @@ import {
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { AlertTriangleIconComponent } from '../icons/alert-triangle.component';
 import { CameraIconComponent } from '../icons/camera.component';
 import { MinusIconComponent } from '../icons/minus.component';
 import { PlusIconComponent } from '../icons/plus.component';
@@ -55,6 +56,7 @@ const OFFSET_TOLERANCE = 0.5;
 @Component({
   selector: 'ea-avatar-editor',
   imports: [
+    AlertTriangleIconComponent,
     CameraIconComponent,
     MinusIconComponent,
     NgClass,
@@ -76,6 +78,7 @@ export class AvatarEditorComponent implements OnDestroy {
 
   readonly shape = input<AvatarEditorShape>('circle');
   readonly canvasSize = input<number>(200);
+  readonly aspectRatio = input<number>(1);
   readonly currentSrc = input<string | undefined>(undefined);
   readonly loading = input<boolean>(false);
   readonly accept = input<string>('image/*');
@@ -84,6 +87,7 @@ export class AvatarEditorComponent implements OnDestroy {
   readonly maxZoom = input<number>(3);
   readonly exportQuality = input<number>(0.92);
   readonly exportType = input<string>('image/png');
+  readonly displayWidth = input<number | undefined>(undefined);
 
   readonly cropState = input<AvatarEditorCropState | null | undefined>();
 
@@ -107,10 +111,25 @@ export class AvatarEditorComponent implements OnDestroy {
   readonly isLoading = computed(() => this.isFetching() || this.loading());
   readonly zoom = signal(1);
   readonly canRevert = computed(() => !this.isAtOriginal() && this.originalCaptured());
+  /** Height of the crop frame, from `canvasSize` as its width and `aspectRatio`. */
+  readonly frameHeight = computed(() =>
+    Math.round(this.canvasSize() / this.aspectRatio()),
+  );
+  /** True when the part of the image inside the frame is narrower than `displayWidth`, so the exported crop would be upscaled. */
+  readonly isLowResolution = computed(() => {
+    const displayWidth = this.displayWidth();
+    const imageSize = this.imageSize();
+    if (!displayWidth || !imageSize) {
+      return false;
+    }
+    const scale = this.scaleFor(imageSize.width, imageSize.height, this.zoom());
+    return this.canvasSize() / scale < displayWidth;
+  });
   /** True when the visible crop is darker than mid-grey; drives the `--on-light` class on the overlay so the "Change photo" affordance stays readable. */
   readonly isImageDark = signal(true);
 
   private image: HTMLImageElement | null = null;
+  private readonly imageSize = signal<{ width: number; height: number } | null>(null);
   private offsetX = 0;
   private offsetY = 0;
   private dragStartX = 0;
@@ -157,6 +176,7 @@ export class AvatarEditorComponent implements OnDestroy {
 
     effect(() => {
       this.canvasSize();
+      this.aspectRatio();
       if (this.image) {
         // Offsets were computed against the previous frame, so a shrink would
         // otherwise leave the image drawn outside it with a gap showing
@@ -402,7 +422,7 @@ export class AvatarEditorComponent implements OnDestroy {
 
   /** Clears the loaded image and resets pan/zoom to defaults. */
   removeImage(): void {
-    this.image = null;
+    this.setImage(null);
     this.hasImage.set(false);
     this.isFetching.set(false);
     this.zoom.set(1);
@@ -452,7 +472,7 @@ export class AvatarEditorComponent implements OnDestroy {
     }
 
     if (this.originalImage) {
-      this.image = this.originalImage;
+      this.setImage(this.originalImage);
       this.hasImage.set(true);
 
       const crop = this.originalCropState;
@@ -469,7 +489,7 @@ export class AvatarEditorComponent implements OnDestroy {
       this.isAtOriginal.set(true);
       this.scheduleDrawAfterRender();
     } else {
-      this.image = null;
+      this.setImage(null);
       this.hasImage.set(false);
       this.zoom.set(1);
       this.offsetX = 0;
@@ -479,29 +499,41 @@ export class AvatarEditorComponent implements OnDestroy {
     }
   }
 
-  /** Renders the current crop to an offscreen canvas, emits `cropped`, and resolves with the resulting `Blob`. */
-  exportCrop(): Promise<Blob> {
+  /**
+   * Renders the current crop to an offscreen canvas, emits `cropped`, and resolves with the resulting `Blob`.
+   * Pass `width` to export at a different width than the frame, keeping its aspect ratio.
+   */
+  exportCrop(width: number = this.canvasSize()): Promise<Blob> {
     return new Promise((resolve, reject) => {
       if (!this.image) {
         reject(new Error('No image loaded'));
         return;
       }
 
-      const size = this.canvasSize();
+      const factor = width / this.canvasSize();
+      const exportWidth = Math.round(width);
+      const exportHeight = Math.round(this.frameHeight() * factor);
       const offscreen = document.createElement('canvas');
-      offscreen.width = size;
-      offscreen.height = size;
+      offscreen.width = exportWidth;
+      offscreen.height = exportHeight;
       const ctx = offscreen.getContext('2d')!;
+      ctx.imageSmoothingQuality = 'high';
 
       if (this.shape() === 'circle') {
         ctx.beginPath();
-        ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+        this.traceEllipse(ctx, exportWidth, exportHeight);
         ctx.closePath();
         ctx.clip();
       }
 
       const { drawX, drawY, drawW, drawH } = this.getDrawParams();
-      ctx.drawImage(this.image, drawX, drawY, drawW, drawH);
+      ctx.drawImage(
+        this.image,
+        drawX * factor,
+        drawY * factor,
+        drawW * factor,
+        drawH * factor,
+      );
 
       offscreen.toBlob(
         blob => {
@@ -536,7 +568,7 @@ export class AvatarEditorComponent implements OnDestroy {
       this._suppressCropStateEmit = false;
     };
     img.onload = () => {
-      this.image = img;
+      this.setImage(img);
       this.hasImage.set(true);
       if (cropState) {
         this.applyZoom(cropState.zoom);
@@ -585,7 +617,7 @@ export class AvatarEditorComponent implements OnDestroy {
     reader.onload = e => {
       const img = new Image();
       img.onload = () => {
-        this.image = img;
+        this.setImage(img);
         this.hasImage.set(true);
         this.zoom.set(1);
         this.centerImage();
@@ -624,21 +656,39 @@ export class AvatarEditorComponent implements OnDestroy {
     if (!this.image) {
       return;
     }
-    const size = this.canvasSize();
     const scale = this.getScale();
     const drawW = this.image.width * scale;
     const drawH = this.image.height * scale;
-    this.offsetX = (size - drawW) / 2;
-    this.offsetY = (size - drawH) / 2;
+    this.offsetX = (this.canvasSize() - drawW) / 2;
+    this.offsetY = (this.frameHeight() - drawH) / 2;
+  }
+
+  private setImage(image: HTMLImageElement | null): void {
+    this.image = image;
+    this.imageSize.set(image ? { width: image.width, height: image.height } : null);
   }
 
   private getScale(): number {
     if (!this.image) {
       return 1;
     }
-    const size = this.canvasSize();
-    const baseScale = Math.max(size / this.image.width, size / this.image.height);
-    return baseScale * this.zoom();
+    return this.scaleFor(this.image.width, this.image.height, this.zoom());
+  }
+
+  private scaleFor(imageWidth: number, imageHeight: number, zoom: number): number {
+    const baseScale = Math.max(
+      this.canvasSize() / imageWidth,
+      this.frameHeight() / imageHeight,
+    );
+    return baseScale * zoom;
+  }
+
+  private traceEllipse(
+    ctx: CanvasRenderingContext2D,
+    width: number,
+    height: number,
+  ): void {
+    ctx.ellipse(width / 2, height / 2, width / 2, height / 2, 0, 0, Math.PI * 2);
   }
 
   private getDrawParams(): {
@@ -668,11 +718,10 @@ export class AvatarEditorComponent implements OnDestroy {
     if (!this.image) {
       return;
     }
-    const size = this.canvasSize();
     const { drawW, drawH } = this.getDrawParams();
 
-    this.offsetX = Math.min(0, Math.max(size - drawW, this.offsetX));
-    this.offsetY = Math.min(0, Math.max(size - drawH, this.offsetY));
+    this.offsetX = Math.min(0, Math.max(this.canvasSize() - drawW, this.offsetX));
+    this.offsetY = Math.min(0, Math.max(this.frameHeight() - drawH, this.offsetY));
   }
 
   private draw(): void {
@@ -682,27 +731,28 @@ export class AvatarEditorComponent implements OnDestroy {
     }
 
     const ctx = canvas.getContext('2d')!;
-    const size = this.canvasSize();
-    canvas.width = size;
-    canvas.height = size;
+    const width = this.canvasSize();
+    const height = this.frameHeight();
+    canvas.width = width;
+    canvas.height = height;
 
-    ctx.clearRect(0, 0, size, size);
+    ctx.clearRect(0, 0, width, height);
 
     const { drawX, drawY, drawW, drawH } = this.getDrawParams();
     ctx.drawImage(this.image, drawX, drawY, drawW, drawH);
 
-    this.updateImageDarkness(ctx, size);
+    this.updateImageDarkness(ctx, width, height);
 
     ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-    ctx.fillRect(0, 0, size, size);
+    ctx.fillRect(0, 0, width, height);
 
     ctx.globalCompositeOperation = 'destination-out';
     if (this.shape() === 'circle') {
       ctx.beginPath();
-      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+      this.traceEllipse(ctx, width, height);
       ctx.fill();
     } else {
-      ctx.fillRect(0, 0, size, size);
+      ctx.fillRect(0, 0, width, height);
     }
 
     ctx.globalCompositeOperation = 'destination-over';
@@ -715,37 +765,40 @@ export class AvatarEditorComponent implements OnDestroy {
    * mid-grey, so the hover overlay can flip its label and icon between
    * white (on dark photos) and black (on light photos).
    *
-   * Restricts sampling to the inscribed circle for circle crops to ignore
+   * Restricts sampling to the inscribed ellipse for circle crops to ignore
    * the soon-to-be-masked corners. Uses Rec. 601 perceptual luminance
    * weights; transparent pixels and CORS-tainted canvases default to a
    * "dark" assumption (white ink).
    */
-  private updateImageDarkness(ctx: CanvasRenderingContext2D, size: number): void {
+  private updateImageDarkness(
+    ctx: CanvasRenderingContext2D,
+    width: number,
+    height: number,
+  ): void {
     let data: Uint8ClampedArray;
     try {
-      data = ctx.getImageData(0, 0, size, size).data;
+      data = ctx.getImageData(0, 0, width, height).data;
     } catch {
       this.isImageDark.set(true);
       return;
     }
 
     const isCircle = this.shape() === 'circle';
-    const cx = size / 2;
-    const cy = size / 2;
-    const radiusSq = cx * cx;
+    const cx = width / 2;
+    const cy = height / 2;
 
     let sum = 0;
     let count = 0;
-    for (let y = 0; y < size; y++) {
-      for (let x = 0; x < size; x++) {
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
         if (isCircle) {
-          const dx = x - cx;
-          const dy = y - cy;
-          if (dx * dx + dy * dy > radiusSq) {
+          const dx = (x - cx) / cx;
+          const dy = (y - cy) / cy;
+          if (dx * dx + dy * dy > 1) {
             continue;
           }
         }
-        const i = (y * size + x) * 4;
+        const i = (y * width + x) * 4;
         if (data[i + 3] === 0) {
           continue;
         }

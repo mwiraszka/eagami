@@ -99,6 +99,7 @@ export interface EagamiMessages {
     remove: string;
     invalidType: string;
     tooLarge: (maxMb: number) => string;
+    lowResolution: string;
   };
   breadcrumbs: {
     label: string;

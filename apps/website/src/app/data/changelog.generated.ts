@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.89.0',
+    date: '2026-11-24',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `aspectRatio` to the avatar editor, so it can crop rectangles such as 16:10 photos as well as squares and circles.',
+          "Let `exportCrop` take an export width, so a crop can be saved larger than the editor's frame.",
+          'Add `displayWidth` to the avatar editor, which warns when the image inside the frame is too small for that width and would look pixelated.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.88.4',
     date: '2026-11-23',
     sections: [

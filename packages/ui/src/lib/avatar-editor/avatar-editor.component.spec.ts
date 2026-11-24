@@ -78,7 +78,7 @@ const ctxSpies = {
   fillRect: vi.fn(),
   drawImage: vi.fn(),
   beginPath: vi.fn(),
-  arc: vi.fn(),
+  ellipse: vi.fn(),
   fill: vi.fn(),
   closePath: vi.fn(),
   clip: vi.fn(),
@@ -278,15 +278,36 @@ describe('AvatarEditorComponent', () => {
       expect(wrapper.style.width).toBe('300px');
       expect(wrapper.style.height).toBe('300px');
     });
+
+    it('sizes the dropzone from canvasSize and aspectRatio', () => {
+      fixture.componentRef.setInput('canvasSize', 320);
+      fixture.componentRef.setInput('aspectRatio', 1.6);
+
+      fixture.detectChanges();
+
+      expect(getDropzone()!.style.width).toBe('320px');
+      expect(getDropzone()!.style.height).toBe('200px');
+    });
+
+    it('sizes the canvas from canvasSize and aspectRatio', () => {
+      fixture.componentRef.setInput('canvasSize', 320);
+      fixture.componentRef.setInput('aspectRatio', 1.6);
+
+      loadImage();
+
+      expect(getCanvasWrapper()!.style.height).toBe('200px');
+      expect(getCanvas()!.width).toBe(320);
+      expect(getCanvas()!.height).toBe(200);
+    });
   });
 
   describe('Canvas painting', () => {
     it('cuts a circular hole out of the dimming mask for a circle crop', () => {
       loadImage();
 
-      // One fillRect dims the frame, then an arc punches the visible crop out
+      // One fillRect dims the frame, then an ellipse punches the visible crop out
       expect(ctxSpies.fillRect).toHaveBeenCalledTimes(1);
-      expect(ctxSpies.arc).toHaveBeenCalled();
+      expect(ctxSpies.ellipse).toHaveBeenCalled();
     });
 
     it('cuts a rectangular hole out of the dimming mask for a square crop', () => {
@@ -295,7 +316,7 @@ describe('AvatarEditorComponent', () => {
       loadImage();
 
       expect(ctxSpies.fillRect).toHaveBeenCalledTimes(2);
-      expect(ctxSpies.arc).not.toHaveBeenCalled();
+      expect(ctxSpies.ellipse).not.toHaveBeenCalled();
     });
 
     it('repaints at the new scale when canvasSize changes', () => {
@@ -313,6 +334,70 @@ describe('AvatarEditorComponent', () => {
         400,
         400,
       );
+    });
+
+    it('covers a wide frame by its width and centres the image vertically', () => {
+      fixture.componentRef.setInput('shape', 'square');
+      fixture.componentRef.setInput('canvasSize', 320);
+      fixture.componentRef.setInput('aspectRatio', 1.6);
+
+      loadImage();
+
+      expect(ctxSpies.drawImage).toHaveBeenLastCalledWith(
+        expect.anything(),
+        0,
+        -60,
+        320,
+        320,
+      );
+    });
+  });
+
+  describe('Low resolution warning', () => {
+    function warning(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('.ea-avatar-editor__warning');
+    }
+
+    function status(): HTMLElement {
+      return fixture.nativeElement.querySelector('[role="status"]')!;
+    }
+
+    it('stays hidden without a displayWidth', () => {
+      loadImage();
+
+      expect(component.isLowResolution()).toBe(false);
+      expect(warning()).toBeNull();
+    });
+
+    it('warns when the image inside the frame is narrower than displayWidth', () => {
+      fixture.componentRef.setInput('displayWidth', 150);
+
+      loadImage();
+
+      expect(component.isLowResolution()).toBe(true);
+      expect(warning()).toBeTruthy();
+      expect(status().textContent!.trim()).not.toBe('');
+    });
+
+    it('stays hidden when the image covers displayWidth', () => {
+      fixture.componentRef.setInput('displayWidth', 100);
+
+      loadImage();
+
+      expect(component.isLowResolution()).toBe(false);
+      expect(warning()).toBeNull();
+      expect(status().textContent!.trim()).toBe('');
+    });
+
+    it('warns once zooming in leaves too few source pixels', () => {
+      fixture.componentRef.setInput('displayWidth', 100);
+      loadImage();
+
+      component.setZoom(2);
+      fixture.detectChanges();
+
+      expect(component.isLowResolution()).toBe(true);
+      expect(warning()).toBeTruthy();
     });
   });
 
@@ -1510,6 +1595,24 @@ describe('AvatarEditorComponent', () => {
       await component.exportCrop();
 
       expect(ctxSpies.clip).toHaveBeenCalled();
+    });
+
+    it('exports at the requested width, keeping the frame aspect ratio', async () => {
+      fixture.componentRef.setInput('shape', 'square');
+      fixture.componentRef.setInput('canvasSize', 320);
+      fixture.componentRef.setInput('aspectRatio', 1.6);
+      loadImage();
+      ctxSpies.drawImage.mockClear();
+
+      await component.exportCrop(1600);
+
+      expect(ctxSpies.drawImage).toHaveBeenCalledWith(
+        expect.anything(),
+        0,
+        -300,
+        1600,
+        1600,
+      );
     });
 
     it('exports the full frame for a square crop', async () => {

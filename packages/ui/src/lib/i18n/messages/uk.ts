@@ -23,6 +23,8 @@ const messages: EagamiMessages = {
     remove: 'Видалити зображення',
     invalidType: 'Файл має бути зображенням',
     tooLarge: (maxMb: number) => `Файл перевищує ліміт ${maxMb} MB`,
+    lowResolution:
+      'У цьому розмірі зображення може виглядати піксельованим. Використайте більше зображення або зменште масштаб.',
   },
   breadcrumbs: {
     label: 'Навігаційний ланцюжок',

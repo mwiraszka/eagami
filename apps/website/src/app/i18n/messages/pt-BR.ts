@@ -2220,10 +2220,15 @@ export const ptBR: WebMessages = {
           'avatar-editor': {
             accept:
               'Tipos MIME aceitos pelo seletor de arquivos, encaminhados ao input nativo.',
-            canvasSize: 'Largura e altura em pixels do canvas de recorte quadrado.',
+            aspectRatio:
+              'Largura dividida pela altura do quadro de recorte, então 1 é quadrado e 1,6 é 16:10.',
+            canvasSize:
+              'Largura em pixels do canvas de recorte; a altura segue aspectRatio.',
             cropState:
               'Estado inicial de deslocamento/zoom a restaurar quando uma imagem de origem é carregada.',
             currentSrc: 'URL da imagem a carregar no editor na inicialização.',
+            displayWidth:
+              'Largura em pixels em que o recorte exportado será exibido; o editor avisa quando a imagem dentro do quadro é mais estreita e ficaria pixelada.',
             exportQuality:
               'Qualidade JPEG/WebP usada ao exportar a imagem recortada, entre 0 e 1.',
             exportType:

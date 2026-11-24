@@ -22,6 +22,8 @@ const messages: EagamiMessages = {
     remove: 'Remove image',
     invalidType: 'File must be an image',
     tooLarge: (maxMb: number) => `File exceeds ${maxMb} MB limit`,
+    lowResolution:
+      'This image may look pixelated at this size. Use a larger image or zoom out.',
   },
   breadcrumbs: {
     label: 'Breadcrumb',
