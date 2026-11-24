@@ -2236,11 +2236,16 @@ export const nl: WebMessages = {
           'avatar-editor': {
             accept:
               'Geaccepteerde MIME-types voor de bestandskiezer, doorgegeven aan de native input.',
-            canvasSize: 'Pixelbreedte en -hoogte van het vierkante bijsnijdcanvas.',
+            aspectRatio:
+              'Breedte gedeeld door hoogte van het bijsnijkader, dus 1 is vierkant en 1,6 is 16:10.',
+            canvasSize:
+              'Pixelbreedte van het bijsnijdcanvas; de hoogte volgt uit aspectRatio.',
             cropState:
               'Begintoestand voor pannen/zoomen om te herstellen wanneer een bronafbeelding wordt geladen.',
             currentSrc:
               'URL van de afbeelding om bij initialisatie in de editor te laden.',
+            displayWidth:
+              'Breedte in pixels waarop de geëxporteerde uitsnede wordt getoond; de editor waarschuwt als de afbeelding in het kader smaller is en gepixeld zou ogen.',
             exportQuality:
               'JPEG/WebP-kwaliteit gebruikt bij het exporteren van de bijgesneden afbeelding, tussen 0 en 1.',
             exportType:

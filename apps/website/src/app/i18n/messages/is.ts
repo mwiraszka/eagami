@@ -2215,10 +2215,14 @@ export const is: WebMessages = {
           'avatar-editor': {
             accept:
               'Samþykktar MIME tegundir fyrir skráaveljuna, áframsendar á innbyggða inntakið.',
-            canvasSize: 'Pixlabreidd og hæð ferningslaga skurðstrigans.',
+            aspectRatio:
+              'Breidd deilt með hæð skurðrammans, þannig að 1 er ferningur og 1,6 er 16:10.',
+            canvasSize: 'Pixlabreidd skurðstrigans; hæðin ræðst af aspectRatio.',
             cropState:
               'Upphafleg hreyfi/aðdráttarstaða til að endurheimta þegar uppsprettumynd er hlaðin.',
             currentSrc: 'URL myndarinnar til að hlaða í ritilinn við frumstillingu.',
+            displayWidth:
+              'Breidd í pixlum sem útflutta skurðinum verður sýnd í; ritillinn varar við þegar myndin í rammanum er mjórri og myndi virðast kornótt.',
             exportQuality:
               'JPEG/WebP gæði notuð við útflutning skurðmyndarinnar, milli 0 og 1.',
             exportType:
