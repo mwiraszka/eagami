@@ -40,7 +40,6 @@ export const el: WebMessages = {
     hero: {
       tagline: 'κομψός σχεδιασμός ιστού.',
       ctaPrimary: 'Επικοινωνία',
-      ctaSecondary: 'Δείτε το στην πράξη →',
       scrollHint: 'Κύλιση στις υπηρεσίες',
     },
     services: {
@@ -200,6 +199,7 @@ export const el: WebMessages = {
         installable: 'Εγκαταστάσιμη εφαρμογή',
         sectionMenus: 'Μενού ενοτήτων',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

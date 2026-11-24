@@ -40,7 +40,6 @@ export const nl: WebMessages = {
     hero: {
       tagline: 'elegant webontwerp.',
       ctaPrimary: 'Neem contact op',
-      ctaSecondary: 'Bekijk het in actie →',
       scrollHint: 'Scroll naar diensten',
     },
     services: {
@@ -178,6 +177,7 @@ export const nl: WebMessages = {
         installable: 'Installeerbare app',
         sectionMenus: "Sectiemenu's",
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

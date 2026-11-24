@@ -40,7 +40,6 @@ export const ar: WebMessages = {
     hero: {
       tagline: 'تصميم ويب أنيق.',
       ctaPrimary: 'تواصل معنا',
-      ctaSecondary: 'شاهده عمليًا ←',
       scrollHint: 'انتقل إلى الخدمات',
     },
     services: {
@@ -162,6 +161,7 @@ export const ar: WebMessages = {
         installable: 'تطبيق قابل للتثبيت',
         sectionMenus: 'قوائم الأقسام',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

@@ -1,6 +1,7 @@
 /* Website-specific colour tokens. The site showcases the library, so the design
    tokens come from @eagami/ui untouched; only the home page's decorative colours
-   (hero backdrop, wordmark sheen, process timeline, page thread), which are not
+   (hero backdrop and CTA, wordmark sheen, process timeline, page thread, projects
+   band), which are not
    part of the library API, live here. Selectors mirror the library's dark-mode
    pattern (media query + data-theme) so the colours follow its toggle. */
 
@@ -28,6 +29,50 @@
     var(--web-color-heronMaroon) 18%,
     transparent
   );
+
+  /* Home projects band: a pale brand tint in light mode, a deep neutral in dark */
+  --web-color-bandBg: var(--color-primary-50);
+  --web-color-bandText: var(--color-neutral-900);
+  --web-color-bandDivider: color-mix(in srgb, var(--color-primary-900) 12%, transparent);
+  --web-color-bandMuted: var(--color-neutral-600);
+  --web-color-bandSubtle: var(--color-neutral-500);
+  --web-color-bandAccent: var(--color-primary-600);
+  --web-color-bandAccentHover: var(--color-primary-800);
+  --web-color-bandPressedBg: color-mix(
+    in srgb,
+    var(--color-primary-600) 14%,
+    transparent
+  );
+  --web-color-bandActiveBg: var(--color-neutral-0);
+  --web-color-bandActiveRing: color-mix(
+    in srgb,
+    var(--color-primary-600) 30%,
+    transparent
+  );
+  --web-color-bandGlow1: var(--color-primary-100);
+  --web-color-bandGlow2: var(--color-secondary-100);
+  --web-color-bandFrame: var(--color-neutral-0);
+  --web-color-bandFrameDot: var(--color-neutral-300);
+  --web-color-bandFrameUrl: var(--color-primary-50);
+  --web-color-bandFrameRing: color-mix(
+    in srgb,
+    var(--color-primary-900) 10%,
+    transparent
+  );
+  --web-color-bandShadow: color-mix(in srgb, var(--color-primary-900) 30%, transparent);
+  --web-color-bandTagInk: var(--color-neutral-900);
+  --web-band-tag-hue: 50%;
+  --web-band-tag-fill: 14%;
+  --web-color-threadOnBand: var(--web-color-heronMaroon);
+
+  --web-color-ctaBg: var(--color-primary-500);
+  --web-color-ctaHover: var(--color-primary-700);
+  --web-color-ctaShadowNear: color-mix(
+    in srgb,
+    var(--color-primary-900) 16%,
+    transparent
+  );
+  --web-color-ctaShadowFar: color-mix(in srgb, var(--color-primary-900) 20%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,15 +89,63 @@
     );
 
     --web-color-heroBlob1: var(--color-primary-600);
-    --web-color-heroBlob2: var(--color-secondary-600);
-    --web-color-heroBlob3: var(--color-primary-700);
-    --web-color-heroCurveShade: var(--color-primary-800);
-    --web-color-timelineLine: var(--color-primary-600);
-    --web-color-timelineNode: var(--color-primary-700);
+    --web-color-heroBlob3: var(--color-secondary-600);
+    --web-color-heroCurveShade: var(--color-secondary-800);
+    --web-color-timelineLine: var(--color-neutral-600);
+    --web-color-timelineNode: var(--color-neutral-600);
     --web-color-thread: var(--web-color-heronMaroonLifted);
     --web-color-threadGlow: color-mix(
       in srgb,
       var(--web-color-heronMaroonLifted) 22%,
+      transparent
+    );
+
+    --web-color-bandBg: var(--color-neutral-900);
+    --web-color-bandText: var(--color-neutral-50);
+    --web-color-bandDivider: color-mix(in srgb, var(--color-neutral-50) 12%, transparent);
+    --web-color-bandMuted: var(--color-neutral-300);
+    --web-color-bandSubtle: var(--color-neutral-400);
+    --web-color-bandAccent: var(--color-primary-300);
+    --web-color-bandAccentHover: var(--color-primary-200);
+    --web-color-bandPressedBg: color-mix(
+      in srgb,
+      var(--color-primary-300) 14%,
+      transparent
+    );
+    --web-color-bandActiveBg: var(--color-neutral-800);
+    --web-color-bandActiveRing: color-mix(
+      in srgb,
+      var(--color-primary-300) 30%,
+      transparent
+    );
+    --web-color-bandGlow1: var(--color-primary-800);
+    --web-color-bandFrame: var(--color-neutral-800);
+    --web-color-bandFrameDot: var(--color-neutral-600);
+    --web-color-bandFrameUrl: var(--color-neutral-900);
+    --web-color-bandFrameRing: color-mix(
+      in srgb,
+      var(--color-neutral-50) 10%,
+      transparent
+    );
+    --web-color-bandShadow: color-mix(in srgb, var(--color-neutral-950) 70%, transparent);
+    --web-color-bandTagInk: var(--color-neutral-0);
+    --web-band-tag-hue: 40%;
+    --web-band-tag-fill: 25%;
+    --web-color-threadOnBand: var(--web-color-heronMaroonLifted);
+
+    --web-color-ctaHover: color-mix(
+      in srgb,
+      var(--color-primary-500),
+      var(--color-primary-600)
+    );
+    --web-color-ctaShadowNear: color-mix(
+      in srgb,
+      var(--color-neutral-950) 50%,
+      transparent
+    );
+    --web-color-ctaShadowFar: color-mix(
+      in srgb,
+      var(--color-neutral-950) 60%,
       transparent
     );
   }
@@ -71,15 +164,55 @@
   );
 
   --web-color-heroBlob1: var(--color-primary-600);
-  --web-color-heroBlob2: var(--color-secondary-600);
-  --web-color-heroBlob3: var(--color-primary-700);
-  --web-color-heroCurveShade: var(--color-primary-800);
-  --web-color-timelineLine: var(--color-primary-600);
-  --web-color-timelineNode: var(--color-primary-700);
+  --web-color-heroBlob3: var(--color-secondary-600);
+  --web-color-heroCurveShade: var(--color-secondary-800);
+  --web-color-timelineLine: var(--color-neutral-600);
+  --web-color-timelineNode: var(--color-neutral-600);
   --web-color-thread: var(--web-color-heronMaroonLifted);
   --web-color-threadGlow: color-mix(
     in srgb,
     var(--web-color-heronMaroonLifted) 22%,
     transparent
   );
+
+  --web-color-bandBg: var(--color-neutral-900);
+  --web-color-bandText: var(--color-neutral-50);
+  --web-color-bandDivider: color-mix(in srgb, var(--color-neutral-50) 12%, transparent);
+  --web-color-bandMuted: var(--color-neutral-300);
+  --web-color-bandSubtle: var(--color-neutral-400);
+  --web-color-bandAccent: var(--color-primary-300);
+  --web-color-bandAccentHover: var(--color-primary-200);
+  --web-color-bandPressedBg: color-mix(
+    in srgb,
+    var(--color-primary-300) 14%,
+    transparent
+  );
+  --web-color-bandActiveBg: var(--color-neutral-800);
+  --web-color-bandActiveRing: color-mix(
+    in srgb,
+    var(--color-primary-300) 30%,
+    transparent
+  );
+  --web-color-bandGlow1: var(--color-primary-800);
+  --web-color-bandFrame: var(--color-neutral-800);
+  --web-color-bandFrameDot: var(--color-neutral-600);
+  --web-color-bandFrameUrl: var(--color-neutral-900);
+  --web-color-bandFrameRing: color-mix(in srgb, var(--color-neutral-50) 10%, transparent);
+  --web-color-bandShadow: color-mix(in srgb, var(--color-neutral-950) 70%, transparent);
+  --web-color-bandTagInk: var(--color-neutral-0);
+  --web-band-tag-hue: 40%;
+  --web-band-tag-fill: 25%;
+  --web-color-threadOnBand: var(--web-color-heronMaroonLifted);
+
+  --web-color-ctaHover: color-mix(
+    in srgb,
+    var(--color-primary-500),
+    var(--color-primary-600)
+  );
+  --web-color-ctaShadowNear: color-mix(
+    in srgb,
+    var(--color-neutral-950) 50%,
+    transparent
+  );
+  --web-color-ctaShadowFar: color-mix(in srgb, var(--color-neutral-950) 60%, transparent);
 }

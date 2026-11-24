@@ -40,7 +40,6 @@ export const ptBR: WebMessages = {
     hero: {
       tagline: 'web design elegante.',
       ctaPrimary: 'Entre em contato',
-      ctaSecondary: 'Veja na prática →',
       scrollHint: 'Rolar até os serviços',
     },
     services: {
@@ -177,6 +176,7 @@ export const ptBR: WebMessages = {
         installable: 'App instalável',
         sectionMenus: 'Menus por seção',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

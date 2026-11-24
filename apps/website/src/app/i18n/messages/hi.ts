@@ -39,7 +39,6 @@ export const hi: WebMessages = {
     hero: {
       tagline: 'सुरुचिपूर्ण वेब डिज़ाइन।',
       ctaPrimary: 'संपर्क करें',
-      ctaSecondary: 'इसे काम करते देखें →',
       scrollHint: 'सेवाओं तक स्क्रॉल करें',
     },
     services: {
@@ -157,6 +156,7 @@ export const hi: WebMessages = {
         installable: 'इंस्टॉल करने योग्य ऐप',
         sectionMenus: 'सेक्शन मेनू',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

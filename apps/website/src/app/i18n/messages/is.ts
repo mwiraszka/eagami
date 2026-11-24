@@ -40,7 +40,6 @@ export const is: WebMessages = {
     hero: {
       tagline: 'glæsileg vefhönnun.',
       ctaPrimary: 'Hafa samband',
-      ctaSecondary: 'Sjá það í verki →',
       scrollHint: 'Skrunaðu að þjónustu',
     },
     services: {
@@ -188,6 +187,7 @@ export const is: WebMessages = {
         installable: 'Uppsetjanlegt app',
         sectionMenus: 'Kaflavalmyndir',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

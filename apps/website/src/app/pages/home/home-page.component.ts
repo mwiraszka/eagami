@@ -31,6 +31,7 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { RevealWordsComponent } from '@app/components/reveal-words/reveal-words.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
@@ -79,6 +80,7 @@ function strictEmailValidator(control: AbstractControl): ValidationErrors | null
     HomeProjectStoriesComponent,
     InputComponent,
     ReactiveFormsModule,
+    RevealWordsComponent,
     TextareaComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

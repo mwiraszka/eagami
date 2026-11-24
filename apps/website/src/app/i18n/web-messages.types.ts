@@ -85,7 +85,6 @@ export interface WebMessages {
     hero: {
       tagline: string;
       ctaPrimary: string;
-      ctaSecondary: string;
       scrollHint: string;
     };
     services: {
@@ -144,6 +143,7 @@ export interface WebMessages {
       visit: (domain: string) => string;
       recordingLabel: (project: string) => string;
       tags: Record<HomeProjectTagId, string>;
+      features: string;
       stories: ReadonlyArray<{
         id: HomeProjectId;
         description: string;

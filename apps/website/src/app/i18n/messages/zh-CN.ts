@@ -39,7 +39,6 @@ export const zhCN: WebMessages = {
     hero: {
       tagline: '优雅的网页设计。',
       ctaPrimary: '联系我们',
-      ctaSecondary: '查看实际效果 →',
       scrollHint: '滚动查看服务',
     },
     services: {
@@ -142,6 +141,7 @@ export const zhCN: WebMessages = {
         installable: '可安装应用',
         sectionMenus: '栏目菜单',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

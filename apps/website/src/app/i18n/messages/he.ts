@@ -39,7 +39,6 @@ export const he: WebMessages = {
     hero: {
       tagline: 'עיצוב אתרים אלגנטי.',
       ctaPrimary: 'צרו קשר',
-      ctaSecondary: 'ראו את זה בפעולה ←',
       scrollHint: 'גללו אל השירותים',
     },
     services: {
@@ -149,6 +148,7 @@ export const he: WebMessages = {
         installable: 'אפליקציה להתקנה',
         sectionMenus: 'תפריטי מקטעים',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

@@ -40,7 +40,6 @@ export const ru: WebMessages = {
     hero: {
       tagline: 'элегантный веб-дизайн.',
       ctaPrimary: 'Связаться',
-      ctaSecondary: 'Посмотреть в деле →',
       scrollHint: 'Прокрутить к услугам',
     },
     services: {
@@ -182,6 +181,7 @@ export const ru: WebMessages = {
         installable: 'Сайт как приложение',
         sectionMenus: 'Меню разделов',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

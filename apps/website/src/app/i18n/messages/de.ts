@@ -40,7 +40,6 @@ export const de: WebMessages = {
     hero: {
       tagline: 'elegantes Webdesign.',
       ctaPrimary: 'Kontakt aufnehmen',
-      ctaSecondary: 'In Aktion ansehen →',
       scrollHint: 'Zu den Leistungen scrollen',
     },
     services: {
@@ -182,6 +181,7 @@ export const de: WebMessages = {
         installable: 'Installierbare App',
         sectionMenus: 'Abschnittsmenüs',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

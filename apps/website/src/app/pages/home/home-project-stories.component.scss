@@ -1,65 +1,73 @@
 @use 'mixins' as mixins;
 
+$feature-stagger: 0.03s;
+$staggered-features: 12;
+
 :host {
-  display: block;
-}
-
-.stories {
-  display: grid;
-  align-items: start;
-  gap: 48px;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-
-  @include mixins.respond-to('lt-lg') {
-    gap: 24px;
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.stories__list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 24px;
+}
+
+/* Narrow screens show one project at a time, picked here */
+.picker {
+  display: none;
   padding: 0;
   margin: 0;
   list-style: none;
 
   @include mixins.respond-to('lt-lg') {
-    flex-direction: row;
+    display: flex;
     flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  // Phones set the options in an even two-by-two grid, so all four stay in view
+  @include mixins.respond-to('lt-md') {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.story {
-  border-radius: 24px;
-  transition:
-    background-color 0.3s ease,
-    box-shadow 0.3s ease;
-
-  @include mixins.respond-to('lt-lg') {
-    border-radius: 999px;
-    box-shadow: inset 0 0 0 1px var(--web-color-bandFrameRing);
-  }
-}
-
-.story--active {
-  box-shadow: inset 0 0 0 1px var(--web-color-bandActiveRing);
-  background-color: var(--web-color-bandActiveBg);
-}
-
-.story__trigger {
+.picker__item {
   display: flex;
+  min-width: 0;
+}
+
+.picker__option {
+  display: flex;
+  flex: 1;
   align-items: center;
-  gap: 16px;
-  width: 100%;
-  padding: 16px;
+  gap: 8px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 4px;
+  padding-inline-end: 16px;
   font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
   text-align: start;
+  white-space: nowrap;
   border: 0;
-  border-radius: inherit;
-  background: none;
-  color: inherit;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--web-color-bandFrameRing);
+  background-color: transparent;
+  color: var(--web-color-bandMuted);
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+
+  @include mixins.respond-to('lt-md') {
+    padding-inline-end: 12px;
+    white-space: normal;
+  }
+
+  &:hover {
+    color: var(--web-color-bandText);
+  }
 
   &:active {
     background-color: var(--web-color-bandPressedBg);
@@ -69,133 +77,162 @@
     outline: 2px solid var(--web-color-bandAccent);
     outline-offset: 2px;
   }
-
-  @include mixins.respond-to('lt-lg') {
-    gap: 8px;
-    padding: 4px;
-    padding-inline-end: 16px;
-  }
 }
 
-.story__logo {
+.picker__option--active {
+  box-shadow:
+    inset 0 0 0 1px var(--web-color-bandActiveRing),
+    0 8px 16px -8px var(--web-color-bandShadow);
+  background-color: var(--web-color-bandActiveBg);
+  color: var(--web-color-bandText);
+}
+
+.picker__logo {
   object-fit: contain;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   padding: 4px;
-  border-radius: 12px;
+  border-radius: 50%;
   background-color: var(--web-color-bandLogoTile);
-
-  @include mixins.respond-to('lt-lg') {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-  }
 }
 
-.story__heading {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.picker__name {
   min-width: 0;
 }
 
-.story__project {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--web-color-bandSubtle);
-  transition: color 0.2s ease;
+.projects {
+  display: grid;
+  gap: 48px 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0;
+  margin: 0;
+  list-style: none;
 
   @include mixins.respond-to('lt-lg') {
-    font-size: 14px;
-    text-transform: none;
-    letter-spacing: normal;
-    color: var(--web-color-bandMuted);
+    display: block;
   }
 }
 
-.story__title {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.35;
-  font-family: var(--font-family-brand);
-  color: var(--web-color-bandMuted);
-  transition: color 0.2s ease;
+/* Each card spans five rows of the shared grid, so the parts of side-by-side
+   cards line up however long their descriptions run */
+.project {
+  display: grid;
+  row-gap: 16px;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
+  min-width: 0;
 
   @include mixins.respond-to('lt-lg') {
     display: none;
   }
 }
 
-.story__trigger:hover .story__title,
-.story--active .story__title {
-  color: var(--web-color-bandText);
-}
-
-.story__trigger:hover .story__project,
-.story--active .story__project {
+/* Tablets set the recording beside its details, where the last row takes up
+   whatever height the recording leaves; phones stack them */
+.project--selected {
   @include mixins.respond-to('lt-lg') {
-    color: var(--web-color-bandText);
+    display: grid;
+    align-items: start;
+    gap: 16px 32px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto auto 1fr;
+    grid-row: auto;
+    animation: project-enter 0.4s ease both;
+  }
+
+  @include mixins.respond-to('lt-md') {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 
-.stories__showcase {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  min-width: 0;
+.project > :not(.project__stage) {
+  @include mixins.respond-to('lt-lg') {
+    grid-column: 2;
+  }
 }
 
-.stories__stage {
+.project__stage {
   overflow: hidden;
+  margin-bottom: 8px;
   border-radius: 24px;
   box-shadow:
     0 32px 48px -32px var(--web-color-bandShadow),
     0 0 0 1px var(--web-color-bandFrameRing);
   background-color: var(--web-color-bandFrame);
+
+  @include mixins.respond-to('lt-lg') {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    margin-bottom: 0;
+    border-radius: 16px;
+  }
+
+  @include mixins.respond-to('lt-md') {
+    margin-bottom: 8px;
+  }
 }
 
-.stories__chrome {
+.project__chrome {
   display: grid;
   align-items: center;
   gap: 16px;
   grid-template-columns: 1fr minmax(0, auto) 1fr;
-  height: 44px;
+  height: 40px;
   padding: 0 16px;
+
+  @include mixins.respond-to('lt-lg') {
+    gap: 8px;
+    height: 32px;
+    padding: 0 12px;
+  }
 }
 
-.stories__dots {
+.project__dots {
   display: flex;
   gap: 8px;
+
+  @include mixins.respond-to('lt-lg') {
+    gap: 4px;
+  }
 }
 
-.stories__dot {
-  width: 10px;
-  height: 10px;
+.project__dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: var(--web-color-bandFrameDot);
+
+  @include mixins.respond-to('lt-lg') {
+    width: 6px;
+    height: 6px;
+  }
 }
 
-.stories__url {
+.project__url {
   overflow: hidden;
-  padding: 4px 16px;
+  padding: 2px 12px;
   font-size: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
   border-radius: 999px;
   background-color: var(--web-color-bandFrameUrl);
   color: var(--web-color-bandSubtle);
+
+  @include mixins.respond-to('lt-lg') {
+    font-size: 11px;
+  }
 }
 
-.stories__screen {
+.project__screen {
   position: relative;
   aspect-ratio: 16 / 10;
   background-color: var(--web-color-bandFrameUrl);
 }
 
-.stories__video {
+.project__video {
   position: absolute;
   top: 0;
   left: 0;
@@ -203,48 +240,70 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
-  animation: stories-reveal 0.5s ease both;
 }
 
-.stories__details {
+.project__name {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  animation: stories-reveal 0.4s ease both;
-}
-
-.stories__summary {
-  display: none;
-  padding-bottom: 16px;
+  align-items: center;
+  gap: 12px;
   margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
-  font-family: var(--font-family-sans);
-  border-bottom: 1px solid var(--web-color-bandDivider);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  font-family: var(--font-family-brand);
   color: var(--web-color-bandText);
 
-  @include mixins.respond-to('lt-lg') {
-    display: block;
+  @include mixins.respond-to('lt-md') {
+    font-size: 18px;
   }
 }
 
-.stories__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+.project__logo {
+  object-fit: contain;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--web-color-bandFrameRing);
+  background-color: var(--web-color-bandLogoTile);
 }
 
-.stories__link {
-  align-self: flex-start;
+.project__description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--web-color-bandMuted);
+
+  @include mixins.respond-to('lt-md') {
+    font-size: 15px;
+  }
+}
+
+.project__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+}
+
+.project__chevron {
+  transition: transform 0.2s ease;
+}
+
+.project__chevron--open {
+  transform: rotate(180deg);
+}
+
+.project__link {
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   border-radius: 4px;
   color: var(--web-color-bandAccent);
   transition: color 0.15s ease;
+  @include mixins.draw-underline('.project__link-text');
 
   &:hover {
     color: var(--web-color-bandAccentHover);
@@ -256,14 +315,47 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .stories__details,
-  .stories__video {
-    animation: none;
+/* The tags slide out from the toggle one after another each time the list opens */
+.project__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  &[hidden] {
+    display: none;
+  }
+
+  > li {
+    animation: project-feature-out 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @for $i from 2 through $staggered-features {
+    > li:nth-child(#{$i}) {
+      animation-delay: ($i - 1) * $feature-stagger;
+    }
+  }
+
+  > li:nth-child(n + #{$staggered-features + 1}) {
+    animation-delay: $staggered-features * $feature-stagger;
   }
 }
 
-@keyframes stories-reveal {
+@media (prefers-reduced-motion: reduce) {
+  .project--selected,
+  .project__tags > li {
+    animation: none;
+  }
+
+  .project__chevron {
+    transition: none;
+  }
+}
+
+@keyframes project-enter {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -271,5 +363,12 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes project-feature-out {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
   }
 }

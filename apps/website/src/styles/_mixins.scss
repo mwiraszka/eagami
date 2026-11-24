@@ -446,10 +446,55 @@ $breakpoints: (
   }
 }
 
+/// Underline that draws in from the start edge on hover or focus and retracts
+/// toward the end edge on the way out. `$line` is the child that carries it, so
+/// the rule hugs the text rather than the link's whole box (or a trailing glyph).
+@mixin draw-underline($line) {
+  #{$line} {
+    position: relative;
+    display: inline-block;
+  }
+
+  #{$line}::before {
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    left: 0;
+    height: 1px;
+    background-color: currentColor;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+    transform: scaleX(0);
+    transform-origin: right;
+    content: '';
+  }
+
+  &:hover #{$line}::before,
+  &:focus-visible #{$line}::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  :host-context([dir='rtl']) & #{$line}::before {
+    transform-origin: left;
+  }
+
+  :host-context([dir='rtl']) &:hover #{$line}::before,
+  :host-context([dir='rtl']) &:focus-visible #{$line}::before {
+    transform-origin: right;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #{$line}::before {
+      transition: none;
+    }
+  }
+}
+
 /// Decorative dot that separates two inline labels: the header lockup's section
 /// name, the footer's legal links.
 @mixin separator-dot {
   font-size: 24px;
   line-height: var(--line-height-none);
-  color: var(--web-color-separatorDot);
+  color: var(--web-color-separator);
 }

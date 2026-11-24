@@ -39,7 +39,6 @@ export const en: WebMessages = {
     hero: {
       tagline: 'elegant web design.',
       ctaPrimary: 'Get in touch',
-      ctaSecondary: 'See it in action →',
       scrollHint: 'Scroll to services',
     },
     services: {
@@ -161,6 +160,7 @@ export const en: WebMessages = {
         installable: 'Installable app',
         sectionMenus: 'Section menus',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',

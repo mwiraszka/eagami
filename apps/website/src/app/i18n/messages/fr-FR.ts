@@ -43,7 +43,6 @@ export const frFR: WebMessages = {
     hero: {
       tagline: 'conception web élégante.',
       ctaPrimary: 'Prendre contact',
-      ctaSecondary: 'Voir en action →',
       scrollHint: 'Faire défiler jusqu’aux services',
     },
     services: {
@@ -204,6 +203,7 @@ export const frFR: WebMessages = {
         installable: 'Application installable',
         sectionMenus: 'Menus de section',
       },
+      features: 'Features',
       stories: [
         {
           id: 'chordbomb',
