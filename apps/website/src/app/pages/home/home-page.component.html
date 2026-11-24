@@ -38,11 +38,6 @@
             href="#contact">
             {{ messages().home.hero.ctaPrimary }}
           </a>
-          <a
-            class="home-hero__link"
-            href="#projects">
-            {{ messages().home.hero.ctaSecondary }}
-          </a>
         </div>
       </div>
     </div>
@@ -71,7 +66,9 @@
       class="home-section__inner">
       <header class="home-section__header home-reveal">
         <p class="home-section__eyebrow">{{ messages().home.services.title }}</p>
-        <h2 class="home-section__title">{{ messages().home.services.heading }}</h2>
+        <h2 class="home-section__title">
+          <web-reveal-words [text]="messages().home.services.heading" />
+        </h2>
         <p class="home-section__lede">{{ messages().home.services.lede }}</p>
       </header>
       <web-home-feature-builder class="home-reveal" />
@@ -85,7 +82,9 @@
     <div class="home-section__inner">
       <header class="home-section__header home-reveal">
         <p class="home-section__eyebrow">{{ messages().home.process.title }}</p>
-        <h2 class="home-section__title">{{ messages().home.process.heading }}</h2>
+        <h2 class="home-section__title">
+          <web-reveal-words [text]="messages().home.process.heading" />
+        </h2>
       </header>
       <web-home-process-timeline class="home-reveal" />
     </div>
@@ -116,7 +115,7 @@
         <p class="home-section__eyebrow">{{ messages().home.projects.title }}</p>
         <h2 class="home-section__title home-section__title--lockup">
           <ea-icon-eagami class="home-section__logo" />
-          {{ messages().home.projects.heading }}
+          <web-reveal-words [text]="messages().home.projects.heading" />
         </h2>
         <p class="home-section__lede">{{ messages().home.projects.lede }}</p>
       </header>
@@ -143,7 +142,7 @@
         <h2
           #contactTitle
           class="home-section__title">
-          {{ messages().home.contact.title }}
+          <web-reveal-words [text]="messages().home.contact.title" />
         </h2>
         <p class="home-section__lede">{{ messages().home.contact.lede }}</p>
       </header>
@@ -212,7 +211,7 @@
       aria-hidden="true"
       focusable="false">
       <defs>
-        <!-- The projects band is dark in both themes, so the line lifts to a lighter tone across it -->
+        <!-- The line takes its own tone across the projects band, which is lifted where the band is dark -->
         <linearGradient
           id="home-thread-tone"
           gradientUnits="userSpaceOnUse"

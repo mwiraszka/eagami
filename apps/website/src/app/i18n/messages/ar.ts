@@ -40,7 +40,6 @@ export const ar: WebMessages = {
     hero: {
       tagline: 'تصميم ويب أنيق.',
       ctaPrimary: 'تواصل معنا',
-      ctaSecondary: 'شاهده عمليًا ←',
       scrollHint: 'انتقل إلى الخدمات',
     },
     services: {
@@ -161,8 +160,18 @@ export const ar: WebMessages = {
         darkMode: 'الوضع الداكن',
         installable: 'تطبيق قابل للتثبيت',
         sectionMenus: 'قوائم الأقسام',
+        ticketSales: 'بيع التذاكر',
+        qrCheckIn: 'تسجيل الحضور برمز QR',
+        venueMaps: 'خرائط الأماكن',
+        bilingual: 'ثنائي اللغة',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'تنظّم مجموعة متنوعة من الفعاليات الاجتماعية في وارسو، منها أمسيات للعزّاب وأمسيات لألعاب الطاولة ولقاءات للمغتربين.',
+        },
         {
           id: 'chordbomb',
           description: 'يتعرّف على الأغنية التي تُشغَّل حولك ويستنتج تتابع أكوردها.',

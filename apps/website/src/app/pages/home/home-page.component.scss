@@ -21,10 +21,12 @@
   width: 100%;
 }
 
-/* Hero and contact share these dark-mode brand-token overrides so their CTAs
-   stay clearly brand-coloured against the dark backdrop. */
+/* The library's dark brand fill is light enough to stand off the dark backdrop,
+   but its inverse text flips dark, so the CTA keeps a light label; the hover
+   returns to the library's dark shade from the deeper light-mode one */
 :host-context([data-theme='dark']) :is(.home-hero, .home-section--contact) {
-  @include mixins.brand-cta-dark-tokens;
+  --color-brand-hover: var(--color-primary-600);
+  --color-text-inverse: var(--color-neutral-50);
 }
 
 .home {
@@ -39,7 +41,6 @@
   min-height: calc(100dvh - var(--web-height-header));
   background-color: var(--color-bg-subtle);
   color: var(--color-text-primary);
-  @include mixins.brand-cta-light-tokens;
 }
 
 .home-hero__blobs {
@@ -228,7 +229,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 16px 12px;
+  gap: 12px;
   margin-top: 32px;
 
   @include mixins.respond-to('lt-md') {
@@ -241,36 +242,16 @@
   }
 }
 
+/* Lifted by a tight contact shadow under a soft ambient one */
 .home-hero__cta {
   @include mixins.brand-cta-button;
-  transition:
-    background-color 0.15s ease,
-    transform 0.15s ease;
-
-  &:active {
-    transform: translateY(1px);
-  }
-}
-
-.home-hero__link {
-  display: inline-flex;
-  align-items: center;
-  height: 48px;
-  padding: 0 12px;
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--color-text-secondary);
-  transition: color 0.15s ease;
+  box-shadow:
+    0 1px 2px var(--web-color-ctaShadowNear),
+    0 4px 12px -4px var(--web-color-ctaShadowFar);
+  background-color: var(--web-color-ctaBg);
 
   &:hover {
-    color: var(--color-text-primary);
-  }
-
-  &:focus-visible {
-    border-radius: 4px;
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
+    background-color: var(--web-color-ctaHover);
   }
 }
 
@@ -402,7 +383,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-brand-default);
+  color: var(--color-brand-text);
 }
 
 .home-section__title {
@@ -484,6 +465,10 @@
   width: 58%;
   height: 64%;
   animation-direction: reverse;
+}
+
+:host-context([data-theme='dark']) :is(.home-hero__blob--2, .home-band__glow--2) {
+  display: none;
 }
 
 /* Stacked and centred, which leaves the thread a long run across to the heading */

@@ -1,23 +1,29 @@
 import {
   BarChartIconComponent,
+  ButtonComponent,
   CalendarDaysIconComponent,
+  ChevronDownIconComponent,
   CreditCardIconComponent,
   Edit2IconComponent,
   FileAudioIconComponent,
   FileSpreadsheetIconComponent,
   GlobeIconComponent,
   HistoryIconComponent,
+  LanguagesIconComponent,
   LineChartIconComponent,
   LinkIconComponent,
   MailIconComponent,
+  MapPinIconComponent,
   MenuIconComponent,
   MoonIconComponent,
   MusicIconComponent,
   PhoneIconComponent,
   PlayCircleIconComponent,
+  QrCodeIconComponent,
   SearchIconComponent,
   SmartphoneIconComponent,
   TagComponent,
+  TicketIconComponent,
   UserCircleIconComponent,
   UserPlusIconComponent,
   UsersIconComponent,
@@ -34,9 +40,8 @@ import {
   afterRenderEffect,
   computed,
   inject,
-  linkedSignal,
   signal,
-  viewChild,
+  viewChildren,
 } from '@angular/core';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
@@ -99,6 +104,10 @@ const TAGS: Record<HomeProjectTagId, { kind: TagKind; icon: Type<unknown> }> = {
   darkMode: { kind: 'experience', icon: MoonIconComponent },
   installable: { kind: 'experience', icon: SmartphoneIconComponent },
   sectionMenus: { kind: 'experience', icon: MenuIconComponent },
+  ticketSales: { kind: 'commerce', icon: TicketIconComponent },
+  qrCheckIn: { kind: 'place', icon: QrCodeIconComponent },
+  venueMaps: { kind: 'place', icon: MapPinIconComponent },
+  bilingual: { kind: 'experience', icon: LanguagesIconComponent },
 };
 
 interface ProjectDetails {
@@ -115,6 +124,26 @@ interface ProjectDetails {
 }
 
 const PROJECTS: Record<HomeProjectId, ProjectDetails> = {
+  wawasocial: {
+    name: 'Wawa Social',
+    url: 'https://wawasocial.com',
+    display: 'wawasocial.com',
+    page: 'wawasocial.com',
+    logo: 'assets/projects/wawasocial.svg',
+    video: 'assets/projects/demos/wawasocial.mp4',
+    poster: 'assets/projects/demos/wawasocial.jpg',
+    tags: [
+      'ticketSales',
+      'events',
+      'venueMaps',
+      'qrCheckIn',
+      'accounts',
+      'analytics',
+      'bilingual',
+      'darkMode',
+    ],
+    pageTrack: 'assets/projects/demos/wawasocial.vtt',
+  },
   chordbomb: {
     name: 'Chordbomb',
     url: 'https://chordbomb.com',
@@ -195,9 +224,12 @@ const PROJECTS: Record<HomeProjectId, ProjectDetails> = {
   },
 };
 
+/* Share of a recording that has to be on screen for it to play */
+const PLAY_RATIO = 0.25;
+
 @Component({
   selector: 'web-home-project-stories',
-  imports: [TagComponent],
+  imports: [ButtonComponent, ChevronDownIconComponent, TagComponent],
   templateUrl: './home-project-stories.component.html',
   styleUrl: './home-project-stories.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -209,7 +241,7 @@ export class HomeProjectStoriesComponent {
   protected readonly projects = computed(() => this.i18n.messages().home.projects);
 
   protected readonly stories = computed(() => {
-    const labels = this.projects().tags;
+    const { tags: labels } = this.projects();
     return this.projects().stories.map(story => {
       const project = PROJECTS[story.id];
       return {
@@ -225,29 +257,26 @@ export class HomeProjectStoriesComponent {
     });
   });
 
-  protected readonly activeId = signal<HomeProjectId>('chordbomb');
+  /** The one project shown on narrow screens, where the picker switches between them */
+  protected readonly selectedId = signal<HomeProjectId>('wawasocial');
 
-  protected readonly activeStory = computed(
-    () => this.stories().find(story => story.id === this.activeId()) ?? this.stories()[0],
-  );
+  /** Projects whose feature tags are showing */
+  protected readonly expanded = signal<ReadonlySet<HomeProjectId>>(new Set());
 
-  /* One-item list keyed by id, so choosing another story mounts a fresh video
-     rather than swapping the source of a playing one */
-  protected readonly screenStories = computed(() => [this.activeStory()]);
+  private readonly trackedPages = signal<Partial<Record<HomeProjectId, string>>>({});
 
-  private readonly trackedPage = linkedSignal<HomeProjectId, string | null>({
-    source: this.activeId,
-    computation: () => null,
+  /** The address each browser bar shows, following the recording where it has cues */
+  protected readonly pages = computed(() => {
+    const tracked = this.trackedPages();
+    return new Map(
+      this.stories().map(story => [story.id, tracked[story.id] ?? story.page]),
+    );
   });
 
-  protected readonly currentPage = computed(
-    () => this.trackedPage() ?? this.activeStory().page,
-  );
+  private readonly stages = viewChildren<ElementRef<HTMLElement>>('stage');
+  private readonly videos = viewChildren<ElementRef<HTMLVideoElement>>('video');
 
-  private readonly stage = viewChild.required<ElementRef<HTMLElement>>('stage');
-  private readonly video = viewChild<ElementRef<HTMLVideoElement>>('video');
-
-  private readonly inView = signal(false);
+  private readonly onScreen = signal<ReadonlySet<HomeProjectId>>(new Set());
   private readonly reducedMotion = signal(false);
   private readonly autoplayBlocked = signal(false);
 
@@ -263,11 +292,31 @@ export class HomeProjectStoriesComponent {
       this.reducedMotion.set(motionQuery.matches);
       motionQuery.addEventListener('change', onMotionChange);
 
-      const observer = new IntersectionObserver(
-        ([entry]) => this.inView.set(entry.isIntersecting),
-        { threshold: 0.35 },
+      const ids = new Map<Element, HomeProjectId>(
+        this.stages().map((stage, index) => [
+          stage.nativeElement,
+          this.stories()[index].id,
+        ]),
       );
-      observer.observe(this.stage().nativeElement);
+      const observer = new IntersectionObserver(
+        entries =>
+          this.onScreen.update(current => {
+            const next = new Set(current);
+            for (const entry of entries) {
+              const id = ids.get(entry.target);
+              if (id && entry.intersectionRatio >= PLAY_RATIO) {
+                next.add(id);
+              } else if (id) {
+                next.delete(id);
+              }
+            }
+            return next;
+          }),
+        { threshold: [0, PLAY_RATIO] },
+      );
+      for (const stage of ids.keys()) {
+        observer.observe(stage);
+      }
 
       this.destroyRef.onDestroy(() => {
         observer.disconnect();
@@ -276,38 +325,52 @@ export class HomeProjectStoriesComponent {
     });
 
     afterRenderEffect(() => {
-      const video = this.video()?.nativeElement;
-      if (!video) {
-        return;
-      }
-
-      if (!this.inView() || this.reducedMotion()) {
-        video.pause();
-        return;
-      }
-
-      video.play().catch((error: unknown) => {
-        // A pause while play() is pending rejects with AbortError, which is expected
-        if (error instanceof DOMException && error.name === 'AbortError') {
-          return;
+      const onScreen = this.onScreen();
+      const still = this.reducedMotion();
+      const stories = this.stories();
+      this.videos().forEach((video, index) => {
+        const id = stories[index]?.id;
+        if (!still && id !== undefined && onScreen.has(id)) {
+          this.play(video.nativeElement);
+        } else {
+          video.nativeElement.pause();
         }
-        if (error instanceof DOMException && error.name === 'NotAllowedError') {
-          this.autoplayBlocked.set(true);
-          return;
-        }
-        throw error;
       });
     });
   }
 
   protected select(id: HomeProjectId): void {
-    this.activeId.set(id);
+    this.selectedId.set(id);
   }
 
-  protected syncPage(track: TextTrack): void {
+  protected toggleFeatures(id: HomeProjectId): void {
+    this.expanded.update(current => {
+      const next = new Set(current);
+      if (!next.delete(id)) {
+        next.add(id);
+      }
+      return next;
+    });
+  }
+
+  protected syncPage(id: HomeProjectId, track: TextTrack): void {
     const cue = track.activeCues?.[0];
     if (cue instanceof VTTCue) {
-      this.trackedPage.set(cue.text);
+      this.trackedPages.update(pages => ({ ...pages, [id]: cue.text }));
     }
+  }
+
+  private play(video: HTMLVideoElement): void {
+    video.play().catch((error: unknown) => {
+      // A pause while play() is pending rejects with AbortError, which is expected
+      if (error instanceof DOMException && error.name === 'AbortError') {
+        return;
+      }
+      if (error instanceof DOMException && error.name === 'NotAllowedError') {
+        this.autoplayBlocked.set(true);
+        return;
+      }
+      throw error;
+    });
   }
 }

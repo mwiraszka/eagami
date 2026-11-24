@@ -1,14 +1,7 @@
 import { EagamiWordmarkComponent } from '@eagami/ui';
 import { filter, map } from 'rxjs/operators';
 
-import {
-  ChangeDetectionStrategy,
-  Component,
-  afterNextRender,
-  computed,
-  inject,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
@@ -44,22 +37,5 @@ export class HeaderComponent {
     { initialValue: this.router.url },
   );
 
-  private readonly isHome = computed(() => {
-    const url = this.currentUrl();
-    return url === '/' || url === '' || url.startsWith('/?') || url.startsWith('/#');
-  });
-
   protected readonly inUiSection = computed(() => this.currentUrl().startsWith('/ui'));
-
-  private readonly scrolled = signal(false);
-
-  protected readonly brandVisible = computed(() => !this.isHome() || this.scrolled());
-
-  constructor() {
-    afterNextRender(() => {
-      const update = (): void => this.scrolled.set(window.scrollY > 0);
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-    });
-  }
 }

@@ -39,7 +39,6 @@ export const en: WebMessages = {
     hero: {
       tagline: 'elegant web design.',
       ctaPrimary: 'Get in touch',
-      ctaSecondary: 'See it in action →',
       scrollHint: 'Scroll to services',
     },
     services: {
@@ -160,8 +159,18 @@ export const en: WebMessages = {
         darkMode: 'Dark mode',
         installable: 'Installable app',
         sectionMenus: 'Section menus',
+        ticketSales: 'Ticket sales',
+        qrCheckIn: 'QR check-in',
+        venueMaps: 'Venue maps',
+        bilingual: 'Bilingual',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Hosts a variety of social events in Warsaw, including singles nights, board game nights, and mixers for expats.',
+        },
         {
           id: 'chordbomb',
           description:

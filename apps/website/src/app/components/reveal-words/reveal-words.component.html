@@ -1,0 +1,9 @@
+<span aria-hidden="true">
+  @for (word of words(); track $index) {
+    <span class="reveal-words__mask">
+      <span class="reveal-words__word">{{ word }}</span>
+    </span>
+    {{ $last ? '' : ' ' }}
+  }
+</span>
+<span class="reveal-words__label">{{ text() }}</span>

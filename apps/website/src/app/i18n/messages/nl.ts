@@ -40,7 +40,6 @@ export const nl: WebMessages = {
     hero: {
       tagline: 'elegant webontwerp.',
       ctaPrimary: 'Neem contact op',
-      ctaSecondary: 'Bekijk het in actie →',
       scrollHint: 'Scroll naar diensten',
     },
     services: {
@@ -177,8 +176,18 @@ export const nl: WebMessages = {
         darkMode: 'Donkere modus',
         installable: 'Installeerbare app',
         sectionMenus: "Sectiemenu's",
+        ticketSales: 'Ticketverkoop',
+        qrCheckIn: 'QR-check-in',
+        venueMaps: 'Locatiekaarten',
+        bilingual: 'Tweetalig',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Organiseert allerlei sociale evenementen in Warschau, waaronder singleavonden, bordspelavonden en mixers voor expats.',
+        },
         {
           id: 'chordbomb',
           description:

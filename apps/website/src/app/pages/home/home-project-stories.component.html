@@ -1,57 +1,53 @@
-<div class="stories">
-  <ul
-    class="stories__list"
-    role="list">
-    @for (story of stories(); track story.id) {
-      <li
-        class="story"
-        [class.story--active]="story.id === activeId()">
-        <button
-          type="button"
-          class="story__trigger"
-          aria-controls="home-project-showcase"
-          [attr.aria-pressed]="story.id === activeId()"
-          (click)="select(story.id)">
-          <img
-            class="story__logo"
-            [src]="story.logo"
-            alt=""
-            width="40"
-            height="40" />
-          <span class="story__heading">
-            <span class="story__project">{{ story.name }}</span>
-            <span
-              class="story__title"
-              dir="auto">
-              {{ story.description }}
-            </span>
-          </span>
-        </button>
-      </li>
-    }
-  </ul>
+<ul
+  class="picker"
+  role="list">
+  @for (story of stories(); track story.id) {
+    <li class="picker__item">
+      <button
+        type="button"
+        class="picker__option"
+        [class.picker__option--active]="story.id === selectedId()"
+        [attr.aria-controls]="'home-project-' + story.id"
+        [attr.aria-pressed]="story.id === selectedId()"
+        (click)="select(story.id)">
+        <img
+          class="picker__logo"
+          [src]="story.logo"
+          alt=""
+          width="32"
+          height="32" />
+        <span class="picker__name">{{ story.name }}</span>
+      </button>
+    </li>
+  }
+</ul>
 
-  <div
-    id="home-project-showcase"
-    class="stories__showcase">
-    <div
-      #stage
-      class="stories__stage">
+<ul
+  class="projects"
+  role="list">
+  @for (story of stories(); track story.id) {
+    @let open = expanded().has(story.id);
+    <li
+      class="project"
+      [id]="'home-project-' + story.id"
+      [class.project--selected]="story.id === selectedId()">
       <div
-        class="stories__chrome"
-        aria-hidden="true">
-        <span class="stories__dots">
-          <span class="stories__dot"></span>
-          <span class="stories__dot"></span>
-          <span class="stories__dot"></span>
-        </span>
-        <span class="stories__url">{{ currentPage() }}</span>
-      </div>
-      <div class="stories__screen">
-        @for (story of screenStories(); track story.id) {
+        #stage
+        class="project__stage">
+        <div
+          class="project__chrome"
+          aria-hidden="true">
+          <span class="project__dots">
+            <span class="project__dot"></span>
+            <span class="project__dot"></span>
+            <span class="project__dot"></span>
+          </span>
+          <span class="project__url">{{ pages().get(story.id) }}</span>
+        </div>
+        <div class="project__screen">
           <video
             #video
-            class="stories__video"
+            class="project__video"
             [src]="story.video"
             [poster]="story.poster"
             [controls]="showControls()"
@@ -59,50 +55,74 @@
             muted
             loop
             playsinline
-            preload="metadata">
+            preload="none">
             @if (story.pageTrack) {
               <track
                 #pageTrack
                 kind="metadata"
                 default
                 [src]="story.pageTrack"
-                (cuechange)="syncPage(pageTrack.track)" />
+                (cuechange)="syncPage(story.id, pageTrack.track)" />
             }
           </video>
-        }
+        </div>
       </div>
-    </div>
 
-    @for (story of screenStories(); track story.id) {
-      <div class="stories__details">
-        <p
-          class="stories__summary"
-          dir="auto">
-          {{ story.description }}
-        </p>
-        <ul
-          class="stories__tags"
-          role="list">
-          @for (tag of story.tags; track tag.id) {
-            <li>
-              <ea-tag
-                size="sm"
-                [icon]="tag.icon"
-                [color]="tag.color"
-                [ink]="tag.ink">
-                {{ tag.label }}
-              </ea-tag>
-            </li>
-          }
-        </ul>
+      <h3
+        class="project__name"
+        [id]="'home-project-' + story.id + '-name'">
+        <img
+          class="project__logo"
+          [src]="story.logo"
+          alt=""
+          width="32"
+          height="32" />
+        {{ story.name }}
+      </h3>
+      <p
+        class="project__description"
+        dir="auto">
+        {{ story.description }}
+      </p>
+      <div class="project__actions">
+        <ea-button
+          variant="link"
+          size="sm"
+          [aria-expanded]="open"
+          [aria-controls]="'home-project-' + story.id + '-features'"
+          [aria-describedby]="'home-project-' + story.id + '-name'"
+          (clicked)="toggleFeatures(story.id)">
+          {{ projects().features }}
+          <ea-icon-chevron-down
+            slot="suffix"
+            class="project__chevron"
+            [class.project__chevron--open]="open" />
+        </ea-button>
         <a
-          class="stories__link"
+          class="project__link"
           [href]="story.url"
           target="_blank"
           rel="noopener noreferrer">
-          {{ projects().visit(story.display) }}
+          <span class="project__link-text">{{ projects().visit(story.display) }}</span>
         </a>
       </div>
-    }
-  </div>
-</div>
+      <ul
+        class="project__tags"
+        role="list"
+        [id]="'home-project-' + story.id + '-features'"
+        [hidden]="!open">
+        @for (tag of story.tags; track tag.id) {
+          <li>
+            <ea-tag
+              size="sm"
+              [icon]="tag.icon"
+              [color]="tag.color"
+              [ink]="tag.ink">
+              {{ tag.label }}
+            </ea-tag>
+          </li>
+        }
+      </ul>
+    </li>
+  }
+</ul>

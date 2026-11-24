@@ -40,7 +40,6 @@ export const el: WebMessages = {
     hero: {
       tagline: 'κομψός σχεδιασμός ιστού.',
       ctaPrimary: 'Επικοινωνία',
-      ctaSecondary: 'Δείτε το στην πράξη →',
       scrollHint: 'Κύλιση στις υπηρεσίες',
     },
     services: {
@@ -199,8 +198,18 @@ export const el: WebMessages = {
         darkMode: 'Σκοτεινό θέμα',
         installable: 'Εγκαταστάσιμη εφαρμογή',
         sectionMenus: 'Μενού ενοτήτων',
+        ticketSales: 'Πώληση εισιτηρίων',
+        qrCheckIn: 'Check-in με QR',
+        venueMaps: 'Χάρτες χώρων',
+        bilingual: 'Δίγλωσσο',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Διοργανώνει ποικιλία κοινωνικών εκδηλώσεων στη Βαρσοβία, όπως βραδιές για singles, βραδιές επιτραπέζιων παιχνιδιών και συναντήσεις για expats.',
+        },
         {
           id: 'chordbomb',
           description:

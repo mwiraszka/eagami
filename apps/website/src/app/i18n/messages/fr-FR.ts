@@ -43,7 +43,6 @@ export const frFR: WebMessages = {
     hero: {
       tagline: 'conception web élégante.',
       ctaPrimary: 'Prendre contact',
-      ctaSecondary: 'Voir en action →',
       scrollHint: 'Faire défiler jusqu’aux services',
     },
     services: {
@@ -203,8 +202,18 @@ export const frFR: WebMessages = {
         darkMode: 'Mode sombre',
         installable: 'Application installable',
         sectionMenus: 'Menus de section',
+        ticketSales: 'Billetterie',
+        qrCheckIn: 'Enregistrement par QR code',
+        venueMaps: 'Plans des lieux',
+        bilingual: 'Bilingue',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Organise toutes sortes d’événements sociaux à Varsovie, dont des soirées célibataires, des soirées jeux de société et des rencontres pour expatriés.',
+        },
         {
           id: 'chordbomb',
           description:

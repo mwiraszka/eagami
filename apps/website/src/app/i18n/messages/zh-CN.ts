@@ -39,7 +39,6 @@ export const zhCN: WebMessages = {
     hero: {
       tagline: '优雅的网页设计。',
       ctaPrimary: '联系我们',
-      ctaSecondary: '查看实际效果 →',
       scrollHint: '滚动查看服务',
     },
     services: {
@@ -141,8 +140,17 @@ export const zhCN: WebMessages = {
         darkMode: '深色模式',
         installable: '可安装应用',
         sectionMenus: '栏目菜单',
+        ticketSales: '售票',
+        qrCheckIn: '二维码签到',
+        venueMaps: '场地地图',
+        bilingual: '双语',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description: '在华沙举办各类社交活动，包括单身之夜、桌游之夜和外籍人士交流会。',
+        },
         {
           id: 'chordbomb',
           description: '识别你周围正在播放的歌曲，并推断其和弦进行。',

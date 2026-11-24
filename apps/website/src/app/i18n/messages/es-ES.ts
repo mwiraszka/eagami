@@ -39,7 +39,6 @@ export const esES: WebMessages = {
     hero: {
       tagline: 'diseño web elegante.',
       ctaPrimary: 'Ponte en contacto',
-      ctaSecondary: 'Míralo en acción →',
       scrollHint: 'Desplázate a los servicios',
     },
     services: {
@@ -187,8 +186,18 @@ export const esES: WebMessages = {
         darkMode: 'Modo oscuro',
         installable: 'App instalable',
         sectionMenus: 'Menús por secciones',
+        ticketSales: 'Venta de entradas',
+        qrCheckIn: 'Check-in con QR',
+        venueMaps: 'Mapas de los locales',
+        bilingual: 'Bilingüe',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Organiza todo tipo de eventos sociales en Varsovia, como noches para solteros, noches de juegos de mesa y encuentros para expatriados.',
+        },
         {
           id: 'chordbomb',
           description:

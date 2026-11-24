@@ -1,0 +1,37 @@
+@use 'mixins' as mixins;
+
+$stagger: 0.06s;
+$staggered-words: 12;
+
+.reveal-words__label {
+  @include mixins.sr-only;
+}
+
+/* Clipped a little outside the box so descenders and overhanging glyphs survive the mask */
+.reveal-words__mask {
+  display: inline-block;
+  clip-path: inset(-0.1em -0.1em -0.3em -0.1em);
+}
+
+.reveal-words__word {
+  display: inline-block;
+}
+
+:host(.reveal-words--armed) .reveal-words__word {
+  transform: translateY(calc(100% + 0.3em));
+}
+
+:host(.reveal-words--armed.reveal-words--shown) .reveal-words__word {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: none;
+}
+
+@for $i from 2 through $staggered-words {
+  .reveal-words__mask:nth-child(#{$i}) .reveal-words__word {
+    transition-delay: ($i - 1) * $stagger;
+  }
+}
+
+.reveal-words__mask:nth-child(n + #{$staggered-words + 1}) .reveal-words__word {
+  transition-delay: $staggered-words * $stagger;
+}

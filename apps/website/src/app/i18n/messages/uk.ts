@@ -40,7 +40,6 @@ export const uk: WebMessages = {
     hero: {
       tagline: 'елегантний вебдизайн.',
       ctaPrimary: "Зв'язатися",
-      ctaSecondary: 'Побачити в дії →',
       scrollHint: 'Прогорнути до послуг',
     },
     services: {
@@ -177,8 +176,18 @@ export const uk: WebMessages = {
         darkMode: 'Темний режим',
         installable: 'Сайт як застосунок',
         sectionMenus: 'Меню розділів',
+        ticketSales: 'Продаж квитків',
+        qrCheckIn: 'Вхід за QR-кодом',
+        venueMaps: 'Мапи локацій',
+        bilingual: 'Дві мови',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'Проводить різноманітні зустрічі у Варшаві, зокрема вечірки для самотніх, вечори настільних ігор і зустрічі для експатів.',
+        },
         {
           id: 'chordbomb',
           description:

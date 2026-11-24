@@ -22,13 +22,9 @@
   /* Translucent header background, mixed off bg-base so it tracks theme overrides.
      Pairs with backdrop-filter. */
   --web-color-headerBg: color-mix(in srgb, var(--color-bg-base) 78%, transparent);
-  /* Centre dot between two inline labels (header lockup, footer legal links):
+  /* Separator between two inline labels (header lockup rule, footer legal links dot):
      dimmer than both so it reads as punctuation rather than a third label */
-  --web-color-separatorDot: color-mix(
-    in srgb,
-    var(--color-text-secondary) 45%,
-    transparent
-  );
+  --web-color-separator: color-mix(in srgb, var(--color-text-secondary) 45%, transparent);
 
   /* Rules that separate a page's trailing matter (legal footnote, footer base,
      changelog entries) rather than its sections: a third of the standard divider */
@@ -43,7 +39,6 @@
     var(--web-color-heronMaroon),
     var(--color-neutral-50) 45%
   );
-  --web-color-threadOnBand: var(--web-color-heronMaroonLifted);
 
   /* Layered fills. Anything painted on top of another fill (an icon tile in a
      row, a card holding inputs, a node over a line) uses one of these washes
@@ -89,87 +84,79 @@
     transparent
   );
 
-  /* Home projects band: always deep navy, whatever the page theme */
-  --web-color-bandBg: var(--color-primary-900);
-  --web-color-bandText: var(--color-neutral-50);
-  --web-color-bandDivider: color-mix(in srgb, var(--color-neutral-50) 18%, transparent);
-  --web-color-bandMuted: var(--color-secondary-200);
-  --web-color-bandSubtle: var(--color-secondary-300);
-  --web-color-bandAccent: var(--color-primary-300);
-  --web-color-bandAccentHover: var(--color-primary-200);
-  --web-color-bandPressedBg: color-mix(
-    in srgb,
-    var(--color-primary-300) 14%,
-    transparent
-  );
-  /* Project tags: one hue per kind of feature, drawn from the library's chart palette */
+  /* Home projects band tags: one hue per kind of feature, drawn from the library's
+     chart palette, then tinted and inked to suit the band in each theme (_theme.scss) */
   --web-color-bandTagCommerceBg: color-mix(
     in srgb,
-    var(--color-chart-6) 25%,
+    var(--color-chart-6) var(--web-band-tag-fill),
     transparent
   );
   --web-color-bandTagCommerceText: color-mix(
     in srgb,
-    var(--color-chart-6) 40%,
-    var(--color-neutral-0)
+    var(--color-chart-6) var(--web-band-tag-hue),
+    var(--web-color-bandTagInk)
   );
-  --web-color-bandTagSoundBg: color-mix(in srgb, var(--color-chart-5) 25%, transparent);
+  --web-color-bandTagSoundBg: color-mix(
+    in srgb,
+    var(--color-chart-5) var(--web-band-tag-fill),
+    transparent
+  );
   --web-color-bandTagSoundText: color-mix(
     in srgb,
-    var(--color-chart-5) 40%,
-    var(--color-neutral-0)
+    var(--color-chart-5) var(--web-band-tag-hue),
+    var(--web-color-bandTagInk)
   );
-  --web-color-bandTagInsightBg: color-mix(in srgb, var(--color-chart-1) 25%, transparent);
+  --web-color-bandTagInsightBg: color-mix(
+    in srgb,
+    var(--color-chart-1) var(--web-band-tag-fill),
+    transparent
+  );
   --web-color-bandTagInsightText: color-mix(
     in srgb,
-    var(--color-chart-1) 40%,
-    var(--color-neutral-0)
+    var(--color-chart-1) var(--web-band-tag-hue),
+    var(--web-color-bandTagInk)
   );
-  --web-color-bandTagPeopleBg: color-mix(in srgb, var(--color-chart-2) 25%, transparent);
+  --web-color-bandTagPeopleBg: color-mix(
+    in srgb,
+    var(--color-chart-2) var(--web-band-tag-fill),
+    transparent
+  );
   --web-color-bandTagPeopleText: color-mix(
     in srgb,
-    var(--color-chart-2) 40%,
-    var(--color-neutral-0)
+    var(--color-chart-2) var(--web-band-tag-hue),
+    var(--web-color-bandTagInk)
   );
-  --web-color-bandTagContentBg: color-mix(in srgb, var(--color-chart-3) 25%, transparent);
+  --web-color-bandTagContentBg: color-mix(
+    in srgb,
+    var(--color-chart-3) var(--web-band-tag-fill),
+    transparent
+  );
   --web-color-bandTagContentText: color-mix(
     in srgb,
-    var(--color-chart-3) 40%,
-    var(--color-neutral-0)
+    var(--color-chart-3) var(--web-band-tag-hue),
+    var(--web-color-bandTagInk)
   );
-  --web-color-bandTagPlaceBg: color-mix(in srgb, var(--color-chart-4) 25%, transparent);
+  --web-color-bandTagPlaceBg: color-mix(
+    in srgb,
+    var(--color-chart-4) var(--web-band-tag-fill),
+    transparent
+  );
   --web-color-bandTagPlaceText: color-mix(
     in srgb,
-    var(--color-chart-4) 40%,
-    var(--color-neutral-0)
+    var(--color-chart-4) var(--web-band-tag-hue),
+    var(--web-color-bandTagInk)
   );
   --web-color-bandTagExperienceBg: color-mix(
     in srgb,
-    var(--color-chart-7) 25%,
+    var(--color-chart-7) var(--web-band-tag-fill),
     transparent
   );
   --web-color-bandTagExperienceText: color-mix(
     in srgb,
-    var(--color-chart-7) 40%,
-    var(--color-neutral-0)
+    var(--color-chart-7) var(--web-band-tag-hue),
+    var(--web-color-bandTagInk)
   );
-  --web-color-bandActiveBg: color-mix(in srgb, var(--color-primary-300) 8%, transparent);
-  --web-color-bandActiveRing: color-mix(
-    in srgb,
-    var(--color-primary-300) 25%,
-    transparent
-  );
-  --web-color-bandGlow1: var(--color-primary-700);
-  --web-color-bandGlow2: var(--color-secondary-700);
-  --web-color-bandFrame: var(--color-primary-800);
-  --web-color-bandFrameDot: var(--color-primary-600);
-  --web-color-bandFrameUrl: var(--color-primary-900);
-  --web-color-bandFrameRing: color-mix(
-    in srgb,
-    var(--color-primary-300) 18%,
-    transparent
-  );
-  --web-color-bandShadow: color-mix(in srgb, var(--color-neutral-950) 70%, transparent);
+  /* Project logos are drawn for a white ground, so they keep one in either theme */
   --web-color-bandLogoTile: var(--color-neutral-0);
 
   /* Fluttering gradient backdrop: muted blends of the eagami brand palette */

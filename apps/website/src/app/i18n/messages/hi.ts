@@ -39,7 +39,6 @@ export const hi: WebMessages = {
     hero: {
       tagline: 'सुरुचिपूर्ण वेब डिज़ाइन।',
       ctaPrimary: 'संपर्क करें',
-      ctaSecondary: 'इसे काम करते देखें →',
       scrollHint: 'सेवाओं तक स्क्रॉल करें',
     },
     services: {
@@ -156,8 +155,18 @@ export const hi: WebMessages = {
         darkMode: 'डार्क मोड',
         installable: 'इंस्टॉल करने योग्य ऐप',
         sectionMenus: 'सेक्शन मेनू',
+        ticketSales: 'टिकट बिक्री',
+        qrCheckIn: 'QR चेक-इन',
+        venueMaps: 'स्थल के नक्शे',
+        bilingual: 'द्विभाषी',
       },
+      features: 'Features',
       stories: [
+        {
+          id: 'wawasocial',
+          description:
+            'वारसॉ में तरह-तरह के सामाजिक कार्यक्रम आयोजित करता है, जिनमें सिंगल्स नाइट, बोर्ड गेम नाइट और प्रवासियों के लिए मेलजोल शामिल हैं।',
+        },
         {
           id: 'chordbomb',
           description:
