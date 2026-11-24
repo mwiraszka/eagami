@@ -23,12 +23,18 @@
     {{ lastError() }}
   </span>
 
+  <span
+    class="ea-avatar-editor__visually-hidden"
+    role="status">
+    {{ isLowResolution() ? i18n.messages().avatarEditor.lowResolution : '' }}
+  </span>
+
   @if (!hasImage() && !isLoading()) {
     <button
       type="button"
       class="ea-avatar-editor__dropzone"
       [style.width.px]="canvasSize()"
-      [style.height.px]="canvasSize()"
+      [style.height.px]="frameHeight()"
       (click)="openFilePicker()"
       (dragenter)="onDragEnter($event)"
       (dragover)="onDragOver($event)"
@@ -45,7 +51,7 @@
     <div
       class="ea-avatar-editor__canvas-wrapper"
       [style.width.px]="canvasSize()"
-      [style.height.px]="canvasSize()"
+      [style.height.px]="frameHeight()"
       [attr.aria-busy]="isLoading() || null"
       (dragenter)="onDragEnter($event)"
       (dragover)="onDragOver($event)"
@@ -55,7 +61,7 @@
         <ea-skeleton
           [variant]="shape() === 'circle' ? 'circle' : 'rect'"
           [width]="canvasSize() + 'px'"
-          [height]="canvasSize() + 'px'" />
+          [height]="frameHeight() + 'px'" />
       }
 
       @if (hasImage()) {
@@ -68,7 +74,7 @@
           [attr.aria-describedby]="instructionsId"
           [style.display]="isLoading() ? 'none' : 'block'"
           [width]="canvasSize()"
-          [height]="canvasSize()"
+          [height]="frameHeight()"
           (mousedown)="onMouseDown($event)"
           (touchstart)="onTouchStart($event)"
           (keydown)="onCanvasKeydown($event)"></canvas>
@@ -143,4 +149,13 @@
       <ea-icon-trash />
     </button>
   </div>
+
+  @if (isLowResolution()) {
+    <p
+      class="ea-avatar-editor__warning"
+      aria-hidden="true">
+      <ea-icon-alert-triangle class="ea-avatar-editor__warning-icon" />
+      {{ i18n.messages().avatarEditor.lowResolution }}
+    </p>
+  }
 </div>

@@ -23,6 +23,8 @@ const messages: EagamiMessages = {
     remove: 'Bild entfernen',
     invalidType: 'Datei muss ein Bild sein',
     tooLarge: (maxMb: number) => `Datei überschreitet das Limit von ${maxMb} MB`,
+    lowResolution:
+      'Dieses Bild kann in dieser Größe verpixelt wirken. Größeres Bild verwenden oder herauszoomen.',
   },
   breadcrumbs: {
     label: 'Brotkrümelnavigation',

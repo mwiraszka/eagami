@@ -23,6 +23,8 @@ const messages: EagamiMessages = {
     remove: 'Αφαίρεση εικόνας',
     invalidType: 'Το αρχείο πρέπει να είναι εικόνα',
     tooLarge: (maxMb: number) => `Το αρχείο υπερβαίνει το όριο των ${maxMb} MB`,
+    lowResolution:
+      'Η εικόνα ίσως φαίνεται κοκκώδης σε αυτό το μέγεθος. Χρησιμοποιήστε μεγαλύτερη εικόνα ή κάντε σμίκρυνση.',
   },
   breadcrumbs: {
     label: 'Διαδρομή πλοήγησης',

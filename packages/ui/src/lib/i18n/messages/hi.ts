@@ -23,6 +23,8 @@ const messages: EagamiMessages = {
     remove: 'छवि हटाएं',
     invalidType: 'फ़ाइल एक छवि होनी चाहिए',
     tooLarge: (maxMb: number) => `फ़ाइल ${maxMb} MB की सीमा से अधिक है`,
+    lowResolution:
+      'इस आकार में यह छवि पिक्सेलेटेड दिख सकती है। बड़ी छवि का उपयोग करें या ज़ूम आउट करें।',
   },
   breadcrumbs: {
     label: 'ब्रेडक्रंब',

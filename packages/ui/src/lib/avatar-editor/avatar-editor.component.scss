@@ -182,6 +182,22 @@
     }
   }
 
+  &__warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.375em;
+    max-width: var(--ea-avatar-editor-canvas, 200px);
+    margin: 0;
+    font-size: 0.8125em;
+    line-height: var(--line-height-normal);
+    color: var(--color-warning-text);
+  }
+
+  &__warning-icon {
+    flex-shrink: 0;
+    font-size: 1.25em;
+  }
+
   &__zoom-slider {
     width: 8em;
     height: 0.3em;

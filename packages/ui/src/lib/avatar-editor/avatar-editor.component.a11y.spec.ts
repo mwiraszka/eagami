@@ -7,10 +7,15 @@ import { AvatarEditorComponent, type AvatarEditorShape } from './avatar-editor.c
 
 @Component({
   imports: [AvatarEditorComponent],
-  template: ` <ea-avatar-editor [shape]="shape" /> `,
+  template: `
+    <ea-avatar-editor
+      [shape]="shape"
+      [aspectRatio]="aspectRatio" />
+  `,
 })
 class HostComponent {
   shape: AvatarEditorShape = 'circle';
+  aspectRatio = 1;
 }
 
 describe('AvatarEditorComponent a11y', () => {
@@ -34,6 +39,17 @@ describe('AvatarEditorComponent a11y', () => {
 
   it('has no detectable violations with the square shape', async () => {
     const el = await render(host => (host.shape = 'square'));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with a wide frame', async () => {
+    const el = await render(host => {
+      host.shape = 'square';
+      host.aspectRatio = 1.6;
+    });
 
     const results = await axe(el);
 

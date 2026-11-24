@@ -23,6 +23,8 @@ const messages: EagamiMessages = {
     remove: 'Fjarlægja mynd',
     invalidType: 'Skráin verður að vera mynd',
     tooLarge: (maxMb: number) => `Skráin fer yfir ${maxMb} MB mörkin`,
+    lowResolution:
+      'Myndin gæti virst kornótt í þessari stærð. Notaðu stærri mynd eða minnkaðu aðdráttinn.',
   },
   breadcrumbs: {
     label: 'Brauðmolaslóð',
