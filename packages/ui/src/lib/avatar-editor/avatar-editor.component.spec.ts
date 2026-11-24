@@ -353,6 +353,69 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
+  describe('Letterbox', () => {
+    function loadWide(letterbox: boolean): void {
+      fixture.componentRef.setInput('shape', 'square');
+      fixture.componentRef.setInput('canvasSize', 320);
+      fixture.componentRef.setInput('aspectRatio', 1.6);
+      fixture.componentRef.setInput('letterbox', letterbox);
+      loadImage();
+    }
+
+    it('keeps minZoom as the floor without letterbox', () => {
+      loadWide(false);
+
+      component.setZoom(0.1);
+
+      expect(component.lowestZoom()).toBe(1);
+      expect(component.zoom()).toBe(1);
+    });
+
+    it('zooms out until the whole image fits the frame', () => {
+      loadWide(true);
+
+      component.setZoom(0.1);
+      fixture.detectChanges();
+
+      // A 100×100 image covers a 320×200 frame at 3.2× and fits inside it at 2×
+      expect(component.lowestZoom()).toBe(0.625);
+      expect(component.zoom()).toBe(0.625);
+      expect(getZoomSlider().min).toBe('0.625');
+      expect(zoomOutBtn().disabled).toBe(true);
+      expect(ctxSpies.drawImage).toHaveBeenLastCalledWith(
+        expect.anything(),
+        60,
+        0,
+        200,
+        200,
+      );
+    });
+
+    it('fills the frame around the image', () => {
+      loadWide(true);
+
+      // Letterbox behind the image, the dimming mask and its cut-out, and the letterbox again under the redraw
+      expect(ctxSpies.fillRect).toHaveBeenCalledTimes(4);
+    });
+
+    it('fills the export around the image', async () => {
+      loadWide(true);
+      component.setZoom(0.1);
+      ctxSpies.fillRect.mockClear();
+
+      await component.exportCrop(640);
+
+      expect(ctxSpies.fillRect).toHaveBeenCalledWith(0, 0, 640, 400);
+      expect(ctxSpies.drawImage).toHaveBeenLastCalledWith(
+        expect.anything(),
+        120,
+        0,
+        400,
+        400,
+      );
+    });
+  });
+
   describe('Low resolution warning', () => {
     function warning(): HTMLElement | null {
       return fixture.nativeElement.querySelector('.ea-avatar-editor__warning');

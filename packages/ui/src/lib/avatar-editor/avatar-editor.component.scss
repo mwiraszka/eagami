@@ -1,6 +1,11 @@
 @use '../../styles/mixins' as ea;
 
 .ea-avatar-editor {
+  --_ea-avatar-editor-letterbox: var(
+    --ea-avatar-editor-letterbox,
+    var(--color-neutral-950)
+  );
+
   display: inline-flex;
   flex-direction: column;
   align-items: center;

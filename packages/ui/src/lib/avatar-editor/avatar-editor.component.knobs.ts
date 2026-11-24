@@ -16,6 +16,7 @@ export const AVATAR_EDITOR_KNOBS: ComponentKnobs = {
     displayWidth: { control: 'number', unit: 'px', min: 0, max: 4000, maxLength: 4 },
     minZoom: { control: 'number', min: 1, max: 10, maxLength: 2 },
     maxZoom: { control: 'number', min: 1, max: 10, maxLength: 2 },
+    letterbox: { control: 'boolean' },
     loading: { control: 'boolean' },
     cropped: { action: 'cropped' },
     removed: { action: 'removed' },
@@ -30,6 +31,7 @@ export const AVATAR_EDITOR_KNOBS: ComponentKnobs = {
     displayWidth: 0,
     minZoom: 1,
     maxZoom: 3,
+    letterbox: false,
     loading: false,
   },
 };
