@@ -2272,6 +2272,8 @@ export const frFR: WebMessages = {
               'Qualité JPEG/WebP utilisée lors de l’exportation de l’image recadrée, entre 0 et 1.',
             exportType:
               'Type MIME du blob d’image exporté (par ex. image/png ou image/jpeg).',
+            letterbox:
+              'Permet de dézoomer l’image jusqu’à ce qu’elle tienne entière dans le cadre, le reste du cadre étant rempli avec --ea-avatar-editor-letterbox.',
             loading:
               'Affiche un squelette de chargement pendant qu’une ressource externe se charge.',
             maxFileSize:

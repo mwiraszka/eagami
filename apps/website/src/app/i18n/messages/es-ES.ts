@@ -2271,6 +2271,8 @@ export const esES: WebMessages = {
               'Calidad JPEG/WebP al exportar la imagen recortada, entre 0 y 1.',
             exportType:
               'Tipo MIME del blob de imagen exportado (p. ej. image/png o image/jpeg).',
+            letterbox:
+              'Permite alejar la imagen hasta que quepa entera en el marco y rellena el resto del marco con --ea-avatar-editor-letterbox.',
             loading:
               'Muestra un esqueleto de carga mientras se carga un recurso externo.',
             maxFileSize:

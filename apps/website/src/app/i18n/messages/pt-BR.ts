@@ -2233,6 +2233,8 @@ export const ptBR: WebMessages = {
               'Qualidade JPEG/WebP usada ao exportar a imagem recortada, entre 0 e 1.',
             exportType:
               'Tipo MIME do blob de imagem exportado (por exemplo, image/png ou image/jpeg).',
+            letterbox:
+              'Permite diminuir o zoom até a imagem caber inteira no quadro, preenchendo o resto do quadro com --ea-avatar-editor-letterbox.',
             loading:
               'Mostra uma sobreposição de esqueleto enquanto um recurso externo está carregando.',
             maxFileSize:

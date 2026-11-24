@@ -2227,6 +2227,8 @@ export const pl: WebMessages = {
               'Jakość JPEG/WebP przy eksporcie przyciętego obrazu, w przedziale 0-1.',
             exportType:
               'Typ MIME eksportowanego bloba obrazu (np. image/png lub image/jpeg).',
+            letterbox:
+              'Pozwala pomniejszyć obraz, aż zmieści się w całości w ramce, a resztę ramki wypełnia kolorem --ea-avatar-editor-letterbox.',
             loading:
               'Wyświetla szkielet ładowania, gdy zewnętrzny zasób jest wczytywany.',
             maxFileSize:

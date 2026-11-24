@@ -2139,6 +2139,8 @@ export const ar: WebMessages = {
               'جودة JPEG/WebP المستخدمة عند تصدير الصورة المقصوصة، بين 0 و1.',
             exportType:
               'نوع MIME لـ blob الصورة المُصدَّرة (مثل image/png أو image/jpeg).',
+            letterbox:
+              'يتيح تصغير الصورة حتى تتسع كاملةً داخل الإطار، ويملأ باقي الإطار باللون --ea-avatar-editor-letterbox.',
             loading: 'يُظهِر تراكب هيكل عظمي أثناء تحميل مورد خارجي.',
             maxFileSize:
               'الحجم الأقصى المسموح به للملف بالبايت؛ الملفات فوق هذا الحد تُطلِق errored.',
