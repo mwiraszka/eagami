@@ -51,7 +51,9 @@ const OFFSET_TOLERANCE = 0.5;
 /**
  * Canvas-based image editor for cropping avatars. Supports drag-and-drop
  * upload, mouse/touch panning, zoom via slider or scroll wheel, and exports
- * the cropped image as either a `Blob` or a data URL.
+ * the cropped image as either a `Blob` or a data URL. With `letterbox` on, the
+ * image can be zoomed out until it fits the frame whole, and
+ * `--ea-avatar-editor-letterbox` fills the frame around it.
  */
 @Component({
   selector: 'ea-avatar-editor',
@@ -72,6 +74,7 @@ const OFFSET_TOLERANCE = 0.5;
   encapsulation: ViewEncapsulation.None,
 })
 export class AvatarEditorComponent implements OnDestroy {
+  readonly rootEl = viewChild<ElementRef<HTMLElement>>('rootEl');
   readonly canvasEl = viewChild<ElementRef<HTMLCanvasElement>>('canvasEl');
   readonly fileInputEl = viewChild<ElementRef<HTMLInputElement>>('fileInputEl');
   protected readonly i18n = inject(EagamiI18nService);
@@ -88,6 +91,7 @@ export class AvatarEditorComponent implements OnDestroy {
   readonly exportQuality = input<number>(0.92);
   readonly exportType = input<string>('image/png');
   readonly displayWidth = input<number | undefined>(undefined);
+  readonly letterbox = input<boolean>(false);
 
   readonly cropState = input<AvatarEditorCropState | null | undefined>();
 
@@ -115,6 +119,19 @@ export class AvatarEditorComponent implements OnDestroy {
   readonly frameHeight = computed(() =>
     Math.round(this.canvasSize() / this.aspectRatio()),
   );
+  /** Lowest zoom the controls reach, down to the whole image fitting the frame when `letterbox` is on. */
+  readonly lowestZoom = computed(() => {
+    const imageSize = this.imageSize();
+    if (!this.letterbox() || !imageSize) {
+      return this.minZoom();
+    }
+    const fitScale = Math.min(
+      this.canvasSize() / imageSize.width,
+      this.frameHeight() / imageSize.height,
+    );
+    const fitZoom = fitScale / this.scaleFor(imageSize.width, imageSize.height, 1);
+    return Math.min(this.minZoom(), fitZoom);
+  });
   /** True when the part of the image inside the frame is narrower than `displayWidth`, so the exported crop would be upscaled. */
   readonly isLowResolution = computed(() => {
     const displayWidth = this.displayWidth();
@@ -177,6 +194,7 @@ export class AvatarEditorComponent implements OnDestroy {
     effect(() => {
       this.canvasSize();
       this.aspectRatio();
+      this.letterbox();
       if (this.image) {
         // Offsets were computed against the previous frame, so a shrink would
         // otherwise leave the image drawn outside it with a gap showing
@@ -526,6 +544,11 @@ export class AvatarEditorComponent implements OnDestroy {
         ctx.clip();
       }
 
+      if (this.letterbox()) {
+        ctx.fillStyle = this.letterboxColor();
+        ctx.fillRect(0, 0, exportWidth, exportHeight);
+      }
+
       const { drawX, drawY, drawW, drawH } = this.getDrawParams();
       ctx.drawImage(
         this.image,
@@ -710,8 +733,10 @@ export class AvatarEditorComponent implements OnDestroy {
   }
 
   private applyZoom(value: number): void {
-    const clamped = Math.min(this.maxZoom(), Math.max(this.minZoom(), value));
-    this.zoom.set(Math.round(clamped * 100) / 100);
+    const lowest = this.lowestZoom();
+    const clamped = Math.min(this.maxZoom(), Math.max(lowest, value));
+    // The floor stays unrounded, so an image zoomed fully out fits the frame exactly
+    this.zoom.set(clamped === lowest ? lowest : Math.round(clamped * 100) / 100);
   }
 
   private clampOffset(): void {
@@ -720,8 +745,23 @@ export class AvatarEditorComponent implements OnDestroy {
     }
     const { drawW, drawH } = this.getDrawParams();
 
-    this.offsetX = Math.min(0, Math.max(this.canvasSize() - drawW, this.offsetX));
-    this.offsetY = Math.min(0, Math.max(this.frameHeight() - drawH, this.offsetY));
+    this.offsetX = this.clampAxis(this.offsetX, this.canvasSize(), drawW);
+    this.offsetY = this.clampAxis(this.offsetY, this.frameHeight(), drawH);
+  }
+
+  // An image no wider (or taller) than the frame is centred on that axis instead of panned
+  private clampAxis(offset: number, frame: number, drawn: number): number {
+    if (drawn <= frame) {
+      return (frame - drawn) / 2;
+    }
+    return Math.min(0, Math.max(frame - drawn, offset));
+  }
+
+  private letterboxColor(): string {
+    const root = this.rootEl()?.nativeElement;
+    return root
+      ? getComputedStyle(root).getPropertyValue('--_ea-avatar-editor-letterbox').trim()
+      : '';
   }
 
   private draw(): void {
@@ -737,6 +777,12 @@ export class AvatarEditorComponent implements OnDestroy {
     canvas.height = height;
 
     ctx.clearRect(0, 0, width, height);
+
+    const letterbox = this.letterbox() ? this.letterboxColor() : null;
+    if (letterbox !== null) {
+      ctx.fillStyle = letterbox;
+      ctx.fillRect(0, 0, width, height);
+    }
 
     const { drawX, drawY, drawW, drawH } = this.getDrawParams();
     ctx.drawImage(this.image, drawX, drawY, drawW, drawH);
@@ -757,6 +803,10 @@ export class AvatarEditorComponent implements OnDestroy {
 
     ctx.globalCompositeOperation = 'destination-over';
     ctx.drawImage(this.image, drawX, drawY, drawW, drawH);
+    if (letterbox !== null) {
+      ctx.fillStyle = letterbox;
+      ctx.fillRect(0, 0, width, height);
+    }
     ctx.globalCompositeOperation = 'source-over';
   }
 

@@ -2169,6 +2169,8 @@ export const en: WebMessages = {
               'JPEG/WebP quality used when exporting the cropped image, between 0 and 1.',
             exportType:
               'MIME type of the exported image blob (e.g. image/png or image/jpeg).',
+            letterbox:
+              'Lets the image be zoomed out until it fits the frame whole, filling the frame around it with --ea-avatar-editor-letterbox.',
             loading: 'Shows a skeleton overlay while an external resource is loading.',
             maxFileSize:
               'Maximum allowed file size in bytes; files above this limit emit errored.',

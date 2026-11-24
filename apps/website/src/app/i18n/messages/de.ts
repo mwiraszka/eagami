@@ -2268,6 +2268,8 @@ export const de: WebMessages = {
               'JPEG/WebP-Qualität, die beim Exportieren des zugeschnittenen Bildes verwendet wird, zwischen 0 und 1.',
             exportType:
               'MIME-Typ des exportierten Bild-Blobs (z.B. image/png oder image/jpeg).',
+            letterbox:
+              'Erlaubt, das Bild herauszuzoomen, bis es vollständig in den Rahmen passt, und füllt den Rest des Rahmens mit --ea-avatar-editor-letterbox.',
             loading:
               'Zeigt ein Skeleton-Overlay, während eine externe Ressource geladen wird.',
             maxFileSize:

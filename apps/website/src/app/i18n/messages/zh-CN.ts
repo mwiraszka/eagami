@@ -2037,6 +2037,8 @@ export const zhCN: WebMessages = {
               '导出裁剪图将显示的像素宽度；当框内图片窄于此宽度、会出现像素化时，编辑器会给出警告。',
             exportQuality: '导出裁剪图片时使用的 JPEG/WebP 质量，介于 0 和 1 之间。',
             exportType: '导出图片 blob 的 MIME 类型（例如 image/png 或 image/jpeg）。',
+            letterbox:
+              '允许缩小图片直到其完整放入框内，并用 --ea-avatar-editor-letterbox 填充框内其余部分。',
             loading: '在外部资源加载时显示骨架覆盖层。',
             maxFileSize: '允许的最大文件大小（字节）；超过此限制的文件会发出 errored。',
             maxZoom: '用户可达到的最大缩放倍数。',

@@ -2250,6 +2250,8 @@ export const nl: WebMessages = {
               'JPEG/WebP-kwaliteit gebruikt bij het exporteren van de bijgesneden afbeelding, tussen 0 en 1.',
             exportType:
               'MIME-type van de geëxporteerde afbeeldingsblob (bijv. image/png of image/jpeg).',
+            letterbox:
+              'Laat de afbeelding uitzoomen tot ze helemaal in het kader past en vult de rest van het kader met --ea-avatar-editor-letterbox.',
             loading: 'Toont een skeletoverlay terwijl een externe bron wordt geladen.',
             maxFileSize:
               'Maximaal toegestane bestandsgrootte in bytes; bestanden boven deze limiet zenden errored uit.',

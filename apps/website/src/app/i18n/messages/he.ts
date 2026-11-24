@@ -2109,6 +2109,8 @@ export const he: WebMessages = {
             exportQuality: 'איכות JPEG/WebP המשמשת בעת ייצוא התמונה החתוכה, בין 0 ל-1.',
             exportType:
               'סוג MIME של ה-blob של התמונה המיוצאת (למשל image/png או image/jpeg).',
+            letterbox:
+              'מאפשר להקטין את התמונה עד שהיא נכנסת במלואה למסגרת, וממלא את שאר המסגרת בצבע --ea-avatar-editor-letterbox.',
             loading: 'מציג שכבת-על של שלד בזמן שמשאב חיצוני נטען.',
             maxFileSize:
               'גודל הקובץ המרבי המותר בבתים; קבצים מעל מגבלה זו פולטים errored.',

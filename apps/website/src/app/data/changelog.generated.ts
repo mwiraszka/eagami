@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.90.0',
+    date: '2026-11-24',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `letterbox` to the avatar editor, which lets an image be zoomed out until it fits the frame whole, with `--ea-avatar-editor-letterbox` filling the frame around it.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.89.0',
     date: '2026-11-24',
     sections: [

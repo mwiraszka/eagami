@@ -2227,6 +2227,8 @@ export const is: WebMessages = {
               'JPEG/WebP gæði notuð við útflutning skurðmyndarinnar, milli 0 og 1.',
             exportType:
               'MIME tegund útfluttu myndarklessunnar (t.d. image/png eða image/jpeg).',
+            letterbox:
+              'Leyfir að minnka myndina þar til hún passar öll í rammann og fyllir afganginn af rammanum með --ea-avatar-editor-letterbox.',
             loading: 'Sýnir beinagrindaryfirlag á meðan ytri tilföng eru að hlaðast.',
             maxFileSize:
               'Hámarksleyfileg skráarstærð í bætum; skrár yfir þessum mörkum senda errored.',

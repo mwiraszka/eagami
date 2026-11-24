@@ -29,6 +29,7 @@ interface AvatarEditorKnobState {
   displayWidth: number;
   minZoom: number;
   maxZoom: number;
+  letterbox: boolean;
   loading: boolean;
 }
 
