@@ -43,7 +43,7 @@
     var(--color-primary-600) 14%,
     transparent
   );
-  --web-color-bandActiveBg: var(--color-neutral-0);
+  --web-color-bandActiveBg: var(--web-color-wash);
   --web-color-bandActiveRing: color-mix(
     in srgb,
     var(--color-primary-600) 30%,
