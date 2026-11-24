@@ -25,54 +25,46 @@
   gap: 12px;
 }
 
-// Names the section of the site the page belongs to, next to the brand it sits under
-.web-header__section {
-  font-size: 16px;
-  line-height: var(--line-height-none);
-  color: var(--color-text-secondary);
+.web-header__link {
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  transition: color 0.15s ease;
+  border-radius: 4px;
+  color: var(--color-text-primary);
+  transition: opacity 0.15s ease;
+
+  // Low enough to read as inactive, high enough to keep the label at AA contrast
+  &--muted {
+    opacity: 0.6;
+    filter: grayscale(1);
+  }
 
   &:hover,
+  &:focus-visible,
   &.web-link-pending {
-    color: var(--color-text-primary);
+    opacity: 1;
+    filter: none;
   }
 
   &:focus-visible {
-    border-radius: 4px;
     outline: 2px solid var(--color-border-focus);
     outline-offset: 4px;
   }
-}
 
-.web-header__dot {
-  @include mixins.separator-dot;
-}
-
-// The docs' own menu bar names the section on narrow screens
-.web-header__section,
-.web-header__dot {
-  @include mixins.respond-to('lt-md') {
-    display: none;
-  }
-}
-
-.web-header__brand {
-  display: inline-flex;
-  align-items: center;
-  color: var(--color-text-primary);
-  text-decoration: none;
-  transition: opacity 1.5s ease;
-
-  &--hidden {
-    opacity: 0;
-    pointer-events: none;
-    transition: none;
+  &--section {
+    font-size: 16px;
+    line-height: var(--line-height-none);
   }
 
   @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
+}
+
+.web-header__divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--web-color-separator);
 }
 
 .web-header__nav {
