@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.90.1',
+    date: '2026-11-25',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Fill in `getAnimations()` in `installNativeDialogShim()`, which a closing drawer now reads to follow its slide out.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Dismiss a drawer the moment its slide out ends, and at once when it has nothing left to slide, rather than after a fixed wait.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.90.0',
     date: '2026-11-24',
     sections: [

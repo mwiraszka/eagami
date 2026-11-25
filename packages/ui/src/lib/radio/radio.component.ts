@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +19,6 @@ import { RadioGroupComponent } from './radio-group.component';
   templateUrl: './radio.component.html',
   styleUrl: './radio.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass],
 })
 export class RadioComponent {
   private readonly group = inject(RadioGroupComponent);

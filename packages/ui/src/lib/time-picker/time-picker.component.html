@@ -12,11 +12,11 @@
   <div class="ea-time-picker">
     <div
       class="ea-time-picker__trigger-wrapper"
-      [ngClass]="wrapperClasses()">
+      [class]="wrapperClasses()">
       <div
         #triggerEl
         class="ea-time-picker__trigger"
-        [ngClass]="triggerClasses()"
+        [class]="triggerClasses()"
         (click)="onTriggerClick()">
         <ea-icon-clock
           class="ea-time-picker__trigger-icon"
@@ -72,7 +72,7 @@
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-time-picker__popover"
-        [ngClass]="popoverClasses()"
+        [class]="popoverClasses()"
         (keydown.escape)="onPopoverEscape($event)">
         <div class="ea-time-picker__column">
           <button

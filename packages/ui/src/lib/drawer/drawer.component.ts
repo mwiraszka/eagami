@@ -1,4 +1,4 @@
-import { NgClass, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import {
   type AfterContentChecked,
   ChangeDetectionStrategy,
@@ -61,6 +61,22 @@ const PUSH_PROPERTY: Record<DrawerPosition, string> = {
 // one so a position change never leaves a stale offset that shifts content off.
 const PUSH_PROPERTIES = Object.values(PUSH_PROPERTY);
 
+// getAnimations() flushes pending style first, so a transition started by the
+// caller's last class or style change is already among those returned
+function runningTransitions(
+  el: Element,
+  matches: (property: string) => boolean,
+): CSSTransition[] {
+  return el
+    .getAnimations()
+    .filter(
+      (animation): animation is CSSTransition =>
+        animation instanceof CSSTransition &&
+        animation.playState === 'running' &&
+        matches(animation.transitionProperty),
+    );
+}
+
 /**
  * Side panel backed by the native `<dialog>` element for browser-managed
  * focus trapping. Slides in from a configurable edge, supports backdrop and
@@ -73,7 +89,7 @@ const PUSH_PROPERTIES = Object.values(PUSH_PROPERTY);
  */
 @Component({
   selector: 'ea-drawer',
-  imports: [NgClass, XIconComponent],
+  imports: [XIconComponent],
   templateUrl: './drawer.component.html',
   styleUrl: './drawer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -85,15 +101,13 @@ export class DrawerComponent implements AfterContentChecked {
   private readonly headerEl = viewChild<ElementRef<HTMLElement>>('headerEl');
   private previouslyFocused: HTMLElement | null = null;
   private pushedTarget: HTMLElement | null = null;
-  private pushCleanupTimer: ReturnType<typeof setTimeout> | null = null;
+  private pushRelease: Promise<unknown> | null = null;
   // Which modality the open dialog was shown with, so a `mode` change while it
   // is open can reopen it in the matching modality. `null` means it is closed.
   private shownAsModal: boolean | null = null;
   private reopening = false;
-  private isLeaving = false;
+  private exitSlide: CSSTransition | null = null;
   private pushRaf: number | null = null;
-  private leaveTimer: ReturnType<typeof setTimeout> | null = null;
-  private leaveOnEnd: ((event: TransitionEvent) => void) | null = null;
   private documentClickListener: ((event: MouseEvent) => void) | null = null;
   protected readonly i18n = inject(EagamiI18nService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
@@ -169,7 +183,7 @@ export class DrawerComponent implements AfterContentChecked {
           this.showDialog(drawerRef, wantModal);
           this.enter(true);
           this.opened.emit();
-        } else if (this.isLeaving) {
+        } else if (this.exitSlide) {
           // Reopened mid-exit: cancel the pending close and slide back in
           this.enter(true);
         } else if (this.shownAsModal !== wantModal) {
@@ -242,49 +256,48 @@ export class DrawerComponent implements AfterContentChecked {
     });
   }
 
-  // Slides the panel back off its edge, then closes the dialog once the panel's
-  // transform transition ends. Collapses to a synchronous close when nothing
-  // animates (no animation, reduced motion, or no measurable duration).
+  // Slides the panel back off its edge, then closes the dialog once that slide
+  // finishes. Closes at once when no slide starts (animation `none`, reduced
+  // motion, or a panel that never slid in).
   private leave(dialog: HTMLDialogElement): void {
-    if (this.isLeaving) {
+    if (this.exitSlide) {
       return;
     }
-    const panel = this.panelEl()?.nativeElement;
     dialog.classList.remove('ea-drawer--entered');
-    const duration = panel ? this.transitionMs(panel) : 0;
-    if (this.animation() === 'none' || duration <= 0 || !panel) {
-      this.finishClose(dialog);
-      return;
-    }
-    this.isLeaving = true;
-    const settle = (): void => {
-      if (!this.isLeaving) {
-        return;
-      }
-      this.cancelLeave();
-      this.finishClose(dialog);
-    };
-    this.leaveOnEnd = (event: TransitionEvent): void => {
-      if (event.target === panel && event.propertyName === 'transform') {
-        settle();
-      }
-    };
-    panel.addEventListener('transitionend', this.leaveOnEnd);
-    this.leaveTimer = setTimeout(settle, duration + 50);
+    this.followExitSlide(dialog);
   }
 
-  // Cancels a pending exit (its transitionend listener and fallback timer) so a
-  // reopen mid-exit does not later close the drawer.
+  // A slide cancelled by anything but a reopen may have been retargeted into a
+  // new one, so the panel is checked again rather than closed outright
+  private followExitSlide(dialog: HTMLDialogElement): void {
+    const panel = this.panelEl()?.nativeElement;
+    const slide = panel
+      ? runningTransitions(panel, property => property === 'transform').at(0)
+      : undefined;
+    if (!slide) {
+      this.exitSlide = null;
+      this.finishClose(dialog);
+      return;
+    }
+    this.exitSlide = slide;
+    slide.finished.then(
+      () => {
+        if (this.exitSlide === slide) {
+          this.exitSlide = null;
+          this.finishClose(dialog);
+        }
+      },
+      () => {
+        if (this.exitSlide === slide) {
+          this.followExitSlide(dialog);
+        }
+      },
+    );
+  }
+
+  // Drops a pending exit so a reopen mid-exit does not later close the drawer
   private cancelLeave(): void {
-    this.isLeaving = false;
-    if (this.leaveTimer !== null) {
-      clearTimeout(this.leaveTimer);
-      this.leaveTimer = null;
-    }
-    if (this.leaveOnEnd) {
-      this.panelEl()?.nativeElement.removeEventListener('transitionend', this.leaveOnEnd);
-      this.leaveOnEnd = null;
-    }
+    this.exitSlide = null;
   }
 
   private finishClose(dialog: HTMLDialogElement): void {
@@ -298,15 +311,6 @@ export class DrawerComponent implements AfterContentChecked {
     this.previouslyFocused?.focus?.();
     this.previouslyFocused = null;
     this.shownAsModal = null;
-  }
-
-  private transitionMs(el: HTMLElement): number {
-    const raw = getComputedStyle(el).transitionDuration.split(',')[0].trim();
-    const value = parseFloat(raw);
-    if (!Number.isFinite(value)) {
-      return 0;
-    }
-    return raw.endsWith('ms') ? value : value * 1000;
   }
 
   handleClose(): void {
@@ -346,10 +350,7 @@ export class DrawerComponent implements AfterContentChecked {
     if (this.pushRaf !== null) {
       cancelAnimationFrame(this.pushRaf);
     }
-    if (this.pushCleanupTimer !== null) {
-      clearTimeout(this.pushCleanupTimer);
-      this.pushCleanupTimer = null;
-    }
+    this.pushRelease = null;
     // Measure on the next frame, once the view reflects the current position and
     // size. Measuring synchronously reads the panel's previous dimensions, so a
     // `height:100%` side panel switched to `top` would push content down by the
@@ -397,17 +398,23 @@ export class DrawerComponent implements AfterContentChecked {
     if (!target) {
       return;
     }
-    // Reflow the content back, then strip the leftover transition once it
-    // settles. A timer (rather than `transitionend`) keeps cleanup deterministic
-    // when no transition fires, e.g. under reduced motion.
+    // Reflow the content back, then strip the leftover transition once that
+    // reflow finishes or is cancelled, or straight away when none runs
     this.clearPushProperties(target);
-    if (this.pushCleanupTimer !== null) {
-      clearTimeout(this.pushCleanupTimer);
-    }
-    this.pushCleanupTimer = setTimeout(() => {
+    const reflow = runningTransitions(target, property => property.startsWith('padding'));
+    if (reflow.length === 0) {
       target.style.removeProperty('transition');
-      this.pushCleanupTimer = null;
-    }, this.transitionMs(target));
+      return;
+    }
+    const release = Promise.allSettled(reflow.map(transition => transition.finished));
+    this.pushRelease = release;
+    release.then(() => {
+      if (this.pushRelease !== release) {
+        return;
+      }
+      this.pushRelease = null;
+      target.style.removeProperty('transition');
+    });
   }
 
   private clearPushProperties(target: HTMLElement): void {
@@ -417,14 +424,16 @@ export class DrawerComponent implements AfterContentChecked {
   }
 
   // Push mode has no modal backdrop, so an outside-click dismissal is wired to
-  // the document. Deferred a tick so the click that opened the drawer does not
-  // immediately close it.
+  // the document. The click that opened the drawer can still be on its way up
+  // to the document, and was stamped before the drawer opened, so only a click
+  // stamped later dismisses.
   private addPushDismiss(): void {
     if (this.documentClickListener || !this.isBrowser) {
       return;
     }
+    const wiredAt = performance.now();
     const listener = (event: MouseEvent): void => {
-      if (!this.closeOnBackdrop()) {
+      if (event.timeStamp <= wiredAt || !this.closeOnBackdrop()) {
         return;
       }
       const panel = this.panelEl()?.nativeElement;
@@ -439,11 +448,7 @@ export class DrawerComponent implements AfterContentChecked {
       this.handleClose();
     };
     this.documentClickListener = listener;
-    setTimeout(() => {
-      if (this.documentClickListener === listener) {
-        document.addEventListener('click', listener);
-      }
-    });
+    document.addEventListener('click', listener);
   }
 
   private removePushDismiss(): void {
@@ -459,10 +464,7 @@ export class DrawerComponent implements AfterContentChecked {
       cancelAnimationFrame(this.pushRaf);
       this.pushRaf = null;
     }
-    if (this.pushCleanupTimer !== null) {
-      clearTimeout(this.pushCleanupTimer);
-      this.pushCleanupTimer = null;
-    }
+    this.pushRelease = null;
     const target = this.pushedTarget;
     this.pushedTarget = null;
     if (target) {

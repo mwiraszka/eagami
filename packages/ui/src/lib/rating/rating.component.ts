@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -57,7 +57,7 @@ export type RatingSize = EaSize;
   host: {
     '[attr.aria-labelledby]': 'null',
   },
-  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass, NgComponentOutlet],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgComponentOutlet],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

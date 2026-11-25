@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -60,7 +59,6 @@ const LIST_KEYS = new Set(['ArrowDown', 'ArrowUp', 'Home', 'End', 'Enter', 'Esca
     ChevronDownIconComponent,
     FieldLabelComponent,
     FieldMessagesComponent,
-    NgClass,
     PopoverComponent,
     SearchIconComponent,
     XIconComponent,

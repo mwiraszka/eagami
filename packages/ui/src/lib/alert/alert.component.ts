@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -42,7 +42,6 @@ export type AlertLive = 'auto' | 'assertive' | 'polite' | 'off';
     CheckIconComponent,
     InfoIconComponent,
     XIconComponent,
-    NgClass,
     NgComponentOutlet,
   ],
 })

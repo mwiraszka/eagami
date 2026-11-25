@@ -15,7 +15,7 @@
       #triggerEl
       type="button"
       class="ea-dropdown__trigger"
-      [ngClass]="triggerClasses()"
+      [class]="triggerClasses()"
       [id]="id()"
       role="combobox"
       [disabled]="isDisabled()"
@@ -67,7 +67,7 @@
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-dropdown__menu"
-        [ngClass]="menuClasses()"
+        [class]="menuClasses()"
         role="none"
         (mousedown)="onMenuMousedown($event)">
         @if (searchable()) {
