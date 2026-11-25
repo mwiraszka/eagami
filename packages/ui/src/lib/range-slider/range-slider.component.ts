@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -58,7 +57,7 @@ const FORMAT_PLAIN = (value: number): string => `${value}`;
   host: {
     '[attr.aria-labelledby]': 'null',
   },
-  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

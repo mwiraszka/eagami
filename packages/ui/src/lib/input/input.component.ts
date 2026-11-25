@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -55,7 +55,6 @@ export type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url'
     EyeOffIconComponent,
     FieldLabelComponent,
     FieldMessagesComponent,
-    NgClass,
     NgComponentOutlet,
     TypedPlaceholderComponent,
     XIconComponent,

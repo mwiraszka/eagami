@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -48,7 +47,6 @@ export type AutocompleteSize = EaSize;
   imports: [
     FieldLabelComponent,
     FieldMessagesComponent,
-    NgClass,
     PopoverComponent,
     XIconComponent,
   ],

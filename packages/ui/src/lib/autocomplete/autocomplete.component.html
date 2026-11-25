@@ -12,7 +12,7 @@
   <div
     #anchorEl
     class="ea-autocomplete__wrapper"
-    [ngClass]="wrapperClasses()">
+    [class]="wrapperClasses()">
     <span class="ea-autocomplete__prefix">
       <ng-content select="[slot=prefix]" />
     </span>
@@ -80,7 +80,7 @@
     (closeRequested)="close()">
     <div
       class="ea-autocomplete__listbox"
-      [ngClass]="listboxClasses()">
+      [class]="listboxClasses()">
       @for (group of renderedGroups(); track $index) {
         <div
           class="ea-autocomplete__group"

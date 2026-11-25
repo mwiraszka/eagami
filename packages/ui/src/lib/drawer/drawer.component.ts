@@ -1,4 +1,4 @@
-import { NgClass, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import {
   type AfterContentChecked,
   ChangeDetectionStrategy,
@@ -73,7 +73,7 @@ const PUSH_PROPERTIES = Object.values(PUSH_PROPERTY);
  */
 @Component({
   selector: 'ea-drawer',
-  imports: [NgClass, XIconComponent],
+  imports: [XIconComponent],
   templateUrl: './drawer.component.html',
   styleUrl: './drawer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

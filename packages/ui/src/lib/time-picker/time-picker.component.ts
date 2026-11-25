@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -81,7 +80,6 @@ interface ParsedTime {
     ClockIconComponent,
     FieldLabelComponent,
     FieldMessagesComponent,
-    NgClass,
     PopoverComponent,
     XIconComponent,
   ],

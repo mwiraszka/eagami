@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,7 +23,7 @@ export type CardHeaderAlign = 'start' | 'center' | 'end';
  */
 @Component({
   selector: 'ea-card',
-  imports: [DividerComponent, NgClass],
+  imports: [DividerComponent],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
