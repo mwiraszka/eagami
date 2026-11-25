@@ -101,7 +101,7 @@ Pass `version` and `onReport` to log how each reload turned out, and check `isSt
 
 ## Testing
 
-`<ea-dialog>` and `<ea-drawer>` are built on the native `<dialog>` element, and `@eagami/ui/testing` keeps them working in jsdom, which lacks `showModal()` and `close()`. Call `installNativeDialogShim()` once from your test setup file:
+`<ea-dialog>` and `<ea-drawer>` are built on the native `<dialog>` element, and `@eagami/ui/testing` keeps them working in jsdom, which lacks `showModal()`, `close()` and `getAnimations()`. Call `installNativeDialogShim()` once from your test setup file:
 
 ```ts
 import { installNativeDialogShim } from '@eagami/ui/testing';

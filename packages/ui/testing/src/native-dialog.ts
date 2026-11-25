@@ -1,9 +1,10 @@
 /**
- * Fills in the native `<dialog>` methods jsdom leaves unimplemented, so a spec
- * can create a component that opens an `ea-dialog` or `ea-drawer` without the
- * test runner throwing on `showModal()` or `close()`. Call once from the test
- * setup file. Only missing methods are patched, so a runtime that implements
- * the element keeps its own behavior.
+ * Fills in the native `<dialog>` methods jsdom leaves unimplemented, and the
+ * `Element.getAnimations()` an `ea-drawer` reads to follow its slide out, so a
+ * spec can create a component that opens an `ea-dialog` or `ea-drawer` without
+ * the test runner throwing on `showModal()`, `close()` or a drawer closing.
+ * Call once from the test setup file. Only missing methods are patched, so a
+ * runtime that implements them keeps its own behavior.
  */
 export function installNativeDialogShim(): void {
   if (typeof HTMLDialogElement === 'undefined') {
@@ -31,5 +32,9 @@ export function installNativeDialogShim(): void {
       this.open = false;
       this.dispatchEvent(new Event('close'));
     };
+  }
+  // With no layout engine nothing ever transitions, which an empty list says
+  if (typeof Element.prototype.getAnimations !== 'function') {
+    Element.prototype.getAnimations = (): Animation[] => [];
   }
 }

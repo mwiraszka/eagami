@@ -3,7 +3,6 @@ import type { Mock } from 'vitest';
 import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { REAL_GET_COMPUTED_STYLE } from '../../test-setup';
 import {
   type DrawerAnimation,
   DrawerComponent,
@@ -23,7 +22,63 @@ beforeAll(() => {
   HTMLDialogElement.prototype.close = vi.fn(function (this: HTMLDialogElement) {
     this.removeAttribute('open');
   });
+  // With no layout engine nothing ever transitions, which an empty list says
+  if (typeof Element.prototype.getAnimations !== 'function') {
+    Element.prototype.getAnimations = (): Animation[] => [];
+  }
 });
+
+// happy-dom implements no Web Animations, so a spec stands in for a CSS
+// transition a style change would start, and finishes or cancels it by hand
+class FakeTransition extends EventTarget implements CSSTransition {
+  currentTime: CSSNumberish | null = null;
+  effect: AnimationEffect | null = null;
+  id = '';
+  oncancel: CSSTransition['oncancel'] = null;
+  onfinish: CSSTransition['onfinish'] = null;
+  onremove: CSSTransition['onremove'] = null;
+  readonly overallProgress = null;
+  readonly pending = false;
+  playState: AnimationPlayState = 'running';
+  playbackRate = 1;
+  readonly replaceState: AnimationReplaceState = 'active';
+  startTime: CSSNumberish | null = null;
+  timeline: AnimationTimeline | null = null;
+  readonly ready: Promise<Animation> = Promise.resolve(this);
+  readonly finished: Promise<Animation>;
+  private resolveFinished: (animation: Animation) => void = () => undefined;
+  private rejectFinished: (reason: DOMException) => void = () => undefined;
+
+  constructor(readonly transitionProperty: string) {
+    super();
+    this.finished = new Promise((resolve, reject) => {
+      this.resolveFinished = resolve;
+      this.rejectFinished = reject;
+    });
+  }
+
+  finish(): void {
+    this.playState = 'finished';
+    this.resolveFinished(this);
+  }
+
+  cancel(): void {
+    this.playState = 'idle';
+    this.rejectFinished(new DOMException('The transition was cancelled', 'AbortError'));
+  }
+
+  commitStyles(): void {}
+
+  pause(): void {}
+
+  persist(): void {}
+
+  play(): void {}
+
+  reverse(): void {}
+
+  updatePlaybackRate(): void {}
+}
 
 @Component({
   selector: 'ea-test-host',
@@ -104,8 +159,16 @@ describe('DrawerComponent', () => {
     return new Promise(resolve => requestAnimationFrame(() => resolve()));
   }
 
+  // Lets every settled transition's promise callbacks run
   function nextTask(): Promise<void> {
     return new Promise(resolve => setTimeout(resolve));
+  }
+
+  // Answers `getAnimations()` on `el` with the transitions a style change would
+  // have started there
+  function stubTransitions(el: Element, ...transitions: FakeTransition[]): void {
+    vi.stubGlobal('CSSTransition', FakeTransition);
+    vi.spyOn(el, 'getAnimations').mockReturnValue(transitions);
   }
 
   // Only the push paddings that are actually set, so a test can assert both the
@@ -139,15 +202,12 @@ describe('DrawerComponent', () => {
     return target;
   }
 
-  async function openInPushMode(): Promise<void> {
+  function openInPushMode(): void {
     host.mode.set('push');
     fixture.detectChanges();
     stubPanelExtent(PANEL_WIDTH, PANEL_HEIGHT);
     host.isOpen.set(true);
     fixture.detectChanges();
-    // The outside-dismiss listener is registered a tick later so the click that
-    // opened the drawer does not immediately close it
-    await nextTask();
   }
 
   beforeEach(async () => {
@@ -168,6 +228,7 @@ describe('DrawerComponent', () => {
   afterEach(() => {
     createdTargets.splice(0).forEach(target => target.remove());
     document.body.removeAttribute('style');
+    vi.unstubAllGlobals();
   });
 
   describe('Rendering', () => {
@@ -502,7 +563,7 @@ describe('DrawerComponent', () => {
     );
 
     it('re-measures onto the new side when position changes while open', async () => {
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       host.position.set('top');
@@ -513,7 +574,7 @@ describe('DrawerComponent', () => {
     });
 
     it('re-measures the offset when size changes while open', async () => {
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       stubPanelExtent(PANEL_WIDTH * 2, PANEL_HEIGHT);
@@ -528,7 +589,7 @@ describe('DrawerComponent', () => {
       const target = createPushTarget();
       host.pushTarget.set(target);
 
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       expect(pushPaddings(target)).toEqual({ 'padding-right': `${PANEL_WIDTH}px` });
@@ -539,7 +600,7 @@ describe('DrawerComponent', () => {
       const target = createPushTarget('push-region');
       host.pushTarget.set('#push-region');
 
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       expect(pushPaddings(target)).toEqual({ 'padding-right': `${PANEL_WIDTH}px` });
@@ -550,7 +611,7 @@ describe('DrawerComponent', () => {
       const first = createPushTarget();
       const second = createPushTarget();
       host.pushTarget.set(first);
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       host.pushTarget.set(second);
@@ -561,13 +622,71 @@ describe('DrawerComponent', () => {
       expect(pushPaddings(first)).toEqual({});
     });
 
-    it('strips the leftover transition once the reflow has settled', async () => {
-      await openInPushMode();
+    it('strips the leftover transition at once when no reflow runs', async () => {
+      openInPushMode();
       await nextFrame();
 
       host.isOpen.set(false);
       fixture.detectChanges();
+
+      expect(document.body.style.transition).toBe('');
+    });
+
+    it('keeps the transition until the reflow back has finished', async () => {
+      openInPushMode();
+      await nextFrame();
+      const reflow = new FakeTransition('padding-right');
+      stubTransitions(document.body, reflow);
+      host.isOpen.set(false);
+      fixture.detectChanges();
       await nextTask();
+
+      expect(document.body.style.transition).toContain('padding');
+
+      reflow.finish();
+      await nextTask();
+
+      expect(document.body.style.transition).toBe('');
+    });
+
+    it('strips the transition once the reflow back is cancelled', async () => {
+      openInPushMode();
+      await nextFrame();
+      const reflow = new FakeTransition('padding-right');
+      stubTransitions(document.body, reflow);
+      host.isOpen.set(false);
+      fixture.detectChanges();
+
+      reflow.cancel();
+      await nextTask();
+
+      expect(document.body.style.transition).toBe('');
+    });
+
+    it('keeps the transition when a reopen cuts the reflow back short', async () => {
+      openInPushMode();
+      await nextFrame();
+      const reflow = new FakeTransition('padding-right');
+      stubTransitions(document.body, reflow);
+      host.isOpen.set(false);
+      fixture.detectChanges();
+
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      await nextFrame();
+      reflow.cancel();
+      await nextTask();
+
+      expect(document.body.style.transition).toContain('padding');
+    });
+
+    it('ignores transitions on properties other than padding', async () => {
+      openInPushMode();
+      await nextFrame();
+      stubTransitions(document.body, new FakeTransition('color'));
+
+      host.isOpen.set(false);
+      fixture.detectChanges();
 
       expect(document.body.style.transition).toBe('');
     });
@@ -575,7 +694,7 @@ describe('DrawerComponent', () => {
     it('pushes nothing when the pushTarget selector matches no element', async () => {
       host.pushTarget.set('#no-such-region');
 
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       expect(pushPaddings()).toEqual({});
@@ -583,7 +702,7 @@ describe('DrawerComponent', () => {
     });
 
     it('strips the offset and transition when destroyed while pushed', async () => {
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       fixture.destroy();
@@ -595,7 +714,7 @@ describe('DrawerComponent', () => {
     it('leaves no transition on the target when animation is none', async () => {
       host.animation.set('none');
 
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       expect(pushPaddings()).toEqual({ 'padding-right': `${PANEL_WIDTH}px` });
@@ -605,7 +724,7 @@ describe('DrawerComponent', () => {
     it('drives the target reflow with the linear curve for the linear animation', async () => {
       host.animation.set('linear');
 
-      await openInPushMode();
+      openInPushMode();
       await nextFrame();
 
       expect(document.body.style.transition).toContain('var(--ease-linear)');
@@ -622,8 +741,8 @@ describe('DrawerComponent', () => {
       fixture.detectChanges();
     }
 
-    it('closes on a click outside the panel', async () => {
-      await openInPushMode();
+    it('closes on a click outside the panel', () => {
+      openInPushMode();
 
       press(document.body);
 
@@ -631,33 +750,51 @@ describe('DrawerComponent', () => {
       expect(host.closedCount()).toBe(1);
     });
 
-    it('stays open for a click inside the panel', async () => {
-      await openInPushMode();
+    it('stays open for a click inside the panel', () => {
+      openInPushMode();
 
       press(getPanel());
 
       expect(host.isOpen()).toBe(true);
     });
 
-    it('stays open when a drag out of the panel ends outside it', async () => {
-      await openInPushMode();
+    it('stays open when a drag out of the panel ends outside it', () => {
+      openInPushMode();
 
       press(getPanel(), document.body);
 
       expect(host.isOpen()).toBe(true);
     });
 
-    it('ignores an outside click when closeOnBackdrop is false', async () => {
+    it('ignores an outside click when closeOnBackdrop is false', () => {
       host.closeOnBackdrop.set(false);
-      await openInPushMode();
+      openInPushMode();
 
       press(document.body);
 
       expect(host.isOpen()).toBe(true);
     });
 
-    it('stops listening on the document once the drawer has closed', async () => {
-      await openInPushMode();
+    it('ignores the click that opened the drawer as it reaches the document', () => {
+      host.mode.set('push');
+      fixture.detectChanges();
+      const trigger = document.createElement('button');
+      document.body.appendChild(trigger);
+      createdTargets.push(trigger);
+      trigger.addEventListener('click', () => {
+        host.isOpen.set(true);
+        fixture.detectChanges();
+      });
+
+      trigger.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+      expect(host.closedCount()).toBe(0);
+    });
+
+    it('stops listening on the document once the drawer has closed', () => {
+      openInPushMode();
       host.isOpen.set(false);
       fixture.detectChanges();
 
@@ -666,10 +803,9 @@ describe('DrawerComponent', () => {
       expect(host.closedCount()).toBe(0);
     });
 
-    it('does not wire outside dismissal in overlay mode', async () => {
+    it('does not wire outside dismissal in overlay mode', () => {
       host.isOpen.set(true);
       fixture.detectChanges();
-      await nextTask();
 
       press(document.body);
 
@@ -719,92 +855,82 @@ describe('DrawerComponent', () => {
   });
 
   describe('Animated exit', () => {
-    // jsdom resolves the panel's token-driven transition to no duration, so the
-    // animated exit only runs against an explicitly stubbed duration
-    function stubPanelDuration(duration: string): void {
-      const stubbed = document.createElement('div').style;
-      stubbed.transitionDuration = duration;
-      const panel = getPanel();
-      vi.spyOn(window, 'getComputedStyle').mockImplementation((element, pseudoElement) =>
-        element === panel ? stubbed : REAL_GET_COMPUTED_STYLE(element, pseudoElement),
-      );
-    }
-
-    function dispatchTransitionEnd(propertyName: string): void {
-      const event = new Event('transitionend');
-      Object.defineProperty(event, 'propertyName', { value: propertyName });
-      getPanel().dispatchEvent(event);
+    function openThenClose(...transitions: FakeTransition[]): void {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      stubTransitions(getPanel(), ...transitions);
+      host.isOpen.set(false);
+      fixture.detectChanges();
     }
 
     it('keeps the dialog open while the panel slides back out', () => {
-      host.isOpen.set(true);
-      fixture.detectChanges();
-      stubPanelDuration('300ms');
-
-      host.isOpen.set(false);
-      fixture.detectChanges();
+      openThenClose(new FakeTransition('transform'));
 
       expect(getDrawer().classList).not.toContain('ea-drawer--entered');
       expect(HTMLDialogElement.prototype.close).not.toHaveBeenCalled();
     });
 
-    it('ignores a transitionend for a property other than transform', () => {
-      host.isOpen.set(true);
-      fixture.detectChanges();
-      stubPanelDuration('300ms');
-      host.isOpen.set(false);
-      fixture.detectChanges();
+    it('closes once the panel slide finishes', async () => {
+      const slide = new FakeTransition('transform');
+      openThenClose(slide);
 
-      dispatchTransitionEnd('opacity');
+      slide.finish();
+      await nextTask();
+
+      expect(HTMLDialogElement.prototype.close).toHaveBeenCalledTimes(1);
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('closes at once when no slide starts, as under reduced motion', () => {
+      openThenClose();
+
+      expect(HTMLDialogElement.prototype.close).toHaveBeenCalledTimes(1);
+    });
+
+    it('closes at once when only a property other than transform transitions', () => {
+      openThenClose(new FakeTransition('opacity'));
+
+      expect(HTMLDialogElement.prototype.close).toHaveBeenCalledTimes(1);
+    });
+
+    it('follows a slide retargeted mid-exit into the new one', async () => {
+      const slide = new FakeTransition('transform');
+      const retargeted = new FakeTransition('transform');
+      openThenClose(slide);
+      stubTransitions(getPanel(), retargeted);
+
+      slide.cancel();
+      await nextTask();
 
       expect(HTMLDialogElement.prototype.close).not.toHaveBeenCalled();
+
+      retargeted.finish();
+      await nextTask();
+
+      expect(HTMLDialogElement.prototype.close).toHaveBeenCalledTimes(1);
     });
 
-    it('closes once the panel transform transition ends', () => {
-      host.isOpen.set(true);
-      fixture.detectChanges();
-      stubPanelDuration('300ms');
-      host.isOpen.set(false);
-      fixture.detectChanges();
+    it('closes when the slide is cancelled with none to follow', async () => {
+      const slide = new FakeTransition('transform');
+      openThenClose(slide);
+      stubTransitions(getPanel());
 
-      dispatchTransitionEnd('transform');
+      slide.cancel();
+      await nextTask();
 
-      expect(HTMLDialogElement.prototype.close).toHaveBeenCalled();
-    });
-
-    it('reads a duration expressed in seconds', () => {
-      host.isOpen.set(true);
-      fixture.detectChanges();
-      stubPanelDuration('0.3s');
-
-      host.isOpen.set(false);
-      fixture.detectChanges();
-
-      expect(HTMLDialogElement.prototype.close).not.toHaveBeenCalled();
-    });
-
-    it('falls back to a timer when transitionend never arrives', async () => {
-      host.isOpen.set(true);
-      fixture.detectChanges();
-      stubPanelDuration('10ms');
-
-      host.isOpen.set(false);
-      fixture.detectChanges();
-      await new Promise(resolve => setTimeout(resolve, 120));
-
-      expect(HTMLDialogElement.prototype.close).toHaveBeenCalled();
+      expect(HTMLDialogElement.prototype.close).toHaveBeenCalledTimes(1);
     });
 
     it('cancels the pending close when the drawer reopens mid-exit', async () => {
-      host.isOpen.set(true);
-      fixture.detectChanges();
-      stubPanelDuration('10ms');
-      host.isOpen.set(false);
-      fixture.detectChanges();
+      const slide = new FakeTransition('transform');
+      openThenClose(slide);
 
       host.isOpen.set(true);
       fixture.detectChanges();
-      await new Promise(resolve => setTimeout(resolve, 120));
+      await nextFrame();
+      await nextFrame();
+      slide.cancel();
+      await nextTask();
 
       expect(HTMLDialogElement.prototype.close).not.toHaveBeenCalled();
       expect(getDrawer().classList).toContain('ea-drawer--entered');
