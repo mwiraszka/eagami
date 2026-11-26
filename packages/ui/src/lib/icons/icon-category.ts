@@ -1,4 +1,4 @@
-import { Directive, HostBinding, type Type, input } from '@angular/core';
+import { Directive, type Type, input } from '@angular/core';
 
 /**
  * Primary classification for an icon component. Every icon ships with a single
@@ -39,7 +39,7 @@ export type IconComponentType = Type<unknown> & IconMeta;
  * individual icon components don't need to repeat the `host: { style: '...' }`
  * config in their `@Component` decorator. Brand icons with their own host
  * bindings (e.g. a colour binding tied to a `brand` input) layer those onto
- * this base via additional `@HostBinding` getters.
+ * this base through their own `host` metadata.
  *
  * Feather-derived icons read the `strokeWidth` input via `[attr.stroke-width]`
  * in their SVG template, so consumers can thin or thicken any icon at the
@@ -48,12 +48,14 @@ export type IconComponentType = Type<unknown> & IconMeta;
  * used by icons whose dense paths read better at a different default
  * (e.g. camera, upload at 1.5).
  */
-@Directive()
+@Directive({
+  host: {
+    '[style.display]': "'inline-flex'",
+    '[style.width]': "'1em'",
+    '[style.height]': "'1em'",
+  },
+})
 export abstract class IconComponentBase {
-  @HostBinding('style.display') readonly display = 'inline-flex';
-  @HostBinding('style.width') readonly width = '1em';
-  @HostBinding('style.height') readonly height = '1em';
-
   static readonly defaultStrokeWidth: number = 2;
 
   readonly strokeWidth = input<number>(

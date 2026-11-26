@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.90.2',
+    date: '2026-11-26',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Move the remaining host listeners and host styles into host metadata, which drops the `display`, `width` and `height` fields from `IconComponentBase` without changing how icons render.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.90.1',
     date: '2026-11-25',
     sections: [

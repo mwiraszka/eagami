@@ -3,7 +3,6 @@ import {
   Component,
   DestroyRef,
   ElementRef,
-  HostListener,
   afterRenderEffect,
   computed,
   effect,
@@ -78,17 +77,19 @@ export type PopoverMaxWidth = string;
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // Strip ARIA attributes from the host element. Angular's template parser
-  // mirrors any static `role="..."` / `aria-label="..."` on `<ea-popover>` to
-  // both the matching input AND the host's DOM attributes; without these
-  // clears, axe sees an empty `<ea-popover role="dialog">` (even when closed,
-  // since the host is always in the document) and flags it for missing names
-  // / nested roles. The role and label belong on the inner `__surface` div,
-  // which already applies them conditionally on `open()`.
   host: {
+    // Strip ARIA attributes from the host element. Angular's template parser
+    // mirrors any static `role="..."` / `aria-label="..."` on `<ea-popover>` to
+    // both the matching input AND the host's DOM attributes; without these
+    // clears, axe sees an empty `<ea-popover role="dialog">` (even when closed,
+    // since the host is always in the document) and flags it for missing names
+    // / nested roles. The role and label belong on the inner `__surface` div,
+    // which already applies them conditionally on `open()`.
     '[attr.role]': 'null',
     '[attr.aria-label]': 'null',
     '[attr.aria-labelledby]': 'null',
+    '(document:click)': 'onDocumentClick($event)',
+    '(document:keydown.escape)': 'onEscape($event)',
   },
 })
 export class PopoverComponent {
@@ -524,7 +525,6 @@ export class PopoverComponent {
     this.position.set(result);
   }
 
-  @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     if (!this.open() || !this.closeOnOutsideClick()) {
       return;
@@ -616,7 +616,6 @@ export class PopoverComponent {
     }
   }
 
-  @HostListener('document:keydown.escape', ['$event'])
   onEscape(event: Event): void {
     if (!this.open() || !this.closeOnEscape()) {
       return;
