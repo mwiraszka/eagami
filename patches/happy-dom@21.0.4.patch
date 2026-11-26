@@ -1,0 +1,26 @@
+diff --git a/lib/nodes/html-input-element/HTMLInputElement.js b/lib/nodes/html-input-element/HTMLInputElement.js
+index 9a0fefc8728eba2fca5341d2ca47af08743e5f7a..55a119868f8fd6fc13dab3be5958911ad2a9d959 100644
+--- a/lib/nodes/html-input-element/HTMLInputElement.js
++++ b/lib/nodes/html-input-element/HTMLInputElement.js
+@@ -1165,7 +1165,7 @@ export default class HTMLInputElement extends HTMLElement {
+         let selectionStart = this.#selectionStart;
+         let selectionEnd = this.#selectionEnd;
+         this.value = val.slice(0, start) + replacement + val.slice(end);
+-        const newEnd = start + this.value.length;
++        const newEnd = start + replacement.length;
+         switch (selectionMode) {
+             case HTMLInputElementSelectionModeEnum.select:
+                 this.setSelectionRange(start, newEnd);
+diff --git a/lib/nodes/html-text-area-element/HTMLTextAreaElement.js b/lib/nodes/html-text-area-element/HTMLTextAreaElement.js
+index 967453679f75cc2136bd872d5a3a17dbd9dd4a54..508cdb0fa54aeb3921f1cdcae18ead4d1100c522 100644
+--- a/lib/nodes/html-text-area-element/HTMLTextAreaElement.js
++++ b/lib/nodes/html-text-area-element/HTMLTextAreaElement.js
+@@ -485,7 +485,7 @@ export default class HTMLTextAreaElement extends HTMLElement {
+         let selectionStart = this.#selectionStart !== null ? this.#selectionStart : 0;
+         let selectionEnd = this.#selectionEnd !== null ? this.#selectionEnd : this.value.length;
+         this.value = val.slice(0, start) + replacement + val.slice(end);
+-        const newEnd = start + this.value.length;
++        const newEnd = start + replacement.length;
+         switch (selectionMode) {
+             case HTMLInputElementSelectionModeEnum.select:
+                 this.setSelectionRange(start, newEnd);
