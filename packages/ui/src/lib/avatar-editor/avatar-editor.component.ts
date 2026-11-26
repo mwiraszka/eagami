@@ -47,6 +47,13 @@ export interface AvatarEditorCropState {
 
 const ZOOM_TOLERANCE = 1e-3;
 const OFFSET_TOLERANCE = 0.5;
+// The zoom at which the image just fills the frame, the last one before a letterbox shows
+const FILL_ZOOM = 1;
+const FILL_SLIDER_SNAP = 0.03;
+// Pixels of wheel travel spent at the fill zoom before zooming carries on past it
+const FILL_WHEEL_HOLD = 240;
+const WHEEL_LINE_PIXELS = 40;
+const WHEEL_PAGE_PIXELS = 800;
 
 /**
  * Canvas-based image editor for cropping avatars. Supports drag-and-drop
@@ -132,6 +139,8 @@ export class AvatarEditorComponent implements OnDestroy {
     const fitZoom = fitScale / this.scaleFor(imageSize.width, imageSize.height, 1);
     return Math.min(this.minZoom(), fitZoom);
   });
+  // Zooming stops at the fill zoom on its way through only when it can go below it
+  private readonly hasFillStop = computed(() => this.lowestZoom() < FILL_ZOOM);
   /** True when the part of the image inside the frame is narrower than `displayWidth`, so the exported crop would be upscaled. */
   readonly isLowResolution = computed(() => {
     const displayWidth = this.displayWidth();
@@ -161,6 +170,8 @@ export class AvatarEditorComponent implements OnDestroy {
   private originalImage: HTMLImageElement | null = null;
   private originalCropState: { zoom: number; offsetX: number; offsetY: number } | null =
     null;
+  private lastFrame: { width: number; ratio: number } | null = null;
+  private fillWheelTravel = 0;
 
   readonly hostClasses = computed(() => ({
     [`ea-avatar-editor--${this.shape()}`]: true,
@@ -192,10 +203,16 @@ export class AvatarEditorComponent implements OnDestroy {
     });
 
     effect(() => {
-      this.canvasSize();
-      this.aspectRatio();
+      const width = this.canvasSize();
+      const ratio = this.aspectRatio();
       this.letterbox();
+      const previous = this.lastFrame;
+      this.lastFrame = { width, ratio };
       if (this.image) {
+        // A frame resized to the same shape keeps showing the same part of the image
+        if (previous && previous.ratio === ratio && previous.width !== width) {
+          this.scaleOffsets(width / previous.width);
+        }
         // Offsets were computed against the previous frame, so a shrink would
         // otherwise leave the image drawn outside it with a gap showing
         this.clampOffset();
@@ -370,8 +387,31 @@ export class AvatarEditorComponent implements OnDestroy {
       return;
     }
     event.preventDefault();
+    if (this.holdsAtFill(event)) {
+      return;
+    }
     const delta = event.deltaY > 0 ? -0.1 : 0.1;
-    this.setZoom(this.zoom() + delta);
+    this.stepZoom(this.zoom() + delta);
+  }
+
+  // A fast scroll pauses where the image fills the frame, so it can be stopped there
+  private holdsAtFill(event: WheelEvent): boolean {
+    if (!this.hasFillStop() || this.zoom() !== FILL_ZOOM) {
+      this.fillWheelTravel = 0;
+      return false;
+    }
+    const pixels =
+      event.deltaMode === WheelEvent.DOM_DELTA_LINE
+        ? WHEEL_LINE_PIXELS
+        : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+          ? WHEEL_PAGE_PIXELS
+          : 1;
+    this.fillWheelTravel += Math.abs(event.deltaY) * pixels;
+    if (this.fillWheelTravel < FILL_WHEEL_HOLD) {
+      return true;
+    }
+    this.fillWheelTravel = 0;
+    return false;
   }
 
   onCanvasKeydown(event: KeyboardEvent): void {
@@ -405,12 +445,12 @@ export class AvatarEditorComponent implements OnDestroy {
         break;
       case '+':
       case '=':
-        this.setZoom(this.zoom() + 0.1);
+        this.stepZoom(this.zoom() + 0.1);
         event.preventDefault();
         return;
       case '-':
       case '_':
-        this.setZoom(this.zoom() - 0.1);
+        this.stepZoom(this.zoom() - 0.1);
         event.preventDefault();
         return;
     }
@@ -433,9 +473,19 @@ export class AvatarEditorComponent implements OnDestroy {
     this.emitCropStateChange();
   }
 
+  // A step the user takes that would pass the fill zoom lands on it instead
+  protected stepZoom(value: number): void {
+    const current = this.zoom();
+    const passesFill =
+      this.hasFillStop() && (current - FILL_ZOOM) * (value - FILL_ZOOM) < 0;
+    this.setZoom(passesFill ? FILL_ZOOM : value);
+  }
+
   onZoomInput(event: Event): void {
     const value = parseFloat((event.target as HTMLInputElement).value);
-    this.setZoom(value);
+    const nearFill =
+      this.hasFillStop() && Math.abs(value - FILL_ZOOM) <= FILL_SLIDER_SNAP;
+    this.stepZoom(nearFill ? FILL_ZOOM : value);
   }
 
   /** Clears the loaded image and resets pan/zoom to defaults. */
@@ -737,6 +787,18 @@ export class AvatarEditorComponent implements OnDestroy {
     const clamped = Math.min(this.maxZoom(), Math.max(lowest, value));
     // The floor stays unrounded, so an image zoomed fully out fits the frame exactly
     this.zoom.set(clamped === lowest ? lowest : Math.round(clamped * 100) / 100);
+  }
+
+  private scaleOffsets(scale: number): void {
+    this.offsetX *= scale;
+    this.offsetY *= scale;
+    if (this.originalCropState) {
+      this.originalCropState = {
+        ...this.originalCropState,
+        offsetX: this.originalCropState.offsetX * scale,
+        offsetY: this.originalCropState.offsetY * scale,
+      };
+    }
   }
 
   private clampOffset(): void {

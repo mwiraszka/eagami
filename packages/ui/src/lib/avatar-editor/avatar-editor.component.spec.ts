@@ -398,6 +398,56 @@ describe('AvatarEditorComponent', () => {
       expect(ctxSpies.fillRect).toHaveBeenCalledTimes(4);
     });
 
+    it('stops a zoom step that would pass where the image fills the frame', () => {
+      loadWide(true);
+      component.setZoom(0.95);
+      fixture.detectChanges();
+
+      zoomInBtn().click();
+      const atFill = component.zoom();
+      zoomInBtn().click();
+
+      expect(atFill).toBe(1);
+      expect(component.zoom()).toBe(1.1);
+    });
+
+    it('holds a fast wheel scroll where the image fills the frame', () => {
+      loadWide(true);
+      const wheel = () =>
+        getCanvas()!.dispatchEvent(
+          new WheelEvent('wheel', { deltaY: -100, cancelable: true }),
+        );
+
+      wheel();
+      wheel();
+      const held = component.zoom();
+      wheel();
+
+      expect(held).toBe(1);
+      expect(component.zoom()).toBe(1.1);
+    });
+
+    it('snaps the slider to where the image fills the frame', () => {
+      loadWide(true);
+      component.setZoom(0.8);
+      const slider = getZoomSlider();
+      slider.value = '1.02';
+
+      slider.dispatchEvent(new Event('input'));
+
+      expect(component.zoom()).toBe(1);
+    });
+
+    it('zooms straight on without letterbox, where filling the frame is the floor', () => {
+      loadWide(false);
+
+      getCanvas()!.dispatchEvent(
+        new WheelEvent('wheel', { deltaY: -100, cancelable: true }),
+      );
+
+      expect(component.zoom()).toBe(1.1);
+    });
+
     it('fills the export around the image', async () => {
       loadWide(true);
       component.setZoom(0.1);
@@ -412,6 +462,29 @@ describe('AvatarEditorComponent', () => {
         0,
         400,
         400,
+      );
+    });
+  });
+
+  describe('Resizing', () => {
+    it('keeps showing the same part of the image when the frame is resized', () => {
+      fixture.componentRef.setInput('shape', 'square');
+      loadImage();
+      component.setZoom(2);
+      getCanvas()!.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+      getCanvas()!.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      ctxSpies.drawImage.mockClear();
+
+      fixture.componentRef.setInput('canvasSize', 400);
+      fixture.detectChanges();
+
+      // A 100×100 image at 2× zoom panned 5px each way in a 200px frame
+      expect(ctxSpies.drawImage).toHaveBeenLastCalledWith(
+        expect.anything(),
+        -10,
+        -10,
+        800,
+        800,
       );
     });
   });
