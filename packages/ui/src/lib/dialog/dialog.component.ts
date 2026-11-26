@@ -166,7 +166,9 @@ export class DialogComponent implements AfterContentChecked {
           }
           this.opened.emit();
         }
-      } else if (dialogRef.open) {
+      } else {
+        // Escape lets the browser shut the dialog before this runs, and the hold
+        // on the page's scrolling and the focus to hand back must still go with it
         this.closeSurface();
       }
     });
