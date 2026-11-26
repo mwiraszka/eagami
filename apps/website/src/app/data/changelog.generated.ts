@@ -14,6 +14,29 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.91.0',
+    date: '2026-11-26',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Hold the avatar editor's zoom where a letterboxed image just fills the frame, so it can be stopped there before any letterbox shows.",
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: ['Update third-party packages.'],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Let go of the page's scrolling and hand focus back when a dialog is closed with Escape.",
+          'Keep the avatar editor showing the same part of the image when its frame is resized.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.90.2',
     date: '2026-11-26',
     sections: [

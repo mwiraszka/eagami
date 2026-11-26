@@ -115,7 +115,7 @@
       [eaTooltip]="i18n.messages().avatarEditor.zoomOut"
       [attr.aria-label]="i18n.messages().avatarEditor.zoomOut"
       [disabled]="!hasImage() || isLoading() || zoom() <= lowestZoom()"
-      (click)="setZoom(zoom() - 0.1)">
+      (click)="stepZoom(zoom() - 0.1)">
       <ea-icon-minus />
     </button>
 
@@ -136,7 +136,7 @@
       [eaTooltip]="i18n.messages().avatarEditor.zoomIn"
       [attr.aria-label]="i18n.messages().avatarEditor.zoomIn"
       [disabled]="!hasImage() || isLoading() || zoom() >= maxZoom()"
-      (click)="setZoom(zoom() + 0.1)">
+      (click)="stepZoom(zoom() + 0.1)">
       <ea-icon-plus />
     </button>
 

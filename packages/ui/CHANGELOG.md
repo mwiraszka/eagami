@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.91.0] - 2026-11-26
+
+### Added
+
+- Hold the avatar editor's zoom where a letterboxed image just fills the frame, so it can be stopped there before any letterbox shows.
+
+### Changed
+
+- Update third-party packages.
+
+### Fixed
+
+- Let go of the page's scrolling and hand focus back when a dialog is closed with Escape.
+- Keep the avatar editor showing the same part of the image when its frame is resized.
+
 ## [5.90.2] - 2026-11-26
 
 ### Changed
@@ -2206,6 +2221,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.91.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.90.2...ui-v5.91.0
 [5.90.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.90.1...ui-v5.90.2
 [5.90.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.90.0...ui-v5.90.1
 [5.90.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.89.0...ui-v5.90.0

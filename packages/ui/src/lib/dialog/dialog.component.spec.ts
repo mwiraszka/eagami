@@ -405,6 +405,19 @@ describe('DialogComponent', () => {
       expect(document.documentElement.style.overflow).toBe('');
     });
 
+    it('lets go of the scroller when the browser shuts the dialog on Escape first', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      const dialog = getDialog();
+
+      dialog.dispatchEvent(new Event('cancel'));
+      dialog.close();
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+      expect(document.documentElement.style.overflow).toBe('');
+    });
+
     it('lets go of the scroller when a dialog is taken down while open', () => {
       host.isOpen.set(true);
       fixture.detectChanges();
