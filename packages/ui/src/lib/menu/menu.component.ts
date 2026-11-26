@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  HostListener,
   Injector,
   afterNextRender,
   computed,
@@ -42,6 +41,10 @@ export type MenuSize = EaSize;
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(document:keydown)': 'onKeydown($event)',
+    '(document:keydown.escape)': 'onEscape($event)',
+  },
 })
 export class MenuComponent {
   private readonly injector = inject(Injector);
@@ -226,7 +229,6 @@ export class MenuComponent {
     item.focus({ preventScroll: true });
   }
 
-  @HostListener('document:keydown', ['$event'])
   onKeydown(event: KeyboardEvent): void {
     if (!this.open()) {
       return;
@@ -285,7 +287,6 @@ export class MenuComponent {
     }
   }
 
-  @HostListener('document:keydown.escape', ['$event'])
   onEscape(event: Event): void {
     if (!this.open()) {
       return;

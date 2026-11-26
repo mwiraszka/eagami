@@ -5,7 +5,6 @@ import {
   Component,
   DestroyRef,
   type ElementRef,
-  HostListener,
   PLATFORM_ID,
   ViewEncapsulation,
   computed,
@@ -71,6 +70,9 @@ const boundRefs = new WeakSet<DialogRef<unknown>>();
   styleUrl: './dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  host: {
+    '(document:click)': 'onDocumentClick($event)',
+  },
 })
 export class DialogComponent implements AfterContentChecked {
   private readonly dialogEl = viewChild<ElementRef<HTMLDialogElement>>('dialogEl');
@@ -239,7 +241,6 @@ export class DialogComponent implements AfterContentChecked {
   // click landing outside the panel instead. The native open flag stands off
   // the opening click itself, which reaches here before the effect has shown
   // the dialog
-  @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     const dialogRef = this.dialogEl()?.nativeElement;
     if (this.modal() || !this.closeOnBackdrop() || !dialogRef?.open) {
