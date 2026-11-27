@@ -15,7 +15,7 @@ export interface ChangelogRelease {
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
     version: '5.91.1',
-    date: '2026-11-27',
+    date: '2026-11-28',
     sections: [
       {
         heading: 'Changed',
