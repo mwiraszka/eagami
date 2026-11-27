@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VirtualListComponent } from './virtual-list.component';
@@ -36,6 +36,7 @@ const ROWS: Row[] = Array.from({ length: 1000 }, (_, i) => ({
   `,
 })
 class HostComponent {
+  readonly list = viewChild.required(VirtualListComponent);
   items = signal<readonly Row[]>(ROWS);
   ariaLabel = signal<string | undefined>(undefined);
 }
@@ -121,6 +122,28 @@ describe('VirtualListComponent', () => {
       '.ea-virtual-list__spacer',
     ) as HTMLElement;
     expect(spacer.style.height).toBe('0px');
+  });
+
+  describe('scrollToIndex', () => {
+    it('scrolls the viewport so the given row sits at the top', () => {
+      fixture.componentInstance.list().scrollToIndex(25);
+
+      expect(getViewport().scrollTop).toBe(25 * 40);
+    });
+
+    it('clamps an index before the first row to the top of the list', () => {
+      scrollTo(400);
+
+      fixture.componentInstance.list().scrollToIndex(-5);
+
+      expect(getViewport().scrollTop).toBe(0);
+    });
+
+    it('clamps an index past the last row to the last row', () => {
+      fixture.componentInstance.list().scrollToIndex(5000);
+
+      expect(getViewport().scrollTop).toBe(999 * 40);
+    });
   });
 
   describe('Viewport accessibility', () => {

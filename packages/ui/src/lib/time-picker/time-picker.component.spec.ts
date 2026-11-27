@@ -148,6 +148,19 @@ describe('TimePickerComponent', () => {
       expect(getPopover()).toBeTruthy();
     });
 
+    it('closes and marks the control touched on an outside click', () => {
+      const onTouched = vi.fn<() => void>();
+      component.registerOnTouched(onTouched);
+      getTrigger().click();
+      fixture.detectChanges();
+
+      document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+      expect(onTouched).toHaveBeenCalled();
+    });
+
     it('sets aria-expanded when open', () => {
       getTrigger().click();
       fixture.detectChanges();
@@ -1088,6 +1101,49 @@ describe('TimePickerComponent', () => {
       expect(document.activeElement).toBe(secondsInput);
     });
 
+    it('commits a partly typed minute on blur', () => {
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+      const [, minutesInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(minutesInput, '2');
+
+      minutesInput.dispatchEvent(new FocusEvent('blur'));
+
+      expect(component.value()).toBe('09:02');
+      expect(component.editBuffer()).toBeNull();
+    });
+
+    it('commits a partly typed second on blur', () => {
+      fixture.componentRef.setInput('includeSeconds', true);
+      component.writeValue('09:30:15');
+      getTrigger().click();
+      fixture.detectChanges();
+      const [, , secondsInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(secondsInput, '3');
+
+      secondsInput.dispatchEvent(new FocusEvent('blur'));
+
+      expect(component.value()).toBe('09:30:03');
+      expect(component.editBuffer()).toBeNull();
+    });
+
+    it('commits a partly typed second before stepping it with ArrowUp', () => {
+      fixture.componentRef.setInput('includeSeconds', true);
+      component.writeValue('09:30:15');
+      getTrigger().click();
+      fixture.detectChanges();
+      const [, , secondsInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(secondsInput, '4');
+
+      secondsInput.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }),
+      );
+
+      expect(component.value()).toBe('09:30:05');
+      expect(component.editBuffer()).toBeNull();
+    });
+
     it('Escape clears the buffer and closes', () => {
       component.writeValue('09:30');
       getTrigger().click();
@@ -1289,6 +1345,83 @@ describe('TimePickerComponent', () => {
       expect(component.value()).not.toBe(beforeAcceleration);
 
       hoursUp.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+    });
+  });
+
+  describe('Every chevron', () => {
+    const chevrons: { index: number; name: string; expected: string }[] = [
+      { index: 0, name: 'hours up', expected: '10:30:10' },
+      { index: 1, name: 'hours down', expected: '08:30:10' },
+      { index: 2, name: 'minutes up', expected: '09:31:10' },
+      { index: 3, name: 'minutes down', expected: '09:29:10' },
+      { index: 4, name: 'seconds up', expected: '09:30:11' },
+      { index: 5, name: 'seconds down', expected: '09:30:09' },
+    ];
+
+    beforeEach(() => {
+      vi.useFakeTimers();
+      fixture.componentRef.setInput('includeSeconds', true);
+      component.writeValue('09:30:10');
+      getTrigger().click();
+      fixture.detectChanges();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it.each(chevrons)('steps $name once on a keyboard click', ({ index, expected }) => {
+      const chevron = getStepButtons()[index];
+
+      chevron.dispatchEvent(new MouseEvent('click', { detail: 0 }));
+
+      expect(component.value()).toBe(expected);
+    });
+
+    it.each(chevrons)(
+      'steps $name once on a press released with mouseup',
+      ({ index, expected }) => {
+        const chevron = getStepButtons()[index];
+
+        chevron.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+        chevron.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+        vi.advanceTimersByTime(1000);
+
+        expect(component.value()).toBe(expected);
+      },
+    );
+
+    it.each(chevrons)(
+      'steps $name once on a press abandoned by leaving the button',
+      ({ index, expected }) => {
+        const chevron = getStepButtons()[index];
+
+        chevron.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+        chevron.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+        vi.advanceTimersByTime(1000);
+
+        expect(component.value()).toBe(expected);
+      },
+    );
+
+    it.each(chevrons)('steps $name once on a touch tap', ({ index, expected }) => {
+      const chevron = getStepButtons()[index];
+
+      chevron.dispatchEvent(new TouchEvent('touchstart', { bubbles: true }));
+      chevron.dispatchEvent(new TouchEvent('touchend', { bubbles: true }));
+      vi.advanceTimersByTime(1000);
+
+      expect(component.value()).toBe(expected);
+    });
+
+    it.each(chevrons)('steps $name once on a cancelled touch', ({ index, expected }) => {
+      const chevron = getStepButtons()[index];
+
+      chevron.dispatchEvent(new TouchEvent('touchstart', { bubbles: true }));
+      chevron.dispatchEvent(new TouchEvent('touchcancel', { bubbles: true }));
+      vi.advanceTimersByTime(1000);
+
+      expect(component.value()).toBe(expected);
     });
   });
 

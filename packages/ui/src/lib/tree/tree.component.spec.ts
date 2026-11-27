@@ -289,6 +289,52 @@ describe('TreeComponent', () => {
       expect(host.expandedIds()).toEqual(['fruits']);
     });
 
+    it('stays on an expanded branch on ArrowRight when every child is disabled', () => {
+      host.nodes.set([
+        {
+          id: 'fruits',
+          label: 'Fruits',
+          children: [{ id: 'banana', label: 'Banana', disabled: true }],
+        },
+      ]);
+      host.expandedIds.set(['fruits']);
+      fixture.detectChanges();
+
+      press('ArrowRight');
+
+      expect(focusedId()).toBe('fruits');
+      expect(host.expandedIds()).toEqual(['fruits']);
+    });
+
+    it('stays on a collapsed root node on ArrowLeft, having no parent to climb to', () => {
+      press('ArrowLeft');
+
+      expect(focusedId()).toBe('fruits');
+      expect(host.expandedIds()).toEqual([]);
+    });
+
+    it('moves the tab stop to the first visible node once the focused one is collapsed out of view', () => {
+      clickChevron('vegetables');
+      press('End');
+
+      host.expandedIds.set([]);
+      fixture.detectChanges();
+
+      expect(focusedId()).toBe('fruits');
+      expect(fixture.nativeElement.querySelectorAll('[tabindex="0"]')).toHaveLength(1);
+    });
+
+    it('leaves an empty tree without a tab stop and ignores its keys', () => {
+      host.nodes.set([]);
+      fixture.detectChanges();
+
+      press('ArrowDown');
+      press('Enter');
+
+      expect(focusedId()).toBeNull();
+      expect(host.selectedId()).toBeNull();
+    });
+
     it('collapses an expanded branch with ArrowLeft, then climbs to the parent', () => {
       clickChevron('fruits');
 
