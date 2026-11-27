@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.91.1',
+    date: '2026-11-28',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Extend the unit test coverage of the time picker, breadcrumbs, autocomplete, virtual list, tree and segmented control, with no change to the published API.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.91.0',
     date: '2026-11-26',
     sections: [

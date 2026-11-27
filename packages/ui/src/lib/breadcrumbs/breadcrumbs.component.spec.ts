@@ -173,6 +173,28 @@ describe('BreadcrumbsComponent', () => {
 
       expect(spy).not.toHaveBeenCalled();
     });
+
+    it('cancels a programmatic activation of the current page without emitting', () => {
+      const spy = vi.fn<(event: BreadcrumbClickEvent) => void>();
+      component.clicked.subscribe(spy);
+      const event = new MouseEvent('click', { cancelable: true });
+
+      component.handleClick(defaultItems[2], 2, event);
+
+      expect(event.defaultPrevented).toBe(true);
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('cancels a programmatic activation of a disabled item without emitting', () => {
+      const spy = vi.fn<(event: BreadcrumbClickEvent) => void>();
+      component.clicked.subscribe(spy);
+      const event = new MouseEvent('click', { cancelable: true });
+
+      component.handleClick({ ...defaultItems[1], disabled: true }, 1, event);
+
+      expect(event.defaultPrevented).toBe(true);
+      expect(spy).not.toHaveBeenCalled();
+    });
   });
 
   describe('Hidden levels menu', () => {
@@ -209,6 +231,23 @@ describe('BreadcrumbsComponent', () => {
     function press(): void {
       getExpand()!.click();
       fixture.detectChanges();
+    }
+
+    // The popover reveals its surface on the frame after opening, and focus follows it in
+    async function revealSurface(): Promise<void> {
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      fixture.detectChanges();
+    }
+
+    function keydown(target: HTMLElement, key: string): KeyboardEvent {
+      const event = new KeyboardEvent('keydown', {
+        key,
+        bubbles: true,
+        cancelable: true,
+      });
+      target.dispatchEvent(event);
+      fixture.detectChanges();
+      return event;
     }
 
     beforeEach(() => {
@@ -384,6 +423,92 @@ describe('BreadcrumbsComponent', () => {
     it('opens the menu on ArrowDown from the button', () => {
       getExpand()!.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
       fixture.detectChanges();
+
+      expect(getMenu()).toBeTruthy();
+    });
+
+    it('moves focus to the first hidden level once a pressed menu is revealed', async () => {
+      press();
+
+      await revealSurface();
+
+      expect(document.activeElement).toBe(getMenuItems()[0]);
+    });
+
+    it('leaves focus where it was when the menu opens on hover', async () => {
+      getExpand()!.focus();
+      hover();
+
+      await revealSurface();
+
+      expect(document.activeElement).toBe(getExpand());
+    });
+
+    it('moves back through the menu with ArrowUp, wrapping from the first to the last', () => {
+      press();
+      const [first, second] = getMenuItems();
+      second.focus();
+
+      keydown(second, 'ArrowUp');
+
+      expect(document.activeElement).toBe(first);
+
+      keydown(first, 'ArrowUp');
+
+      expect(document.activeElement).toBe(second);
+    });
+
+    it('jumps to the first and the last hidden level with Home and End', () => {
+      fixture.componentRef.setInput('maxItems', 2);
+      fixture.detectChanges();
+      press();
+      const [first, second, third] = getMenuItems();
+      second.focus();
+
+      const end = keydown(second, 'End');
+
+      expect(document.activeElement).toBe(third);
+      expect(end.defaultPrevented).toBe(true);
+
+      const home = keydown(third, 'Home');
+
+      expect(document.activeElement).toBe(first);
+      expect(home.defaultPrevented).toBe(true);
+    });
+
+    it('closes on Tab and hands focus back to the button for Tab to move on from', () => {
+      press();
+      const [first] = getMenuItems();
+      first.focus();
+
+      const tab = keydown(first, 'Tab');
+
+      expect(getMenu()).toBeNull();
+      expect(document.activeElement).toBe(getExpand());
+      expect(tab.defaultPrevented).toBe(false);
+    });
+
+    it('closes on Escape from the button', () => {
+      press();
+
+      const escape = keydown(getExpand()!, 'Escape');
+
+      expect(getMenu()).toBeNull();
+      expect(escape.defaultPrevented).toBe(true);
+    });
+
+    it('leaves Escape on the button to the page while the menu is closed', () => {
+      const escape = keydown(getExpand()!, 'Escape');
+
+      expect(getMenu()).toBeNull();
+      expect(escape.defaultPrevented).toBe(false);
+    });
+
+    it('keeps a pressed menu open when the pointer then enters and leaves the button', () => {
+      press();
+
+      hover();
+      leave(getExpand()!, document.body);
 
       expect(getMenu()).toBeTruthy();
     });

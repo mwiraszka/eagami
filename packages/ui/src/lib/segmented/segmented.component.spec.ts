@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { REAL_GET_COMPUTED_STYLE } from '../../test-setup';
 import type { SelectOption } from '../select-option';
@@ -77,6 +78,28 @@ describe('SegmentedComponent', () => {
       getOptions()[1].click();
 
       expect(spy).toHaveBeenCalledWith('b');
+    });
+
+    it('marks the control touched without emitting when the selected option is clicked again', () => {
+      const onTouched = vi.fn<() => void>();
+      const spy = vi.fn();
+      component.registerOnTouched(onTouched);
+      component.changed.subscribe(spy);
+
+      getOptions()[0].click();
+
+      expect(onTouched).toHaveBeenCalled();
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('ignores select() for a disabled option', () => {
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      component.select(options[2]);
+
+      expect(component.value()).toBe('a');
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 
@@ -173,6 +196,39 @@ describe('SegmentedComponent', () => {
       expect(component.value()).toBe('b');
     });
 
+    it('moves to the previous option on ArrowRight under dir="rtl"', () => {
+      fixture.componentRef.setInput('options', [
+        { value: 'a', label: 'Apple' },
+        { value: 'b', label: 'Banana' },
+        { value: 'd', label: 'Date' },
+      ]);
+      fixture.componentRef.setInput('value', 'b');
+      fixture.detectChanges();
+      const middle = getOptions()[1];
+      vi.spyOn(window, 'getComputedStyle').mockImplementation((el, pseudo) =>
+        el === middle
+          ? ({ direction: 'rtl' } as CSSStyleDeclaration)
+          : REAL_GET_COMPUTED_STYLE(el, pseudo),
+      );
+
+      dispatchKey(middle, 'ArrowRight');
+
+      expect(component.value()).toBe('a');
+    });
+
+    it('leaves other keys to the browser', () => {
+      const event = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        bubbles: true,
+        cancelable: true,
+      });
+
+      getOptions()[0].dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+      expect(component.value()).toBe('a');
+    });
+
     it('ignores keys while the whole group is disabled', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
@@ -194,6 +250,61 @@ describe('SegmentedComponent', () => {
       component.setDisabledState(true);
 
       expect(component.isDisabled()).toBe(true);
+    });
+  });
+
+  describe('Reactive forms', () => {
+    @Component({
+      imports: [SegmentedComponent, ReactiveFormsModule],
+      template: `
+        <ea-segmented
+          [formControl]="control"
+          [options]="options" />
+      `,
+    })
+    class FormHostComponent {
+      control = new FormControl<string | null>('b');
+      options = options;
+    }
+
+    let formFixture: ComponentFixture<FormHostComponent>;
+    let formHost: FormHostComponent;
+
+    function getFormOptions(): HTMLButtonElement[] {
+      const root = formFixture.nativeElement as HTMLElement;
+      return Array.from(
+        root.querySelectorAll<HTMLButtonElement>('.ea-segmented__option'),
+      );
+    }
+
+    beforeEach(() => {
+      formFixture = TestBed.createComponent(FormHostComponent);
+      formHost = formFixture.componentInstance;
+      formFixture.detectChanges();
+    });
+
+    afterEach(() => {
+      formFixture.destroy();
+    });
+
+    it('checks the option the form control holds', () => {
+      expect(getFormOptions()[1].getAttribute('aria-checked')).toBe('true');
+    });
+
+    it('checks no option once the form control is reset to null', () => {
+      formHost.control.reset();
+      formFixture.detectChanges();
+
+      expect(
+        getFormOptions().some(option => option.getAttribute('aria-checked') === 'true'),
+      ).toBe(false);
+    });
+
+    it('reports a picked option to the form control and marks it touched', () => {
+      getFormOptions()[0].click();
+
+      expect(formHost.control.value).toBe('a');
+      expect(formHost.control.touched).toBe(true);
     });
   });
 

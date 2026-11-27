@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import type { SelectOption, SelectOptionGroup, SelectOptions } from '../select-option';
 import { AutocompleteComponent, type AutocompleteSize } from './autocomplete.component';
@@ -25,6 +26,7 @@ const FRUITS: SelectOption[] = [
       [placeholder]="placeholder()"
       [size]="size()"
       [disabled]="disabled()"
+      [readonly]="readonly()"
       [required]="required()"
       [hint]="hint()"
       [errorMsg]="errorMsg()"
@@ -45,6 +47,7 @@ class TestHostComponent {
   placeholder = signal('');
   size = signal<AutocompleteSize>('md');
   disabled = signal(false);
+  readonly = signal(false);
   required = signal(false);
   hint = signal<string | undefined>(undefined);
   errorMsg = signal<string | undefined>(undefined);
@@ -58,6 +61,23 @@ class TestHostComponent {
   onSelected(option: SelectOption): void {
     this.lastSelected = option;
   }
+}
+
+@Component({
+  selector: 'ea-test-form-host',
+  imports: [AutocompleteComponent, ReactiveFormsModule],
+  template: `
+    <ea-autocomplete
+      [formControl]="control"
+      [options]="options"
+      (blurred)="lastBlur = $event" />
+  `,
+})
+class FormHostComponent {
+  readonly autocomplete = viewChild.required(AutocompleteComponent);
+  control = new FormControl<string | null>('Banana');
+  options = FRUITS;
+  lastBlur: FocusEvent | null = null;
 }
 
 describe('AutocompleteComponent', () => {
@@ -435,6 +455,57 @@ describe('AutocompleteComponent', () => {
 
       expect(getListbox()).toBeNull();
     });
+
+    it('moves focus back up with ArrowUp', () => {
+      focus();
+      press('ArrowDown');
+      press('ArrowDown');
+
+      press('ArrowUp');
+
+      expect(getOptions()[0].classList).toContain('ea-autocomplete__option--focused');
+      expect(getInput().getAttribute('aria-activedescendant')).toBe(getOptions()[0].id);
+    });
+
+    it('keeps the list closed on ArrowUp', () => {
+      focus();
+      press('Escape');
+
+      const event = press('ArrowUp');
+
+      expect(getListbox()).toBeNull();
+      expect(event.defaultPrevented).toBe(true);
+    });
+
+    it('leaves Enter to the surrounding form while no option is focused', () => {
+      focus();
+
+      const event = press('Enter');
+
+      expect(event.defaultPrevented).toBe(false);
+      expect(host.lastSelected).toBeNull();
+      expect(getListbox()).toBeTruthy();
+    });
+
+    it('leaves Escape to the page once the list is closed', () => {
+      focus();
+      press('Escape');
+
+      const event = press('Escape');
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('focuses no option on the arrow keys while nothing matches', () => {
+      focus();
+      type('zzz');
+
+      press('ArrowDown');
+      press('ArrowUp');
+
+      expect(getInput().getAttribute('aria-activedescendant')).toBeNull();
+      expect(getListbox()?.textContent).toContain('No results');
+    });
   });
 
   describe('Disabled', () => {
@@ -443,6 +514,85 @@ describe('AutocompleteComponent', () => {
       fixture.detectChanges();
 
       expect(getInput().disabled).toBe(true);
+    });
+  });
+
+  describe('Readonly', () => {
+    it('ignores the keyboard', () => {
+      host.readonly.set(true);
+      fixture.detectChanges();
+
+      const event = press('ArrowDown');
+
+      expect(getListbox()).toBeNull();
+      expect(event.defaultPrevented).toBe(false);
+    });
+  });
+
+  describe('Reactive forms', () => {
+    let formFixture: ComponentFixture<FormHostComponent>;
+    let formHost: FormHostComponent;
+
+    function getFormInput(): HTMLInputElement {
+      return formFixture.nativeElement.querySelector('.ea-autocomplete__input');
+    }
+
+    beforeEach(() => {
+      formFixture = TestBed.createComponent(FormHostComponent);
+      formHost = formFixture.componentInstance;
+      formFixture.detectChanges();
+    });
+
+    afterEach(() => {
+      formFixture.destroy();
+    });
+
+    it('shows the value the form control holds', () => {
+      expect(getFormInput().value).toBe('Banana');
+    });
+
+    it('empties the field when the form control is reset to null', () => {
+      formHost.control.reset();
+      formFixture.detectChanges();
+
+      expect(getFormInput().value).toBe('');
+    });
+
+    it('reports typed text and a picked option back to the form control', () => {
+      const input = getFormInput();
+      input.dispatchEvent(new FocusEvent('focus'));
+      input.value = 'Che';
+      input.dispatchEvent(new Event('input'));
+      formFixture.detectChanges();
+
+      expect(formHost.control.value).toBe('Che');
+
+      getOptions()[0].dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+      formFixture.detectChanges();
+
+      expect(formHost.control.value).toBe('Cherry');
+    });
+
+    it('marks the form control touched and emits blurred on blur', () => {
+      const blur = new FocusEvent('blur');
+
+      getFormInput().dispatchEvent(blur);
+
+      expect(formHost.control.touched).toBe(true);
+      expect(formHost.lastBlur).toBe(blur);
+    });
+
+    it('disables the field when the form control is disabled', () => {
+      formHost.control.disable();
+      formFixture.detectChanges();
+
+      expect(getFormInput().disabled).toBe(true);
+    });
+
+    it('moves focus into the input via focus()', () => {
+      formHost.autocomplete().focus();
+
+      expect(document.activeElement).toBe(getFormInput());
     });
   });
 
