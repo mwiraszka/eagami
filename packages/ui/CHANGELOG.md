@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.91.1] - 2026-11-27
+
+### Changed
+
+- Extend the unit test coverage of the time picker, breadcrumbs, autocomplete, virtual list, tree and segmented control, with no change to the published API.
+
 ## [5.91.0] - 2026-11-26
 
 ### Added
@@ -2221,6 +2227,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.91.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.91.0...ui-v5.91.1
 [5.91.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.90.2...ui-v5.91.0
 [5.90.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.90.1...ui-v5.90.2
 [5.90.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.90.0...ui-v5.90.1
