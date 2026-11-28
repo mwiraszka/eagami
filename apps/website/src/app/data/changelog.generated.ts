@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.91.2',
+    date: '2026-11-28',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Replace `NgClass` with native class bindings in the remaining components, with no change to how they look or behave.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.91.1',
     date: '2026-11-28',
     sections: [
