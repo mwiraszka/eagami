@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -73,7 +72,6 @@ interface CalendarDay {
     ChevronRightIconComponent,
     FieldLabelComponent,
     FieldMessagesComponent,
-    NgClass,
     PopoverComponent,
     XIconComponent,
   ],

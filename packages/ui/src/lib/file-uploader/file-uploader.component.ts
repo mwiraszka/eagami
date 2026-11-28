@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -90,7 +89,6 @@ export interface FileUploaderRejection {
     FilmIconComponent,
     ImageIconComponent,
     MusicIconComponent,
-    NgClass,
     UploadCloudIconComponent,
     XIconComponent,
   ],

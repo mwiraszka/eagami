@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -42,7 +42,7 @@ export type TagTooltip = 'top' | 'bottom' | 'none';
  */
 @Component({
   selector: 'ea-tag',
-  imports: [NgClass, NgComponentOutlet, TooltipDirective, XIconComponent],
+  imports: [NgComponentOutlet, TooltipDirective, XIconComponent],
   templateUrl: './tag.component.html',
   styleUrl: './tag.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

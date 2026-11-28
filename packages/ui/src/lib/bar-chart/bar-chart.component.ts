@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -113,7 +112,7 @@ function truncate(text: string, maxWidth: number, fontPx: number): string {
  */
 @Component({
   selector: 'ea-bar-chart',
-  imports: [NgClass, TooltipDirective],
+  imports: [TooltipDirective],
   templateUrl: './bar-chart.component.html',
   styleUrl: './bar-chart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,4 +1,4 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -150,7 +150,7 @@ let nextId = 0;
  */
 @Component({
   selector: 'ea-line-chart',
-  imports: [NgClass, NgTemplateOutlet, TooltipDirective],
+  imports: [NgTemplateOutlet, TooltipDirective],
   templateUrl: './line-chart.component.html',
   styleUrl: './line-chart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

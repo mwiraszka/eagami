@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,7 +23,6 @@ export type ProgressBarSize = EaSize;
  */
 @Component({
   selector: 'ea-progress-bar',
-  imports: [NgClass],
   templateUrl: './progress-bar.component.html',
   styleUrl: './progress-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

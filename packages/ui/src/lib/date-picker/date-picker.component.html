@@ -14,7 +14,7 @@
     <div
       #fieldEl
       class="ea-date-picker__field"
-      [ngClass]="fieldClasses()">
+      [class]="fieldClasses()">
       <button
         type="button"
         class="ea-date-picker__calendar-button"
@@ -74,7 +74,7 @@
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-date-picker__popover"
-        [ngClass]="popoverClasses()"
+        [class]="popoverClasses()"
         (keydown)="handleGridKeydown($event)">
         <div class="ea-date-picker__header">
           <button

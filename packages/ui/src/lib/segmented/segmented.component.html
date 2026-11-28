@@ -14,7 +14,7 @@
   <div
     class="ea-segmented"
     role="radiogroup"
-    [ngClass]="hostClasses()"
+    [class]="hostClasses()"
     [attr.aria-labelledby]="ariaLabelledby() || (label() ? id() + '-label' : null)"
     [attr.aria-label]="!label() && !ariaLabelledby() ? (ariaLabel() ?? null) : null"
     [attr.aria-required]="required() || null"

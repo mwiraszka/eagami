@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -31,7 +31,7 @@ export type SwitchVariant = EaStatusVariant;
  */
 @Component({
   selector: 'ea-switch',
-  imports: [FieldMessagesComponent, NgClass, NgComponentOutlet],
+  imports: [FieldMessagesComponent, NgComponentOutlet],
   templateUrl: './switch.component.html',
   styleUrl: './switch.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

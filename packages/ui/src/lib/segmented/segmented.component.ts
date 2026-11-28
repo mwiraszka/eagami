@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -41,7 +40,7 @@ export type SegmentedSize = EaSize;
     '[attr.aria-labelledby]': 'null',
     '[class.ea-segmented-host--full-width]': 'fullWidth()',
   },
-  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,7 +24,7 @@ export type EmptyStateHeadingLevel = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   templateUrl: './empty-state.component.html',
   styleUrl: './empty-state.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass, NgComponentOutlet],
+  imports: [NgComponentOutlet],
 })
 export class EmptyStateComponent {
   readonly title = input<string | undefined>(undefined);

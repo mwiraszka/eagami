@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -71,7 +70,6 @@ export type MultiSelectSize = EaSize;
     ChevronDownIconComponent,
     FieldLabelComponent,
     FieldMessagesComponent,
-    NgClass,
     PlusIconComponent,
     PopoverComponent,
     SearchIconComponent,

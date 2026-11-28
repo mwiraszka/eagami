@@ -1,12 +1,12 @@
 <ol
   class="ea-timeline"
   role="list"
-  [ngClass]="hostClasses()">
+  [class]="hostClasses()">
   @for (item of items(); track $index) {
     <li
       class="ea-timeline__item"
       role="listitem"
-      [ngClass]="itemModifier(item)"
+      [class]="itemModifier(item)"
       [attr.aria-current]="item.current ? 'true' : null">
       <div
         class="ea-timeline__marker"

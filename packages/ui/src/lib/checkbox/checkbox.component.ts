@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -28,7 +27,7 @@ export type CheckboxSize = EaSize;
  */
 @Component({
   selector: 'ea-checkbox',
-  imports: [FieldMessagesComponent, NgClass, TooltipDirective],
+  imports: [FieldMessagesComponent, TooltipDirective],
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,4 +1,4 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -123,7 +123,6 @@ export interface DataTableSortState {
     ArrowDownIconComponent,
     ArrowUpIconComponent,
     ChevronsUpDownIconComponent,
-    NgClass,
     NgTemplateOutlet,
     SkeletonComponent,
   ],

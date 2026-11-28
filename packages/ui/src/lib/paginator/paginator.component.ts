@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -56,7 +55,6 @@ export type PaginatorPageSizeLabel =
 @Component({
   selector: 'ea-paginator',
   imports: [
-    NgClass,
     ButtonComponent,
     ChevronDownIconComponent,
     ChevronLeftIconComponent,
