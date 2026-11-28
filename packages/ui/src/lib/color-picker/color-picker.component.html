@@ -13,12 +13,12 @@
   <div class="ea-color-picker">
     <div
       class="ea-color-picker__trigger-wrapper"
-      [ngClass]="wrapperClasses()">
+      [class]="wrapperClasses()">
       <button
         #triggerEl
         type="button"
         class="ea-color-picker__trigger"
-        [ngClass]="triggerClasses()"
+        [class]="triggerClasses()"
         [id]="id()"
         [disabled]="isDisabled()"
         [attr.aria-expanded]="isOpen()"
@@ -76,7 +76,7 @@
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-color-picker__popover"
-        [ngClass]="popoverClasses()"
+        [class]="popoverClasses()"
         (keydown)="onPopoverKeydown($event)">
         <div
           #svAreaEl

@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -16,7 +15,6 @@ export type DividerOrientation = 'horizontal' | 'vertical';
  */
 @Component({
   selector: 'ea-divider',
-  imports: [NgClass],
   templateUrl: './divider.component.html',
   styleUrl: './divider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

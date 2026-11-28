@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -68,7 +67,6 @@ const WHEEL_PAGE_PIXELS = 800;
     AlertTriangleIconComponent,
     CameraIconComponent,
     MinusIconComponent,
-    NgClass,
     PlusIconComponent,
     RotateCcwIconComponent,
     SkeletonComponent,

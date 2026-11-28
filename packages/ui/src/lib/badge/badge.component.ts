@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -32,7 +31,6 @@ export type BadgeShape = 'pill' | 'pin';
  */
 @Component({
   selector: 'ea-badge',
-  imports: [NgClass],
   templateUrl: './badge.component.html',
   styleUrl: './badge.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

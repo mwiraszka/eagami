@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +37,7 @@ export type StepperOrientation = 'horizontal' | 'vertical';
   templateUrl: './stepper.component.html',
   styleUrl: './stepper.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CheckIconComponent, NgClass],
+  imports: [CheckIconComponent],
 })
 export class StepperComponent {
   protected readonly i18n = inject(EagamiI18nService);

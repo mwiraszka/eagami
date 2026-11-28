@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -50,7 +49,6 @@ export interface TimelineItem {
   styleUrl: './timeline.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  imports: [NgClass],
 })
 export class TimelineComponent {
   /** The events to render, in order. */

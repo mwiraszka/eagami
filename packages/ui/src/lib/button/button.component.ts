@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -50,7 +50,7 @@ export type ButtonAlign = 'start' | 'center' | 'end';
   selector: 'ea-button',
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
-  imports: [NgClass, NgComponentOutlet],
+  imports: [NgComponentOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.ea-button--full-width]': 'fullWidth()',

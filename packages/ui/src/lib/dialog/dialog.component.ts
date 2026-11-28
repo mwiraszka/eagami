@@ -1,4 +1,4 @@
-import { NgClass, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import {
   type AfterContentChecked,
   ChangeDetectionStrategy,
@@ -65,7 +65,7 @@ const boundRefs = new WeakSet<DialogRef<unknown>>();
  */
 @Component({
   selector: 'ea-dialog',
-  imports: [NgClass, XIconComponent],
+  imports: [XIconComponent],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

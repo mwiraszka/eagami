@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -99,7 +98,7 @@ function slicePath(
  */
 @Component({
   selector: 'ea-pie-chart',
-  imports: [NgClass, TooltipDirective],
+  imports: [TooltipDirective],
   templateUrl: './pie-chart.component.html',
   styleUrl: './pie-chart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

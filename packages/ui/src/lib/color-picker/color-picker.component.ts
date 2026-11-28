@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -96,7 +95,6 @@ const DEFAULT_PRESETS: readonly string[] = [
     DropletIconComponent,
     FieldLabelComponent,
     FieldMessagesComponent,
-    NgClass,
     PopoverComponent,
     XIconComponent,
   ],

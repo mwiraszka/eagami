@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -22,7 +21,7 @@ export type AvatarShape = 'circle' | 'square';
  */
 @Component({
   selector: 'ea-avatar',
-  imports: [NgClass, UserIconComponent],
+  imports: [UserIconComponent],
   templateUrl: './avatar.component.html',
   styleUrl: './avatar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

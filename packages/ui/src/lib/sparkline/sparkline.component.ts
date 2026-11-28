@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -70,7 +69,7 @@ const MIN_BAR_PX = 1;
  */
 @Component({
   selector: 'ea-sparkline',
-  imports: [NgClass, TooltipDirective],
+  imports: [TooltipDirective],
   templateUrl: './sparkline.component.html',
   styleUrl: './sparkline.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

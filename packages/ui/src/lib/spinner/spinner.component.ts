@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,7 +20,6 @@ export type SpinnerSize = EaSize;
  */
 @Component({
   selector: 'ea-spinner',
-  imports: [NgClass],
   templateUrl: './spinner.component.html',
   styleUrl: './spinner.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

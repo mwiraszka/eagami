@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -36,7 +36,7 @@ import {
   selector: 'a[eaButtonLink]',
   templateUrl: './button-link.component.html',
   styleUrls: ['./button.component.scss', './button-link.component.scss'],
-  imports: [NgClass, NgComponentOutlet],
+  imports: [NgComponentOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.ea-button--full-width]': 'fullWidth()',

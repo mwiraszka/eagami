@@ -14,12 +14,12 @@
     <div
       #wrapperEl
       class="ea-multi-select__trigger-wrapper"
-      [ngClass]="wrapperClasses()"
+      [class]="wrapperClasses()"
       (click)="onTriggerAreaClick()">
       <div
         #triggerEl
         class="ea-multi-select__trigger"
-        [ngClass]="triggerClasses()"
+        [class]="triggerClasses()"
         [id]="id()"
         role="combobox"
         [attr.tabindex]="isDisabled() ? -1 : 0"
@@ -88,7 +88,7 @@
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-multi-select__popover"
-        [ngClass]="menuClasses()"
+        [class]="menuClasses()"
         [style.max-height]="popoverMaxHeight() ?? null">
         @if (searchable()) {
           <div class="ea-multi-select__search">
